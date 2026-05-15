@@ -1,0 +1,211 @@
+[
+  {
+    "name": "Geoffrey Hinton",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5108093963",
+      "source": "openalex",
+      "display_name": "Geoffrey E. Hinton",
+      "institution": "Unknown Institution",
+      "country": "",
+      "works_count": 384,
+      "cited_by_count": 447299,
+      "score": 0.6384,
+      "confidence": "Medium"
+    },
+    "time": 1529.097080230713
+  },
+  {
+    "name": "Andrew Ng",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5112456378",
+      "source": "openalex",
+      "display_name": "Andrew Y. Ng",
+      "institution": "Stanford University",
+      "country": "US",
+      "works_count": 392,
+      "cited_by_count": 129964,
+      "score": 0.6392,
+      "confidence": "Medium"
+    },
+    "time": 1718.5511589050293
+  },
+  {
+    "name": "Yann LeCun",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5001226970",
+      "source": "openalex",
+      "display_name": "Yann LeCun",
+      "institution": "Courant Institute of Mathematical Sciences",
+      "country": "US",
+      "works_count": 480,
+      "cited_by_count": 248543,
+      "score": 0.648,
+      "confidence": "Medium"
+    },
+    "time": 757.3270797729492
+  },
+  {
+    "name": "Fei-Fei Li",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5100325826",
+      "source": "openalex",
+      "display_name": "Fei Li",
+      "institution": "Shanghai University",
+      "country": "CN",
+      "works_count": 823,
+      "cited_by_count": 33009,
+      "score": 0.6823,
+      "confidence": "Medium"
+    },
+    "time": 2423.269748687744
+  },
+  {
+    "name": "Rajesh Kumar",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5052848876",
+      "source": "openalex",
+      "display_name": "Rajesh Kumar",
+      "institution": "Government Medical College",
+      "country": "IN",
+      "works_count": 1016,
+      "cited_by_count": 16664,
+      "score": 0.7,
+      "confidence": "Medium"
+    },
+    "time": 2101.720094680786
+  },
+  {
+    "name": "A Sharma",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5007946243",
+      "source": "openalex",
+      "display_name": "A. Sharma",
+      "institution": "Indian Institute of Technology Madras",
+      "country": "IN",
+      "works_count": 822,
+      "cited_by_count": 48706,
+      "score": 0.6821999999999999,
+      "confidence": "Medium"
+    },
+    "time": 1809.3347549438477
+  },
+  {
+    "name": "S Patel",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5034388856",
+      "source": "openalex",
+      "display_name": "Smita S. Patel",
+      "institution": "Rutgers, The State University of New Jersey",
+      "country": "US",
+      "works_count": 344,
+      "cited_by_count": 17834,
+      "score": 0.6344,
+      "confidence": "Medium"
+    },
+    "time": 1879.7929286956787
+  },
+  {
+    "name": "Amit Kumar",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5100706992",
+      "source": "openalex",
+      "display_name": "Amit Kumar",
+      "institution": "University of Delhi",
+      "country": "IN",
+      "works_count": 650,
+      "cited_by_count": 13405,
+      "score": 0.665,
+      "confidence": "Medium"
+    },
+    "time": 1998.2469081878662
+  },
+  {
+    "name": "P Singh",
+    "institution": null,
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5015768486",
+      "source": "openalex",
+      "display_name": "Vijay P. Singh",
+      "institution": "Mitchell Institute",
+      "country": "US",
+      "works_count": 1089,
+      "cited_by_count": 48232,
+      "score": 0.7,
+      "confidence": "Medium"
+    },
+    "time": 2080.2531242370605
+  },
+  {
+    "name": "Rajesh Kumar",
+    "institution": "K J Somaiya",
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5052848876",
+      "source": "openalex",
+      "display_name": "Rajesh Kumar",
+      "institution": "Government Medical College",
+      "country": "IN",
+      "works_count": 1016,
+      "cited_by_count": 16664,
+      "score": 0.7,
+      "confidence": "Medium"
+    },
+    "time": 1260.7989311218262
+  },
+  {
+    "name": "Rajesh Kumar",
+    "institution": "IIT Bombay",
+    "count": 10,
+    "multiple": true,
+    "auto_selected": null,
+    "top": {
+      "candidate_id": "A5052848876",
+      "source": "openalex",
+      "display_name": "Rajesh Kumar",
+      "institution": "Government Medical College",
+      "country": "IN",
+      "works_count": 1016,
+      "cited_by_count": 16664,
+      "score": 0.7,
+      "confidence": "Medium"
+    },
+    "time": 1490.0250434875488
+  }
+]

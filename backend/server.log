@@ -1,0 +1,400 @@
+INFO:     Started server process [59669]
+INFO:     Waiting for application startup.
+{"timestamp": "2026-05-13T19:39:12.361829+00:00", "level": "INFO", "logger": "main", "message": "Database initialised"}
+{"timestamp": "2026-05-13T19:39:12.361869+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.browser", "message": "Starting global Playwright browser instance..."}
+{"timestamp": "2026-05-13T19:39:13.295431+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.browser", "message": "Global Playwright browser started successfully."}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58270 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58270 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Geoffrey+Hinton HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Andrew+Ng HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Yann+LeCun HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Fei-Fei+Li HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Rajesh+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=A+Sharma HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=S+Patel HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Amit+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=P+Singh HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Rajesh+Kumar&institution=K+J+Somaiya HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /search/candidates?name=Rajesh+Kumar&institution=IIT+Bombay HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T19:39:33.877798+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=JicYPdAAAAAJ"}
+INFO:     127.0.0.1:58287 - "GET /debug/raw-response?source=scholar&query=Geoffrey+Hinton HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T19:39:39.542469+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=mG4imMEAAAAJ"}
+INFO:     127.0.0.1:58287 - "GET /debug/raw-response?source=scholar&query=Andrew+Ng HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T19:39:45.713883+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from openalex for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:45.713971+00:00", "level": "WARNING", "logger": "connectors.base", "message": "source_fetch_failed", "event": "source_fetch_failed", "source": "openalex", "reason": "OpenAlexConnector._fetch_impl() got an unexpected keyword argument 'db'", "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:45.713997+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from openalex: records=None, status=failed"}
+{"timestamp": "2026-05-13T19:39:45.714174+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:45.732746+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:45.747508+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:47.092804+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1378, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:47.093080+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T19:39:48.298444+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 2551, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:48.298611+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T19:39:48.857851+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3125, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:48.857942+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T19:39:48.858998+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T19:39:48.891255+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T19:39:49.062754+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 68 merged publications."}
+INFO:     127.0.0.1:58302 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T19:39:49.123709+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from openalex for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:49.123754+00:00", "level": "WARNING", "logger": "connectors.base", "message": "source_fetch_failed", "event": "source_fetch_failed", "source": "openalex", "reason": "OpenAlexConnector._fetch_impl() got an unexpected keyword argument 'db'", "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:49.123774+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from openalex: records=None, status=failed"}
+{"timestamp": "2026-05-13T19:39:49.123890+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:49.138814+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:49.152808+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T19:39:50.892776+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1769, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:50.892975+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T19:39:51.486385+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 2333, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:51.486517+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T19:39:52.234631+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3096, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T19:39:52.234720+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T19:39:52.235676+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T19:39:52.270281+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T19:39:52.270311+00:00", "level": "WARNING", "logger": "services.search_service", "message": "Deduplication disabled via flag!"}
+{"timestamp": "2026-05-13T19:39:52.270442+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 100 merged publications."}
+INFO:     127.0.0.1:58302 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58302 - "GET /similarity-log/40 HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T19:39:52.370236+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from openalex for query='Yann LeCun' ID='None'"}
+{"timestamp": "2026-05-13T19:39:52.370302+00:00", "level": "WARNING", "logger": "connectors.base", "message": "source_fetch_failed", "event": "source_fetch_failed", "source": "openalex", "reason": "OpenAlexConnector._fetch_impl() got an unexpected keyword argument 'db'", "author": "Yann LeCun"}
+{"timestamp": "2026-05-13T19:39:52.370329+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from openalex: records=None, status=failed"}
+{"timestamp": "2026-05-13T19:39:52.370458+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Yann LeCun' ID='None'"}
+{"timestamp": "2026-05-13T19:39:52.385176+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Yann LeCun' ID='None'"}
+{"timestamp": "2026-05-13T19:39:52.400249+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Yann LeCun' ID='None'"}
+{"timestamp": "2026-05-13T19:39:53.745941+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1375, "author": "Yann LeCun"}
+{"timestamp": "2026-05-13T19:39:53.746216+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T19:39:55.068641+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 2668, "author": "Yann LeCun"}
+{"timestamp": "2026-05-13T19:39:55.068760+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T19:39:55.479295+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3094, "author": "Yann LeCun"}
+{"timestamp": "2026-05-13T19:39:55.479410+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T19:39:55.480581+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T19:39:55.516751+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T19:39:55.707639+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 96 merged publications."}
+INFO:     127.0.0.1:58314 - "GET /search?name=Yann+LeCun&use_cache=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58314 - "GET /search?name=Yann+LeCun&use_cache=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58893 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58893 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Geoffrey+Hinton HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Andrew+Ng HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Yann+LeCun HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Fei-Fei+Li HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Rajesh+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=A+Sharma HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=S+Patel HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Amit+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=P+Singh HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Rajesh+Kumar&institution=K+J+Somaiya HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58895 - "GET /search/candidates?name=Rajesh+Kumar&institution=IIT+Bombay HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:06:18.730021+00:00", "level": "ERROR", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Error checking scholar cache: can't compare offset-naive and offset-aware datetimes"}
+{"timestamp": "2026-05-13T20:06:18.731038+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=JicYPdAAAAAJ"}
+INFO:     127.0.0.1:58915 - "GET /debug/raw-response?source=scholar&query=Geoffrey+Hinton HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:06:24.215798+00:00", "level": "ERROR", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Error checking scholar cache: can't compare offset-naive and offset-aware datetimes"}
+{"timestamp": "2026-05-13T20:06:24.215853+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=mG4imMEAAAAJ"}
+INFO:     127.0.0.1:58915 - "GET /debug/raw-response?source=scholar&query=Andrew+Ng HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:06:29.183199+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from openalex for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:29.184240+00:00", "level": "WARNING", "logger": "connectors.base", "message": "source_fetch_failed", "event": "source_fetch_failed", "source": "openalex", "reason": "OpenAlexConnector._fetch_impl() got an unexpected keyword argument 'db'", "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:29.184282+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from openalex: records=None, status=failed"}
+{"timestamp": "2026-05-13T20:06:29.184492+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:29.205400+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:29.222660+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:31.322995+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 2138, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:31.323963+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T20:06:32.360188+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3155, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:32.360277+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T20:06:32.399713+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 3177, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:32.399777+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T20:06:32.400663+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T20:06:32.432632+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T20:06:32.610339+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 68 merged publications."}
+INFO:     127.0.0.1:58929 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:06:32.665797+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from openalex for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:32.665829+00:00", "level": "WARNING", "logger": "connectors.base", "message": "source_fetch_failed", "event": "source_fetch_failed", "source": "openalex", "reason": "OpenAlexConnector._fetch_impl() got an unexpected keyword argument 'db'", "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:32.665848+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from openalex: records=None, status=failed"}
+{"timestamp": "2026-05-13T20:06:32.665987+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:32.680974+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:32.695336+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:06:34.006987+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1341, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:34.007084+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T20:06:35.665072+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 2970, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:35.665162+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T20:06:35.776018+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3095, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:06:35.776100+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T20:06:35.777104+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T20:06:35.812730+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T20:06:35.812764+00:00", "level": "WARNING", "logger": "services.search_service", "message": "Deduplication disabled via flag!"}
+{"timestamp": "2026-05-13T20:06:35.812907+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 100 merged publications."}
+INFO:     127.0.0.1:58929 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58929 - "GET /similarity-log/40 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nileshlalwani/Documents/COLLEGE WORK/YEAR LONG PROJECT/PHASE 1 DATA COLLECTION/MODEL/academic-search/backend/main.py", line 143, in get_similarity_log
+    group = grp_res.scalar_one_or_none()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1514, in scalar_one_or_none
+    return self._only_one_row(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 825, in _only_one_row
+    raise exc.MultipleResultsFound(
+sqlalchemy.exc.MultipleResultsFound: Multiple rows were found when one or none was required
+INFO:     127.0.0.1:58952 - "GET /similarity-log/40 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nileshlalwani/Documents/COLLEGE WORK/YEAR LONG PROJECT/PHASE 1 DATA COLLECTION/MODEL/academic-search/backend/main.py", line 143, in get_similarity_log
+    group = grp_res.scalar_one_or_none()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1514, in scalar_one_or_none
+    return self._only_one_row(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 825, in _only_one_row
+    raise exc.MultipleResultsFound(
+sqlalchemy.exc.MultipleResultsFound: Multiple rows were found when one or none was required
+INFO:     127.0.0.1:59049 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59049 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Geoffrey+Hinton HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Andrew+Ng HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Yann+LeCun HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Fei-Fei+Li HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Rajesh+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=A+Sharma HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=S+Patel HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Amit+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=P+Singh HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Rajesh+Kumar&institution=K+J+Somaiya HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59051 - "GET /search/candidates?name=Rajesh+Kumar&institution=IIT+Bombay HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:10:47.523573+00:00", "level": "ERROR", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Error checking scholar cache: can't compare offset-naive and offset-aware datetimes"}
+{"timestamp": "2026-05-13T20:10:47.523659+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=JicYPdAAAAAJ"}
+INFO:     127.0.0.1:59066 - "GET /debug/raw-response?source=scholar&query=Geoffrey+Hinton HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:10:52.983022+00:00", "level": "ERROR", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Error checking scholar cache: can't compare offset-naive and offset-aware datetimes"}
+{"timestamp": "2026-05-13T20:10:52.983056+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=mG4imMEAAAAJ"}
+INFO:     127.0.0.1:59066 - "GET /debug/raw-response?source=scholar&query=Andrew+Ng HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:10:57.285498+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:10:57.301179+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:10:57.315802+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:10:58.672061+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1386, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:10:58.672224+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T20:11:00.660658+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 3345, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:11:00.660799+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T20:11:01.025035+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3724, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:11:01.025295+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T20:11:01.026396+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T20:11:01.062477+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T20:11:01.238092+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 68 merged publications."}
+INFO:     127.0.0.1:59080 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:11:01.284781+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:11:01.298942+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:11:01.312909+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:11:03.075595+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1791, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:11:03.075790+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T20:11:04.892007+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3593, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:11:04.892127+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T20:11:05.433606+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 4121, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:11:05.433691+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T20:11:05.434940+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T20:11:05.472304+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T20:11:05.472338+00:00", "level": "WARNING", "logger": "services.search_service", "message": "Deduplication disabled via flag!"}
+{"timestamp": "2026-05-13T20:11:05.472471+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 100 merged publications."}
+INFO:     127.0.0.1:59080 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59080 - "GET /similarity-log/40 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nileshlalwani/Documents/COLLEGE WORK/YEAR LONG PROJECT/PHASE 1 DATA COLLECTION/MODEL/academic-search/backend/main.py", line 143, in get_similarity_log
+    group = grp_res.scalar_one_or_none()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1514, in scalar_one_or_none
+    return self._only_one_row(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 825, in _only_one_row
+    raise exc.MultipleResultsFound(
+sqlalchemy.exc.MultipleResultsFound: Multiple rows were found when one or none was required
+INFO:     127.0.0.1:59114 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59114 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Geoffrey+Hinton HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Andrew+Ng HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Yann+LeCun HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Fei-Fei+Li HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Rajesh+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=A+Sharma HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=S+Patel HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Amit+Kumar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=P+Singh HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Rajesh+Kumar&institution=K+J+Somaiya HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /search/candidates?name=Rajesh+Kumar&institution=IIT+Bombay HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:12:23.596184+00:00", "level": "ERROR", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Error checking scholar cache: can't compare offset-naive and offset-aware datetimes"}
+{"timestamp": "2026-05-13T20:12:23.596264+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=JicYPdAAAAAJ"}
+{"timestamp": "2026-05-13T20:12:24.372664+00:00", "level": "ERROR", "logger": "main", "message": "Debug Raw Response Error: OpenAlexConnector._fetch_impl() got an unexpected keyword argument 'db'"}
+INFO:     127.0.0.1:59135 - "GET /debug/raw-response?source=openalex&query=Geoffrey%20Hinton HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:59133 - "GET /debug/raw-response?source=scholar&query=Geoffrey+Hinton HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:12:29.728071+00:00", "level": "ERROR", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Error checking scholar cache: can't compare offset-naive and offset-aware datetimes"}
+{"timestamp": "2026-05-13T20:12:29.728111+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.profile_scraper", "message": "Scholar Cache MISS. Scraping https://scholar.google.com/citations?user=mG4imMEAAAAJ"}
+INFO:     127.0.0.1:59133 - "GET /debug/raw-response?source=scholar&query=Andrew+Ng HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:12:35.333346+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:12:35.350428+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:12:35.365429+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:12:36.708846+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1375, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:12:36.708955+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T20:12:38.485267+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3135, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:12:38.485399+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T20:12:40.041102+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 4676, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:12:40.041156+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T20:12:40.042028+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T20:12:40.077238+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T20:12:40.267473+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 68 merged publications."}
+INFO:     127.0.0.1:59149 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=false HTTP/1.1" 200 OK
+{"timestamp": "2026-05-13T20:12:40.322179+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from dblp for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:12:40.338633+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from arxiv for query='Geoffrey Hinton' ID='None'"}
+{"timestamp": "2026-05-13T20:12:40.353848+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Fetching from crossref for query='Geoffrey Hinton' ID='None'"}
+INFO:     Shutting down
+INFO:     Waiting for connections to close. (CTRL+C to force quit)
+{"timestamp": "2026-05-13T20:12:42.056861+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "dblp", "records": 50, "time_ms": 1735, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:12:42.057059+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from dblp: records=50, status=ok"}
+{"timestamp": "2026-05-13T20:12:43.439703+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "arxiv", "records": 20, "time_ms": 3101, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:12:43.439855+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from arxiv: records=20, status=ok"}
+{"timestamp": "2026-05-13T20:12:44.804622+00:00", "level": "INFO", "logger": "connectors.base", "message": "source_fetch_complete", "event": "source_fetch_complete", "source": "crossref", "records": 30, "time_ms": 4451, "author": "Geoffrey Hinton"}
+{"timestamp": "2026-05-13T20:12:44.804719+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Response from crossref: records=30, status=ok"}
+{"timestamp": "2026-05-13T20:12:44.805684+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Starting normalization for 100 raw records."}
+{"timestamp": "2026-05-13T20:12:44.840859+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Normalized into 100 canonical records."}
+{"timestamp": "2026-05-13T20:12:44.840888+00:00", "level": "WARNING", "logger": "services.search_service", "message": "Deduplication disabled via flag!"}
+{"timestamp": "2026-05-13T20:12:44.841016+00:00", "level": "DEBUG", "logger": "services.search_service", "message": "Deduplication output: 100 merged publications."}
+INFO:     127.0.0.1:59149 - "GET /search?name=Geoffrey+Hinton&use_cache=false&disable_dedup=true HTTP/1.1" 200 OK
+INFO:     Waiting for application shutdown.
+{"timestamp": "2026-05-13T20:12:44.923229+00:00", "level": "INFO", "logger": "main", "message": "Shutting down"}
+{"timestamp": "2026-05-13T20:12:44.923301+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.browser", "message": "Stopping global Playwright browser instance..."}
+{"timestamp": "2026-05-13T20:12:45.021225+00:00", "level": "INFO", "logger": "connectors.scrapers.scholar.browser", "message": "Global Playwright browser stopped."}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [59669]

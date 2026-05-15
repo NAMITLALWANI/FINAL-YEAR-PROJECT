@@ -1,0 +1,8 @@
+{
+  "institution_name": "KJ Somaiya",
+  "base_url": "https://www.somaiya.edu/en/view-member/210356",
+  "publication_container": ".research-list li, .publications li, .faculty-details-row li",
+  "title_selector": "h4, strong, .title",
+  "author_selector": ".authors, .name",
+  "year_pattern": "\\b(19|20)\\d{2}\\b"
+}
