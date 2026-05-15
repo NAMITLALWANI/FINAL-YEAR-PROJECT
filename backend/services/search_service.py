@@ -286,7 +286,7 @@ async def _persist_publications(papers, merge_logs, normalized_records, db: Asyn
         source_ids = [normalized_records[idx].source_id for idx in pub.source_record_ids if normalized_records[idx].source_id]
         if source_ids:
             grp_res = await db.execute(select(DuplicateGroup).where(DuplicateGroup.publication_id == pub_id))
-            grp = grp_res.scalar_one_or_none()
+            grp = grp_res.scalars().first()
             if grp:
                 grp.source_record_ids = json.dumps(source_ids)
             else:

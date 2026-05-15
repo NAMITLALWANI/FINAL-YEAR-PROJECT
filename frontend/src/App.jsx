@@ -53,7 +53,6 @@ function WelcomeState() {
 // ── Main App ──────────────────────────────────────────────────────
 export default function App() {
   const [query, setQuery]       = useState('')
-  const [institution, setInstitution] = useState('')
   const [loading, setLoading]   = useState(false)
   const [loadingMessage, setLoadingMessage] = useState('Searching metadata...')
   const [result, setResult]     = useState(null)
@@ -93,7 +92,7 @@ export default function App() {
     setLoadingMessage('Resolving author identity...')
 
     try {
-      const candData = await getAuthorCandidates(name, institution.trim() || null)
+      const candData = await getAuthorCandidates(name, null)
       
       if (candData.multiple_candidates && candData.candidates.length > 1) {
         setCandidates(candData.candidates)
@@ -143,9 +142,7 @@ export default function App() {
       <main className="main">
         <SearchBar
           value={query}
-          institution={institution}
           onValueChange={setQuery}
-          onInstitutionChange={setInstitution}
           onSubmit={handleSearch}
           loading={loading}
         />

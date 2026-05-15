@@ -1,0 +1,14 @@
+
+> academic-search-frontend@1.0.0 dev
+> vite --host 127.0.0.1
+
+
+  VITE v5.4.21  ready in 421 ms
+
+  ➜  Local:   http://127.0.0.1:3000/
+1:32:16 AM [vite] hmr update /src/index.css
+1:32:42 AM [vite] hmr update /src/components/StatsBar.jsx
+1:34:01 AM [vite] hmr update /src/index.css
+1:35:24 AM [vite] hmr update /src/components/SearchBar.jsx
+1:35:32 AM [vite] hmr update /src/App.jsx
+1:38:17 AM [vite] hmr update /src/index.css
