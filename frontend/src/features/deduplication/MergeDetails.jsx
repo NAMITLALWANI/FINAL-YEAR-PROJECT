@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import SourceBadge from './SourceBadge.jsx'
-import { getSimilarityLog } from '../api.js'
+import SourceBadge from '../monitoring/SourceBadge.jsx'
+import { getSimilarityLog } from '../../services/api.js'
 
 const PROVENANCE_FIELDS = [
   { key: 'abstract_source',  label: 'Abstract' },

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import SourceBadge from './SourceBadge.jsx'
-import MergeDetails from './MergeDetails.jsx'
+import SourceBadge from '../monitoring/SourceBadge.jsx'
+import MergeDetails from '../deduplication/MergeDetails.jsx'
 
 function formatCitations(n) {
   if (!n) return null

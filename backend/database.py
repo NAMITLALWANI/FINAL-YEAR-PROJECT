@@ -1,3 +1,18 @@
+"""Architectural Role: Authoritative Relational Persistence Layer (SQLite / SQLAlchemy).
+
+This module defines the relational schema, ORM entity mappings, and asynchronous session factories
+for the entire HAMMER application.
+
+FOUNDATIONAL ARCHITECTURAL INVARIANT:
+- SQLite is the authoritative System of Record (SoR) for:
+  a) Raw bibliographic provenance (`source_records`)
+  b) Canonical deduplicated publications (`publications`, `duplicate_groups`)
+  c) Author master entities and external profile links (`authors`, `author_external_ids`)
+  d) Candidate entity pools and decision evidence (`author_candidates`, `author_resolutions`, `author_resolution_evidence`)
+- Downstream vector indexes (ChromaDB) and generative LLMs (Gemini) are strictly DERIVED.
+  ChromaDB can be destroyed and rebuilt from SQLite at any time, and vector similarity never
+  overrules or alters relational entity decisions.
+"""
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped, relationship
 from sqlalchemy import (

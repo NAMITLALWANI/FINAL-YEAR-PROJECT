@@ -1,15 +1,25 @@
+/**
+ * Architectural Role: Main Application Component & Feature Coordinator.
+ * 
+ * Orchestrates user search queries, author disambiguation workflows, publication
+ * inspection, and source status monitoring across modular feature components:
+ * - features/search: Query input, paper cards, and analytics stats bar.
+ * - features/author_resolution: Interactive candidate selector modal for human-in-the-loop review.
+ * - features/deduplication: Merge inspection and duplicate group breakdowns.
+ * - features/monitoring: Circuit breaker and source health status indicators.
+ */
 import { useState, useEffect } from 'react'
-import SearchBar from './components/SearchBar.jsx'
-import StatsBar from './components/StatsBar.jsx'
-import SourceStatusPanel from './components/SourceStatusPanel.jsx'
-import PaperCard from './components/PaperCard.jsx'
-import CandidateSelector from './components/CandidateSelector.jsx'
+import SearchBar from './features/search/SearchBar.jsx'
+import StatsBar from './features/search/StatsBar.jsx'
+import SourceStatusPanel from './features/monitoring/SourceStatusPanel.jsx'
+import PaperCard from './features/search/PaperCard.jsx'
+import CandidateSelector from './features/author_resolution/CandidateSelector.jsx'
 import {
   searchAuthor,
   getAuthorCandidates,
   fetchAuthorCandidatesV1,
   createAuthorResolution,
-} from './api.js'
+} from './services/api.js'
 
 // ── Skeleton placeholders while loading ──────────────────────────
 function SkeletonCard() {
