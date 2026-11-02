@@ -4,7 +4,12 @@ import StatsBar from './components/StatsBar.jsx'
 import SourceStatusPanel from './components/SourceStatusPanel.jsx'
 import PaperCard from './components/PaperCard.jsx'
 import CandidateSelector from './components/CandidateSelector.jsx'
-import { searchAuthor, getAuthorCandidates } from './api.js'
+import {
+  searchAuthor,
+  getAuthorCandidates,
+  fetchAuthorCandidatesV1,
+  createAuthorResolution,
+} from './api.js'
 
 // ── Skeleton placeholders while loading ──────────────────────────
 function SkeletonCard() {
@@ -44,7 +49,7 @@ function WelcomeState() {
       <div className="state-icon">🏛️</div>
       <p className="state-title">ProjectX Intelligence</p>
       <p className="state-desc">
-        A unified engine for cross-institutional research discovery. Aggregating disparate metadata sources into a high-fidelity knowledge layer.
+        Search scholarly metadata across connected sources, compare duplicate publication records, and review author candidates with traceable evidence.
       </p>
     </div>
   )
@@ -57,7 +62,9 @@ export default function App() {
   const [loadingMessage, setLoadingMessage] = useState('Searching metadata...')
   const [result, setResult]     = useState(null)
   const [candidates, setCandidates] = useState(null)
+  const [retrieval, setRetrieval] = useState(null)
   const [error, setError]       = useState(null)
+  const [unresolvedMessage, setUnresolvedMessage] = useState(null)
   const [searched, setSearched] = useState('')
 
   // ── Rotating Loading Message ─────────────────────────────────────
@@ -65,12 +72,12 @@ export default function App() {
     if (!loading) return
     const messages = [
       "Searching metadata...",
-      "Querying OpenAlex & ArXiv...",
-      "Connecting to Scholar...",
+      "Querying scholarly sources...",
+      "Retrieving indexed publications...",
       "Merging duplicate records...",
       "Finalizing publication list...",
-      "Removing false positives...",
-      "Building knowledge graph..."
+      "Reconciling duplicate records...",
+      "Checking source provenance..."
     ]
     let idx = 0
     const interval = setInterval(() => {
@@ -86,20 +93,44 @@ export default function App() {
 
     setLoading(true)
     setError(null)
+    setUnresolvedMessage(null)
     setResult(null)
     setCandidates(null)
+    setRetrieval(null)
     setSearched(name)
-    setLoadingMessage('Resolving author identity...')
+    setLoadingMessage('Resolving author identity & evidence...')
 
     try {
-      const candData = await getAuthorCandidates(name, null)
-      
-      if (candData.multiple_candidates && candData.candidates.length > 1) {
-        setCandidates(candData.candidates)
+      let candData = null
+      try {
+        candData = await fetchAuthorCandidatesV1(name, null)
+      } catch (e) {
+        console.warn('V1 candidates endpoint fallback:', e)
+        candData = await getAuthorCandidates(name, null)
+      }
+
+      if (candData.retrieval) {
+        setRetrieval(candData.retrieval)
+      }
+
+      const cands = candData.candidates || []
+      if (cands.length > 1) {
+        setCandidates(cands)
         setLoading(false)
+      } else if (cands.length === 1) {
+        const topCand = cands[0]
+        try {
+          const res = await createAuthorResolution({
+            author_name: name,
+            candidate_ids: [topCand.candidate_id],
+            selected_candidate_id: topCand.candidate_id,
+          })
+          await fetchPapers(name, topCand.candidate_id, topCand.source, res.resolution_id)
+        } catch {
+          await fetchPapers(name, topCand.candidate_id, topCand.source)
+        }
       } else {
-        const autoSelected = candData.auto_selected || (candData.candidates && candData.candidates[0])
-        await fetchPapers(name, autoSelected?.candidate_id, autoSelected?.source)
+        await fetchPapers(name, null, null)
       }
     } catch (err) {
       setError(err.message || 'Unknown error')
@@ -108,21 +139,60 @@ export default function App() {
   }
 
   async function handleCandidateSelect(candidate) {
+    const candidateIds = candidates ? candidates.map(c => c.candidate_id || c.source_author_id) : []
     setCandidates(null)
     setLoading(true)
     setError(null)
-    setLoadingMessage(`Fetching works for ${candidate.display_name}...`)
+    setLoadingMessage(`Persisting selection and retrieving works for ${candidate.display_name}...`)
     try {
-      await fetchPapers(searched, candidate.candidate_id, candidate.source)
+      let resolutionId = null
+      try {
+        const res = await createAuthorResolution({
+          author_name: searched,
+          candidate_ids: candidateIds,
+          selected_candidate_id: candidate.candidate_id,
+          reason: 'User manual selection from candidate review UI',
+        })
+        resolutionId = res.resolution_id
+      } catch (e) {
+        console.warn('Could not persist manual resolution:', e)
+      }
+      await fetchPapers(searched, candidate.candidate_id, candidate.source, resolutionId)
     } catch (err) {
       setError(err.message || 'Unknown error')
       setLoading(false)
     }
   }
 
-  async function fetchPapers(name, candidateId, source) {
-    const data = await searchAuthor(name, candidateId, source)
-    setResult(data)
+  async function handleMarkUnresolved() {
+    const candidateIds = candidates ? candidates.map(c => c.candidate_id || c.source_author_id) : []
+    setCandidates(null)
+    setLoading(true)
+    setLoadingMessage('Recording unresolved identity decision...')
+    try {
+      await createAuthorResolution({
+        author_name: searched,
+        candidate_ids: candidateIds,
+        mark_unresolved: true,
+        reason: 'Reviewer marked identity as unresolved',
+      })
+      setUnresolvedMessage(`Identity for "${searched}" marked unresolved. No multi-source retrieval was initiated.`)
+      setResult(null)
+    } catch (err) {
+      setError(err.message || 'Failed to record unresolved decision')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function fetchPapers(name, candidateId, source, resolutionId = null) {
+    const data = await searchAuthor(name, candidateId, source, null, true, resolutionId)
+    if (data.identity_context?.status === 'unresolved' || data.message?.includes('unresolved')) {
+      setUnresolvedMessage(data.message || 'Identity is unresolved; multi-source retrieval was aborted.')
+      setResult(null)
+    } else {
+      setResult(data)
+    }
     setLoading(false)
   }
 
@@ -147,11 +217,22 @@ export default function App() {
           loading={loading}
         />
 
+        {/* Unresolved message banner */}
+        {!loading && unresolvedMessage && (
+          <div className="state-box" style={{ background: '#f8fafc', border: '1px solid #cbd5e1', marginTop: '1.5rem' }}>
+            <div className="state-icon">ℹ️</div>
+            <p className="state-title">Identity Unresolved</p>
+            <p className="state-desc">{unresolvedMessage}</p>
+          </div>
+        )}
+
         {/* Candidate Selector */}
         {!loading && candidates && (
           <CandidateSelector 
             candidates={candidates} 
-            onSelect={handleCandidateSelect} 
+            retrieval={retrieval}
+            onSelect={handleCandidateSelect}
+            onMarkUnresolved={handleMarkUnresolved}
           />
         )}
 
@@ -168,25 +249,32 @@ export default function App() {
               <div className="spinner-small" />
               <span className="loading-text">{loadingMessage}</span>
             </div>
-            <div className="results-grid" style={{ opacity: 0.5 }}>
-              {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
-            </div>
+            {[1, 2, 3, 4].map(n => <SkeletonCard key={n} />)}
           </div>
         )}
 
-        {/* Results */}
-        {!loading && result && !candidates && papers.length > 0 && (
-          <div className="results-grid animate-in">
-            {papers.map((paper, i) => (
-              <PaperCard key={paper.canonical_id || paper.id || i} paper={paper} />
+        {/* Error */}
+        {error && !loading && <ErrorState message={error} />}
+
+        {/* Welcome */}
+        {!loading && !result && !error && !candidates && !unresolvedMessage && <WelcomeState />}
+
+        {/* Empty */}
+        {!loading && result && papers.length === 0 && !error && !candidates && !unresolvedMessage && (
+          <EmptyState query={searched} />
+        )}
+
+        {/* Paper cards */}
+        {!loading && papers.length > 0 && !candidates && (
+          <div className="results-container">
+            <p className="results-count">
+              Showing {papers.length} reconciled publication{papers.length !== 1 ? 's' : ''} for "{searched}"
+            </p>
+            {papers.map(p => (
+              <PaperCard key={p.canonical_id || p.id} paper={p} />
             ))}
           </div>
         )}
-
-        {/* States */}
-        {!loading && result && !candidates && papers.length === 0 && <EmptyState query={searched} />}
-        {!loading && error && <ErrorState message={error} />}
-        {!loading && !result && !error && !candidates && <WelcomeState />}
       </main>
     </div>
   )

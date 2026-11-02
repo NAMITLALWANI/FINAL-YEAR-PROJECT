@@ -1,0 +1,23 @@
+{
+  "baseline_day4": {
+    "candidate_recall_at_1": 0.5536,
+    "candidate_recall_at_5": 0.7143,
+    "candidate_recall_at_10": 0.7143,
+    "mrr": 0.6152,
+    "zero_candidate_queries": 10
+  },
+  "day5_production": {
+    "candidate_recall_at_1": 0.3036,
+    "candidate_recall_at_5": 0.3036,
+    "candidate_recall_at_10": 0.3036,
+    "mrr": 0.3036,
+    "zero_candidate_queries": 0
+  },
+  "delta": {
+    "candidate_recall_at_1": -0.25,
+    "candidate_recall_at_5": -0.4107,
+    "candidate_recall_at_10": -0.4107,
+    "mrr": -0.3116,
+    "zero_candidate_queries": -10
+  }
+}

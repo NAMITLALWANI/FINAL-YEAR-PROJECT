@@ -1,0 +1,13 @@
+{
+  "evaluation_timestamp": "2026-11-02T07:22:45.760028+00:00",
+  "benchmark_file": "author_resolution_benchmark_100_v2_corrected.json",
+  "gold_queries_evaluated": 56,
+  "candidate_recall_at_1": 0.3036,
+  "candidate_recall_at_5": 0.3036,
+  "candidate_recall_at_10": 0.3036,
+  "mrr": 0.3036,
+  "zero_candidate_queries": 0,
+  "institutional_rejected": 0,
+  "avg_candidates_per_query": 4.7,
+  "recovered_cases": []
+}

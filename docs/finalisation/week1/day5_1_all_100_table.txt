@@ -1,0 +1,102 @@
+| Query ID | Name | Institution | Group | Scenario | Gold ID | Harvested Cands | Gold Hit? | Resolution Status |
+|---|---|---|---|---|---|---|---|---|
+| **Q001** | Yoshua Bengio | Mila, Universite de Montreal | A: Gold-labeled |  |  | 4 | No (Label Mismatch) |  |
+| **Q002** | Geoffrey Hinton | University of Toronto | A: Gold-labeled |  |  | 5 | Yes (Rank 0) |  |
+| **Q003** | Yann LeCun | New York University | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q004** | Ilya Sutskever | OpenAI | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q005** | Corinna Cortes | Google Research | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q006** | Demis Hassabis | Google DeepMind | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q007** | Fei-Fei Li | Stanford University | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q008** | Andrew Ng | Stanford University | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q009** | Michael I. Jordan | UC Berkeley | A: Gold-labeled |  |  | 4 | No (Label Mismatch) |  |
+| **Q010** | Bernhard Scholkopf | Max Planck Institute | A: Gold-labeled |  |  | 4 | No (Label Mismatch) |  |
+| **Q011** | Vladimir Vapnik | AT&T Labs | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q012** | David Silver | Google DeepMind | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q013** | Oriol Vinyals | Google DeepMind | A: Gold-labeled |  |  | 4 | No (Label Mismatch) |  |
+| **Q014** | Ian Goodfellow | Google Brain | A: Gold-labeled |  |  | 9 | No (Label Mismatch) |  |
+| **Q015** | Alex Krizhevsky | University of Toronto | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q016** | Kaiming He | Meta AI | A: Gold-labeled |  |  | 5 | No (Label Mismatch) |  |
+| **Q017** | Ross Girshick | Meta AI | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q018** | Samy Bengio | Apple | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q019** | Pushmeet Kohli | Google DeepMind | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q020** | Jurgen Schmidhuber | IDSIA | A: Gold-labeled |  |  | 3 | No (Label Mismatch) |  |
+| **Q021** | Rajesh Kumar | IIT Delhi | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q022** | Wei Zhang | Tsinghua University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q023** | John Smith | Harvard University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q024** | David Miller | Oxford University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q025** | Michael Brown | Stanford University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q026** | Li Wei | Peking University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q027** | Jian Wang | Zhejiang University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q028** | Lei Zhang | Hong Kong Polytechnic University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q029** | Amit Kumar | IIT Bombay | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q030** | David Johnson | MIT | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q031** | Robert Williams | Cambridge University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q032** | James Smith | Columbia University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q033** | Christopher Davis | Imperial College London | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q034** | Daniel Garcia | Universidad de Madrid | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q035** | Carlos Rodriguez | University of Barcelona | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q036** | Thomas Wilson | University of Edinburgh | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q037** | Richard Taylor | Stanford University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q038** | Joseph Anderson | University of Michigan | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q039** | Charles Thomas | Purdue University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q040** | Matthew Jackson | Stanford University | B: Ambiguous Control |  |  | 10 | N/A (Control) |  |
+| **Q041** | Geoffrey Hinton | Google Brain | A: Gold-labeled |  |  | 5 | Yes (Rank 0) |  |
+| **Q042** | Yann LeCun | FAIR Meta | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q043** | Fei-Fei Li | Google Cloud | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q044** | Andrew Ng | Baidu Research | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q045** | Demis Hassabis | University College London | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q046** | Ilya Sutskever | Safe Superintelligence | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q047** | Pieter Abbeel | UC Berkeley | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q048** | Danqi Chen | Princeton University | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q049** | Percy Liang | Stanford University | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q050** | Christopher Manning | Stanford University | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q051** | Trevor Darrell | UC Berkeley | A: Gold-labeled |  |  | 4 | No (Label Mismatch) |  |
+| **Q052** | Sergey Levine | UC Berkeley | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q053** | Alex Smola | Amazon Web Services | A: Gold-labeled |  |  | 8 | No (Label Mismatch) |  |
+| **Q054** | Jitendra Malik | FAIR | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q055** | Richard Socher | Salesforce Research | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q056** | Geoffrey E. Hinton | University of Toronto | A: Gold-labeled |  |  | 2 | Yes (Rank 0) |  |
+| **Q057** | Geoffrey Hinton | None | A: Gold-labeled |  |  | 5 | Yes (Rank 0) |  |
+| **Q058** | Hinton Geoffrey | None | A: Gold-labeled |  |  | 5 | Yes (Rank 0) |  |
+| **Q059** | Professor Geoffrey Hinton | None | A: Gold-labeled |  |  | 1 | No (Label Mismatch) |  |
+| **Q060** | Yoshua Bengio | Univ Montreal | A: Gold-labeled |  |  | 4 | No (Label Mismatch) |  |
+| **Q061** | Y. Bengio | Mila | A: Gold-labeled |  |  | 1 | No (Label Mismatch) |  |
+| **Q062** | Bengio Yoshua | None | A: Gold-labeled |  |  | 4 | No (Label Mismatch) |  |
+| **Q063** | Yann LeCun | NYU Center for Data Science | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q064** | Yann Le Cun | Courant Institute | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q065** | Y. LeCun | Bell Labs | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q066** | Michael Jordan | Berkeley | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q067** | M. I. Jordan | University of California, Berkeley | A: Gold-labeled |  |  | 5 | No (Label Mismatch) |  |
+| **Q068** | Alex Krizhevsky | Google | A: Gold-labeled |  |  | 1 | Yes (Rank 0) |  |
+| **Q069** | A. Krizhevsky | Univ Toronto | A: Gold-labeled |  |  | 2 | No (Label Mismatch) |  |
+| **Q070** | Corinna Cortes | Google | A: Gold-labeled |  |  | 1 | No (Label Mismatch) |  |
+| **Q071** | Namit Lalwani | VESIT | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q072** | Aarav Sharma | IIT Roorkee | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q073** | Priya Patel | VJTI Mumbai | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q074** | Ananya Gupta | BITS Pilani | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q075** | Rohan Mehta | COEP Pune | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q076** | Siddharth Verma | IIIT Hyderabad | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q077** | Neha Joshi | DTU Delhi | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q078** | Vikram Malhotra | IIT Madras | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q079** | Tanvi Deshmukh | SPIT Mumbai | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q080** | Karan Singhal | NIT Surathkal | D: Sparse/Unsupported |  |  | 0 | N/A (Sparse) |  |
+| **Q081** | Michael Jordan | Department of Statistics UC Berkeley | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q082** | Michael Jordan | Department of Athletics / Sports Science | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q083** | David Baker | University of Washington Institute for Protein Design | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q084** | David Baker | Department of Computer Science | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q085** | Kevin Murphy | Google Research Machine Learning | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q086** | Kevin Murphy | Department of Agriculture | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q087** | Brian Smith | Cornell Information Science | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q088** | Brian Smith | Cardiovascular Research | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q089** | Christopher Bishop | Microsoft Research AI | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q090** | Christopher Bishop | Stony Brook Mathematics | A: Gold-labeled |  |  | 10 | No (Label Mismatch) |  |
+| **Q091** | Sutskever | None | D: Sparse/Unsupported |  |  | 0 | N/A (Incomplete) |  |
+| **Q092** | Goodfellow | None | D: Sparse/Unsupported |  |  | 0 | N/A (Incomplete) |  |
+| **Q093** | Scholkopf | None | D: Sparse/Unsupported |  |  | 0 | N/A (Incomplete) |  |
+| **Q094** | Bengio | None | D: Sparse/Unsupported |  |  | 0 | N/A (Incomplete) |  |
+| **Q095** | Vapnik | None | D: Sparse/Unsupported |  |  | 0 | N/A (Incomplete) |  |
+| **Q096** | J. Smith | None | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q097** | A. Kumar | None | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q098** | X. Wang | None | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q099** | Anonymous Author | None | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |
+| **Q100** | Scholar Unknown | None | B: Ambiguous Control |  |  | 0 | N/A (Control) |  |

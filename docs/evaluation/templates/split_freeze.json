@@ -1,0 +1,9 @@
+{
+  "membership_frozen": true,
+  "frozen_at": "",
+  "split_version": "",
+  "split_manifest_sha256": "",
+  "test_membership_sha256": "",
+  "test_membership_count": 0,
+  "labels_sha256_at_freeze": ""
+}

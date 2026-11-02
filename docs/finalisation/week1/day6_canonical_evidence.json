@@ -1,0 +1,440 @@
+{
+  "A5086198262": {
+    "qid": "Q062",
+    "name": "Bengio Yoshua",
+    "works": [
+      {
+        "title": "Deep learning",
+        "doi": "https://doi.org/10.1038/nature14539",
+        "year": 2015
+      },
+      {
+        "title": "Gradient-based learning applied to document recognition",
+        "doi": "https://doi.org/10.1109/5.726791",
+        "year": 1998
+      }
+    ]
+  },
+  "A5001226970": {
+    "qid": "Q065",
+    "name": "Y. LeCun",
+    "works": [
+      {
+        "title": "Deep learning",
+        "doi": "https://doi.org/10.1038/nature14539",
+        "year": 2015
+      },
+      {
+        "title": "Gradient-based learning applied to document recognition",
+        "doi": "https://doi.org/10.1109/5.726791",
+        "year": 1998
+      }
+    ]
+  },
+  "A5100450462": {
+    "qid": "Q043",
+    "name": "Fei-Fei Li",
+    "works": [
+      {
+        "title": "ImageNet: A large-scale hierarchical image database",
+        "doi": "https://doi.org/10.1109/cvpr.2009.5206848",
+        "year": 2009
+      },
+      {
+        "title": "ImageNet Large Scale Visual Recognition Challenge",
+        "doi": "https://doi.org/10.1007/s11263-015-0816-y",
+        "year": 2015
+      }
+    ]
+  },
+  "A5102617494": {
+    "qid": "Q044",
+    "name": "Andrew Ng",
+    "works": [
+      {
+        "title": "Latent dirichlet allocation",
+        "doi": "https://doi.org/10.5555/944919.944937",
+        "year": 2003
+      },
+      {
+        "title": "Latent Dirichlet Allocation",
+        "doi": "https://doi.org/10.7551/mitpress/1120.003.0082",
+        "year": 2002
+      }
+    ]
+  },
+  "A5049812527": {
+    "qid": "Q081",
+    "name": "Michael Jordan",
+    "works": [
+      {
+        "title": "Latent dirichlet allocation",
+        "doi": "https://doi.org/10.5555/944919.944937",
+        "year": 2003
+      },
+      {
+        "title": "Latent Dirichlet Allocation",
+        "doi": "https://doi.org/10.7551/mitpress/1120.003.0082",
+        "year": 2002
+      }
+    ]
+  },
+  "A5044005697": {
+    "qid": "Q010",
+    "name": "Bernhard Scholkopf",
+    "works": [
+      {
+        "title": "A tutorial on support vector regression",
+        "doi": "https://doi.org/10.1023/b:stco.0000035301.49549.88",
+        "year": 2004
+      },
+      {
+        "title": "Learning with Kernels",
+        "doi": "https://doi.org/10.7551/mitpress/4175.001.0001",
+        "year": 2001
+      }
+    ]
+  },
+  "A5062753972": {
+    "qid": "Q011",
+    "name": "Vladimir Vapnik",
+    "works": [
+      {
+        "title": "Support-Vector Networks",
+        "doi": "https://doi.org/10.1007/bf00994018",
+        "year": 1995
+      },
+      {
+        "title": "The Nature of Statistical Learning Theory",
+        "doi": "https://doi.org/10.1007/978-1-4757-2440-0",
+        "year": 1995
+      }
+    ]
+  },
+  "A5091771290": {
+    "qid": "Q012",
+    "name": "David Silver",
+    "works": [
+      {
+        "title": "Highly accurate protein structure prediction with AlphaFold",
+        "doi": "https://doi.org/10.1038/s41586-021-03819-2",
+        "year": 2021
+      },
+      {
+        "title": "Human-level control through deep reinforcement learning",
+        "doi": "https://doi.org/10.1038/nature14236",
+        "year": 2015
+      }
+    ]
+  },
+  "A5003562101": {
+    "qid": "Q013",
+    "name": "Oriol Vinyals",
+    "works": [
+      {
+        "title": "Highly accurate protein structure prediction with AlphaFold",
+        "doi": "https://doi.org/10.1038/s41586-021-03819-2",
+        "year": 2021
+      },
+      {
+        "title": "Show and tell: A neural image caption generator",
+        "doi": "https://doi.org/10.1109/cvpr.2015.7298935",
+        "year": 2015
+      }
+    ]
+  },
+  "A5004271128": {
+    "qid": "Q014",
+    "name": "Ian Goodfellow",
+    "works": [
+      {
+        "title": "Generative adversarial networks",
+        "doi": "https://doi.org/10.1145/3422622",
+        "year": 2020
+      },
+      {
+        "title": "Deep Learning",
+        "doi": null,
+        "year": 2016
+      }
+    ]
+  },
+  "A5100700361": {
+    "qid": "Q016",
+    "name": "Kaiming He",
+    "works": [
+      {
+        "title": "Deep Residual Learning for Image Recognition",
+        "doi": "https://doi.org/10.1109/cvpr.2016.90",
+        "year": 2016
+      },
+      {
+        "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks",
+        "doi": "https://doi.org/10.1109/tpami.2016.2577031",
+        "year": 2016
+      }
+    ]
+  },
+  "A5049246408": {
+    "qid": "Q017",
+    "name": "Ross Girshick",
+    "works": [
+      {
+        "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks",
+        "doi": "https://doi.org/10.1109/tpami.2016.2577031",
+        "year": 2016
+      },
+      {
+        "title": "You Only Look Once: Unified, Real-Time Object Detection",
+        "doi": "https://doi.org/10.1109/cvpr.2016.91",
+        "year": 2016
+      }
+    ]
+  },
+  "A5071172037": {
+    "qid": "Q020",
+    "name": "Jurgen Schmidhuber",
+    "works": [
+      {
+        "title": "Long Short-Term Memory",
+        "doi": "https://doi.org/10.1162/neco.1997.9.8.1735",
+        "year": 1997
+      },
+      {
+        "title": "Deep learning in neural networks: An overview",
+        "doi": "https://doi.org/10.1016/j.neunet.2014.09.003",
+        "year": 2014
+      }
+    ]
+  },
+  "A5051064208": {
+    "qid": "Q048",
+    "name": "Danqi Chen",
+    "works": [
+      {
+        "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+        "doi": "https://doi.org/10.18653/v1/2020.emnlp-main.550",
+        "year": 2020
+      },
+      {
+        "title": "SimCSE: Simple Contrastive Learning of Sentence Embeddings",
+        "doi": "https://doi.org/10.18653/v1/2021.emnlp-main.552",
+        "year": 2021
+      }
+    ]
+  },
+  "A5046006076": {
+    "qid": "Q050",
+    "name": "Christopher Manning",
+    "works": [
+      {
+        "title": "Glove: Global Vectors for Word Representation",
+        "doi": "https://doi.org/10.3115/v1/d14-1162",
+        "year": 2014
+      },
+      {
+        "title": "Introduction to Information Retrieval",
+        "doi": "https://doi.org/10.1017/cbo9780511809071",
+        "year": 2008
+      }
+    ]
+  },
+  "A5029105520": {
+    "qid": "Q051",
+    "name": "Trevor Darrell",
+    "works": [
+      {
+        "title": "Fully convolutional networks for semantic segmentation",
+        "doi": "https://doi.org/10.1109/cvpr.2015.7298965",
+        "year": 2015
+      },
+      {
+        "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation",
+        "doi": "https://doi.org/10.1109/cvpr.2014.81",
+        "year": 2014
+      }
+    ]
+  },
+  "A5026322200": {
+    "qid": "Q052",
+    "name": "Sergey Levine",
+    "works": [
+      {
+        "title": "End-to-end training of deep visuomotor policies",
+        "doi": null,
+        "year": 2016
+      },
+      {
+        "title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
+        "doi": "https://doi.org/10.1177/0278364917710318",
+        "year": 2017
+      }
+    ]
+  },
+  "A5090351022": {
+    "qid": "Q053",
+    "name": "Alex Smola",
+    "works": [
+      {
+        "title": "A tutorial on support vector regression",
+        "doi": "https://doi.org/10.1023/b:stco.0000035301.49549.88",
+        "year": 2004
+      },
+      {
+        "title": "Estimating the Support of a High-Dimensional Distribution",
+        "doi": "https://doi.org/10.1162/089976601750264965",
+        "year": 2001
+      }
+    ]
+  },
+  "A5001594573": {
+    "qid": "Q054",
+    "name": "Jitendra Malik",
+    "works": [
+      {
+        "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation",
+        "doi": "https://doi.org/10.1109/cvpr.2014.81",
+        "year": 2014
+      },
+      {
+        "title": "Normalized cuts and image segmentation",
+        "doi": "https://doi.org/10.1109/34.868688",
+        "year": 2000
+      }
+    ]
+  },
+  "A5160214549": {
+    "qid": "Q059",
+    "name": "Professor Geoffrey Hinton",
+    "works": [
+      {
+        "title": "An Integrated Framework for Intelligent Multimodal Data Engineering and Enterprise Document and Media Analytics",
+        "doi": "https://doi.org/10.5281/zenodo.23806755",
+        "year": 2024
+      }
+    ]
+  },
+  "A5160077864": {
+    "qid": "Q061",
+    "name": "Y. Bengio",
+    "works": [
+      {
+        "title": "Causal machine learning for single-cell genomics",
+        "doi": "https://doi.org/10.1530/ey.22.14.20",
+        "year": 2025
+      }
+    ]
+  },
+  "A5102875616": {
+    "qid": "Q067",
+    "name": "M. I. Jordan",
+    "works": [
+      {
+        "title": "Need a Programming Exercise Generated in Your Native Language? ChatGPT's Got Your Back: Automatic Generation of Non-English Programming Exercises Using OpenAI GPT-3.5",
+        "doi": "https://doi.org/10.1145/3626252.3630897",
+        "year": 2024
+      },
+      {
+        "title": "Generation and Evaluation of a Culturally-Relevant CS1 Textbook for Latines using Large Language Models",
+        "doi": "https://doi.org/10.1145/3649217.3653600",
+        "year": 2024
+      }
+    ]
+  },
+  "A5122259363": {
+    "qid": "Q069",
+    "name": "A. Krizhevsky",
+    "works": [
+      {
+        "title": "LeNet-5",
+        "doi": "https://doi.org/10.57702/6k3y2lp6",
+        "year": 2024
+      },
+      {
+        "title": "cifar-10-augmented",
+        "doi": "https://doi.org/10.34740/kaggle/ds/10001299",
+        "year": 2026
+      }
+    ]
+  },
+  "A5013243115": {
+    "qid": "Q070",
+    "name": "Corinna Cortes",
+    "works": [
+      {
+        "title": "Support-Vector Networks",
+        "doi": "https://doi.org/10.1007/bf00994018",
+        "year": 1995
+      },
+      {
+        "title": "Proceedings of the 28th International Conference on Neural Information Processing Systems",
+        "doi": null,
+        "year": 2015
+      }
+    ]
+  },
+  "A5053192926": {
+    "qid": "Q083",
+    "name": "David Baker",
+    "works": [
+      {
+        "title": "Accurate prediction of protein structures and interactions using a three-track neural network",
+        "doi": "https://doi.org/10.1126/science.abj8754",
+        "year": 2021
+      },
+      {
+        "title": "De novo design of protein structure and function with RFdiffusion",
+        "doi": "https://doi.org/10.1038/s41586-023-06415-8",
+        "year": 2023
+      }
+    ]
+  },
+  "A5044098731": {
+    "qid": "Q085",
+    "name": "Kevin Murphy",
+    "works": [
+      {
+        "title": "Changes in Relative Wages, 1963-1987: Supply and Demand Factors",
+        "doi": "https://doi.org/10.2307/2118323",
+        "year": 1992
+      },
+      {
+        "title": "A Theory of Rational Addiction",
+        "doi": "https://doi.org/10.1086/261558",
+        "year": 1988
+      }
+    ]
+  },
+  "A5111711455": {
+    "qid": "Q087",
+    "name": "Brian Smith",
+    "works": [
+      {
+        "title": "Between-Hospital Variation in Treatment and Outcomes in Extremely Preterm Infants",
+        "doi": "https://doi.org/10.1056/nejmoa1410689",
+        "year": 2015
+      },
+      {
+        "title": "Early and late onset sepsis in very-low-birth-weight infants from a large group of neonatal intensive care units",
+        "doi": "https://doi.org/10.1016/s0378-3782(12)70019-1",
+        "year": 2012
+      }
+    ]
+  },
+  "A5029519503": {
+    "qid": "Q090",
+    "name": "Christopher Bishop",
+    "works": [
+      {
+        "title": "The partial 5-HT1A agonist buspirone reduces the expression and development of l-DOPA-induced dyskinesia in rats and improves l-DOPA efficacy",
+        "doi": "https://doi.org/10.1016/j.pbb.2007.05.002",
+        "year": 2007
+      },
+      {
+        "title": "Critical involvement of the motor cortex in the pathophysiology and treatment of Parkinson's disease",
+        "doi": "https://doi.org/10.1016/j.neubiorev.2013.09.008",
+        "year": 2013
+      }
+    ]
+  }
+}

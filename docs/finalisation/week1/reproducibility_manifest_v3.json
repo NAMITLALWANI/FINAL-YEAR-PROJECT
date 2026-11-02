@@ -1,0 +1,68 @@
+{
+  "manifest_name": "HAMMER_DAY6_REPRODUCIBILITY_MANIFEST",
+  "manifest_version": "1.0",
+  "timestamp_utc": "2026-11-02T07:53:02.476757+00:00",
+  "environment": {
+    "git_commit": "2c4c5a93dd181e0e0aad3c557cef2e3c716a1c62",
+    "git_branch": "main",
+    "python_version": "3.12.5",
+    "platform": "darwin",
+    "openalex_endpoint": "https://api.openalex.org/authors",
+    "openalex_auth_method": "api_key_query_param",
+    "data_source_mode": "live_with_local_disk_cache"
+  },
+  "file_hashes": {
+    "docs/audit/phase4/results/author_resolution_benchmark_100.json": {
+      "sha256": "07fed1a4a7e2da423707e702703457544db156d841d4fef73cb42e4c0c22b325",
+      "bytes": 45933
+    },
+    "docs/audit/phase4/results/author_resolution_benchmark_100_v2_corrected.json": {
+      "sha256": "e2141c91b6bc9f0206f930908acc4dc18ec1b55ad5ce471f40ae2d79a12ad522",
+      "bytes": 57386
+    },
+    "docs/audit/phase4/results/author_resolution_benchmark_100_v3_sealed.json": {
+      "sha256": "8051b54f00f62660c35bb91230a75f42d84799ec61ad763c3d349c335d11a068",
+      "bytes": 77335
+    },
+    "docs/finalisation/week1/day5/e2e_per_query_results.json": {
+      "sha256": "832133aff54cedea2a5eae270351eb3a3ee60ca0b92f6d72302e0fbb90b2630c",
+      "bytes": 16070
+    },
+    "docs/finalisation/week1/day5/e2e_evaluation_metrics.json": {
+      "sha256": "9037e2778c12b4fd217f6e21d64fb801e987c508c3f07e3e514315a602720d4f",
+      "bytes": 414
+    },
+    "docs/finalisation/week1/day5/baseline_vs_day5_comparison.json": {
+      "sha256": "027f3fe224f6ee5019973b1c1c2329335ccbcdd05bc5c38c4cf8a396733535bd",
+      "bytes": 568
+    },
+    "backend/config.py": {
+      "sha256": "c6f3c0d4654ab165795d5cc290eba85482fdceca0143772e01fbfdb011a7df08",
+      "bytes": 5859
+    },
+    "backend/services/author_candidates.py": {
+      "sha256": "e8617390f446b2aea056afee524cfa2803d73c044461b53338d2be26eb05368d",
+      "bytes": 22109
+    },
+    "backend/services/author_resolution.py": {
+      "sha256": "35774b47cd346e9bc49389ea987194c72b874cbb3ca9817773e9a0f2e73ee913",
+      "bytes": 11045
+    },
+    "backend/services/author_scoring.py": {
+      "sha256": "63f1e3b2aa9be1c28e7026d6cadaf80ce95fbb0ada8dbed6b21b9da0acc063df",
+      "bytes": 1134
+    },
+    "backend/connectors/openalex.py": {
+      "sha256": "7ca42bc2de3b66a65539a66aa6a464a8b4795241272aa1128083db8cb1d98d38",
+      "bytes": 5664
+    },
+    "backend/scripts/run_day5_e2e_evaluation.py": {
+      "sha256": "52e92b77c43941fbef6d7b68520a4f75f09bd4f4c81bf12a4e1bb8c6f8f412bc",
+      "bytes": 10155
+    },
+    "backend/scripts/build_benchmark_v3.py": {
+      "sha256": "7457d12c1d4866c61c505328799e68ec5c92b1b31085710c4dfd66732717df0c",
+      "bytes": 11014
+    }
+  }
+}

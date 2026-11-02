@@ -1,0 +1,48 @@
+{
+  "metrics": {
+    "dataset_version": "persisted-manual-choice-pilot-v1",
+    "n_manual_selected_resolution_episodes": 1,
+    "candidate_top1_accuracy": 1.0,
+    "automatic_coverage_on_pilot": 0.0,
+    "automatic_accuracy_on_pilot": null,
+    "false_merge_rate_on_pilot": null,
+    "manual_review_rate_on_pilot": 1.0,
+    "unresolved_rate_on_pilot": 0.0,
+    "interpretation": "Exploratory resubstitution-style replay only. Manual selections are not independently verified labels; repeated queries may occur. Do not use these values as held-out or publication-level performance claims."
+  },
+  "configuration": {
+    "python_version": "3.12.5",
+    "resolver_version": "v1",
+    "scoring_version": "v1",
+    "threshold_version": "v1",
+    "weights": {
+      "name_similarity": 0.35,
+      "institution_similarity": 0.25,
+      "publication_overlap": 0.2,
+      "coauthor_overlap": 0.1,
+      "temporal_compatibility": 0.1
+    },
+    "automatic_score_threshold": 0.75,
+    "automatic_margin_threshold": 0.15,
+    "automatic_dominance_threshold": 1.35,
+    "manual_review_threshold": 0.45,
+    "minimum_available_signals_for_auto": 2
+  },
+  "predictions": [
+    {
+      "resolution_id": "aeaa390e-0426-4a9f-9986-0f5076005941",
+      "query": "Geoffrey Hinton",
+      "label_source": "persisted_manual_selection_not_independently_revalidated",
+      "gold_selected_source_id": "A5153609875",
+      "top_ranked_source_id": "A5153609875",
+      "rank_correct": true,
+      "replayed_status": "manual_selection_required",
+      "replayed_automatic_correct": null,
+      "top_score": 1.0,
+      "second_score": 1.0,
+      "score_margin": 0.0,
+      "decision_reason": "Candidate evidence is plausible but not sufficiently separated for automatic resolution.",
+      "candidate_count": 5
+    }
+  ]
+}

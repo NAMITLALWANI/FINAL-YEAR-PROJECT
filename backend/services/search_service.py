@@ -3,7 +3,7 @@ import json
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from database import Publication, SourceRecord, SimilarityLog, DuplicateGroup, CacheEntry
@@ -249,6 +249,12 @@ async def _persist_publications(papers, merge_logs, normalized_records, db: Asyn
     for pub in papers:
         res = await db.execute(select(Publication).where(Publication.canonical_id == pub.canonical_id))
         existing = res.scalar_one_or_none()
+        if not existing and pub.doi:
+            res_doi = await db.execute(select(Publication).where(Publication.doi == pub.doi))
+            existing = res_doi.scalars().first()
+        if not existing and pub.title:
+            res_title = await db.execute(select(Publication).where(func.lower(Publication.title) == pub.title.strip().lower()))
+            existing = res_title.scalars().first()
 
         now_naive = datetime.now(timezone.utc).replace(tzinfo=None)
 

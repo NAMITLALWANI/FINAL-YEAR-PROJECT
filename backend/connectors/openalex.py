@@ -2,7 +2,7 @@ import json
 import httpx
 from pathlib import Path
 from connectors.base import BaseConnector
-from config import OPENALEX_MAILTO, USE_MOCK_DATA
+from config import OPENALEX_API_KEY, OPENALEX_MAILTO, USE_MOCK_DATA
 from log_config import get_logger
 
 logger = get_logger(__name__)
@@ -21,6 +21,7 @@ class OpenAlexConnector(BaseConnector):
 
         params = {
             "mailto": OPENALEX_MAILTO,
+            **({"api_key": OPENALEX_API_KEY} if OPENALEX_API_KEY else {}),
             "filter": f"display_name.search:{author_name}",
             "per-page": 10
         }
@@ -79,6 +80,8 @@ class OpenAlexConnector(BaseConnector):
             return json.loads(MOCK_PATH.read_text())
 
         params_base = {"mailto": OPENALEX_MAILTO}
+        if OPENALEX_API_KEY:
+            params_base["api_key"] = OPENALEX_API_KEY
 
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             if not author_id:

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "dataset_id": "",
+  "dataset_version": "",
+  "frozen_at": "",
+  "database_snapshot": {
+    "path": "snapshots/academic_search.sqlite3",
+    "sha256": "",
+    "alembic_revision": "",
+    "publication_count": 0
+  },
+  "index_snapshot": {
+    "path": "snapshots/vector_index",
+    "sha256": "",
+    "index_version": "",
+    "collection": "",
+    "embedding_model": "",
+    "document_count": 0
+  },
+  "candidate_manifest": {"path": "candidate_manifest.csv", "sha256": ""},
+  "identity_labels": {"path": "identity_labels.csv", "sha256": ""},
+  "split_manifest": {"path": "split_manifest.csv", "sha256": ""},
+  "split_freeze": {"path": "split_freeze.json", "sha256": ""},
+  "retrieval_queries": {"path": "retrieval_queries.csv", "sha256": ""},
+  "retrieval_pool": {"path": "retrieval_pool.csv", "sha256": ""},
+  "retrieval_judgements": {"path": "retrieval_relevance.csv", "sha256": ""},
+  "retrieval_metric_k_values": [5]
+}

@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-11-01T17:52:05.825707+00:00",
+  "connectors": [
+    {
+      "name": "OpenAlex",
+      "status_code": 429,
+      "latency_ms": 241.8,
+      "cloudflare_challenge": false,
+      "status": "http_429"
+    },
+    {
+      "name": "Crossref",
+      "status_code": 200,
+      "latency_ms": 1469.61,
+      "cloudflare_challenge": false,
+      "status": "operational"
+    },
+    {
+      "name": "arXiv",
+      "status_code": 200,
+      "latency_ms": 1620.22,
+      "cloudflare_challenge": false,
+      "status": "operational"
+    },
+    {
+      "name": "DBLP",
+      "status_code": 202,
+      "latency_ms": 744.24,
+      "cloudflare_challenge": true,
+      "status": "cloudflare_blocked"
+    },
+    {
+      "name": "Google Scholar",
+      "status_code": null,
+      "latency_ms": null,
+      "cloudflare_challenge": false,
+      "status": "optional_offline (blocked by upstream bot detection & CAPTCHA rate limits; preserved in cache)"
+    },
+    {
+      "name": "Faculty Scraper",
+      "status_code": null,
+      "latency_ms": null,
+      "cloudflare_challenge": false,
+      "status": "optional_offline (depends on installed Playwright Chromium binary; disabled in default pipeline)"
+    }
+  ],
+  "core_connectors": [
+    "OpenAlex",
+    "Crossref",
+    "arXiv"
+  ],
+  "optional_or_experimental": [
+    "DBLP",
+    "Google Scholar",
+    "Faculty Scraper"
+  ]
+}

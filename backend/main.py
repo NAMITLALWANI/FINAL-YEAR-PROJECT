@@ -1,24 +1,37 @@
 import json
+import asyncio
+import time
+from typing import Optional, List, Dict, Any
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Depends, Query, Request
+from fastapi import FastAPI, Depends, Query, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel, field_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, text
 
 from database import (
     init_db, get_db, Publication, SourceRecord,
     SimilarityLog, DuplicateGroup,
+    AuthorCandidate, AuthorResolution, AuthorResolutionEvidence,
 )
 from services.search_service import search as run_search, get_author_candidates
+from services.scholarly_retrieval import retrieve, generate_explanation, index_status
+from services.author_resolution import (
+    AuthorResolutionService, CandidateSourceUnavailable,
+    UNRESOLVED, MANUAL_SELECTED, AUTO_RESOLVED,
+)
 from circuit_breaker import get_all_statuses
 from rate_limiter import limiter
 from slowapi.errors import RateLimitExceeded
 from log_config import configure_root, get_logger
-from config import LOG_LEVEL
+from config import CORS_ORIGINS, LOG_LEVEL, RETRIEVAL_TIMEOUT_SECONDS
 from connectors.scrapers.scholar.browser import BrowserManager
 
 logger = get_logger(__name__)
+
+# Global singleton service exposed on module
+author_resolution_service = AuthorResolutionService()
 
 # ── Lifespan ──────────────────────────────────────────────────────
 @asynccontextmanager
@@ -47,7 +60,7 @@ app.state.limiter = limiter
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=CORS_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -61,6 +74,38 @@ async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
     )
 
 
+# ── Schemas ───────────────────────────────────────────────────────
+class EvidenceSearchRequest(BaseModel):
+    query: str
+    top_k: int = 5
+    filters: Optional[Dict[str, Any]] = None
+
+
+class AuthorCandidateSearchRequest(BaseModel):
+    author_name: str
+    institution_hint: Optional[str] = None
+    context: Optional[Dict[str, Any]] = None
+
+    @field_validator("author_name")
+    @classmethod
+    def validate_author_name(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("author_name cannot be empty or whitespace")
+        if len(v.strip()) < 2:
+            raise ValueError("author_name must have at least 2 non-whitespace characters")
+        return v.strip()
+
+
+class CreateAuthorResolutionRequest(BaseModel):
+    author_name: str
+    institution_hint: Optional[str] = None
+    context: Optional[Dict[str, Any]] = None
+    candidate_ids: Optional[List[str]] = None
+    selected_candidate_id: Optional[str] = None
+    mark_unresolved: bool = False
+    reason: Optional[str] = None
+
+
 # ── Routes ────────────────────────────────────────────────────────
 
 @app.get("/health")
@@ -69,7 +114,165 @@ async def health(db: AsyncSession = Depends(get_db)):
     return {
         "status": "ok",
         "circuit_breakers": cb_status,
+        "retrieval_index": await asyncio.to_thread(index_status),
     }
+
+
+@app.post("/evidence/search")
+async def search_evidence(req: EvidenceSearchRequest):
+    hits = await retrieve(req.query, top_k=req.top_k, filters=req.filters)
+    explanation = await generate_explanation(req.query, hits)
+    return {
+        "hits": [h.as_dict() if hasattr(h, "as_dict") else h for h in hits],
+        "explanation": explanation,
+        "retrieval_status": "ok",
+    }
+
+
+@app.post("/author-resolutions/candidates")
+async def resolve_author_candidates(
+    req: AuthorCandidateSearchRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    rows, ranked, status = await author_resolution_service.generate_and_rank(
+        req.author_name, req.institution_hint, req.context, db
+    )
+    if status == "failed" or status not in {"ok", "empty"}:
+        return JSONResponse(
+            status_code=503,
+            content={"error": "Candidate source unavailable: no resolution decision was recorded"},
+        )
+
+    hits = await retrieve(req.author_name, top_k=3)
+    explanation = await generate_explanation(req.author_name, hits)
+
+    row_by_source_id = {r.source_author_id: r for r in rows}
+    candidates_data = []
+    for item in ranked:
+        c_row = row_by_source_id.get(item.candidate.source_author_id)
+        cid = c_row.id if c_row else item.candidate.source_author_id
+        candidates_data.append({
+            "candidate_id": cid,
+            "source_author_id": item.candidate.source_author_id,
+            "source": item.candidate.source,
+            "display_name": item.candidate.display_name,
+            "normalized_name": item.candidate.normalized_name,
+            "institution": item.candidate.institution_summary,
+            "institution_summary": item.candidate.institution_summary,
+            "works_count": item.candidate.works_count,
+            "cited_by_count": item.candidate.citation_count,
+            "score": item.score.score,
+            "available_signals": item.score.available_signals,
+            "confidence": "High" if item.score.score and item.score.score >= 0.75 else ("Medium" if item.score.score and item.score.score >= 0.45 else "Low"),
+            "evidence": [
+                {
+                    "signal": e.signal_name,
+                    "signal_name": e.signal_name,
+                    "signal_value": e.normalized_score,
+                    "normalized_score": e.normalized_score,
+                    "score": item.score.contributions.get(e.signal_name),
+                    "availability": e.availability,
+                    "raw_value": e.raw_value,
+                    "source": e.provenance.get("source", "") if isinstance(e.provenance, dict) else str(e.provenance),
+                }
+                for e in item.evidence
+            ],
+        })
+
+    return {
+        "candidates": candidates_data,
+        "retrieval": {
+            "hits": [h.as_dict() if hasattr(h, "as_dict") else h for h in hits],
+            "explanation": explanation,
+        },
+        "note": "Retrieval context provides topical relevance; it does not change deterministic identity decisions.",
+    }
+
+
+@app.post("/author-resolutions")
+async def create_author_resolution(
+    req: CreateAuthorResolutionRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    try:
+        resolution = await author_resolution_service.create_resolution(
+            author_name=req.author_name,
+            institution_hint=req.institution_hint,
+            context=req.context,
+            db=db,
+            selected_candidate_id=req.selected_candidate_id,
+            mark_unresolved=req.mark_unresolved,
+            reason=req.reason,
+            candidate_ids=req.candidate_ids,
+        )
+    except CandidateSourceUnavailable as exc:
+        return JSONResponse(
+            status_code=503,
+            content={"error": str(exc)},
+        )
+    except ValueError as exc:
+        return JSONResponse(
+            status_code=400,
+            content={"error": str(exc)},
+        )
+
+    return {
+        "resolution_id": resolution.id,
+        "status": resolution.status,
+        "author_id": resolution.author_id,
+        "selected_candidate_id": resolution.selected_candidate_id,
+        "decision_reason": resolution.decision_reason,
+        "top_score": resolution.top_score,
+        "second_score": resolution.second_score,
+        "score_margin": resolution.score_margin,
+        "dominance_ratio": resolution.dominance_ratio,
+        "resolved_at": resolution.resolved_at.isoformat() if resolution.resolved_at else None,
+    }
+
+
+@app.get("/author-resolutions/{resolution_id}")
+async def get_author_resolution(
+    resolution_id: str,
+    db: AsyncSession = Depends(get_db),
+):
+    resolution = await author_resolution_service.get_resolution(resolution_id, db)
+    if not resolution:
+        raise HTTPException(status_code=404, detail="Resolution not found")
+
+    ev_rows = (await db.execute(
+        select(AuthorResolutionEvidence).where(AuthorResolutionEvidence.resolution_id == resolution_id)
+    )).scalars().all()
+
+    return {
+        "resolution_id": resolution.id,
+        "query_original": resolution.query_original,
+        "query_normalized": resolution.query_normalized,
+        "status": resolution.status,
+        "author_id": resolution.author_id,
+        "selected_candidate_id": resolution.selected_candidate_id,
+        "decision_reason": resolution.decision_reason,
+        "top_score": resolution.top_score,
+        "second_score": resolution.second_score,
+        "score_margin": resolution.score_margin,
+        "dominance_ratio": resolution.dominance_ratio,
+        "confidence_level": resolution.confidence_level,
+        "evidence": [
+            {
+                "id": e.id,
+                "candidate_id": e.candidate_id,
+                "signal_name": e.signal_name,
+                "normalized_score": e.normalized_score,
+                "raw_value": json.loads(e.raw_value_json) if e.raw_value_json else {},
+                "explanation": e.explanation,
+                "source_provenance": json.loads(e.source_provenance_json) if e.source_provenance_json else {},
+                "availability": e.availability,
+                "weight": e.weight,
+                "weighted_contribution": e.weighted_contribution,
+            }
+            for e in ev_rows
+        ],
+    }
+
 
 @app.get("/search/candidates")
 @limiter.limit("20/minute")
@@ -87,6 +290,7 @@ async def fetch_candidates(
 async def search(
     request: Request,
     name: str = Query(..., min_length=2, description="Author name to search"),
+    resolution_id: str | None = Query(None, description="Author resolution ID"),
     candidate_id: str | None = Query(None, description="Explicit candidate ID from /search/candidates"),
     candidate_source: str | None = Query(None, description="Source of the explicit candidate ID"),
     sources: str | None = Query(None, description="Comma-separated source list e.g. openalex,dblp"),
@@ -94,6 +298,29 @@ async def search(
     disable_dedup: bool = Query(False),
     db: AsyncSession = Depends(get_db),
 ):
+    if resolution_id:
+        res = await author_resolution_service.get_resolution(resolution_id, db)
+        if not res:
+            raise HTTPException(status_code=404, detail="Resolution not found")
+        if res.status == UNRESOLVED:
+            return {
+                "papers": [],
+                "message": "Resolution is marked unresolved; no multi-source search was started.",
+                "identity_context": {
+                    "status": UNRESOLVED,
+                    "resolution_id": res.id,
+                    "reason": res.decision_reason,
+                },
+                "source_statuses": {},
+                "stats": {},
+            }
+        # If candidate was selected in resolution
+        if res.selected_candidate_id:
+            cand = await db.get(AuthorCandidate, res.selected_candidate_id)
+            if cand:
+                candidate_id = cand.source_author_id
+                candidate_source = cand.source
+
     requested = [s.strip() for s in sources.split(",")] if sources else None
     result = await run_search(
         author_name=name,
@@ -104,6 +331,12 @@ async def search(
         use_cache=use_cache,
         disable_dedup=disable_dedup,
     )
+    if resolution_id and isinstance(result, dict):
+        result["identity_context"] = {
+            "status": res.status,
+            "resolution_id": res.id,
+            "author_id": res.author_id,
+        }
     return result
 
 
@@ -136,15 +369,18 @@ async def get_publication(pub_id: int, db: AsyncSession = Depends(get_db)):
 
 @app.get("/similarity-log/{pub_id}")
 async def get_similarity_log(pub_id: int, db: AsyncSession = Depends(get_db)):
-    # Get source_record IDs for this publication
     grp_res = await db.execute(
-        select(DuplicateGroup).where(DuplicateGroup.publication_id == pub_id)
+        select(DuplicateGroup).where(DuplicateGroup.publication_id == pub_id).order_by(DuplicateGroup.id.desc())
     )
-    group = grp_res.scalar_one_or_none()
-    if not group:
+    groups = grp_res.scalars().all()
+    if not groups:
         return {"pub_id": pub_id, "logs": []}
 
-    record_ids = json.loads(group.source_record_ids or "[]")
+    record_ids = []
+    for g in groups:
+        for rid in json.loads(g.source_record_ids or "[]"):
+            if str(rid) not in record_ids:
+                record_ids.append(str(rid))
     if not record_ids:
         return {"pub_id": pub_id, "logs": []}
 
@@ -181,7 +417,6 @@ async def metrics(db: AsyncSession = Depends(get_db)):
         .where(SimilarityLog.decision == "MERGED")
     )).scalar()
 
-    # Per-source record counts
     src_counts_res = await db.execute(
         select(SourceRecord.source, func.count().label("cnt"))
         .group_by(SourceRecord.source)
@@ -198,13 +433,13 @@ async def metrics(db: AsyncSession = Depends(get_db)):
         "circuit_breakers":   cb_status,
     }
 
+
 @app.get("/debug/raw-response")
 async def debug_raw_response(
     source: str = Query(..., description="Source name (e.g. openalex, dblp)"),
     query: str = Query(..., description="Search query"),
     db: AsyncSession = Depends(get_db),
 ):
-    """Debug endpoint to see raw responses from connectors without DB involvement."""
     from connectors.openalex import OpenAlexConnector
     from connectors.dblp import DBLPConnector
     from connectors.arxiv import ArXivConnector
@@ -226,7 +461,6 @@ async def debug_raw_response(
 
     try:
         conn = connector_map[source]()
-        # Bypassing BaseConnector circuit breakers for direct debug
         records = await conn._fetch_impl(query, db=db)
         return {
             "source": source,

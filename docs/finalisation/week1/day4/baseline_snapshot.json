@@ -1,0 +1,27 @@
+{
+  "timestamp": "20261102_122045",
+  "git_head": "2c4c5a93dd181e0e0aad3c557cef2e3c716a1c62",
+  "git_branch": "main",
+  "baseline_backup": "backups/day1_baseline_20261102_120700",
+  "original_benchmark": "docs/audit/phase4/results/author_resolution_benchmark_100.json",
+  "corrected_benchmark": "docs/audit/phase4/results/author_resolution_benchmark_100_v2_corrected.json",
+  "baseline_metrics": {
+    "candidate_recall_at_1": 0.5536,
+    "candidate_recall_at_5": 0.7143,
+    "candidate_recall_at_10": 0.7143,
+    "mrr": 0.6152,
+    "zero_candidate_queries": 10,
+    "auto_selected": 13,
+    "manual_selection_required": 52,
+    "unresolved": 35
+  },
+  "config": {
+    "AUTHOR_AUTO_SCORE_THRESHOLD": 0.75,
+    "AUTHOR_AUTO_MARGIN_THRESHOLD": 0.15,
+    "AUTHOR_AUTO_DOMINANCE_THRESHOLD": 1.35,
+    "AUTHOR_MIN_AVAILABLE_SIGNALS_FOR_AUTO": 2,
+    "AUTHOR_MANUAL_SCORE_THRESHOLD": 0.45,
+    "DEDUP_DEFAULT_THRESHOLD": 0.85,
+    "RETRIEVAL_MIN_SCORE": 0.35
+  }
+}

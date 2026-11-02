@@ -43,16 +43,49 @@ DEDUP_LENIENT_THRESHOLD = float(os.getenv("DEDUP_LENIENT_THRESHOLD", "0.80"))  #
 DEDUP_STRICT_THRESHOLD  = float(os.getenv("DEDUP_STRICT_THRESHOLD",  "0.92"))  # any + scholar
 DEDUP_LOG_THRESHOLD     = float(os.getenv("DEDUP_LOG_THRESHOLD",     "0.70"))  # only log above this
 
+# ── Author Resolution Thresholds ─────────────────────────────────
+AUTHOR_AUTO_SCORE_THRESHOLD = float(os.getenv("AUTHOR_AUTO_SCORE_THRESHOLD", "0.75"))
+AUTHOR_AUTO_MARGIN_THRESHOLD = float(os.getenv("AUTHOR_AUTO_MARGIN_THRESHOLD", "0.15"))
+AUTHOR_AUTO_DOMINANCE_THRESHOLD = float(os.getenv("AUTHOR_AUTO_DOMINANCE_THRESHOLD", "1.35"))
+AUTHOR_MANUAL_SCORE_THRESHOLD = float(os.getenv("AUTHOR_MANUAL_SCORE_THRESHOLD", "0.45"))
+AUTHOR_MIN_AVAILABLE_SIGNALS_FOR_AUTO = int(os.getenv("AUTHOR_MIN_AVAILABLE_SIGNALS_FOR_AUTO", "2"))
+RETRIEVAL_TIMEOUT_SECONDS = float(os.getenv("RETRIEVAL_TIMEOUT_SECONDS", "15"))
+AUTHOR_RESOLVER_VERSION = os.getenv("AUTHOR_RESOLVER_VERSION", "v1")
+AUTHOR_SCORING_VERSION = os.getenv("AUTHOR_SCORING_VERSION", "v1")
+AUTHOR_THRESHOLD_VERSION = os.getenv("AUTHOR_THRESHOLD_VERSION", "v1")
+AUTHOR_SCORE_WEIGHTS = {
+    "name_similarity": 0.35,
+    "institution_similarity": 0.25,
+    "publication_overlap": 0.20,
+    "coauthor_overlap": 0.10,
+    "temporal_compatibility": 0.10,
+}
+
+
+
 # ── Timeouts ─────────────────────────────────────────────────────
 SOURCE_TIMEOUT          = int(os.getenv("SOURCE_TIMEOUT",          "10"))
 CACHE_TTL_HOURS         = int(os.getenv("CACHE_TTL_HOURS",         "24"))
 SCHOLAR_CACHE_TTL_HOURS = int(os.getenv("SCHOLAR_CACHE_TTL_HOURS", "6"))
 
 # ── Database ─────────────────────────────────────────────────────
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./academic_search.db")
+_base = Path(__file__).resolve().parent
+_authoritative_db = (_base / "academic_search.db").resolve()
+_raw_db_url = os.getenv("DATABASE_URL")
+if _raw_db_url:
+    if _raw_db_url.startswith("sqlite+aiosqlite:///./") or _raw_db_url.startswith("sqlite:///./"):
+        _scheme, _rel_path = _raw_db_url.split(":///./", 1)
+        DATABASE_URL = f"{_scheme}:///{(_base / _rel_path).resolve()}"
+    elif _raw_db_url in ("sqlite+aiosqlite:///academic_search.db", "sqlite:///academic_search.db"):
+        DATABASE_URL = f"sqlite+aiosqlite:///{_authoritative_db}"
+    else:
+        DATABASE_URL = _raw_db_url
+else:
+    DATABASE_URL = f"sqlite+aiosqlite:///{_authoritative_db}"
 
 # ── API Mailto (polite pool) ──────────────────────────────────────
 OPENALEX_MAILTO = os.getenv("OPENALEX_MAILTO", "academic-search@demo.com")
+OPENALEX_API_KEY = os.getenv("OPENALEX_API_KEY", "")
 CROSSREF_MAILTO = os.getenv("CROSSREF_MAILTO", "academic-search@demo.com")
 
 # ── Scraping ─────────────────────────────────────────────────────
@@ -66,3 +99,4 @@ CIRCUIT_BREAKER_TIMEOUT_MINUTES = int(os.getenv("CIRCUIT_BREAKER_TIMEOUT_MINUTES
 
 # ── Logging ──────────────────────────────────────────────────────
 LOG_LEVEL = os.getenv("LOG_LEVEL", "info").upper()
+CORS_ORIGINS = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if origin.strip()]

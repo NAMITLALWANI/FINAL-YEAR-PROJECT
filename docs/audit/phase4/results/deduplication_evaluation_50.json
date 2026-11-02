@@ -1,0 +1,21 @@
+{
+  "total_pairs": 50,
+  "tp": 33,
+  "fp": 0,
+  "tn": 15,
+  "fn": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "false_positive_merges": 0,
+  "false_negative_duplicates": 0,
+  "accuracy_by_category": {
+    "exact_doi": 1.0,
+    "doi_conflict": 1.0,
+    "identical_title": 1.0,
+    "punct_diff": 1.0,
+    "subtitle_diff": 0.7143,
+    "author_order": 1.0,
+    "similar_title_diff_pub": 1.0
+  }
+}

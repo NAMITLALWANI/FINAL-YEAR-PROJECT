@@ -1,7 +1,15 @@
 const BASE = ''  // proxied by Vite → localhost:8000
 
-export async function searchAuthor(name, candidateId = null, candidateSource = null, sources = null, useCache = true) {
+export async function searchAuthor(
+  name,
+  candidateId = null,
+  candidateSource = null,
+  sources = null,
+  useCache = true,
+  resolutionId = null
+) {
   const params = new URLSearchParams({ name, use_cache: useCache })
+  if (resolutionId) params.append('resolution_id', resolutionId)
   if (candidateId) params.append('candidate_id', candidateId)
   if (candidateSource) params.append('candidate_source', candidateSource)
   if (sources) params.append('sources', sources.join(','))
@@ -21,6 +29,38 @@ export async function getAuthorCandidates(name, institution = null) {
     const err = await res.json().catch(() => ({}))
     throw new Error(err.detail || err.error || `HTTP ${res.status}`)
   }
+  return res.json()
+}
+
+export async function fetchAuthorCandidatesV1(authorName, institutionHint = null) {
+  const res = await fetch(`${BASE}/author-resolutions/candidates`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ author_name: authorName, institution_hint: institutionHint }),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+  }
+  return res.json()
+}
+
+export async function createAuthorResolution(payload) {
+  const res = await fetch(`${BASE}/author-resolutions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+  }
+  return res.json()
+}
+
+export async function getAuthorResolutionDetails(resolutionId) {
+  const res = await fetch(`${BASE}/author-resolutions/${resolutionId}`)
+  if (!res.ok) throw new Error(`HTTP ${res.status}`)
   return res.json()
 }
 

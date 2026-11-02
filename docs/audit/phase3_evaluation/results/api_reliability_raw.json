@@ -1,0 +1,147 @@
+[
+  {
+    "name": "Health check",
+    "method": "GET",
+    "path": "/health",
+    "params": null,
+    "payload": null,
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 794.79,
+    "response_preview": "{\"status\":\"ok\",\"circuit_breakers\":{\"openalex\":{\"status\":\"closed\",\"failure_count\":0,\"disabled_until\":null},\"dblp\":{\"status\":\"closed\",\"failure_count\":6,\"disabled_until\":\"2026-11-01T17:20:52.252674\"},\"ar"
+  },
+  {
+    "name": "Metrics",
+    "method": "GET",
+    "path": "/metrics",
+    "params": null,
+    "payload": null,
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 111.82,
+    "response_preview": "{\"total_publications\":454,\"total_raw_records\":2053,\"total_merges\":27,\"source_record_counts\":{\"arxiv\":402,\"crossref\":815,\"dblp\":550,\"openalex\":266,\"scholar\":20},\"circuit_breakers\":{\"openalex\":{\"status\""
+  },
+  {
+    "name": "GET /search/candidates (valid query)",
+    "method": "GET",
+    "path": "/search/candidates",
+    "params": {
+      "name": "Geoffrey Hinton",
+      "institution": "University of Toronto"
+    },
+    "payload": null,
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 726.66,
+    "response_preview": "{\"candidates\":[{\"candidate_id\":\"A5108093963\",\"source\":\"openalex\",\"display_name\":\"Geoffrey E. Hinton\",\"institution\":\"Microsoft (United States)\",\"country\":\"US\",\"works_count\":556,\"cited_by_count\":531769,"
+  },
+  {
+    "name": "GET /search/candidates (missing required name parameter)",
+    "method": "GET",
+    "path": "/search/candidates",
+    "params": {},
+    "payload": null,
+    "status_code": 422,
+    "expected_status": 422,
+    "passed": true,
+    "latency_ms": 2.91,
+    "response_preview": "{\"detail\":[{\"type\":\"missing\",\"loc\":[\"query\",\"name\"],\"msg\":\"Field required\",\"input\":null}]}"
+  },
+  {
+    "name": "POST /author-resolutions/candidates (valid)",
+    "method": "POST",
+    "path": "/author-resolutions/candidates",
+    "params": null,
+    "payload": {
+      "author_name": "Geoffrey Hinton",
+      "institution_hint": "University of Toronto"
+    },
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 1689.22,
+    "response_preview": "{\"candidates\":[{\"candidate_id\":\"2fbd86c5-7230-49cf-bdaf-be740b960b27\",\"source_author_id\":\"A5153609875\",\"source\":\"openalex\",\"display_name\":\"Geoffrey Hinton\",\"normalized_name\":\"geoffrey hinton\",\"institu"
+  },
+  {
+    "name": "POST /author-resolutions/candidates (empty whitespace name)",
+    "method": "POST",
+    "path": "/author-resolutions/candidates",
+    "params": null,
+    "payload": {
+      "author_name": "   "
+    },
+    "status_code": 422,
+    "expected_status": 422,
+    "passed": true,
+    "latency_ms": 7.14,
+    "response_preview": "{\"detail\":[{\"type\":\"value_error\",\"loc\":[\"body\",\"author_name\"],\"msg\":\"Value error, author_name cannot be empty or whitespace\",\"input\":\"   \",\"ctx\":{\"error\":{}}}]}"
+  },
+  {
+    "name": "POST /evidence/search",
+    "method": "POST",
+    "path": "/evidence/search",
+    "params": null,
+    "payload": {
+      "query": "deep learning neural networks",
+      "top_k": 3
+    },
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 318.03,
+    "response_preview": "{\"hits\":[{\"document_id\":\"pub_c7ce9e6c0cb5f4d31bbd5c0af364e5b2210ddbed007c3d3ae441f15e9154b43d\",\"canonical_id\":\"doi_c54d9309d35c7b45\",\"title\":\"Deep Neural Networks for Acoustic Modeling in Speech Recog"
+  },
+  {
+    "name": "GET /search (author query with name)",
+    "method": "GET",
+    "path": "/search",
+    "params": {
+      "name": "Geoffrey Hinton"
+    },
+    "payload": null,
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 23.5,
+    "response_preview": "{\"query\":\"geoffrey hinton\",\"candidate_id\":null,\"total\":65,\"raw_records\":75,\"merged_count\":10,\"time_ms\":6006,\"cache_hit\":true,\"source_statuses\":{\"openalex\":{\"status\":\"ok\",\"records\":25,\"time_ms\":3171},\""
+  },
+  {
+    "name": "GET /publications/1",
+    "method": "GET",
+    "path": "/publications/1",
+    "params": null,
+    "payload": null,
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 20.11,
+    "response_preview": "{\"id\":1,\"canonical_id\":\"doi_d633c8cb1b509649\",\"title\":\"Artificial Intelligence as the Fourth Decentering Revolution: From Cosmic, Biological, and Psychological Displacement to Cognitive Decentering.\","
+  },
+  {
+    "name": "GET /similarity-log/1",
+    "method": "GET",
+    "path": "/similarity-log/1",
+    "params": null,
+    "payload": null,
+    "status_code": 200,
+    "expected_status": 200,
+    "passed": true,
+    "latency_ms": 12.11,
+    "response_preview": "{\"pub_id\":1,\"logs\":[]}"
+  },
+  {
+    "name": "GET /author-resolutions/{id} (404 non-existent)",
+    "method": "GET",
+    "path": "/author-resolutions/non-existent-uuid-12345",
+    "params": null,
+    "payload": null,
+    "status_code": 404,
+    "expected_status": 404,
+    "passed": true,
+    "latency_ms": 6.03,
+    "response_preview": "{\"detail\":\"Resolution not found\"}"
+  }
+]

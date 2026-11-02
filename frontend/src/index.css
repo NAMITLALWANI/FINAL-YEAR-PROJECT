@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap');
 
+.candidate-evidence {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid #d7e2ee;
+  border-radius: 12px;
+  background: #f7fafc;
+  color: #203044;
+}
+.candidate-evidence h4 { margin: 0 0 .45rem; font-size: .95rem; }
+.candidate-evidence p { margin: .35rem 0 .75rem; line-height: 1.5; }
+.candidate-evidence ul { margin: 0; padding-left: 1.2rem; }
+.candidate-evidence li { margin: .55rem 0; line-height: 1.45; }
+.candidate-evidence a { margin-left: .5rem; color: #2462a8; }
+.candidate-evidence small { display: block; color: #617184; }
+
 /* ── Reset & Base ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

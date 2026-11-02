@@ -33,8 +33,16 @@ graph TD
         SearchService --> Cache[(SQLite Cache)]
         Dedup --> DB[(SQLite Database)]
         Scholar --> ScholarCache[(Scholar Cache)]
+        DB --> Indexer[Explicit canonical index builder]
+        Indexer --> Chroma[(Persistent Chroma index)]
+        Chroma --> Evidence[Ranked scholarly evidence]
+        Evidence --> Explanation[Optional cited explanation]
+        Evidence --> FastAPI
+        Explanation --> FastAPI
     end
 ```
+
+The Chroma collection is a rebuildable retrieval projection. The SQL database remains authoritative for publications, provenance, author candidates, and resolution decisions. `backend/scripts/build_vector_index.py` performs initial and incremental indexing; ordinary requests never re-index the corpus. Semantic hits are displayed as context and currently do not alter V1 scoring or identity decisions.
 
 ## Key Technologies
 - **Frontend**: React, Vite, Vanilla CSS.
@@ -42,3 +50,5 @@ graph TD
 - **Database**: SQLite (Development/Demo).
 - **Scraping**: Playwright (Headless Chromium).
 - **Deduplication**: RapidFuzz (Token-sort ratio).
+- **Semantic evidence retrieval**: Chroma persistent collection with local `all-MiniLM-L6-v2` ONNX Sentence Transformers embeddings.
+- **Explanation**: optional Gemini `generateContent` provider; generated claim document IDs are validated against retrieved hits, with deterministic fallback.

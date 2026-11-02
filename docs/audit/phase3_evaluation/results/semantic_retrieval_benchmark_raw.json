@@ -1,0 +1,492 @@
+{
+  "index_status": {
+    "status": "ready",
+    "document_count": 449,
+    "index_version": "scholarly-record-v1",
+    "embedding_model": "all-MiniLM-L6-v2"
+  },
+  "sample_size": 6,
+  "latencies_ms": {
+    "avg": 206.04,
+    "min": 146.73,
+    "max": 409.08,
+    "all": [
+      409.08,
+      175.53,
+      168.77,
+      158.69,
+      146.73,
+      177.45
+    ]
+  },
+  "query_results": [
+    {
+      "query": "deep learning neural networks backpropagation",
+      "expected_topic": "neural networks",
+      "hits_count": 5,
+      "latency_ms": 409.08,
+      "top_score": 0.6041,
+      "top_title": "Scaling Forward Gradient With Local Losses.",
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.6041,
+          "title": "Scaling Forward Gradient With Local Losses.",
+          "year": 2023,
+          "authors": [
+            "Mengye Ren",
+            "Simon Kornblith",
+            "Renjie Liao 0001"
+          ],
+          "canonical_id": "doi_5d3f81178c0bd372",
+          "document_id": "pub_1d0775edc0f1c80748cce67748ff5f8977991199797800329bbd1355b59792be",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 2,
+          "score": 0.5998,
+          "title": "Scaling Forward Gradient With Local Losses",
+          "year": 2022,
+          "authors": [
+            "Mengye Ren",
+            "Simon Kornblith",
+            "Renjie Liao"
+          ],
+          "canonical_id": "raw_52",
+          "document_id": "pub_46d4908e109f981121b00cd2cad5d60f56d6333f89713ab6f8a8d0d1cf97db3d",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 3,
+          "score": 0.5998,
+          "title": "Scaling Forward Gradient With Local Losses",
+          "year": 2022,
+          "authors": [
+            "Mengye Ren",
+            "Simon Kornblith",
+            "Renjie Liao"
+          ],
+          "canonical_id": "sid_6e659c8308e6bc3b",
+          "document_id": "pub_a04b7cf6e84135844113381065e8834e28526d08969e593ca54f1adfc96a6379",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 4,
+          "score": 0.5417,
+          "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+          "year": 2022,
+          "authors": [
+            "Geoffrey Hinton"
+          ],
+          "canonical_id": "raw_51",
+          "document_id": "pub_7199f17706130724f426b749b25118649aa1deb937af8826241eb220fe97bc03",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 5,
+          "score": 0.5417,
+          "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+          "year": 2022,
+          "authors": [
+            "Geoffrey Hinton"
+          ],
+          "canonical_id": "sid_b1c4fae961d2323b",
+          "document_id": "pub_8df2a4788d553130092b3a71f4adcbcf4d40b588bcadf4a3c2299d9d19dbaf00",
+          "has_valid_metadata": true
+        }
+      ]
+    },
+    {
+      "query": "convolutional neural networks imagenet visual recognition",
+      "expected_topic": "computer vision",
+      "hits_count": 5,
+      "latency_ms": 175.53,
+      "top_score": 0.7048,
+      "top_title": "ImageNet classification with deep convolutional neural networks",
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.7048,
+          "title": "ImageNet classification with deep convolutional neural networks",
+          "year": 2017,
+          "authors": [
+            "Alex Krizhevsky",
+            "Ilya Sutskever",
+            "Geoffrey E. Hinton"
+          ],
+          "canonical_id": "doi_c20dba61f182ad9e",
+          "document_id": "pub_615d45d4b5ed6e46a271ad2676d8569268fb25a3fcfabec6ac607f5bfd7f0304",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 2,
+          "score": 0.6405,
+          "title": "ImageNet classification with deep convolutional neural networks",
+          "year": 2017,
+          "authors": [
+            "Alex Krizhevsky",
+            "Ilya Sutskever",
+            "Geoffrey E. Hinton"
+          ],
+          "canonical_id": "raw_71",
+          "document_id": "pub_56ab7506bfdbfd2c449957181f451c1b45640bff41541ad442f91fbce443ea30",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 3,
+          "score": 0.5842,
+          "title": "Convolutional networks and applications in vision",
+          "year": 2010,
+          "authors": [
+            "Yann LeCun",
+            "Koray Kavukcuoglu",
+            "Clement Farabet"
+          ],
+          "canonical_id": "doi_68cb7138c4faf399",
+          "document_id": "pub_63fe58b1353a3f3c268678c66dd58033645f423c5f21722f06bd7a425197fe34",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 4,
+          "score": 0.5469,
+          "title": "A Simple Framework for Contrastive Learning of Visual Representations",
+          "year": 2020,
+          "authors": [
+            "Ting Chen",
+            "Simon Kornblith",
+            "Mohammad Norouzi"
+          ],
+          "canonical_id": "raw_57",
+          "document_id": "pub_29e15d951e460ba1a1f2ee01322253bfc61363e7ceb668fd7df3538e767e91a6",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 5,
+          "score": 0.5469,
+          "title": "A Simple Framework for Contrastive Learning of Visual Representations",
+          "year": 2020,
+          "authors": [
+            "Ting Chen",
+            "Simon Kornblith",
+            "Mohammad Norouzi"
+          ],
+          "canonical_id": "doi_ca82c934a3adc468",
+          "document_id": "pub_c8453e63a66b680962553e8cb03089414f00c542944a7e6d524f52d89b3ed33d",
+          "has_valid_metadata": true
+        }
+      ]
+    },
+    {
+      "query": "attention is all you need transformer sequence transduction",
+      "expected_topic": "transformers",
+      "hits_count": 5,
+      "latency_ms": 168.77,
+      "top_score": 0.5754,
+      "top_title": "Seq-VCR: Preventing Collapse in Intermediate Transformer Representations for Enhanced Reasoning.",
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.5754,
+          "title": "Seq-VCR: Preventing Collapse in Intermediate Transformer Representations for Enhanced Reasoning.",
+          "year": 2025,
+          "authors": [
+            "Md Rifat Arefin",
+            "Gopeshh Subbaraj",
+            "Nicolas Gontier"
+          ],
+          "canonical_id": "sid_2762cfe18fa7797e",
+          "document_id": "pub_a74d137b916df512767636033ed71bf7416ee3e4f1cda947c9f7cd6e35aa9e92",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 2,
+          "score": 0.5089,
+          "title": "Transformers without Normalization.",
+          "year": 2025,
+          "authors": [
+            "Jiachen Zhu 0002",
+            "Xinlei Chen",
+            "Kaiming He"
+          ],
+          "canonical_id": "doi_e189f64982052ac1",
+          "document_id": "pub_bc58a1e4eae3cb6eb2c0e54cc26192ac13d724edb752b23eaf355b5a95b15c30",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 3,
+          "score": 0.4984,
+          "title": "A Unified Sequence Interface for Vision Tasks.",
+          "year": 2022,
+          "authors": [
+            "Ting Chen 0007",
+            "Saurabh Saxena",
+            "Lala Li"
+          ],
+          "canonical_id": "raw_13",
+          "document_id": "pub_756369034345389179660abb8ca60a122e3bf7dd82e533cb80a582f75eb3fc48",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 4,
+          "score": 0.4849,
+          "title": "A Unified Sequence Interface for Vision Tasks.",
+          "year": 2022,
+          "authors": [
+            "Ting Chen 0007",
+            "Saurabh Saxena",
+            "Lala Li"
+          ],
+          "canonical_id": "raw_11",
+          "document_id": "pub_445f337b19529bd84f2163ff14a24f0e28cc25b6a99f206b3c5485983296e1e3",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 5,
+          "score": 0.4448,
+          "title": "Training compute-optimal transformer encoder models.",
+          "year": 2025,
+          "authors": [
+            "Megi Dervishi",
+            "Alexandre Allauzen",
+            "Gabriel Synnaeve"
+          ],
+          "canonical_id": "doi_d474e9b8377f14a5",
+          "document_id": "pub_4fac24bb4a1ccb7f20837de1a6fe19bfbaab9bfba3cc49c86392ce08268a6c12",
+          "has_valid_metadata": true
+        }
+      ]
+    },
+    {
+      "query": "generative adversarial nets min max game",
+      "expected_topic": "generative models",
+      "hits_count": 5,
+      "latency_ms": 158.69,
+      "top_score": 0.4111,
+      "top_title": "Adversarially-Trained Normalized Noisy-Feature Auto-Encoder for Text Generation",
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.4111,
+          "title": "Adversarially-Trained Normalized Noisy-Feature Auto-Encoder for Text Generation",
+          "year": 2018,
+          "authors": [
+            "Xiang Zhang",
+            "Yann LeCun"
+          ],
+          "canonical_id": "sid_a1a2fa5d7517918a",
+          "document_id": "pub_50b0c675f591129f9ed7b87037e0907ce65f1e82f9c708b905b81a016bae5b11",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 2,
+          "score": 0.3997,
+          "title": "Detecting and Diagnosing Adversarial Images with Class-Conditional Capsule Reconstructions",
+          "year": 2019,
+          "authors": [
+            "Yao Qin",
+            "Nicholas Frosst",
+            "Sara Sabour"
+          ],
+          "canonical_id": "sid_737e562f15bea65d",
+          "document_id": "pub_96ab73f8aabde641210ce9a82baf3e7627b5245586ac351a5094e31e5f29651f",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 3,
+          "score": 0.3926,
+          "title": "Deep Lambertian Networks",
+          "year": 2012,
+          "authors": [
+            "Yichuan Tang",
+            "Ruslan Salakhutdinov",
+            "Geoffrey Hinton"
+          ],
+          "canonical_id": "sid_93aef90d35b67658",
+          "document_id": "pub_5cc8b0ee093f889be9c1c5b19a5ed43d693ba6a077c3f02b04b495657b553043",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 4,
+          "score": 0.3926,
+          "title": "Deep Lambertian Networks",
+          "year": 2012,
+          "authors": [
+            "Yichuan Tang",
+            "Ruslan Salakhutdinov",
+            "Geoffrey Hinton"
+          ],
+          "canonical_id": "raw_65",
+          "document_id": "pub_b4527a8c17ac26efe0b0a2d62a9622adee2eead92bec2d4483eb68926c7ff4c7",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 5,
+          "score": 0.3856,
+          "title": "The Next Generation of Neural Networks.",
+          "year": 2020,
+          "authors": [
+            "Geoffrey E. Hinton"
+          ],
+          "canonical_id": "doi_96d83777377056da",
+          "document_id": "pub_a90af543b2d781d5a08152c0d1bd8451ecc18ea2b1ca6fcb86fb5f05f28725b8",
+          "has_valid_metadata": true
+        }
+      ]
+    },
+    {
+      "query": "quantum computing superconducting qubits error correction",
+      "expected_topic": "quantum",
+      "hits_count": 5,
+      "latency_ms": 146.73,
+      "top_score": 0.2722,
+      "top_title": "Low-Power Digital Signal Processing Using Approximate Adders",
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.2722,
+          "title": "Low-Power Digital Signal Processing Using Approximate Adders",
+          "year": 2013,
+          "authors": [
+            "Vaibhav Gupta",
+            "Debabrata Mohapatra",
+            "Anand Raghunathan"
+          ],
+          "canonical_id": "doi_e4a0a0638c333755",
+          "document_id": "pub_a9f0af520bd0a2f518148c27a61bc901a618e9ae6f46075b57db0cc941bf74b1",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 2,
+          "score": 0.2208,
+          "title": "Efficient implementation of the gauge-independent atomic orbital method for NMR chemical shift calculations",
+          "year": 1990,
+          "authors": [
+            "Krzysztof Wolinski",
+            "James F. Hinton",
+            "Peter Pulay"
+          ],
+          "canonical_id": "doi_34b536c6a61f971e",
+          "document_id": "pub_fc32b3953c634f24715b8a9d828a7bd5d8cc108671b9fc2b42dcbcfa4cc40fcb",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 3,
+          "score": 0.2208,
+          "title": "Efficient implementation of the gauge-independent atomic orbital method for NMR chemical shift calculations",
+          "year": 1990,
+          "authors": [
+            "Krzysztof Wolinski",
+            "James F. Hinton",
+            "Peter Pulay"
+          ],
+          "canonical_id": "raw_86",
+          "document_id": "pub_1e2de0e046b86dfb1cbc4f0c934df264d2e047e71e82526d46a6e80dab38f052",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 4,
+          "score": 0.2065,
+          "title": "Analog Bits: Generating Discrete Data using Diffusion Models with Self-Conditioning.",
+          "year": 2023,
+          "authors": [
+            "Ting Chen 0007",
+            "Ruixiang Zhang",
+            "Geoffrey E. Hinton"
+          ],
+          "canonical_id": "doi_041cc12a295e28e0",
+          "document_id": "pub_ea91b4038e9b38b03621150a3f95a4080a3dd28f05b7ef1c5378f7686168feb4",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 5,
+          "score": 0.2065,
+          "title": "Analog Bits: Generating Discrete Data using Diffusion Models with Self-Conditioning.",
+          "year": 2023,
+          "authors": [
+            "Ting Chen 0007",
+            "Ruixiang Zhang",
+            "Geoffrey E. Hinton"
+          ],
+          "canonical_id": "raw_6",
+          "document_id": "pub_d095554c903139a1cb6b335bf221004b4b94e28fd126fa1591ba38025eeacd4d",
+          "has_valid_metadata": true
+        }
+      ]
+    },
+    {
+      "query": "xyznonexistentgibberish12345qwer",
+      "expected_topic": "none",
+      "hits_count": 5,
+      "latency_ms": 177.45,
+      "top_score": 0.2374,
+      "top_title": "Adversarially-Trained Normalized Noisy-Feature Auto-Encoder for Text Generation",
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.2374,
+          "title": "Adversarially-Trained Normalized Noisy-Feature Auto-Encoder for Text Generation",
+          "year": 2018,
+          "authors": [
+            "Xiang Zhang",
+            "Yann LeCun"
+          ],
+          "canonical_id": "sid_a1a2fa5d7517918a",
+          "document_id": "pub_50b0c675f591129f9ed7b87037e0907ce65f1e82f9c708b905b81a016bae5b11",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 2,
+          "score": 0.192,
+          "title": "MetaMorph: Multimodal Understanding and Generation via Instruction Tuning.",
+          "year": 2025,
+          "authors": [
+            "Shengbang Tong",
+            "David Fan 0001",
+            "Jiachen Zhu 0002"
+          ],
+          "canonical_id": "doi_467e3965e5bb3ba9",
+          "document_id": "pub_72bce4ffb630e3ffe8bd821df9dec69f653ba1d4283d86d12d16b15abca600fa",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 3,
+          "score": 0.1915,
+          "title": "From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning.",
+          "year": 2025,
+          "authors": [
+            "Chen Shani",
+            "Dan Jurafsky",
+            "Yann LeCun"
+          ],
+          "canonical_id": "doi_3398550f6d188276",
+          "document_id": "pub_61158c92fed67d6d700f9dceda1011378d8a2eaf8bc02815440f06dde165db9c",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 4,
+          "score": 0.1808,
+          "title": "Sonic hedgehog, a member of a family of putative signaling molecules, is implicated in the regulation of CNS polarity",
+          "year": 1993,
+          "authors": [
+            "Yann Echelard",
+            "Douglas J. Epstein",
+            "Benoit St-Jacques"
+          ],
+          "canonical_id": "doi_32040bbdc6bb8649",
+          "document_id": "pub_b13c35b6cf86ff74d0aa46b113c7ba6138c1aae2b14abd58b499daa653e2bb02",
+          "has_valid_metadata": true
+        },
+        {
+          "rank": 5,
+          "score": 0.1778,
+          "title": "Test 071425",
+          "year": 2025,
+          "authors": [],
+          "canonical_id": "doi_21e220258f406123",
+          "document_id": "pub_6f8614cb7d77d4ff886053ccd8c914dd653bf90a46fcf568bb447ab3deb8bfc6",
+          "has_valid_metadata": true
+        }
+      ]
+    }
+  ]
+}

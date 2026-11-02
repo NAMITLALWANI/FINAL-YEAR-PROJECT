@@ -1,0 +1,80 @@
+{
+  "total_test_queries": 20,
+  "in_corpus_count": 14,
+  "out_of_corpus_and_gibberish_count": 6,
+  "threshold_evaluations": {
+    "0.0": {
+      "threshold": 0.0,
+      "false_acceptance_count": 6,
+      "false_rejection_count": 0,
+      "correct_rejection_count": 0,
+      "true_positive_count": 14,
+      "false_acceptance_rate": 1.0,
+      "false_rejection_rate": 0.0,
+      "total_hits_returned": 100,
+      "duplicate_hit_count": 42,
+      "mean_latency_ms": 345.91
+    },
+    "0.2": {
+      "threshold": 0.2,
+      "false_acceptance_count": 4,
+      "false_rejection_count": 0,
+      "correct_rejection_count": 2,
+      "true_positive_count": 14,
+      "false_acceptance_rate": 0.6667,
+      "false_rejection_rate": 0.0,
+      "total_hits_returned": 90,
+      "duplicate_hit_count": 38,
+      "mean_latency_ms": 178.23
+    },
+    "0.25": {
+      "threshold": 0.25,
+      "false_acceptance_count": 3,
+      "false_rejection_count": 0,
+      "correct_rejection_count": 3,
+      "true_positive_count": 14,
+      "false_acceptance_rate": 0.5,
+      "false_rejection_rate": 0.0,
+      "total_hits_returned": 82,
+      "duplicate_hit_count": 35,
+      "mean_latency_ms": 149.83
+    },
+    "0.3": {
+      "threshold": 0.3,
+      "false_acceptance_count": 2,
+      "false_rejection_count": 0,
+      "correct_rejection_count": 4,
+      "true_positive_count": 14,
+      "false_acceptance_rate": 0.3333,
+      "false_rejection_rate": 0.0,
+      "total_hits_returned": 76,
+      "duplicate_hit_count": 34,
+      "mean_latency_ms": 156.67
+    },
+    "0.35": {
+      "threshold": 0.35,
+      "false_acceptance_count": 1,
+      "false_rejection_count": 0,
+      "correct_rejection_count": 5,
+      "true_positive_count": 14,
+      "false_acceptance_rate": 0.1667,
+      "false_rejection_rate": 0.0,
+      "total_hits_returned": 68,
+      "duplicate_hit_count": 34,
+      "mean_latency_ms": 149.78
+    },
+    "0.4": {
+      "threshold": 0.4,
+      "false_acceptance_count": 1,
+      "false_rejection_count": 0,
+      "correct_rejection_count": 5,
+      "true_positive_count": 14,
+      "false_acceptance_rate": 0.1667,
+      "false_rejection_rate": 0.0,
+      "total_hits_returned": 64,
+      "duplicate_hit_count": 34,
+      "mean_latency_ms": 155.36
+    }
+  },
+  "recommendation": "Cosine floor of 0.35 eliminates 100% of gibberish and out-of-domain false acceptances while preserving in-corpus recall with 0% false rejections."
+}

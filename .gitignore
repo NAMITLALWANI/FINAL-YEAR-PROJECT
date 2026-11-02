@@ -1,0 +1,25 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local application data and secrets
+.env
+.env.*
+!.env.example
+*.db-wal
+*.db-shm
+
+
+# Local embeddings and generated frontend output
+backend/vector_index/
+frontend/node_modules/
+frontend/dist/# Backups and virtual environments
+backend/venv/
+backups/
+backend/*.db.backup*
+backend/chroma_db/
+.DS_Store
+dist/
+build/
+*.pyc

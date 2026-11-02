@@ -1,0 +1,194 @@
+{
+  "openalex": {
+    "connector": "openalex",
+    "queries_tested": 4,
+    "successful_requests": 4,
+    "failed_requests": 0,
+    "empty_responses": 0,
+    "total_records": 100,
+    "latencies": [
+      3.299,
+      2.428,
+      2.253,
+      4.839
+    ],
+    "errors": [],
+    "doi_count": 84,
+    "author_count": 100,
+    "year_count": 100,
+    "records_sample": [
+      {
+        "title": "ImageNet classification with deep convolutional neural networks",
+        "year": 2017,
+        "doi": "10.1145/3065386",
+        "source": "openalex"
+      },
+      {
+        "title": "Deep learning",
+        "year": 2015,
+        "doi": "10.1038/nature14539",
+        "source": "openalex"
+      }
+    ],
+    "doi_rate": 0.84,
+    "author_rate": 1.0,
+    "year_rate": 1.0,
+    "avg_latency": 3.205
+  },
+  "crossref": {
+    "connector": "crossref",
+    "queries_tested": 4,
+    "successful_requests": 4,
+    "failed_requests": 0,
+    "empty_responses": 0,
+    "total_records": 120,
+    "latencies": [
+      2.74,
+      2.312,
+      2.571,
+      3.02
+    ],
+    "errors": [],
+    "doi_count": 120,
+    "author_count": 120,
+    "year_count": 120,
+    "records_sample": [
+      {
+        "title": "Deep learning",
+        "year": 2015,
+        "doi": "10.1038/nature14539",
+        "source": "crossref"
+      },
+      {
+        "title": "ImageNet classification with deep convolutional neural networks",
+        "year": 2017,
+        "doi": "10.1145/3065386",
+        "source": "crossref"
+      }
+    ],
+    "doi_rate": 1.0,
+    "author_rate": 1.0,
+    "year_rate": 1.0,
+    "avg_latency": 2.661
+  },
+  "dblp": {
+    "connector": "dblp",
+    "queries_tested": 4,
+    "successful_requests": 0,
+    "failed_requests": 4,
+    "empty_responses": 0,
+    "total_records": 0,
+    "latencies": [
+      0.771,
+      0.539,
+      0.541,
+      0.526
+    ],
+    "errors": [
+      "Query 'Geoffrey Hinton': JSONDecodeError - Expecting value: line 1 column 1 (char 0)",
+      "Query 'Yoshua Bengio': JSONDecodeError - Expecting value: line 1 column 1 (char 0)",
+      "Query 'Yann LeCun': JSONDecodeError - Expecting value: line 1 column 1 (char 0)",
+      "Query 'Rajesh Kumar': HTTPStatusError - Client error '429 Too Many Requests' for url 'https://dblp.org/search/publ/api?q=author%3ARajesh+Kumar%3A&format=json&h=50'\nFor more information check"
+    ],
+    "doi_count": 0,
+    "author_count": 0,
+    "year_count": 0,
+    "records_sample": [],
+    "doi_rate": 0.0,
+    "author_rate": 0.0,
+    "year_rate": 0.0,
+    "avg_latency": 0.594
+  },
+  "arxiv": {
+    "connector": "arxiv",
+    "queries_tested": 4,
+    "successful_requests": 4,
+    "failed_requests": 0,
+    "empty_responses": 0,
+    "total_records": 80,
+    "latencies": [
+      3.417,
+      3.611,
+      3.577,
+      3.655
+    ],
+    "errors": [],
+    "doi_count": 5,
+    "author_count": 80,
+    "year_count": 80,
+    "records_sample": [
+      {
+        "title": "How to represent part-whole hierarchies in a neural network",
+        "year": 2021,
+        "doi": "",
+        "source": "arxiv"
+      },
+      {
+        "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+        "year": 2022,
+        "doi": "",
+        "source": "arxiv"
+      }
+    ],
+    "doi_rate": 0.0625,
+    "author_rate": 1.0,
+    "year_rate": 1.0,
+    "avg_latency": 3.565
+  },
+  "scholar": {
+    "connector": "scholar",
+    "queries_tested": 4,
+    "successful_requests": 0,
+    "failed_requests": 4,
+    "empty_responses": 0,
+    "total_records": 0,
+    "latencies": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "errors": [
+      "Query 'Geoffrey Hinton': ValueError - ScholarConnector requires a db session for caching",
+      "Query 'Yoshua Bengio': ValueError - ScholarConnector requires a db session for caching",
+      "Query 'Yann LeCun': ValueError - ScholarConnector requires a db session for caching",
+      "Query 'Rajesh Kumar': ValueError - ScholarConnector requires a db session for caching"
+    ],
+    "doi_count": 0,
+    "author_count": 0,
+    "year_count": 0,
+    "records_sample": [],
+    "doi_rate": 0.0,
+    "author_rate": 0.0,
+    "year_rate": 0.0,
+    "avg_latency": 0.0
+  },
+  "faculty_scraper": {
+    "connector": "faculty_scraper",
+    "queries_tested": 4,
+    "successful_requests": 0,
+    "failed_requests": 4,
+    "empty_responses": 0,
+    "total_records": 0,
+    "latencies": [
+      0.619,
+      0.279,
+      0.246,
+      0.238
+    ],
+    "errors": [
+      "Query 'Geoffrey Hinton': Error - BrowserType.launch: Executable doesn't exist at /Users/nileshlalwani/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-m",
+      "Query 'Yoshua Bengio': Error - BrowserType.launch: Executable doesn't exist at /Users/nileshlalwani/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-m",
+      "Query 'Yann LeCun': Error - BrowserType.launch: Executable doesn't exist at /Users/nileshlalwani/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-m",
+      "Query 'Rajesh Kumar': Error - BrowserType.launch: Executable doesn't exist at /Users/nileshlalwani/Library/Caches/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-m"
+    ],
+    "doi_count": 0,
+    "author_count": 0,
+    "year_count": 0,
+    "records_sample": [],
+    "doi_rate": 0.0,
+    "author_rate": 0.0,
+    "year_rate": 0.0,
+    "avg_latency": 0.346
+  }
+}

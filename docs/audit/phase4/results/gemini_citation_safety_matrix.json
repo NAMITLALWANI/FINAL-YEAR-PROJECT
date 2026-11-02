@@ -1,0 +1,63 @@
+{
+  "suite_name": "Zero-Trust Scholarly Citation & Injection Defense",
+  "total_test_cases": 9,
+  "passed_cases": 9,
+  "failed_cases": 0,
+  "citation_claim_validation_active": true,
+  "cases": [
+    {
+      "name": "Valid Citation",
+      "status": "verified",
+      "passed": true,
+      "detail": "Claim cites doc_alpha and doc_beta; verified against hit_by_id"
+    },
+    {
+      "name": "Nonexistent Document ID Citation",
+      "status": "blocked",
+      "passed": true,
+      "detail": "Claim cites doc_fake_999; filtered by citation claim validator"
+    },
+    {
+      "name": "Invalid DOI Claim",
+      "status": "blocked",
+      "passed": true,
+      "detail": "Provider hallucinates DOI 10.9999/fake; not accepted independently of trusted records"
+    },
+    {
+      "name": "Unsupported Scholarly Claim",
+      "status": "blocked",
+      "passed": true,
+      "detail": "Claim without matching document_id in safe_context dropped"
+    },
+    {
+      "name": "Model-Generated Citation Not in Database",
+      "status": "blocked",
+      "passed": true,
+      "detail": "Summary cannot introduce external citations; summary overwritten by valid claims text"
+    },
+    {
+      "name": "Prompt Injection in User Query",
+      "status": "sanitized",
+      "passed": true,
+      "detail": "System prompt strictly marks query and records as untrusted data; JSON schema enforced"
+    },
+    {
+      "name": "Prompt Injection in Retrieved Metadata",
+      "status": "sanitized",
+      "passed": true,
+      "detail": "Metadata text sanitized through json.dumps; no instruction execution"
+    },
+    {
+      "name": "Malformed Model Output (Non-JSON)",
+      "status": "fallback",
+      "passed": true,
+      "detail": "JSONDecodeError caught cleanly; falls back to deterministic explanation"
+    },
+    {
+      "name": "Empty Model Output",
+      "status": "fallback",
+      "passed": true,
+      "detail": "ValueError caught; falls back to deterministic explanation"
+    }
+  ]
+}

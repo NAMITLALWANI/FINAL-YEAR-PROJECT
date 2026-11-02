@@ -1,0 +1,1 @@
+query_id,query_text,context_json,gold_status,gold_source,gold_author_id,evidence_refs_json,reviewer_1,reviewer_1_status,reviewer_1_confidence,reviewer_1_rationale,reviewer_2,reviewer_2_status,reviewer_2_confidence,reviewer_2_rationale,adjudicator,adjudication_status,adjudicated_confidence,notes

@@ -1,0 +1,733 @@
+[
+  {
+    "qid": "Q001",
+    "name": "Yoshua Bengio",
+    "orig_gold": "A5058729352",
+    "v2_gold": "A5058729352",
+    "v2_valid": "200 (Maria Bentler)",
+    "top_cand": "A5086198262",
+    "cand_info": {
+      "id": "A5086198262",
+      "name": "Yoshua Bengio",
+      "works": 1560,
+      "cites": 520034,
+      "h_index": 201,
+      "affil": [
+        "Canadian Institute for Advanced Research",
+        "University of Southern California"
+      ]
+    }
+  },
+  {
+    "qid": "Q003",
+    "name": "Yann LeCun",
+    "orig_gold": "A5004945511",
+    "v2_gold": "A5004945511",
+    "v2_valid": "404",
+    "top_cand": "A5001226970",
+    "cand_info": {
+      "id": "A5001226970",
+      "name": "Yann LeCun",
+      "works": 545,
+      "cites": 269392,
+      "h_index": 130,
+      "affil": [
+        "NEC (Japan)",
+        "AT&T (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q007",
+    "name": "Fei-Fei Li",
+    "orig_gold": "A5023880327",
+    "v2_gold": "A5023880327",
+    "v2_valid": "200 (C. W. F. Oostvogel)",
+    "top_cand": "A5100450462",
+    "cand_info": {
+      "id": "A5100450462",
+      "name": "Li Fei-Fei",
+      "works": 609,
+      "cites": 223723,
+      "h_index": 137,
+      "affil": [
+        "California Institute of Technology",
+        "Google (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q008",
+    "name": "Andrew Ng",
+    "orig_gold": "A5013098379",
+    "v2_gold": "A5013098379",
+    "v2_valid": "200 (Marcelina Lis)",
+    "top_cand": "A5102617494",
+    "cand_info": {
+      "id": "A5102617494",
+      "name": "Andrew Y. Ng",
+      "works": 341,
+      "cites": 131028,
+      "h_index": 108,
+      "affil": [
+        "Google (United States)",
+        "University of Michigan"
+      ]
+    }
+  },
+  {
+    "qid": "Q009",
+    "name": "Michael I. Jordan",
+    "orig_gold": "A5063073998",
+    "v2_gold": "A5063073998",
+    "v2_valid": "200 (Kliudt Ka)",
+    "top_cand": "A5049812527",
+    "cand_info": {
+      "id": "A5049812527",
+      "name": "Michael I. Jordan",
+      "works": 1415,
+      "cites": 213914,
+      "h_index": 172,
+      "affil": [
+        "Link\u00f6ping University",
+        "Broad Institute"
+      ]
+    }
+  },
+  {
+    "qid": "Q010",
+    "name": "Bernhard Scholkopf",
+    "orig_gold": "A5056793132",
+    "v2_gold": "A5056793132",
+    "v2_valid": "200 (Mark Duigan)",
+    "top_cand": "A5044005697",
+    "cand_info": {
+      "id": "A5044005697",
+      "name": "Bernhard Sch\u00f6lkopf",
+      "works": 1860,
+      "cites": 167947,
+      "h_index": 152,
+      "affil": [
+        "University College Dublin",
+        "Canadian Institute for Advanced Research"
+      ]
+    }
+  },
+  {
+    "qid": "Q011",
+    "name": "Vladimir Vapnik",
+    "orig_gold": "A5088219437",
+    "v2_gold": "A5088219437",
+    "v2_valid": "200 (Brandon L Driggs)",
+    "top_cand": "A5062753972",
+    "cand_info": {
+      "id": "A5062753972",
+      "name": "Vladimir N. Vapnik",
+      "works": 162,
+      "cites": 215649,
+      "h_index": 70,
+      "affil": [
+        "\u00c9cole Normale Sup\u00e9rieure de Lyon",
+        "NEC (Japan)"
+      ]
+    }
+  },
+  {
+    "qid": "Q012",
+    "name": "David Silver",
+    "orig_gold": "A5012586738",
+    "v2_gold": "A5012586738",
+    "v2_valid": "200 (\u8042\u7389\u6b63)",
+    "top_cand": "A5091771290",
+    "cand_info": {
+      "id": "A5091771290",
+      "name": "David Silver",
+      "works": 160,
+      "cites": 176740,
+      "h_index": 73,
+      "affil": [
+        "Universit\u00e9 Paris-Sud",
+        "Google (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q013",
+    "name": "Oriol Vinyals",
+    "orig_gold": "A5076412891",
+    "v2_gold": "A5076412891",
+    "v2_valid": "200 (S. Antony Sheela)",
+    "top_cand": "A5003562101",
+    "cand_info": {
+      "id": "A5003562101",
+      "name": "Oriol Vinyals",
+      "works": 217,
+      "cites": 184840,
+      "h_index": 99,
+      "affil": [
+        "Google (United States)",
+        "International Computer Science Institute"
+      ]
+    }
+  },
+  {
+    "qid": "Q014",
+    "name": "Ian Goodfellow",
+    "orig_gold": "A5064891234",
+    "v2_gold": "A5057613760",
+    "v2_valid": "200 (Abdulmohsen M. Alotaibi)",
+    "top_cand": "A5004271128",
+    "cand_info": {
+      "id": "A5004271128",
+      "name": "Ian Goodfellow",
+      "works": 131,
+      "cites": 119646,
+      "h_index": 65,
+      "affil": [
+        "Google (United States)",
+        "Pennsylvania State University"
+      ]
+    }
+  },
+  {
+    "qid": "Q016",
+    "name": "Kaiming He",
+    "orig_gold": "A5034129876",
+    "v2_gold": "A5036125032",
+    "v2_valid": "200 (V\u00edctor Garc\u00eda-Pau)",
+    "top_cand": "A5100700361",
+    "cand_info": {
+      "id": "A5100700361",
+      "name": "Kaiming He",
+      "works": 125,
+      "cites": 592216,
+      "h_index": 80,
+      "affil": [
+        "Microsoft (United States)",
+        "Chinese University of Hong Kong"
+      ]
+    }
+  },
+  {
+    "qid": "Q017",
+    "name": "Ross Girshick",
+    "orig_gold": "A5045123987",
+    "v2_gold": "A5003115599",
+    "v2_valid": "200 (G. Viehhauser)",
+    "top_cand": "A5049246408",
+    "cand_info": {
+      "id": "A5049246408",
+      "name": "Ross Girshick",
+      "works": 173,
+      "cites": 425018,
+      "h_index": 87,
+      "affil": [
+        "Microsoft (United States)",
+        "Institut national de recherche en sciences et technologies du num\u00e9rique"
+      ]
+    }
+  },
+  {
+    "qid": "Q020",
+    "name": "Jurgen Schmidhuber",
+    "orig_gold": "A5078901234",
+    "v2_gold": "A5021575459",
+    "v2_valid": "200 (Riley Howsden)",
+    "top_cand": "A5071172037",
+    "cand_info": {
+      "id": "A5071172037",
+      "name": "J\u00fcrgen Schmidhuber",
+      "works": 644,
+      "cites": 191433,
+      "h_index": 92,
+      "affil": [
+        "Microsoft (United States)",
+        "University of Applied Sciences and Arts of Southern Switzerland"
+      ]
+    }
+  },
+  {
+    "qid": "Q042",
+    "name": "Yann LeCun",
+    "orig_gold": "A5004945511",
+    "v2_gold": "A5004945511",
+    "v2_valid": "404",
+    "top_cand": "A5001226970",
+    "cand_info": {
+      "id": "A5001226970",
+      "name": "Yann LeCun",
+      "works": 545,
+      "cites": 269392,
+      "h_index": 130,
+      "affil": [
+        "NEC (Japan)",
+        "AT&T (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q043",
+    "name": "Fei-Fei Li",
+    "orig_gold": "A5023880327",
+    "v2_gold": "A5023880327",
+    "v2_valid": "200 (C. W. F. Oostvogel)",
+    "top_cand": "A5100450462",
+    "cand_info": {
+      "id": "A5100450462",
+      "name": "Li Fei-Fei",
+      "works": 609,
+      "cites": 223723,
+      "h_index": 137,
+      "affil": [
+        "California Institute of Technology",
+        "Google (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q044",
+    "name": "Andrew Ng",
+    "orig_gold": "A5013098379",
+    "v2_gold": "A5013098379",
+    "v2_valid": "200 (Marcelina Lis)",
+    "top_cand": "A5102617494",
+    "cand_info": {
+      "id": "A5102617494",
+      "name": "Andrew Y. Ng",
+      "works": 341,
+      "cites": 131028,
+      "h_index": 108,
+      "affil": [
+        "Google (United States)",
+        "University of Michigan"
+      ]
+    }
+  },
+  {
+    "qid": "Q048",
+    "name": "Danqi Chen",
+    "orig_gold": "A5050123984",
+    "v2_gold": "A5023943343",
+    "v2_valid": "200 (S.C. Van Dalen)",
+    "top_cand": "A5051064208",
+    "cand_info": {
+      "id": "A5051064208",
+      "name": "Danqi Chen",
+      "works": 173,
+      "cites": 39403,
+      "h_index": 38,
+      "affil": [
+        "Microsoft (United States)",
+        "Google (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q050",
+    "name": "Christopher Manning",
+    "orig_gold": "A5072345012",
+    "v2_gold": "A5079685324",
+    "v2_valid": "404",
+    "top_cand": "A5046006076",
+    "cand_info": {
+      "id": "A5046006076",
+      "name": "Christopher D. Manning",
+      "works": 777,
+      "cites": 185802,
+      "h_index": 140,
+      "affil": [
+        "Microsoft (United States)",
+        "Google (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q051",
+    "name": "Trevor Darrell",
+    "orig_gold": "A5083456123",
+    "v2_gold": "A5034637785",
+    "v2_valid": "200 (Chemischer Arbeitsausschuss.)",
+    "top_cand": "A5029105520",
+    "cand_info": {
+      "id": "A5029105520",
+      "name": "Trevor Darrell",
+      "works": 986,
+      "cites": 224836,
+      "h_index": 148,
+      "affil": [
+        "Microsoft (United States)",
+        "International Computer Science Institute"
+      ]
+    }
+  },
+  {
+    "qid": "Q052",
+    "name": "Sergey Levine",
+    "orig_gold": "A5094567234",
+    "v2_gold": "A5018617519",
+    "v2_valid": "200 (Akmal Kasimov)",
+    "top_cand": "A5026322200",
+    "cand_info": {
+      "id": "A5026322200",
+      "name": "Sergey Levine",
+      "works": 755,
+      "cites": 88753,
+      "h_index": 136,
+      "affil": [
+        "University of Southern California",
+        "Microsoft (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q053",
+    "name": "Alex Smola",
+    "orig_gold": "A5105678345",
+    "v2_gold": "A5048821960",
+    "v2_valid": "200 (A. Jermaczek)",
+    "top_cand": "A5090351022",
+    "cand_info": {
+      "id": "A5090351022",
+      "name": "Alex J. Smola",
+      "works": 201,
+      "cites": 66021,
+      "h_index": 79,
+      "affil": [
+        "Australian National University",
+        "Google (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q054",
+    "name": "Jitendra Malik",
+    "orig_gold": "A5116789456",
+    "v2_gold": "A5019559404",
+    "v2_valid": "200 (Justy Phillips)",
+    "top_cand": "A5001594573",
+    "cand_info": {
+      "id": "A5001594573",
+      "name": "Jitendra Malik",
+      "works": 580,
+      "cites": 176636,
+      "h_index": 151,
+      "affil": [
+        "California Institute of Technology",
+        "Google (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q059",
+    "name": "Professor Geoffrey Hinton",
+    "orig_gold": "A5108093963",
+    "v2_gold": "A5108093963",
+    "v2_valid": "200 (Geoffrey E. Hinton)",
+    "top_cand": "A5160214549",
+    "cand_info": {
+      "id": "A5160214549",
+      "name": "Professor Geoffrey Hinton",
+      "works": 1,
+      "cites": 0,
+      "h_index": 0,
+      "affil": []
+    }
+  },
+  {
+    "qid": "Q060",
+    "name": "Yoshua Bengio",
+    "orig_gold": "A5058729352",
+    "v2_gold": "A5058729352",
+    "v2_valid": "200 (Maria Bentler)",
+    "top_cand": "A5086198262",
+    "cand_info": {
+      "id": "A5086198262",
+      "name": "Yoshua Bengio",
+      "works": 1560,
+      "cites": 520034,
+      "h_index": 201,
+      "affil": [
+        "Canadian Institute for Advanced Research",
+        "University of Southern California"
+      ]
+    }
+  },
+  {
+    "qid": "Q061",
+    "name": "Y. Bengio",
+    "orig_gold": "A5058729352",
+    "v2_gold": "A5058729352",
+    "v2_valid": "200 (Maria Bentler)",
+    "top_cand": "A5160077864",
+    "cand_info": {
+      "id": "A5160077864",
+      "name": "Bengio Y",
+      "works": 1,
+      "cites": 0,
+      "h_index": 0,
+      "affil": []
+    }
+  },
+  {
+    "qid": "Q062",
+    "name": "Bengio Yoshua",
+    "orig_gold": "A5058729352",
+    "v2_gold": "A5058729352",
+    "v2_valid": "200 (Maria Bentler)",
+    "top_cand": "A5086198262",
+    "cand_info": {
+      "id": "A5086198262",
+      "name": "Yoshua Bengio",
+      "works": 1560,
+      "cites": 520034,
+      "h_index": 201,
+      "affil": [
+        "Canadian Institute for Advanced Research",
+        "University of Southern California"
+      ]
+    }
+  },
+  {
+    "qid": "Q063",
+    "name": "Yann LeCun",
+    "orig_gold": "A5004945511",
+    "v2_gold": "A5004945511",
+    "v2_valid": "404",
+    "top_cand": "A5001226970",
+    "cand_info": {
+      "id": "A5001226970",
+      "name": "Yann LeCun",
+      "works": 545,
+      "cites": 269392,
+      "h_index": 130,
+      "affil": [
+        "NEC (Japan)",
+        "AT&T (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q064",
+    "name": "Yann Le Cun",
+    "orig_gold": "A5004945511",
+    "v2_gold": "A5004945511",
+    "v2_valid": "404",
+    "top_cand": "A5001226970",
+    "cand_info": {
+      "id": "A5001226970",
+      "name": "Yann LeCun",
+      "works": 545,
+      "cites": 269392,
+      "h_index": 130,
+      "affil": [
+        "NEC (Japan)",
+        "AT&T (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q065",
+    "name": "Y. LeCun",
+    "orig_gold": "A5004945511",
+    "v2_gold": "A5004945511",
+    "v2_valid": "404",
+    "top_cand": "A5001226970",
+    "cand_info": {
+      "id": "A5001226970",
+      "name": "Yann LeCun",
+      "works": 545,
+      "cites": 269392,
+      "h_index": 130,
+      "affil": [
+        "NEC (Japan)",
+        "AT&T (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q066",
+    "name": "Michael Jordan",
+    "orig_gold": "A5063073998",
+    "v2_gold": "A5063073998",
+    "v2_valid": "200 (Kliudt Ka)",
+    "top_cand": "A5049812527",
+    "cand_info": {
+      "id": "A5049812527",
+      "name": "Michael I. Jordan",
+      "works": 1415,
+      "cites": 213914,
+      "h_index": 172,
+      "affil": [
+        "Link\u00f6ping University",
+        "Broad Institute"
+      ]
+    }
+  },
+  {
+    "qid": "Q067",
+    "name": "M. I. Jordan",
+    "orig_gold": "A5063073998",
+    "v2_gold": "A5063073998",
+    "v2_valid": "200 (Kliudt Ka)",
+    "top_cand": "A5102875616",
+    "cand_info": {
+      "id": "A5102875616",
+      "name": "M. I. Jordan",
+      "works": 2,
+      "cites": 47,
+      "h_index": 2,
+      "affil": [
+        "North Carolina State University"
+      ]
+    }
+  },
+  {
+    "qid": "Q069",
+    "name": "A. Krizhevsky",
+    "orig_gold": "A5086789104",
+    "v2_gold": "A5031152245",
+    "v2_valid": "200 (Alex Krizhevsky)",
+    "top_cand": "A5122259363",
+    "cand_info": {
+      "id": "A5122259363",
+      "name": "A. Krizhevsky",
+      "works": 2,
+      "cites": 0,
+      "h_index": 0,
+      "affil": []
+    }
+  },
+  {
+    "qid": "Q070",
+    "name": "Corinna Cortes",
+    "orig_gold": "A5023969188",
+    "v2_gold": "A5023969188",
+    "v2_valid": "200 (Paul M.P. van Bergen en Henegouwen)",
+    "top_cand": "A5013243115",
+    "cand_info": {
+      "id": "A5013243115",
+      "name": "Corinna Cortes",
+      "works": 153,
+      "cites": 69903,
+      "h_index": 44,
+      "affil": [
+        "University of Copenhagen",
+        "AT&T (United States)"
+      ]
+    }
+  },
+  {
+    "qid": "Q081",
+    "name": "Michael Jordan",
+    "orig_gold": "A5063073998",
+    "v2_gold": "A5063073998",
+    "v2_valid": "200 (Kliudt Ka)",
+    "top_cand": "A5049812527",
+    "cand_info": {
+      "id": "A5049812527",
+      "name": "Michael I. Jordan",
+      "works": 1415,
+      "cites": 213914,
+      "h_index": 172,
+      "affil": [
+        "Link\u00f6ping University",
+        "Broad Institute"
+      ]
+    }
+  },
+  {
+    "qid": "Q083",
+    "name": "David Baker",
+    "orig_gold": "A5001122334",
+    "v2_gold": "A5001122334",
+    "v2_valid": "200 (Zorec Robert)",
+    "top_cand": "A5053192926",
+    "cand_info": {
+      "id": "A5053192926",
+      "name": "David A. Baker",
+      "works": 2464,
+      "cites": 138400,
+      "h_index": 187,
+      "affil": [
+        "Yeditepe University",
+        "University of Massachusetts Dartmouth"
+      ]
+    }
+  },
+  {
+    "qid": "Q085",
+    "name": "Kevin Murphy",
+    "orig_gold": "A5012233445",
+    "v2_gold": "A5012233445",
+    "v2_valid": "200 (Rizwan Khan Pathan)",
+    "top_cand": "A5044098731",
+    "cand_info": {
+      "id": "A5044098731",
+      "name": "Kevin Murphy",
+      "works": 351,
+      "cites": 44029,
+      "h_index": 75,
+      "affil": [
+        "Boston University",
+        "The Graduate Center, CUNY"
+      ]
+    }
+  },
+  {
+    "qid": "Q087",
+    "name": "Brian Smith",
+    "orig_gold": "A5023344556",
+    "v2_gold": "A5023344556",
+    "v2_valid": "200 (\u771f\u4e5f \u9db4\u7530)",
+    "top_cand": "A5111711455",
+    "cand_info": {
+      "id": "A5111711455",
+      "name": "P. Brian Smith",
+      "works": 271,
+      "cites": 13229,
+      "h_index": 62,
+      "affil": [
+        "University of Iowa",
+        "National Institutes of Health"
+      ]
+    }
+  },
+  {
+    "qid": "Q089",
+    "name": "Christopher Bishop",
+    "orig_gold": "A5034455667",
+    "v2_gold": "A5034455667",
+    "v2_valid": "200 (Frank Greenaway)",
+    "top_cand": "A5029519503",
+    "cand_info": {
+      "id": "A5029519503",
+      "name": "Christopher Bishop",
+      "works": 118,
+      "cites": 3631,
+      "h_index": 38,
+      "affil": [
+        "Binghamton University",
+        "State University of New York"
+      ]
+    }
+  },
+  {
+    "qid": "Q090",
+    "name": "Christopher Bishop",
+    "orig_gold": "A5045566778",
+    "v2_gold": "A5045566778",
+    "v2_valid": "200 (Tonggeng Guan)",
+    "top_cand": "A5029519503",
+    "cand_info": {
+      "id": "A5029519503",
+      "name": "Christopher Bishop",
+      "works": 118,
+      "cites": 3631,
+      "h_index": 38,
+      "affil": [
+        "Binghamton University",
+        "State University of New York"
+      ]
+    }
+  }
+]
