@@ -92,3 +92,17 @@ export async function getMetrics() {
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   return res.json()
 }
+
+
+export async function searchSemanticEvidence(query, topK = 10, filters = null) {
+  const res = await fetch(`${BASE}/evidence/search`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, top_k: topK, filters }),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+  }
+  return res.json()
+}

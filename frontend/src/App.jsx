@@ -1,24 +1,24 @@
 /**
  * Architectural Role: Main Application Component & Feature Coordinator.
  * 
- * Orchestrates user search queries, author disambiguation workflows, publication
- * inspection, and source status monitoring across modular feature components:
- * - features/search: Query input, paper cards, and analytics stats bar.
- * - features/author_resolution: Interactive candidate selector modal for human-in-the-loop review.
- * - features/deduplication: Merge inspection and duplicate group breakdowns.
- * - features/monitoring: Circuit breaker and source health status indicators.
+ * Orchestrates:
+ * 1. Author Identity Resolution Mode (Multi-source harvesting, evidence ranking, disambiguation)
+ * 2. Semantic Literature & RAG Mode (ChromaDB 384-d dense vector retrieval and grounded explanations)
+ * 3. Cross-source publication deduplication and monitoring panels
  */
 import { useState, useEffect } from 'react'
 import SearchBar from './features/search/SearchBar.jsx'
 import StatsBar from './features/search/StatsBar.jsx'
 import SourceStatusPanel from './features/monitoring/SourceStatusPanel.jsx'
 import PaperCard from './features/search/PaperCard.jsx'
+import SemanticResultCard from './features/search/SemanticResultCard.jsx'
 import CandidateSelector from './features/author_resolution/CandidateSelector.jsx'
 import {
   searchAuthor,
   getAuthorCandidates,
   fetchAuthorCandidatesV1,
   createAuthorResolution,
+  searchSemanticEvidence,
 } from './services/api.js'
 
 // ── Skeleton placeholders while loading ──────────────────────────
@@ -33,33 +33,41 @@ function SkeletonCard() {
 }
 
 // ── Empty / error states ──────────────────────────────────────────
-function EmptyState({ query }) {
+function EmptyState({ query, mode = 'author' }) {
   return (
     <div className="state-box">
       <div className="state-icon">🔍</div>
-      <p className="state-title">No papers found for "{query}"</p>
-      <p className="state-desc">Try a different name or check spelling.</p>
+      <p className="state-title">No literature found for "{query}"</p>
+      <p className="state-desc">
+        {mode === 'author'
+          ? "No publications matched this author query across connected registries. Verify spelling or check upstream source statuses."
+          : "No indexed publications cleared the semantic similarity threshold (τ = 0.35) for this concept."}
+      </p>
     </div>
   )
 }
 
 function ErrorState({ message }) {
   return (
-    <div className="state-box error">
+    <div className="state-box">
       <div className="state-icon">⚠️</div>
-      <p className="state-title">Search failed</p>
+      <p className="state-title" style={{ color: 'var(--red)' }}>Search Error</p>
       <p className="state-desc">{message}</p>
     </div>
   )
 }
 
-function WelcomeState() {
+function WelcomeState({ mode = 'author' }) {
   return (
     <div className="state-box">
-      <div className="state-icon">🏛️</div>
-      <p className="state-title">HAMMER Intelligence</p>
+      <div className="state-icon">{mode === 'author' ? '🏛️' : '🧠'}</div>
+      <p className="state-title">
+        {mode === 'author' ? 'HAMMER Author Intelligence' : 'HAMMER Semantic Literature & RAG'}
+      </p>
       <p className="state-desc">
-        Search scholarly metadata across connected sources, compare duplicate publication records, and review author candidates with traceable evidence.
+        {mode === 'author'
+          ? 'Search scholarly metadata across connected sources, compare duplicate publication records, and review author candidates with traceable evidence.'
+          : 'Query 384-dimensional dense semantic vectors (all-MiniLM-L6-v2) over indexed scholarly publications with grounded claim verification.'}
       </p>
     </div>
   )
@@ -67,49 +75,89 @@ function WelcomeState() {
 
 // ── Main App ──────────────────────────────────────────────────────
 export default function App() {
-  const [query, setQuery]       = useState('')
-  const [loading, setLoading]   = useState(false)
+  const [searchMode, setSearchMode] = useState('author') // 'author' | 'semantic'
+  const [query, setQuery]           = useState('')
+  const [loading, setLoading]       = useState(false)
   const [loadingMessage, setLoadingMessage] = useState('Searching metadata...')
-  const [result, setResult]     = useState(null)
+  const [result, setResult]         = useState(null)
+  const [semanticResults, setSemanticResults] = useState(null)
   const [candidates, setCandidates] = useState(null)
-  const [retrieval, setRetrieval] = useState(null)
-  const [error, setError]       = useState(null)
+  const [retrieval, setRetrieval]   = useState(null)
+  const [error, setError]           = useState(null)
   const [unresolvedMessage, setUnresolvedMessage] = useState(null)
-  const [searched, setSearched] = useState('')
+  const [searched, setSearched]     = useState('')
 
   // ── Rotating Loading Message ─────────────────────────────────────
   useEffect(() => {
     if (!loading) return
-    const messages = [
-      "Searching metadata...",
-      "Querying scholarly sources...",
-      "Retrieving indexed publications...",
+    const messages = searchMode === 'author' ? [
+      "Searching metadata across registries...",
+      "Querying OpenAlex, DBLP, Crossref, and arXiv...",
+      "Retrieving candidate profiles...",
+      "Calculating multi-signal evidence...",
       "Merging duplicate records...",
-      "Finalizing publication list...",
-      "Reconciling duplicate records...",
-      "Checking source provenance..."
+      "Finalizing publication list..."
+    ] : [
+      "Embedding query into 384-d semantic space...",
+      "Searching ChromaDB vector index...",
+      "Filtering low-similarity candidates (cosine threshold τ = 0.35)...",
+      "Retrieving grounded publication abstracts...",
+      "Synthesizing traceable context..."
     ]
     let idx = 0
     const interval = setInterval(() => {
       idx = (idx + 1) % messages.length
       setLoadingMessage(messages[idx])
-    }, 2000)
+    }, 1800)
     return () => clearInterval(interval)
-  }, [loading])
+  }, [loading, searchMode])
+
+  function handleModeChange(newMode) {
+    setSearchMode(newMode)
+    setResult(null)
+    setSemanticResults(null)
+    setCandidates(null)
+    setRetrieval(null)
+    setError(null)
+    setUnresolvedMessage(null)
+  }
 
   async function handleSearch() {
-    const name = query.trim()
-    if (!name) return
+    const q = query.trim()
+    if (!q) return
 
     setLoading(true)
     setError(null)
     setUnresolvedMessage(null)
     setResult(null)
+    setSemanticResults(null)
     setCandidates(null)
     setRetrieval(null)
-    setSearched(name)
-    setLoadingMessage('Resolving author identity & evidence...')
+    setSearched(q)
 
+    if (searchMode === 'semantic') {
+      await handleSemanticSearch(q)
+    } else {
+      await handleAuthorSearch(q)
+    }
+  }
+
+  // ── Semantic Search Flow ─────────────────────────────────────────
+  async function handleSemanticSearch(term) {
+    setLoadingMessage('Searching dense vector index...')
+    try {
+      const data = await searchSemanticEvidence(term, 10)
+      setSemanticResults(data)
+    } catch (err) {
+      setError(err.message || 'Semantic search failed')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // ── Author Search Flow ───────────────────────────────────────────
+  async function handleAuthorSearch(name) {
+    setLoadingMessage('Resolving author identity & evidence...')
     try {
       let candData = null
       try {
@@ -207,6 +255,7 @@ export default function App() {
   }
 
   const papers = result?.papers || []
+  const semanticHits = semanticResults?.hits || []
 
   return (
     <div className="app">
@@ -225,6 +274,8 @@ export default function App() {
           onValueChange={setQuery}
           onSubmit={handleSearch}
           loading={loading}
+          searchMode={searchMode}
+          onSearchModeChange={handleModeChange}
         />
 
         {/* Unresolved message banner */}
@@ -236,7 +287,7 @@ export default function App() {
           </div>
         )}
 
-        {/* Candidate Selector */}
+        {/* Candidate Selector (Author Mode) */}
         {!loading && candidates && (
           <CandidateSelector 
             candidates={candidates} 
@@ -246,11 +297,19 @@ export default function App() {
           />
         )}
 
-        {/* Stats */}
-        {result && !loading && !candidates && <StatsBar data={result} />}
+        {/* Author Mode: Stats & Source status */}
+        {searchMode === 'author' && result && !loading && !candidates && <StatsBar data={result} />}
+        {searchMode === 'author' && result && !loading && !candidates && (
+          <SourceStatusPanel statuses={result.source_statuses} />
+        )}
 
-        {/* Source status */}
-        {result && !loading && !candidates && <SourceStatusPanel statuses={result.source_statuses} />}
+        {/* Semantic Mode: Grounded Explanation Banner */}
+        {searchMode === 'semantic' && semanticResults?.explanation && !loading && (
+          <div className="semantic-explanation-banner">
+            <h4>💡 Grounded Literature Synthesis</h4>
+            <p>{semanticResults.explanation.summary}</p>
+          </div>
+        )}
 
         {/* Loading skeletons */}
         {loading && (
@@ -267,21 +326,38 @@ export default function App() {
         {error && !loading && <ErrorState message={error} />}
 
         {/* Welcome */}
-        {!loading && !result && !error && !candidates && !unresolvedMessage && <WelcomeState />}
-
-        {/* Empty */}
-        {!loading && result && papers.length === 0 && !error && !candidates && !unresolvedMessage && (
-          <EmptyState query={searched} />
+        {!loading && !result && !semanticResults && !error && !candidates && !unresolvedMessage && (
+          <WelcomeState mode={searchMode} />
         )}
 
-        {/* Paper cards */}
-        {!loading && papers.length > 0 && !candidates && (
+        {/* Empty States */}
+        {!loading && searchMode === 'author' && result && papers.length === 0 && !error && !candidates && !unresolvedMessage && (
+          <EmptyState query={searched} mode="author" />
+        )}
+        {!loading && searchMode === 'semantic' && semanticResults && semanticHits.length === 0 && !error && (
+          <EmptyState query={searched} mode="semantic" />
+        )}
+
+        {/* Author Mode Results */}
+        {!loading && searchMode === 'author' && papers.length > 0 && !candidates && (
           <div className="results-container">
             <p className="results-count">
               Showing {papers.length} reconciled publication{papers.length !== 1 ? 's' : ''} for "{searched}"
             </p>
             {papers.map(p => (
               <PaperCard key={p.canonical_id || p.id} paper={p} />
+            ))}
+          </div>
+        )}
+
+        {/* Semantic Mode Results */}
+        {!loading && searchMode === 'semantic' && semanticHits.length > 0 && (
+          <div className="results-container">
+            <p className="results-count">
+              Found {semanticHits.length} semantically relevant publication{semanticHits.length !== 1 ? 's' : ''} for "{searched}"
+            </p>
+            {semanticHits.map((hit, idx) => (
+              <SemanticResultCard key={hit.document_id || idx} hit={hit} rank={idx + 1} />
             ))}
           </div>
         )}
