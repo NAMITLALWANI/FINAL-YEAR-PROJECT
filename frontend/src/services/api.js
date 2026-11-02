@@ -11,6 +11,18 @@
  */
 const BASE = ''  // proxied by Vite → localhost:8000
 
+function parseError(err, status) {
+  let msg = err.detail || err.error || `HTTP ${status}`
+  if (Array.isArray(msg)) {
+    return msg.map(m => m.msg || JSON.stringify(m)).join('; ')
+  }
+  if (typeof msg === 'object' && msg !== null) {
+    return JSON.stringify(msg)
+  }
+  return String(msg)
+}
+
+
 export async function searchAuthor(
   name,
   candidateId = null,
@@ -27,7 +39,7 @@ export async function searchAuthor(
   const res = await fetch(`${BASE}/search?${params}`)
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
-    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+    throw new Error(parseError(err, res.status))
   }
   return res.json()
 }
@@ -38,7 +50,7 @@ export async function getAuthorCandidates(name, institution = null) {
   const res = await fetch(`${BASE}/search/candidates?${params}`)
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
-    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+    throw new Error(parseError(err, res.status))
   }
   return res.json()
 }
@@ -51,7 +63,7 @@ export async function fetchAuthorCandidatesV1(authorName, institutionHint = null
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
-    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+    throw new Error(parseError(err, res.status))
   }
   return res.json()
 }
@@ -64,7 +76,7 @@ export async function createAuthorResolution(payload) {
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
-    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+    throw new Error(parseError(err, res.status))
   }
   return res.json()
 }
@@ -102,7 +114,7 @@ export async function searchSemanticEvidence(query, topK = 10, filters = null) {
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
-    throw new Error(err.detail || err.error || `HTTP ${res.status}`)
+    throw new Error(parseError(err, res.status))
   }
   return res.json()
 }
