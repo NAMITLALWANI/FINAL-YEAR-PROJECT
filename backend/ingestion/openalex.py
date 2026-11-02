@@ -31,10 +31,17 @@ class OpenAlexConnector(BaseConnector):
             "per-page": 10
         }
         
-        async with httpx.AsyncClient(timeout=self.timeout) as client:
-            resp = await client.get(f"{BASE_URL}/authors", params=params)
-            resp.raise_for_status()
-            results = resp.json().get("results", [])
+        try:
+            async with httpx.AsyncClient(timeout=self.timeout) as client:
+                resp = await client.get(f"{BASE_URL}/authors", params=params)
+                resp.raise_for_status()
+                results = resp.json().get("results", [])
+        except httpx.HTTPStatusError as e:
+            logger.warning(f"OpenAlex search_authors HTTP error {e.response.status_code}: {e}")
+            return []
+        except Exception as e:
+            logger.warning(f"OpenAlex search_authors error: {e}")
+            return []
 
         candidates = []
         for a in results:

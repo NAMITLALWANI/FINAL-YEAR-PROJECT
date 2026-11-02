@@ -57,7 +57,7 @@ function WelcomeState() {
   return (
     <div className="state-box">
       <div className="state-icon">🏛️</div>
-      <p className="state-title">ProjectX Intelligence</p>
+      <p className="state-title">HAMMER Intelligence</p>
       <p className="state-desc">
         Search scholarly metadata across connected sources, compare duplicate publication records, and review author candidates with traceable evidence.
       </p>
@@ -213,7 +213,7 @@ export default function App() {
       {/* ── Header ── */}
       <header className="header">
         <div className="header-brand">
-          <span className="header-logo">ProjectX</span>
+          <span className="header-logo">HAMMER</span>
         </div>
         <span className="header-subtitle">Institutional Research Discovery</span>
       </header>
