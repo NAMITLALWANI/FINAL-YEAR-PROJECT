@@ -8,6 +8,8 @@ The mutable application database is not an evaluation snapshot. At the last appl
 
 ## Identity query sampling and independent review
 
+> **Status note (19 November 2026):** this document predates the Stage 2 decisions. The approved pilot is **10 resolved identities and 5 unresolved controls** (workflow only); the original 100-query minimum and 10-query pilot below are historical and not approved. See `docs/research/stage2/UPDATED_DECISION_REGISTER.md` (D09). Main-study size is deferred until after the pilot.
+
 Prepare **at least 100 author queries**. Sample cases to cover common and rare names, name variants, differing scripts/transliterations where applicable, affiliation changes, discipline changes, sparse profiles, conflicting source evidence, and cases for which the correct result is unresolved. Include multiple query variants for some people; keep all variants of a person in the same identity group. Track the sampling frame and excluded queries outside resolver output.
 
 ### Reviewer packet workflow and 10-query pilot

@@ -347,3 +347,8 @@ Mandatory protections: no destructive Git operations; no duplicate checkout; no 
 
 **Recommended next task for ENG-02B:** Owner review and target/backup-location decision using the findings above. No backup or migration is implied.  
 **Recommended next task for P2-1:** Owner review of the five drafts and decisions listed in them. No case selection or annotation is implied.
+
+
+## Five-signal evidence implementation update — 19 November 2026
+
+An implementation task (uncommitted working tree on top of `bee7eab`) made publication, coauthor, institution and temporal evidence obtainable from supplied context, added a conservative missing-evidence policy, separated empty retrieval from provider failure, corrected the deduplication edition regex, and exposed optional context in the UI. Approved weights and thresholds are unchanged. Nothing was evaluated empirically and no live provider was called; the new OpenAlex works requests are verified only against mocked transports. Details, tests and open decisions: `docs/research/paper_preparation/FIVE_SIGNAL_IMPLEMENTATION_NOTES.md` and `FIVE_SIGNAL_DATA_SOURCE_FEASIBILITY.md`. Research gates in this roadmap are unchanged; RQ1 stays conditional.
