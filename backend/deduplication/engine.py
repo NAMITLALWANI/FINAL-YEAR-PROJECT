@@ -88,7 +88,7 @@ def _threshold(src_a: str, src_b: str) -> float:
 # ── Edition and Conflict Detection Helpers ─────────────────────────
 
 _EDITION_RE = re.compile(
-    r"(?:(\d+)(?:st|nd|rd|th)?\s+ed(?:ition)?|(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+ed(?:ition)?)",
+    r"\b(?:(\d+)(?:st|nd|rd|th)?\s+ed(?:ition)?|(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+ed(?:ition)?)\b",
     re.IGNORECASE,
 )
 _WORD_TO_EDITION = {
