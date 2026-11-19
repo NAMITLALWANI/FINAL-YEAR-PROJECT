@@ -60,7 +60,8 @@ def test_explicit_empty_candidate_list_does_not_repeat_source_request():
                 reason="No candidates were returned.", candidate_ids=[],
             )
             assert result.status == UNRESOLVED
-            assert result.decision_reason == "No candidates were returned."
+            assert result.decision_reason.startswith("No candidates were returned.")          # reviewer reason first
+            assert "Algorithmic assessment: unresolved" in result.decision_reason
         await engine.dispose()
 
     run(scenario())

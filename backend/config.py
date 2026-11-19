@@ -61,6 +61,14 @@ AUTHOR_SCORE_WEIGHTS = {
     "temporal_compatibility": 0.10,
 }
 
+# ── Author candidate enrichment (retrieval bounds, not decision thresholds) ──
+# Query-works lookup: one request per identifier kind, at most 50 identifiers per query (author_resolution.context).
+# Coauthor sample: at most PAGES x PER_PAGE works per candidate, basic paging only
+# (OpenAlex documents cursor paging beyond page 1 as requiring an API key).
+ENABLE_AUTHOR_ENRICHMENT = os.getenv("ENABLE_AUTHOR_ENRICHMENT", "true").lower() == "true"
+AUTHOR_ENRICHMENT_WORKS_PER_PAGE = int(os.getenv("AUTHOR_ENRICHMENT_WORKS_PER_PAGE", "100"))
+AUTHOR_ENRICHMENT_MAX_PAGES = int(os.getenv("AUTHOR_ENRICHMENT_MAX_PAGES", "2"))
+
 
 
 # ── Timeouts ─────────────────────────────────────────────────────

@@ -55,11 +55,14 @@ export async function getAuthorCandidates(name, institution = null) {
   return res.json()
 }
 
-export async function fetchAuthorCandidatesV1(authorName, institutionHint = null) {
+export async function fetchAuthorCandidatesV1(authorName, institutionHint = null, context = null) {
+  // Optional context is omitted entirely when absent: the frontend never invents context.
+  const body = { author_name: authorName, institution_hint: institutionHint }
+  if (context) body.context = context
   const res = await fetch(`${BASE}/author-resolutions/candidates`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ author_name: authorName, institution_hint: institutionHint }),
+    body: JSON.stringify(body),
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))

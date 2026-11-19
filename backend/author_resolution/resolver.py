@@ -7,11 +7,13 @@ and safety-first non-linear decision gates.
 Key Architectural Invariants:
 1. Decision Gates Overrule Argmax Ranking:
    - Having the highest similarity score (rank 1) does NOT imply automatic resolution.
-   - Automatic selection (auto_selected) requires clearing four simultaneous gates:
+   - Automatic selection (auto_selected) requires clearing four simultaneous gates (policy.py):
      a) Absolute Score Gate: S1 >= 0.75
-     b) Margin Separation Gate: Delta S = (S1 - S2) >= 0.15
-     c) Dominance Ratio Gate: R_dom = (S1 / S2) >= 1.35
-     d) Evidence Signal Sufficiency: Non-zero signals in >= 2 independent categories.
+     b) Margin Separation Gate: Delta S = (S1 - S2) >= 0.15 (not applicable to a single-candidate pool)
+     c) Dominance Ratio Gate: R_dom = (S1 / S2) >= 1.35 (not applicable to a single-candidate pool)
+     d) Evidence Signal Sufficiency: at least 2 *available* (non-null) signals for the top candidate.
+   - and, in addition, the evidence-sufficiency safeguards in policy.py (unscored competitor, corroboration,
+     zero-support conflict, incomparable evidence sets, incomplete evidence), which only withhold automation.
 2. Safety Through Abstention (Precision-First Posture):
    - When evidence is ambiguous, the system deliberately abstains and assigns
      'manual_selection_required' (routing candidates to the human-in-the-loop review UI)
@@ -23,7 +25,7 @@ Key Architectural Invariants:
 from __future__ import annotations
 
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field, replace
 from datetime import datetime, timezone
 import json
 from typing import Any
@@ -40,22 +42,53 @@ from config import (
 from database import Author, AuthorExternalId, AuthorCandidate, AuthorResolution, AuthorResolutionEvidence
 from author_resolution.candidates import (
     AuthorCandidateInput,
+    CandidateGenerationResult,
     OpenAlexCandidate,
     OpenAlexCandidateService,
     normalize_name,
 )
+from author_resolution.context import QueryContext
+from author_resolution.enrichment import CandidateEnrichmentService, EnrichmentReport
 from author_resolution.evidence import Evidence, extract_evidence
+from author_resolution.policy import (
+    AUTO_RESOLVED, MANUAL_REVIEW, UNRESOLVED, DecisionOutcome, evaluate_decision,
+)
 from author_resolution.scoring import CandidateScore, score_evidence
 
-
-AUTO_RESOLVED = "auto_selected"
-MANUAL_REVIEW = "manual_selection_required"
-UNRESOLVED = "unresolved"
 MANUAL_SELECTED = "manual_selected"
 
 
 class CandidateSourceUnavailable(RuntimeError):
-    """Candidate retrieval failed; this is not an unresolved identity decision."""
+    """Candidate retrieval failed; this is not an unresolved identity decision.
+
+    A successful response with zero candidates is *not* this error: it is a legitimate
+    retrieval outcome (status "empty") that resolves to ``unresolved`` with no candidate rows.
+    """
+
+    def __init__(self, message: str, error_code: str | None = None):
+        super().__init__(message)
+        self.error_code = error_code
+
+
+@dataclass(frozen=True)
+class PoolResult:
+    """Structured outcome of candidate retrieval + enrichment + persistence."""
+    rows: list[AuthorCandidate]
+    ranked: list["RankedCandidate"]
+    status: str                      # "ok" | "empty" | provider error code
+    failed: bool = False
+    error_code: str | None = None
+    enrichment: EnrichmentReport | None = None
+    query_context: QueryContext = field(default_factory=QueryContext)
+
+
+@dataclass(frozen=True)
+class ResolutionOutcome:
+    resolution: AuthorResolution
+    retrieval_status: str            # "ok" | "empty" | "stored_pool"
+    decision: DecisionOutcome
+    enrichment: dict[str, Any] | None = None
+    unparsable_candidate_ids: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -65,52 +98,67 @@ class RankedCandidate:
     score: CandidateScore
 
 
-def rank_candidates(candidates: list[OpenAlexCandidate], context: dict[str, Any] | None = None) -> list[RankedCandidate]:
+def rank_candidates(candidates: list[OpenAlexCandidate], context: Any = None) -> list[RankedCandidate]:
+    ctx = QueryContext.from_any(context)
     ranked: list[RankedCandidate] = []
     for candidate in candidates:
-        evidence = extract_evidence(candidate, context)
+        evidence = extract_evidence(candidate, ctx)
         ranked.append(RankedCandidate(candidate, evidence, score_evidence(evidence)))
     # deterministic display ordering only; it is not an identity assertion.
     return sorted(ranked, key=lambda item: (item.score.score is not None, item.score.score or -1.0, item.candidate.source_author_id), reverse=True)
 
 
 def decide(ranked: list[RankedCandidate]) -> tuple[str, float | None, float | None, float | None, float | None, str]:
-    if not ranked or ranked[0].score.score is None:
-        return UNRESOLVED, None, None, None, None, "Insufficient comparable evidence."
-    top = ranked[0].score.score
-    second = ranked[1].score.score if len(ranked) > 1 else None
-    margin = top - second if second is not None else top
-    dominance = (top / second) if second and second > 0 else None
-    strong = (top >= AUTHOR_AUTO_SCORE_THRESHOLD and ranked[0].score.available_signals >= AUTHOR_MIN_AVAILABLE_SIGNALS_FOR_AUTO and (second is None or (margin >= AUTHOR_AUTO_MARGIN_THRESHOLD and (dominance is None or dominance >= AUTHOR_AUTO_DOMINANCE_THRESHOLD))))
-    if strong:
-        return AUTO_RESOLVED, top, second, margin, dominance, "Conservative configurable engineering heuristics were met; review remains possible."
-    if top >= AUTHOR_MANUAL_SCORE_THRESHOLD:
-        return MANUAL_REVIEW, top, second, margin, dominance, "Candidate evidence is plausible but not sufficiently separated for automatic resolution."
-    return UNRESOLVED, top, second, margin, dominance, "No candidate has sufficient available evidence."
+    """Compatibility wrapper returning (status, top, second, margin, dominance, reason)."""
+    return evaluate_decision(ranked).as_tuple()
 
 
 class AuthorResolutionService:
-    def __init__(self, candidate_service: OpenAlexCandidateService | None = None):
+    def __init__(
+        self,
+        candidate_service: OpenAlexCandidateService | None = None,
+        enrichment_service: CandidateEnrichmentService | None = None,
+    ):
         self.candidate_service = candidate_service or OpenAlexCandidateService()
+        self.enrichment_service = enrichment_service or CandidateEnrichmentService()
 
-    async def generate_and_rank(self, author_name: str, institution_hint: str | None, context: dict[str, Any] | None, db: AsyncSession) -> tuple[list[AuthorCandidate], list[RankedCandidate], str]:
+    async def generate_pool(
+        self, author_name: str, institution_hint: str | None, context: dict[str, Any] | None, db: AsyncSession
+    ) -> PoolResult:
+        """Retrieve, enrich, persist and rank candidates, keeping retrieval status structured.
+
+        ``status`` is "ok" (candidates), "empty" (successful response, zero candidates) or a provider
+        error code (``failed=True``). Enrichment failures never fail the pool; they are recorded per
+        signal and reported in ``enrichment``.
+        """
         request_context = dict(context or {})
         if institution_hint:
             request_context.setdefault("institution_hints", [institution_hint])
+        query_context = QueryContext.from_any(request_context)
         result = await self.candidate_service.generate(
             AuthorCandidateInput(author_name, institution_hint, request_context)
         )
         if result.status == "failed":
-            return [], [], result.error_code or "candidate_source_failed"
+            code = result.error_code or "candidate_source_failed"
+            return PoolResult([], [], code, True, code, None, query_context)
+        report = await self.enrichment_service.enrich(result.candidates, query_context)
+        enriched = replace(result, candidates=report.candidates)
         try:
-            rows = await self.candidate_service.persist_candidates(result, db)
+            rows = await self.candidate_service.persist_candidates(enriched, db)
             await db.commit()
         except SQLAlchemyError:
             await db.rollback()
             raise
-        return rows, rank_candidates(result.candidates, request_context), result.status
+        return PoolResult(rows, rank_candidates(report.candidates, query_context), result.status, False, None, report, query_context)
 
-    async def create_resolution(
+    async def generate_and_rank(self, author_name: str, institution_hint: str | None, context: dict[str, Any] | None, db: AsyncSession) -> tuple[list[AuthorCandidate], list[RankedCandidate], str]:
+        pool = await self.generate_pool(author_name, institution_hint, context, db)
+        return pool.rows, pool.ranked, pool.status
+
+    async def create_resolution(self, *args: Any, **kwargs: Any) -> AuthorResolution:
+        return (await self.create_resolution_detailed(*args, **kwargs)).resolution
+
+    async def create_resolution_detailed(
         self,
         author_name: str,
         institution_hint: str | None,
@@ -120,16 +168,19 @@ class AuthorResolutionService:
         mark_unresolved: bool = False,
         reason: str | None = None,
         candidate_ids: list[str] | None = None,
-    ) -> AuthorResolution:
+    ) -> ResolutionOutcome:
         request_context = dict(context or {})
         if institution_hint:
             request_context.setdefault("institution_hints", [institution_hint])
+        query_context = QueryContext.from_any(request_context)
         normalized_query = normalize_name(author_name)
 
         if mark_unresolved and selected_candidate_id:
             raise ValueError("An unresolved decision cannot also select a candidate.")
 
         requested_ids: set[str] | None = None
+        unparsable: list[str] = []
+        enrichment_summary: dict[str, Any] | None = None
         if candidate_ids is not None:
             requested_ids = set(candidate_ids)
             if candidate_ids:
@@ -146,32 +197,31 @@ class AuthorResolutionService:
             row_by_source_id = {row.source_author_id: row for row in rows}
             candidates_list = []
             for row in rows:
-                if row.raw_payload_json:
-                    try:
-                        payload_data = json.loads(row.raw_payload_json)
-                        raw_cand = payload_data.get("payload", payload_data) if isinstance(payload_data, dict) else payload_data
-                        cand = OpenAlexCandidate.from_openalex(
-                            raw_cand,
-                            AuthorCandidateInput(author_name),
-                            row.retrieved_at,
-                        )
-                        if cand is not None:
-                            candidates_list.append(cand)
-                    except Exception:
-                        pass
-            ranked = rank_candidates(candidates_list, request_context) if candidates_list else []
-            generation_status = "ok"
+                try:
+                    candidates_list.append(replace(OpenAlexCandidate.from_persisted(row), query_original=author_name))
+                except Exception:
+                    # Not silent: the decision is marked incomplete and the id is returned to the caller.
+                    unparsable.append(row.id)
+            ranked = rank_candidates(candidates_list, query_context) if candidates_list else []
+            retrieval_status = "stored_pool"
         else:
-            rows, ranked, generation_status = await self.generate_and_rank(author_name, institution_hint, context, db)
-            if generation_status != "ok":
-                raise CandidateSourceUnavailable("Candidate source unavailable: no resolution decision was recorded")
+            pool = await self.generate_pool(author_name, institution_hint, context, db)
+            if pool.failed:
+                raise CandidateSourceUnavailable(
+                    "Candidate source unavailable: no resolution decision was recorded", pool.error_code)
+            rows, ranked, retrieval_status = pool.rows, pool.ranked, pool.status   # "ok" or "empty"
             row_by_source_id = {row.source_author_id: row for row in rows}
+            enrichment_summary = pool.enrichment.summary() if pool.enrichment else None
 
-        status, top, second, margin, dominance, decision_reason = decide(ranked)
+        outcome = evaluate_decision(ranked, incomplete_pool=bool(unparsable))
+        status, top, second, margin, dominance, decision_reason = outcome.as_tuple()
+        if retrieval_status == "empty":
+            decision_reason = "No candidates were returned by OpenAlex (successful empty response); no identity could be proposed."
+        algorithmic = f"Algorithmic assessment: {status}. {decision_reason}"
         selected_row = None
 
         if mark_unresolved:
-            status, decision_reason = UNRESOLVED, reason or "Reviewer marked this query unresolved."
+            status, decision_reason = UNRESOLVED, f"{reason or 'Reviewer marked this query unresolved.'} | {algorithmic}"
             top, second, margin, dominance = None, None, None, None
         elif selected_candidate_id:
             if requested_ids is not None and selected_candidate_id not in requested_ids:
@@ -179,7 +229,7 @@ class AuthorResolutionService:
             selected_row = await db.get(AuthorCandidate, selected_candidate_id)
             if selected_row is None or selected_row.query_normalized != normalized_query:
                 raise ValueError("Selected candidate does not belong to this author query.")
-            status, decision_reason = MANUAL_SELECTED, reason or "Reviewer manually selected this candidate."
+            status, decision_reason = MANUAL_SELECTED, f"{reason or 'Reviewer manually selected this candidate.'} | {algorithmic}"
         elif status == AUTO_RESOLVED and ranked:
             selected_row = row_by_source_id.get(ranked[0].candidate.source_author_id)
 
@@ -230,49 +280,27 @@ class AuthorResolutionService:
 
             await db.flush()
 
-            if ranked:
-                for item in ranked:
-                    candidate_row = row_by_source_id.get(item.candidate.source_author_id)
-                    if not candidate_row:
-                        continue
-                    for evidence in item.evidence:
-                        values = evidence.as_db_values()
-                        db.add(AuthorResolutionEvidence(
-                            resolution=resolution,
-                            candidate=candidate_row,
-                            weight=None,
-                            weighted_contribution=item.score.contributions.get(evidence.signal_name),
-                            **values,
-                        ))
-            elif selected_row and selected_row.raw_payload_json:
-                try:
-                    p_data = json.loads(selected_row.raw_payload_json)
-                    r_cand = p_data.get("payload", p_data) if isinstance(p_data, dict) else p_data
-                    cand = OpenAlexCandidate.from_openalex(
-                        r_cand,
-                        AuthorCandidateInput(author_name),
-                        selected_row.retrieved_at,
-                    )
-                    ev_list = extract_evidence(cand, request_context)
-                    scored = score_evidence(ev_list)
-                    for evidence in ev_list:
-                        values = evidence.as_db_values()
-                        db.add(AuthorResolutionEvidence(
-                            resolution=resolution,
-                            candidate=selected_row,
-                            weight=None,
-                            weighted_contribution=scored.contributions.get(evidence.signal_name),
-                            **values,
-                        ))
-                except Exception:
-                    pass
+            for item in ranked:
+                candidate_row = row_by_source_id.get(item.candidate.source_author_id)
+                if not candidate_row:
+                    continue
+                for evidence in item.evidence:
+                    values = evidence.as_db_values()
+                    db.add(AuthorResolutionEvidence(
+                        resolution=resolution,
+                        candidate=candidate_row,
+                        # Effective (renormalised) weight actually applied; None when the signal was unavailable.
+                        weight=item.score.effective_weights.get(evidence.signal_name),
+                        weighted_contribution=item.score.contributions.get(evidence.signal_name),
+                        **values,
+                    ))
 
             await db.commit()
             await db.refresh(resolution)
         except SQLAlchemyError:
             await db.rollback()
             raise
-        return resolution
+        return ResolutionOutcome(resolution, retrieval_status, outcome, enrichment_summary, tuple(unparsable))
 
     async def get_resolution(self, resolution_id: str, db: AsyncSession) -> AuthorResolution | None:
         return await db.scalar(select(AuthorResolution).where(AuthorResolution.id == resolution_id))

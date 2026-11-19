@@ -21,6 +21,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from config import OPENALEX_API_KEY, OPENALEX_MAILTO, SOURCE_TIMEOUT
 from database import AuthorCandidate
+from author_resolution.enrichment_types import CoauthorEvidence, PublicationLinkEvidence
 from log_config import get_logger
 
 
@@ -145,6 +146,7 @@ def _normalise_institution(item: Any) -> dict[str, Any] | None:
         "name": name.strip(),
         "normalized_name": normalize_name(name),
         "source_institution_id": _source_identifier(institution.get("id")),
+        "ror": institution.get("ror") if isinstance(institution.get("ror"), str) else None,
         "country_code": institution.get("country_code"),
         "type": institution.get("type"),
         "years": item.get("years") if isinstance(item.get("years"), list) else None,
@@ -231,6 +233,10 @@ class OpenAlexCandidate:
     years_active_end: int | None
     retrieved_at: datetime
     raw_payload: dict[str, Any]
+    # Enrichment evidence (None = unknown / never requested). Kept separate from the
+    # legacy sample_publications / coauthor_summary lists, which mirror it for persistence.
+    publication_evidence: PublicationLinkEvidence | None = None
+    coauthor_evidence: CoauthorEvidence | None = None
 
     @classmethod
     def from_openalex(
@@ -299,14 +305,25 @@ class OpenAlexCandidate:
                     "source": self.source,
                     "source_author_url": self.source_author_url,
                     "payload": self.raw_payload,
+                    "enrichment": self.enrichment_dict(),
                 }
             ),
             "retrieved_at": self.retrieved_at,
         }
 
+    def enrichment_dict(self) -> dict[str, Any] | None:
+        if self.publication_evidence is None and self.coauthor_evidence is None:
+            return None
+        return {
+            "publications": self.publication_evidence.to_dict() if self.publication_evidence else None,
+            "coauthors": self.coauthor_evidence.to_dict() if self.coauthor_evidence else None,
+        }
+
     @classmethod
     def from_persisted(cls, row: Any) -> "OpenAlexCandidate":
         payload = json.loads(row.raw_payload_json or "{}")
+        enrichment = payload.get("enrichment") if isinstance(payload, dict) else None
+        enrichment = enrichment if isinstance(enrichment, dict) else {}
         return cls(
             query_original=row.query_original,
             query_normalized=row.query_normalized,
@@ -327,6 +344,8 @@ class OpenAlexCandidate:
             years_active_end=row.years_active_end,
             retrieved_at=row.retrieved_at,
             raw_payload=payload.get("payload", payload),
+            publication_evidence=PublicationLinkEvidence.from_dict(enrichment.get("publications")),
+            coauthor_evidence=CoauthorEvidence.from_dict(enrichment.get("coauthors")),
         )
 
 
@@ -354,6 +373,35 @@ class CandidateGenerationResult:
             "retrieved_at": self.retrieved_at.isoformat(),
             "candidates": [asdict(candidate) for candidate in self.candidates],
         }
+
+
+def _merge_enrichment(row: Any, candidate: "OpenAlexCandidate") -> None:
+    """Attach newly retrieved enrichment to an existing candidate row.
+
+    The source profile snapshot itself is left as first captured; only the
+    enrichment block (and its mirrored JSON columns) is updated, and only with
+    evidence that was actually retrieved for this call.
+    """
+    fresh = candidate.enrichment_dict()
+    if fresh is None:
+        return
+    try:
+        wrapper = json.loads(row.raw_payload_json or "{}")
+    except ValueError:
+        wrapper = {}
+    if not isinstance(wrapper, dict):
+        wrapper = {"payload": wrapper}
+    current = wrapper.get("enrichment") if isinstance(wrapper.get("enrichment"), dict) else {}
+    merged = {
+        "publications": fresh.get("publications") or current.get("publications"),
+        "coauthors": fresh.get("coauthors") or current.get("coauthors"),
+    }
+    wrapper["enrichment"] = merged
+    row.raw_payload_json = json.dumps(wrapper)
+    if fresh.get("publications") is not None:
+        row.sample_publications_json = json.dumps(candidate.sample_publications) if candidate.sample_publications is not None else None
+    if fresh.get("coauthors") is not None:
+        row.coauthor_summary_json = json.dumps(candidate.coauthor_summary) if candidate.coauthor_summary is not None else None
 
 
 class OpenAlexCandidateService:
@@ -548,6 +596,7 @@ class OpenAlexCandidateService:
                 )
             )
             if existing is not None:
+                _merge_enrichment(existing, candidate)
                 persisted.append(existing)
                 continue
 

@@ -6,7 +6,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends, Query, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, text
 from sqlalchemy.exc import SQLAlchemyError
@@ -22,6 +22,8 @@ from services.author_resolution import (
     AuthorResolutionService, CandidateSourceUnavailable,
     UNRESOLVED, MANUAL_SELECTED, AUTO_RESOLVED,
 )
+from author_resolution.context import ContextValidationError, QueryContext
+from author_resolution.policy import evaluate_decision
 from circuit_breaker import get_all_statuses
 from rate_limiter import limiter
 from slowapi.errors import RateLimitExceeded
@@ -102,6 +104,14 @@ class AuthorCandidateSearchRequest(BaseModel):
             raise ValueError("author_name must have at least 2 non-whitespace characters")
         return v.strip()
 
+    @model_validator(mode="after")
+    def validate_context(self):
+        try:
+            QueryContext.from_any(self.context, self.institution_hint, strict=True)
+        except ContextValidationError as exc:
+            raise ValueError(f"context: {exc}")
+        return self
+
 
 class CreateAuthorResolutionRequest(BaseModel):
     author_name: str
@@ -120,6 +130,14 @@ class CreateAuthorResolutionRequest(BaseModel):
         if len(v.strip()) < 2:
             raise ValueError("author_name must have at least 2 non-whitespace characters")
         return v.strip()
+
+    @model_validator(mode="after")
+    def validate_context(self):
+        try:
+            QueryContext.from_any(self.context, self.institution_hint, strict=True)
+        except ContextValidationError as exc:
+            raise ValueError(f"context: {exc}")
+        return self
 
 
 # ── Routes ────────────────────────────────────────────────────────
@@ -161,7 +179,7 @@ async def resolve_author_candidates(
     db: AsyncSession = Depends(get_db),
 ):
     try:
-        rows, ranked, status = await author_resolution_service.generate_and_rank(
+        pool = await author_resolution_service.generate_pool(
             req.author_name, req.institution_hint, req.context, db
         )
     except SQLAlchemyError:
@@ -171,11 +189,16 @@ async def resolve_author_candidates(
             status_code=500,
             content={"error": "Unable to save the candidate pool. No resolution decision was recorded."},
         )
-    if status == "failed" or status not in {"ok", "empty"}:
+    if pool.failed:
         return JSONResponse(
             status_code=503,
-            content={"error": "Candidate source unavailable: no resolution decision was recorded"},
+            content={
+                "error": "Candidate source unavailable: no resolution decision was recorded",
+                "error_code": pool.error_code,
+                "candidate_retrieval_status": "failed",
+            },
         )
+    rows, ranked, status = pool.rows, pool.ranked, pool.status   # status is "ok" or "empty"
 
     retrieval_payload = {
         "status": "unavailable",
@@ -215,6 +238,8 @@ async def resolve_author_candidates(
             "cited_by_count": item.candidate.citation_count,
             "score": item.score.score,
             "available_signals": item.score.available_signals,
+            "signal_set": list(item.score.signal_set),
+            "score_is_heuristic": True,
             "confidence": "High" if item.score.score and item.score.score >= 0.75 else ("Medium" if item.score.score and item.score.score >= 0.45 else "Low"),
             "evidence": [
                 {
@@ -224,6 +249,9 @@ async def resolve_author_candidates(
                     "normalized_score": e.normalized_score,
                     "score": item.score.contributions.get(e.signal_name),
                     "availability": e.availability,
+                    "status": e.status,
+                    "explanation": e.explanation,
+                    "weight": item.score.effective_weights.get(e.signal_name),
                     "raw_value": e.raw_value,
                     "source": e.provenance.get("source", "") if isinstance(e.provenance, dict) else str(e.provenance),
                 }
@@ -231,10 +259,16 @@ async def resolve_author_candidates(
             ],
         })
 
+    ctx = pool.query_context
     return {
         "candidates": candidates_data,
+        "candidate_retrieval_status": status,
+        "algorithmic_assessment": evaluate_decision(ranked).assessment(),
+        "context_received": {**ctx.provided_categories(), "rejected_inputs": list(ctx.rejected_inputs),
+                             "ignored_title_only_publications": ctx.ignored_title_only},
+        "enrichment": pool.enrichment.summary() if pool.enrichment else None,
         "retrieval": retrieval_payload,
-        "note": "Retrieval context provides topical relevance; it does not change deterministic identity decisions.",
+        "note": "Retrieval context provides topical relevance; it does not change deterministic identity decisions. Scores are heuristic, not probabilities.",
     }
 
 
@@ -244,7 +278,7 @@ async def create_author_resolution(
     db: AsyncSession = Depends(get_db),
 ):
     try:
-        resolution = await author_resolution_service.create_resolution(
+        outcome = await author_resolution_service.create_resolution_detailed(
             author_name=req.author_name,
             institution_hint=req.institution_hint,
             context=req.context,
@@ -257,7 +291,7 @@ async def create_author_resolution(
     except CandidateSourceUnavailable as exc:
         return JSONResponse(
             status_code=503,
-            content={"error": str(exc)},
+            content={"error": str(exc), "error_code": exc.error_code, "candidate_retrieval_status": "failed"},
         )
     except ValueError as exc:
         return JSONResponse(
@@ -272,9 +306,15 @@ async def create_author_resolution(
             content={"error": "Unable to save the author-resolution decision. No success was recorded; retry after checking the database."},
         )
 
+    resolution = outcome.resolution
     return {
         "resolution_id": resolution.id,
         "status": resolution.status,
+        "decision_source": "reviewer" if (req.selected_candidate_id or req.mark_unresolved) else "algorithm",
+        "candidate_retrieval_status": outcome.retrieval_status,
+        "algorithmic_assessment": outcome.decision.assessment(),
+        "enrichment": outcome.enrichment,
+        "unparsable_candidate_ids": list(outcome.unparsable_candidate_ids),
         "author_id": resolution.author_id,
         "selected_candidate_id": resolution.selected_candidate_id,
         "decision_reason": resolution.decision_reason,

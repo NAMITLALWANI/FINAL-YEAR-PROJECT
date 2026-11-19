@@ -1,8 +1,10 @@
 import React from 'react';
+import { signalRows } from './contextModel.js';
 
 export default function CandidateSelector({
   candidates,
   retrieval,
+  meta = null,
   onSelect,
   onMarkUnresolved,
   saving = false,
@@ -21,10 +23,41 @@ export default function CandidateSelector({
           <p className="selector-subtitle">
             {hasCandidates
               ? 'Review the source profiles and multi-signal evidence before selecting a researcher.'
-              : 'No source profile was returned. You may record this identity as unresolved.'}
+              : meta?.retrievalStatus === 'empty'
+                ? 'OpenAlex answered successfully but returned no matching profile (this is not a provider error). You may record this identity as unresolved.'
+                : 'No source profile was returned. You may record this identity as unresolved.'}
           </p>
         </div>
       </div>
+
+      {meta && (
+        <div className="selector-advisory" style={{ margin: '0.6rem 0', padding: '0.6rem 0.8rem', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '0.82rem', color: '#475569' }}>
+          {meta.contextReceived && (
+            <div>
+              Context used: {['institution', 'publications', 'coauthors', 'active_years'].filter((k) => meta.contextReceived[k]).map((k) => k.replace('_', ' ')).join(', ') || 'name only'}.
+              {meta.contextReceived.ignored_title_only_publications > 0 && ' Title-only publications were ignored (titles are not stable identifiers).'}
+              {meta.contextReceived.rejected_inputs?.length > 0 && ` Rejected inputs: ${meta.contextReceived.rejected_inputs.join('; ')}.`}
+            </div>
+          )}
+          {meta.enrichment?.any_failed && (
+            <div style={{ color: '#b45309', marginTop: '0.3rem' }}>
+              Some evidence could not be retrieved from OpenAlex; affected signals are marked “Retrieval failed” and were not scored.
+            </div>
+          )}
+          {meta.assessment && (
+            <div style={{ marginTop: '0.3rem' }}>
+              <strong>System assessment (advisory only; nothing is applied automatically):</strong>{' '}
+              {String(meta.assessment.status).replaceAll('_', ' ')}. {meta.assessment.reason}
+              {meta.assessment.auto_blockers?.length > 0 && (
+                <span> Automatic assignment withheld ({meta.assessment.auto_blockers.join(', ').replaceAll('_', ' ')}).</span>
+              )}
+            </div>
+          )}
+          <div style={{ marginTop: '0.3rem', fontStyle: 'italic' }}>
+            Scores are heuristic evidence summaries, not probabilities. Your selection is recorded as a reviewer decision.
+          </div>
+        </div>
+      )}
 
       {hasCandidates && <div className="candidate-list">
         {candidates.map((candidate, idx) => {
@@ -64,35 +97,29 @@ export default function CandidateSelector({
                   )}
                 </div>
 
-                {/* Multi-signal evidence explanation */}
-                {candidate.evidence && candidate.evidence.length > 0 && (
+                {/* All five signals are always listed; unavailable evidence is never shown as agreement */}
+                {Array.isArray(candidate.evidence) && (
                   <div className="evidence-signals" style={{ marginTop: '0.6rem' }}>
                     <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', marginBottom: '0.2rem' }}>
-                      Evidence Signals:
+                      Evidence signals:
                     </div>
-                    {candidate.evidence
-                      .filter((e) => e.availability === 'available' || e.score != null || e.normalized_score != null)
-                      .map((e, sIdx) => {
-                        const sigName = (e.signal || e.signal_name || 'signal').replaceAll('_', ' ');
-                        const sigScore = e.score ?? e.normalized_score ?? e.signal_value;
-                        return (
-                          <div
-                            key={e.signal || e.signal_name || sIdx}
-                            className="candidate-institution"
-                            style={{ fontSize: '0.78rem', color: '#64748b' }}
-                          >
-                            • {sigName}: {typeof sigScore === 'number' ? sigScore.toFixed(2) : String(sigScore)}
-                            {e.explanation ? ` (${e.explanation})` : ''}
-                          </div>
-                        );
-                      })}
+                    {signalRows(candidate.evidence).map((row) => (
+                      <div
+                        key={row.name}
+                        className="candidate-institution"
+                        style={{ fontSize: '0.78rem', color: row.observed ? '#475569' : '#94a3b8' }}
+                      >
+                        • {row.label}: {row.observed ? row.score.toFixed(2) : `not scored — ${row.status}`}
+                        {row.observed && row.explanation ? ` (${row.explanation})` : ''}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
 
               <div className="candidate-meta">
                 <div className="confidence-indicator">
-                  <span className="conf-label">Confidence</span>
+                  <span className="conf-label">Heuristic score band</span>
                   <span className={`conf-value ${confClass}`}>
                     {candidate.confidence || 'Review required'}
                   </span>

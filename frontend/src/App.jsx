@@ -13,6 +13,8 @@ import SourceStatusPanel from './features/monitoring/SourceStatusPanel.jsx'
 import PaperCard from './features/search/PaperCard.jsx'
 import SemanticResultCard from './features/search/SemanticResultCard.jsx'
 import CandidateSelector from './features/author_resolution/CandidateSelector.jsx'
+import AuthorContextForm from './features/author_resolution/AuthorContextForm.jsx'
+import { buildAuthorContext, emptyContextForm } from './features/author_resolution/contextModel.js'
 import {
   searchAuthor,
   fetchAuthorCandidatesV1,
@@ -86,6 +88,12 @@ export default function App() {
   const [unresolvedMessage, setUnresolvedMessage] = useState(null)
   const [searched, setSearched]     = useState('')
   const [savingResolution, setSavingResolution] = useState(false)
+  // Optional known context. `searchContext` is the exact context used for the candidate search, so the
+  // later review decision is made with identical evidence inputs.
+  const [contextForm, setContextForm] = useState(emptyContextForm())
+  const [contextErrors, setContextErrors] = useState([])
+  const [searchContext, setSearchContext] = useState({ institutionHint: null, context: null })
+  const [candidateMeta, setCandidateMeta] = useState(null)
 
   // ── Rotating Loading Message ─────────────────────────────────────
   useEffect(() => {
@@ -118,6 +126,7 @@ export default function App() {
     setSemanticResults(null)
     setCandidates(null)
     setRetrieval(null)
+    setCandidateMeta(null)
     setError(null)
     setUnresolvedMessage(null)
     setSavingResolution(false)
@@ -127,6 +136,12 @@ export default function App() {
     const q = query.trim()
     if (!q) return
 
+    if (searchMode === 'author') {
+      const built = buildAuthorContext(contextForm)
+      setContextErrors(built.errors)
+      if (built.errors.length > 0) return      // nothing is sent until the optional context is valid
+    }
+
     setLoading(true)
     setError(null)
     setUnresolvedMessage(null)
@@ -134,6 +149,7 @@ export default function App() {
     setSemanticResults(null)
     setCandidates(null)
     setRetrieval(null)
+    setCandidateMeta(null)
     setSearched(q)
     setSavingResolution(false)
 
@@ -161,8 +177,16 @@ export default function App() {
   async function handleAuthorSearch(name) {
     setLoadingMessage('Resolving author identity & evidence...')
     try {
-      const candData = await fetchAuthorCandidatesV1(name, null)
+      const built = buildAuthorContext(contextForm)
+      setSearchContext({ institutionHint: built.institutionHint, context: built.context })
+      const candData = await fetchAuthorCandidatesV1(name, built.institutionHint, built.context)
       setRetrieval(candData.retrieval || null)
+      setCandidateMeta({
+        retrievalStatus: candData.candidate_retrieval_status || null,
+        assessment: candData.algorithmic_assessment || null,
+        contextReceived: candData.context_received || null,
+        enrichment: candData.enrichment || null,
+      })
       // Always leave the identity decision visible to the reviewer. A single
       // source profile is still a candidate, not an implicit selection.
       setCandidates(candData.candidates || [])
@@ -182,6 +206,8 @@ export default function App() {
     try {
       const res = await createAuthorResolution({
         author_name: searched,
+        institution_hint: searchContext.institutionHint,
+        ...(searchContext.context ? { context: searchContext.context } : {}),
         candidate_ids: candidateIds,
         selected_candidate_id: candidateId,
         reason: 'User manual selection from candidate review UI',
@@ -210,6 +236,8 @@ export default function App() {
     try {
       await createAuthorResolution({
         author_name: searched,
+        institution_hint: searchContext.institutionHint,
+        ...(searchContext.context ? { context: searchContext.context } : {}),
         candidate_ids: candidateIds,
         mark_unresolved: true,
         reason: 'Reviewer marked identity as unresolved',
@@ -262,6 +290,10 @@ export default function App() {
           onSearchModeChange={handleModeChange}
         />
 
+        {searchMode === 'author' && (
+          <AuthorContextForm value={contextForm} onChange={setContextForm} errors={contextErrors} disabled={loading} />
+        )}
+
         {/* Unresolved message banner */}
         {!loading && unresolvedMessage && (
           <div className="state-box" style={{ background: '#f8fafc', border: '1px solid #cbd5e1', marginTop: '1.5rem' }}>
@@ -276,6 +308,7 @@ export default function App() {
           <CandidateSelector 
             candidates={candidates} 
             retrieval={retrieval}
+            meta={candidateMeta}
             onSelect={handleCandidateSelect}
             onMarkUnresolved={handleMarkUnresolved}
             saving={savingResolution}
