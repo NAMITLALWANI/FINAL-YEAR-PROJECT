@@ -1,0 +1,9 @@
+{
+ "frozen_at": "2026-11-19T15:12:36Z",
+ "dataset_version": "lagos-and-v2.0-seed_v1-smoke",
+ "source_seed_dir": "research_data/lagos_and_v2/seed_v1",
+ "source_manifest_sha256": "8272badd036b1ecc080e431f507c71be04e04327f75e55b43ffbbf48a3528bf5",
+ "seeds_sha256": "76c9232d97c1446ba6c08df62ebf67f2104261fe717278a3097fd3d62b80bbc5",
+ "doi_register_sha256": "57fcc09978c6e4860e3f59ec8cbe5c0ddb2a4d75833d2d529b3b5e4c1839cf77",
+ "gold_register_copied": false
+}

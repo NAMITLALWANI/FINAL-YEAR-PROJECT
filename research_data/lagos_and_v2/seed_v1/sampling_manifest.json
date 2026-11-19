@@ -1,0 +1,72 @@
+{
+  "code_sha256": "b28dd7f970b1fa1d76708b3b8f5f3390b486b851cecaca235045677f3e906de7",
+  "counts": {
+    "blocks_total": 80294,
+    "eligible_blocks": 70351,
+    "exclusion_reasons": {
+      "more_groups_than_cap": 2391,
+      "no_group_with_two_unique_dois": 7552
+    },
+    "rows_total": 1476550,
+    "selected_blocks": 23,
+    "selected_blocks_by_stratum": {
+      "L": 6,
+      "M": 6,
+      "S": 6,
+      "XL": 5
+    },
+    "selected_cases": 50
+  },
+  "dataset": {
+    "archive_filename": "LAGOS-AND-BLOCK-TRIMMED.csv.tar.gz",
+    "archive_md5_verified": "e9e6703f98d96294e93ba105d6c1c4ac",
+    "archive_sha256": "a0ac028b8955fcb4c6797b9fe1f5602fef43b45424f4044d0108c4f7d4bb6840",
+    "archive_size_bytes": 743558936,
+    "csv_member": "LAGOS-AND-BLOCK-TRIMMED.csv",
+    "csv_member_size_bytes": 2428531041,
+    "doi": "10.5281/zenodo.7313353",
+    "tar_integrity": "ok",
+    "version": "2.0"
+  },
+  "derived_file_sha256": {
+    "dataset_quality_report.json": "fcfb5d01cd7ffbb11109dc1926978bc8b927045dc52066fb453231391ad8eb5b",
+    "dataset_quality_report.md": "9216564773b0da205aff287ecbe01c6fbc8fdc813645b9a13be820fb55ffd21b",
+    "doi_purpose_register.csv": "57fcc09978c6e4860e3f59ec8cbe5c0ddb2a4d75833d2d529b3b5e4c1839cf77",
+    "gold_identity_register.csv": "e01c33587dbd3e15f7c81516320546dee17b6d1dd4193d86e1b6f8e70d850334",
+    "seeds.csv": "76c9232d97c1446ba6c08df62ebf67f2104261fe717278a3097fd3d62b80bbc5",
+    "selected_block_rows.csv": "d16e37c07f716d5cda854ed5cd3f297f061d9705d34076e1c27a3083d57f2188"
+  },
+  "hammer_conditions": {
+    "C0": "name only",
+    "C1": "institution + active-year range from the designated citation; no DOI, no coauthors, no ORCID",
+    "C1x": "C1 plus the designated citation's DOI (exploratory); coauthor evidence is never supplied"
+  },
+  "normalization_counts": {
+    "affiliation_tab_marker_rows": 34837,
+    "coauthors_self_name_rows": 1476550,
+    "duplicate_doi_rows_within_group": 15279
+  },
+  "normalization_rules": [
+    "doi: trimmed, DOI prefix removed, lower-cased (counts in dataset_quality_report.json)",
+    "pid: kept verbatim as a source identifier, never an OpenAlex ID",
+    "duplicate DOIs inside one (block, ORCID) group collapsed; DOIs shared by several ORCIDs flagged and their blocks excluded",
+    "coauthors: parsed to strip the author's own name and counted; never emitted into any HAMMER context",
+    "affiliation: '#TAB#' replaced by a space, whitespace collapsed; originals kept in selected_block_rows.csv"
+  ],
+  "sampling": {
+    "algorithm": "complete-block sampling; eligible blocks ordered by sha256(seed|block) within fixed size strata (unique DOIs: S 0-9, M 10-49, L 50-199, XL 200+); round-robin across strata; a block is taken only if all of its query-eligible groups fit the target; designated citation = minimum sha256(seed|orcid|doi) among citations with an affiliation (else any)",
+    "max_groups_per_block": 8,
+    "sampling_date": "2026-11-19",
+    "seed": 20261119,
+    "stratification": "block size only",
+    "target_cases": 50
+  },
+  "source_split_distribution_of_cases": {
+    "test": 15,
+    "train": 32,
+    "val": 3
+  },
+  "variable_fields": [
+    "sampling.sampling_date"
+  ]
+}

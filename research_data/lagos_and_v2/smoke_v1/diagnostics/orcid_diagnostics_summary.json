@@ -1,0 +1,44 @@
+{
+  "blocks": 23,
+  "by_arm_classification": {
+    "R0": {
+      "empty_pool": 2,
+      "expected_orcid_absent_from_successful_pool": 7,
+      "expected_orcid_found": 36,
+      "orcid_field_missing_or_null_in_all_candidates": 5
+    },
+    "R2": {
+      "expected_orcid_absent_from_successful_pool": 7,
+      "expected_orcid_found": 38,
+      "orcid_field_missing_or_null_in_all_candidates": 5
+    }
+  },
+  "by_split_expected_found_R2": {
+    "test": [
+      10,
+      15
+    ],
+    "train": [
+      25,
+      32
+    ],
+    "val": [
+      3,
+      3
+    ]
+  },
+  "cases": 50,
+  "note": "Descriptive counts of a 50-case, 23-block sample; cases within a block are not independent. ORCID equality is an automatic label-availability diagnostic, not author-resolution accuracy.",
+  "requests": {
+    "by_endpoint": {
+      "authors": 42,
+      "works": 50
+    },
+    "by_status": {
+      "200": 92
+    },
+    "provider_reported_cost_usd_sum": 0.047,
+    "responses_with_cost_field": 92,
+    "total": 92
+  }
+}

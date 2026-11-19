@@ -1,0 +1,227 @@
+{
+  "archive": {
+    "csv_member": "LAGOS-AND-BLOCK-TRIMMED.csv",
+    "csv_member_size": 2428531041,
+    "filename": "LAGOS-AND-BLOCK-TRIMMED.csv.tar.gz",
+    "md5": "e9e6703f98d96294e93ba105d6c1c4ac",
+    "members": [
+      [
+        "LAGOS-AND-BLOCK-TRIMMED.csv",
+        2428531041
+      ]
+    ],
+    "sha256": "a0ac028b8955fcb4c6797b9fe1f5602fef43b45424f4044d0108c4f7d4bb6840",
+    "size_bytes": 743558936,
+    "tar_integrity": "ok"
+  },
+  "block_split_distribution": {
+    "0": 20081,
+    "1": 40253,
+    "2": 19960
+  },
+  "blocks": 80294,
+  "blocks_with_mixed_split": 0,
+  "counters": {
+    "affiliation_tab_marker_rows": 34837,
+    "coauthors_self_name_rows": 1476550,
+    "dois_shared_by_multiple_orcids": 0,
+    "dois_with_multiple_pids": 14546,
+    "duplicate_doi_rows_within_group": 15279,
+    "orcids_in_multiple_blocks": 0,
+    "rows_total": 1476550
+  },
+  "distinct_orcids": 244564,
+  "duplicate_doi_row_fraction_within_group": 0.010348,
+  "groups_per_block_distribution": {
+    "2": 54231,
+    "3": 12840,
+    "4": 5079,
+    "5": 2647,
+    "6": 1533,
+    "7": 933,
+    "8": 640,
+    "9": 428,
+    "10": 347,
+    "11": 242,
+    "12": 183,
+    "13": 161,
+    "14": 123,
+    "15": 104,
+    "16": 68,
+    "17": 94,
+    "18": 53,
+    "19": 36,
+    "20": 46,
+    "21": 33,
+    "22": 33,
+    "23": 24,
+    "24": 30,
+    "25": 25,
+    "26": 15,
+    "27": 17,
+    "28": 14,
+    "29": 20,
+    "30": 13,
+    "31": 15,
+    "32": 16,
+    "33": 11,
+    "34": 15,
+    "35": 5,
+    "36": 13,
+    "37": 7,
+    "38": 11,
+    "39": 14,
+    "40": 9,
+    "41": 7,
+    "42": 7,
+    "43": 7,
+    "44": 8,
+    "45": 6,
+    "46": 5,
+    "47": 5,
+    "48": 5,
+    "49": 8,
+    "50": 4,
+    "51": 3,
+    "52": 6,
+    "53": 4,
+    "54": 1,
+    "55": 2,
+    "57": 3,
+    "58": 3,
+    "59": 2,
+    "60": 2,
+    "61": 5,
+    "62": 1,
+    "63": 6,
+    "64": 2,
+    "65": 4,
+    "66": 2,
+    "67": 4,
+    "68": 2,
+    "69": 2,
+    "70": 3,
+    "71": 2,
+    "72": 2,
+    "73": 2,
+    "74": 5,
+    "76": 2,
+    "77": 1,
+    "78": 2,
+    "79": 3,
+    "80": 3,
+    "82": 1,
+    "83": 2,
+    "88": 1,
+    "90": 1,
+    "91": 1,
+    "93": 1,
+    "95": 1,
+    "97": 1,
+    "99": 1,
+    "101": 1,
+    "102": 1,
+    "104": 1,
+    "115": 1,
+    "116": 1,
+    "122": 1,
+    "124": 1,
+    "125": 1,
+    "126": 1,
+    "129": 1,
+    "138": 1,
+    "144": 1,
+    "165": 1,
+    "174": 1,
+    "188": 1
+  },
+  "malformed_rows": 0,
+  "missing_values_by_column": {
+    "author_affiliation": {
+      "count": 208199,
+      "fraction": 0.141004
+    },
+    "author_name": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "author_position": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "block_fullname": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "coauthor_affliations": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "coauthors": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "doi": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "orcid": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "paper_abstract": {
+      "count": 149912,
+      "fraction": 0.101529
+    },
+    "paper_title": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "pid": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "pub_year": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "train1_test0_val2": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "venue": {
+      "count": 34061,
+      "fraction": 0.023068
+    }
+  },
+  "orcid_groups_block_orcid_pairs": 244564,
+  "pub_year_range": [
+    1870,
+    2022
+  ],
+  "row_split_distribution": {
+    "0": 370194,
+    "1": 739750,
+    "2": 366606
+  },
+  "rows_parsed": 1476550,
+  "rows_per_group": {
+    "max": 591,
+    "median": 2,
+    "min": 1
+  },
+  "rows_total": 1476550,
+  "sampling_frame": {
+    "eligible_blocks_by_stratum": {
+      "L": 4423,
+      "M": 33698,
+      "S": 32188,
+      "XL": 42
+    },
+    "eligible_blocks_total": 70351,
+    "exclusion_reasons": {
+      "more_groups_than_cap": 2391,
+      "no_group_with_two_unique_dois": 7552
+    }
+  }
+}
