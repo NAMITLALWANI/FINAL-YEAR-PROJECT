@@ -1,20 +1,8 @@
-"""Architectural Role: Authoritative Relational Persistence Layer (SQLite / SQLAlchemy).
-
-This module defines the relational schema, ORM entity mappings, and asynchronous session factories
-for the entire HAMMER application.
-
-FOUNDATIONAL ARCHITECTURAL INVARIANT:
-- SQLite is the authoritative System of Record (SoR) for:
-  a) Raw bibliographic provenance (`source_records`)
-  b) Canonical deduplicated publications (`publications`, `duplicate_groups`)
-  c) Author master entities and external profile links (`authors`, `author_external_ids`)
-  d) Candidate entity pools and decision evidence (`author_candidates`, `author_resolutions`, `author_resolution_evidence`)
-- Downstream vector indexes (ChromaDB) and generative LLMs (Gemini) are strictly DERIVED.
-  ChromaDB can be destroyed and rebuilt from SQLite at any time, and vector similarity never
-  overrules or alters relational entity decisions.
-"""
+# pyrefly: ignore[missing-import]
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+# pyrefly: ignore[missing-import]
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped, relationship
+# pyrefly: ignore[missing-import]
 from sqlalchemy import (
     Boolean,
     CheckConstraint,
@@ -131,11 +119,7 @@ class CircuitBreakerState(Base):
     disabled_until: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
 
 
-
-# ââ Author resolution models ââââââââââââââââââââââââââââââââââââ
-# These tables are intentionally independent from publication deduplication.
-# Alembic owns their creation; init_db() continues to provision only the
-# pre-existing application tables for backwards compatibility.
+# Author resolution models (created by Alembic migrations)
 
 class Author(Base):
     """Canonical internal author identity created after a resolution decision."""
@@ -477,7 +461,6 @@ class PublicationAuthorship(Base):
     )
 
 
-
 # ── Engine & session factory ─────────────────────────────────────
 
 engine = create_async_engine(DATABASE_URL, echo=False)
@@ -504,5 +487,8 @@ async def get_db():
     async with AsyncSessionLocal() as session:
         try:
             yield session
+        except Exception:
+            await session.rollback()
+            raise
         finally:
             await session.close()

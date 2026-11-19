@@ -1,12 +1,23 @@
-fastapi>=0.111.0
-uvicorn[standard]>=0.29.0
-httpx>=0.27.0
-aiosqlite>=0.20.0
-sqlalchemy[asyncio]>=2.0.29
-feedparser>=6.0.11
-beautifulsoup4>=4.12.3
-lxml>=5.2.1
-playwright>=1.43.0
-rapidfuzz>=3.9.1
-python-dotenv>=1.0.1
-slowapi>=0.1.9
+# HAMMER is deployed with Python 3.12 (see render.yaml).  Upper bounds keep
+# the local environment on the API generations exercised by this project.
+fastapi>=0.115,<0.116
+uvicorn[standard]>=0.30,<0.31
+httpx>=0.27,<0.29
+aiosqlite>=0.20,<0.22
+sqlalchemy[asyncio]>=2.0.29,<2.1
+alembic>=1.13,<1.16
+feedparser>=6.0.11,<7
+beautifulsoup4>=4.12.3,<5
+lxml>=5.2.1,<6
+playwright>=1.43,<2
+rapidfuzz>=3.9,<4
+python-dotenv>=1.0,<2
+slowapi>=0.1.9,<0.2
+
+# The persisted vector index was created with Chroma 1.5.9.  Keep the
+# compatible runtime and its local ONNX embedding backend together.
+chromadb==1.5.9
+onnxruntime>=1.19,<2
+
+# Test and verification tooling.  External services are mocked in tests.
+pytest>=8.2,<9

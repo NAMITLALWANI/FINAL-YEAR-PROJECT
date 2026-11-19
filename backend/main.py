@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, field_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, text
+from sqlalchemy.exc import SQLAlchemyError
 
 from database import (
     init_db, get_db, Publication, SourceRecord,
@@ -25,7 +26,7 @@ from circuit_breaker import get_all_statuses
 from rate_limiter import limiter
 from slowapi.errors import RateLimitExceeded
 from log_config import configure_root, get_logger
-from config import CORS_ORIGINS, LOG_LEVEL, RETRIEVAL_TIMEOUT_SECONDS
+from config import CORS_ORIGINS, ENABLE_SCHOLAR, LOG_LEVEL, RETRIEVAL_TIMEOUT_SECONDS
 from connectors.scrapers.scholar.browser import BrowserManager
 
 logger = get_logger(__name__)
@@ -39,15 +40,21 @@ async def lifespan(app: FastAPI):
     configure_root(LOG_LEVEL)
     await init_db()
     logger.info("Database initialised")
-    
-    # Start singleton browser
-    browser_manager = BrowserManager.get_instance()
-    await browser_manager.start()
-    
-    yield
-    
-    logger.info("Shutting down")
-    await browser_manager.stop()
+
+    # Google Scholar is an optional source. Do not launch Playwright when the
+    # source is disabled, so an absent browser binary cannot block the rest of
+    # the application from starting.
+    browser_manager = None
+    if ENABLE_SCHOLAR:
+        browser_manager = BrowserManager.get_instance()
+        await browser_manager.start()
+
+    try:
+        yield
+    finally:
+        logger.info("Shutting down")
+        if browser_manager is not None:
+            await browser_manager.stop()
 
 # ── App ───────────────────────────────────────────────────────────
 app = FastAPI(
@@ -105,6 +112,15 @@ class CreateAuthorResolutionRequest(BaseModel):
     mark_unresolved: bool = False
     reason: Optional[str] = None
 
+    @field_validator("author_name")
+    @classmethod
+    def validate_author_name(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("author_name cannot be empty or whitespace")
+        if len(v.strip()) < 2:
+            raise ValueError("author_name must have at least 2 non-whitespace characters")
+        return v.strip()
+
 
 # ── Routes ────────────────────────────────────────────────────────
 
@@ -120,8 +136,18 @@ async def health(db: AsyncSession = Depends(get_db)):
 
 @app.post("/evidence/search")
 async def search_evidence(req: EvidenceSearchRequest):
-    hits = await retrieve(req.query, top_k=req.top_k, filters=req.filters)
-    explanation = await generate_explanation(req.query, hits)
+    try:
+        hits = await retrieve(req.query, top_k=req.top_k, filters=req.filters)
+        explanation = await generate_explanation(req.query, hits)
+    except Exception as exc:
+        logger.warning("Semantic retrieval unavailable (%s)", type(exc).__name__)
+        return JSONResponse(
+            status_code=503,
+            content={
+                "error": "Semantic retrieval is temporarily unavailable.",
+                "retrieval_status": "unavailable",
+            },
+        )
     return {
         "hits": [h.as_dict() if hasattr(h, "as_dict") else h for h in hits],
         "explanation": explanation,
@@ -134,17 +160,43 @@ async def resolve_author_candidates(
     req: AuthorCandidateSearchRequest,
     db: AsyncSession = Depends(get_db),
 ):
-    rows, ranked, status = await author_resolution_service.generate_and_rank(
-        req.author_name, req.institution_hint, req.context, db
-    )
+    try:
+        rows, ranked, status = await author_resolution_service.generate_and_rank(
+            req.author_name, req.institution_hint, req.context, db
+        )
+    except SQLAlchemyError:
+        await db.rollback()
+        logger.exception("Unable to persist the author candidate pool")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Unable to save the candidate pool. No resolution decision was recorded."},
+        )
     if status == "failed" or status not in {"ok", "empty"}:
         return JSONResponse(
             status_code=503,
             content={"error": "Candidate source unavailable: no resolution decision was recorded"},
         )
 
-    hits = await retrieve(req.author_name, top_k=3)
-    explanation = await generate_explanation(req.author_name, hits)
+    retrieval_payload = {
+        "status": "unavailable",
+        "hits": [],
+        "explanation": {
+            "status": "unavailable",
+            "provider": "deterministic",
+            "summary": "Topical retrieval context is unavailable. Candidate identity evidence and scores are unaffected.",
+            "claims": [],
+        },
+    }
+    try:
+        hits = await retrieve(req.author_name, top_k=3)
+        explanation = await generate_explanation(req.author_name, hits)
+        retrieval_payload = {
+            "status": "ok",
+            "hits": [h.as_dict() if hasattr(h, "as_dict") else h for h in hits],
+            "explanation": explanation,
+        }
+    except Exception as exc:
+        logger.warning("Candidate topical retrieval unavailable (%s)", type(exc).__name__)
 
     row_by_source_id = {r.source_author_id: r for r in rows}
     candidates_data = []
@@ -181,10 +233,7 @@ async def resolve_author_candidates(
 
     return {
         "candidates": candidates_data,
-        "retrieval": {
-            "hits": [h.as_dict() if hasattr(h, "as_dict") else h for h in hits],
-            "explanation": explanation,
-        },
+        "retrieval": retrieval_payload,
         "note": "Retrieval context provides topical relevance; it does not change deterministic identity decisions.",
     }
 
@@ -214,6 +263,13 @@ async def create_author_resolution(
         return JSONResponse(
             status_code=400,
             content={"error": str(exc)},
+        )
+    except SQLAlchemyError:
+        await db.rollback()
+        logger.exception("Unable to persist the author-resolution decision")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Unable to save the author-resolution decision. No success was recorded; retry after checking the database."},
         )
 
     return {

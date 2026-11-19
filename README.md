@@ -34,32 +34,71 @@ HAMMER organizes scholarly metadata processing into distinct, modular functional
 
 ## 3. Quick Start
 
-### Backend Setup & Execution
+### Backend setup and execution
+
+HAMMER is verified with Python 3.12. Use an isolated project environment; do
+not rely on an unrelated system Python installation.
+
 ```bash
 cd backend
-source venv/bin/activate
-uvicorn main:app --reload --port 8000
+python3.12 -m venv .venv
+./.venv/bin/python -m pip install --upgrade pip
+./.venv/bin/python -m pip install -r requirements.txt
+./.venv/bin/uvicorn main:app --reload --port 8000
 ```
 
-### Running Backend Tests
+`backend/academic_search.db` is the configured local operational database.
+The root-level SQLite file is a separate historical snapshot; do not copy,
+merge, or overwrite either database. Author-resolution tables are managed by
+Alembic, not `init_db()` or broad `create_all()` calls. Before applying a
+migration to an existing database, make and verify a backup, confirm the
+resolved `DATABASE_URL`, then run the explicit Alembic command from
+`backend/`. See [deployment operations](docs/deployment.md) and
+[troubleshooting](docs/troubleshooting.md) for the guarded procedure.
+
+### Running backend tests
+
 ```bash
 cd backend
-pytest tests/ -q
+./.venv/bin/python -m pytest -p no:cacheprovider tests -q
 ```
-*(All 78 tests pass in ~21s)*
 
-### Frontend Setup & Execution
+The recovery baseline has 80 passing backend tests. The test suite is designed
+to avoid live provider requests and embedding-model downloads.
+
+### Scholar browser runtime (optional)
+
+Only when `ENABLE_SCHOLAR=true`, install Playwright's local browser runtime:
+
+```bash
+cd backend
+./.venv/bin/python -m playwright install chromium
+```
+
+Scholar remains an optional source. A missing browser must not be treated as an
+empty author or publication result.
+
+### Frontend setup and execution
+
+Use a supported Node.js runtime (Node 20 or newer) without changing the
+project's architecture or lockfile.
+
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
-### Building Frontend for Production
+### Building frontend for production
+
 ```bash
 cd frontend
 npm run build
 ```
+
+The production build writes only ignored `frontend/dist/` output. The existing
+Chroma index is a derived, preserved asset; do not rebuild or replace it as
+part of normal setup. `/health` reports its status and document count.
 
 ---
 
@@ -69,3 +108,6 @@ npm run build
 - **Reorganization Report & Audit:** [`docs/reorganisation/05_REORGANISATION_REPORT.md`](docs/reorganisation/05_REORGANISATION_REPORT.md)
 - **Research Paper (Revised Draft):** [`docs/research/HAMMER_RESEARCH_PAPER_REVISED_DRAFT.md`](docs/research/HAMMER_RESEARCH_PAPER_REVISED_DRAFT.md)
 - **Research Claim-to-Evidence Matrix:** [`docs/research/CLAIM_EVIDENCE_MATRIX.md`](docs/research/CLAIM_EVIDENCE_MATRIX.md)
+- **Current Recovery and Research Tracker:** [`docs/PROJECT_EXECUTION_ROADMAP.md`](docs/PROJECT_EXECUTION_ROADMAP.md)
+- **Deployment Operations:** [`docs/deployment.md`](docs/deployment.md)
+- **Troubleshooting:** [`docs/troubleshooting.md`](docs/troubleshooting.md)

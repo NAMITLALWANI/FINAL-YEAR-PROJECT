@@ -90,6 +90,39 @@ def test_local_author_and_evidence_api_workflow_persists_only_valid_decisions(tm
                 assert "does not change" in candidate_payload["note"]
                 ids = [item["candidate_id"] for item in candidate_payload["candidates"]]
 
+                # Reusing a persisted candidate pool must accept equivalent
+                # whitespace-normalized queries rather than rejecting a valid
+                # reviewer decision.
+                whitespace_selected = client.post("/author-resolutions", json={
+                    "author_name": "Ada   Example", "candidate_ids": ids,
+                    "selected_candidate_id": ids[0],
+                })
+                assert whitespace_selected.status_code == 200
+
+                # A selected ID must be part of the supplied frozen pool so
+                # the saved evidence cannot refer to a different candidate set.
+                mismatched_pool = client.post("/author-resolutions", json={
+                    "author_name": "Ada Example", "candidate_ids": [ids[0]],
+                    "selected_candidate_id": ids[1],
+                })
+                assert mismatched_pool.status_code == 400
+                assert "supplied candidate set" in mismatched_pool.json()["error"]
+
+                invalid_resolution = client.post("/author-resolutions", json={"author_name": "   "})
+                assert invalid_resolution.status_code == 422
+
+                async def unavailable_retrieve(*args, **kwargs):
+                    raise RuntimeError("local index unavailable")
+
+                monkeypatch.setattr(main, "retrieve", unavailable_retrieve)
+                candidate_without_retrieval = client.post(
+                    "/author-resolutions/candidates", json={"author_name": "Ada Example"}
+                )
+                assert candidate_without_retrieval.status_code == 200
+                assert len(candidate_without_retrieval.json()["candidates"]) == 2
+                assert candidate_without_retrieval.json()["retrieval"]["status"] == "unavailable"
+                monkeypatch.setattr(main, "retrieve", retrieve)
+
                 selected = client.post("/author-resolutions", json={
                     "author_name": "Ada Example", "candidate_ids": ids,
                     "selected_candidate_id": ids[0],
@@ -129,8 +162,8 @@ def test_local_author_and_evidence_api_workflow_persists_only_valid_decisions(tm
                 assert failed_resolution.status_code == 503
                 async with sessions() as db:
                     count = await db.scalar(select(func.count()).select_from(AuthorResolution))
-                    assert count == 2
-                assert generation_calls == ["Ada Example", "Failure Example", "Failure Example"]
+                    assert count == 3
+                assert generation_calls == ["Ada Example", "Ada Example", "Failure Example", "Failure Example"]
         finally:
             main.app.dependency_overrides.pop(get_db, None)
             await engine.dispose()

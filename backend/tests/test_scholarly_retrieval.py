@@ -306,44 +306,91 @@ def test_smoke_does_not_call_fallback_claims_provider_validated(monkeypatch):
     assert report["usable_explanation"] is False
     assert report["citations_passed_validation"] is False
 
-def test_retrieval_similarity_floor_and_title_dedup(tmp_path):
-    from services.scholarly_retrieval import _chroma_collection, _search, ScholarlyDocument, _upsert_documents
-    
-    idx_path = tmp_path / 'test_dedup_idx'
-    doc1 = ScholarlyDocument(
-        id='pub_1',
-        text='Deep Learning and Artificial Intelligence Foundations Hinton Bengio LeCun',
-        metadata={
-            'canonical_id': 'doi_123',
-            'title': 'Deep Learning Foundations',
-            'doi': '10.1000/1',
-            'year': 2020,
-            'authors': json.dumps(['Geoffrey Hinton']),
-            'content_hash': 'h1'
-        },
-        content_hash='h1'
+def test_retrieval_similarity_floor_and_title_dedup(monkeypatch, tmp_path):
+    from rag import retrieval as retrieval_module
+
+    records = {
+        "ids": [["pub_1", "pub_2"]],
+        "metadatas": [[
+            {
+                "canonical_id": "doi_123",
+                "title": "Deep Learning Foundations",
+                "doi": "10.1000/1",
+                "year": 2020,
+                "authors": json.dumps(["Geoffrey Hinton"]),
+                "source_providers": "[]",
+                "source_record_ids": "[]",
+                "source_external_ids": "{}",
+                "affiliation_mentions": "[]",
+                "content_hash": "h1",
+            },
+            {
+                "canonical_id": "raw_1",
+                "title": "Deep Learning Foundations.",
+                "doi": "10.1000/1",
+                "year": 2020,
+                "authors": json.dumps(["Geoffrey Hinton"]),
+                "source_providers": "[]",
+                "source_record_ids": "[]",
+                "source_external_ids": "{}",
+                "affiliation_mentions": "[]",
+                "content_hash": "h2",
+            },
+        ]],
+        "distances": [[0.2, 0.3]],
+    }
+
+    class Collection:
+        def count(self):
+            return 2
+
+        def query(self, **kwargs):
+            return records
+
+    monkeypatch.setattr(retrieval_module, "_chroma_collection", lambda path: (None, Collection()))
+
+    # Search with deduplication: only 1 hit should be returned even though both match.
+    hits = retrieval_module._search(
+        "Deep Learning and Artificial Intelligence", top_k=5, filters=None,
+        path=tmp_path / "not-used", min_score=0.35,
     )
-    # Duplicate with different canonical_id (e.g. raw_1)
-    doc2 = ScholarlyDocument(
-        id='pub_2',
-        text='Deep Learning and Artificial Intelligence Foundations Hinton Bengio LeCun',
-        metadata={
-            'canonical_id': 'raw_1',
-            'title': 'Deep Learning Foundations.',
-            'doi': '10.1000/1',
-            'year': 2020,
-            'authors': json.dumps(['Geoffrey Hinton']),
-            'content_hash': 'h2'
-        },
-        content_hash='h2'
-    )
-    _upsert_documents([doc1, doc2], path=idx_path)
-    
-    # Search with deduplication: only 1 hit should be returned even though both match
-    hits = _search('Deep Learning and Artificial Intelligence', top_k=5, filters=None, path=idx_path, min_score=0.35)
     assert len(hits) == 1
     assert hits[0].title == 'Deep Learning Foundations'
-    
-    # High threshold / irrelevant query: should be rejected
-    hits_irrelevant = _search('quantum computing superconductivity qubit', top_k=5, filters=None, path=idx_path, min_score=0.85)
+
+    # The same deterministic result falls below a higher configured floor.
+    hits_irrelevant = retrieval_module._search(
+        "quantum computing superconductivity qubit", top_k=5, filters=None,
+        path=tmp_path / "not-used", min_score=0.85,
+    )
     assert len(hits_irrelevant) == 0
+
+
+def test_search_uses_valid_chroma_filter_operators(monkeypatch, tmp_path):
+    from rag import retrieval as retrieval_module
+
+    observed = {}
+
+    class Collection:
+        def count(self):
+            return 1
+
+        def query(self, **kwargs):
+            observed.update(kwargs)
+            return {"ids": [[]], "metadatas": [[]], "distances": [[]]}
+
+    monkeypatch.setattr(retrieval_module, "_chroma_collection", lambda path: (None, Collection()))
+    hits = retrieval_module._search(
+        "author evidence",
+        top_k=3,
+        filters={"doi": "10.1000/example", "year": 2024, "source": "OpenAlex"},
+        path=tmp_path / "not-used",
+    )
+
+    assert hits == []
+    assert observed["where"] == {
+        "$and": [
+            {"doi": {"$eq": "10.1000/example"}},
+            {"year": {"$eq": 2024}},
+            {"primary_source": {"$eq": "openalex"}},
+        ]
+    }

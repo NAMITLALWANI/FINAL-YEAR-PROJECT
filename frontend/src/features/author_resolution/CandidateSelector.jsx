@@ -5,22 +5,28 @@ export default function CandidateSelector({
   retrieval,
   onSelect,
   onMarkUnresolved,
+  saving = false,
 }) {
-  if (!candidates || candidates.length === 0) return null;
+  if (!Array.isArray(candidates)) return null;
+  const hasCandidates = candidates.length > 0;
 
   return (
-    <div className="candidate-selector animate-in">
+    <div className="candidate-selector animate-in" aria-busy={saving}>
       <div className="selector-header">
         <div className="selector-icon">👥</div>
         <div className="selector-title-group">
-          <h3 className="selector-title">Candidate Review Required</h3>
+          <h3 className="selector-title">
+            {hasCandidates ? 'Candidate Review Required' : 'No Candidate Profiles Found'}
+          </h3>
           <p className="selector-subtitle">
-            Review the source profiles and multi-signal evidence before selecting a researcher.
+            {hasCandidates
+              ? 'Review the source profiles and multi-signal evidence before selecting a researcher.'
+              : 'No source profile was returned. You may record this identity as unresolved.'}
           </p>
         </div>
       </div>
 
-      <div className="candidate-list">
+      {hasCandidates && <div className="candidate-list">
         {candidates.map((candidate, idx) => {
           let confClass = 'conf-low';
           const conf = (candidate.confidence || '').toLowerCase();
@@ -96,14 +102,15 @@ export default function CandidateSelector({
                   className="select-btn"
                   type="button"
                   onClick={() => onSelect(candidate)}
+                  disabled={saving}
                 >
-                  Select Profile
+                  {saving ? 'Saving decision…' : 'Select Profile'}
                 </button>
               </div>
             </div>
           );
         })}
-      </div>
+      </div>}
 
       {/* Semantic retrieval context section */}
       {retrieval && (
@@ -114,6 +121,12 @@ export default function CandidateSelector({
           <p style={{ margin: '0 0 0.8rem', fontSize: '0.82rem', color: '#64748b', fontStyle: 'italic' }}>
             <strong>Note:</strong> Semantic similarity represents topical relevance for retrieval context, not identity probability.
           </p>
+
+          {retrieval.status === 'unavailable' && (
+            <p style={{ margin: '0 0 0.8rem', fontSize: '0.82rem', color: '#b45309' }}>
+              Topical retrieval context is unavailable. This does not change the candidate evidence or identity decision.
+            </p>
+          )}
 
           {retrieval.hits && retrieval.hits.length > 0 ? (
             <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.85rem' }}>
@@ -158,9 +171,10 @@ export default function CandidateSelector({
           className="select-btn"
           type="button"
           onClick={onMarkUnresolved}
+          disabled={saving}
           style={{ background: '#475569' }}
         >
-          Mark identity unresolved
+          {saving ? 'Saving decision…' : 'Mark identity unresolved'}
         </button>
       </div>
     </div>

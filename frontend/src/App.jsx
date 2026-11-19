@@ -15,7 +15,6 @@ import SemanticResultCard from './features/search/SemanticResultCard.jsx'
 import CandidateSelector from './features/author_resolution/CandidateSelector.jsx'
 import {
   searchAuthor,
-  getAuthorCandidates,
   fetchAuthorCandidatesV1,
   createAuthorResolution,
   searchSemanticEvidence,
@@ -86,6 +85,7 @@ export default function App() {
   const [error, setError]           = useState(null)
   const [unresolvedMessage, setUnresolvedMessage] = useState(null)
   const [searched, setSearched]     = useState('')
+  const [savingResolution, setSavingResolution] = useState(false)
 
   // ── Rotating Loading Message ─────────────────────────────────────
   useEffect(() => {
@@ -120,6 +120,7 @@ export default function App() {
     setRetrieval(null)
     setError(null)
     setUnresolvedMessage(null)
+    setSavingResolution(false)
   }
 
   async function handleSearch() {
@@ -134,6 +135,7 @@ export default function App() {
     setCandidates(null)
     setRetrieval(null)
     setSearched(q)
+    setSavingResolution(false)
 
     if (searchMode === 'semantic') {
       await handleSemanticSearch(q)
@@ -159,73 +161,51 @@ export default function App() {
   async function handleAuthorSearch(name) {
     setLoadingMessage('Resolving author identity & evidence...')
     try {
-      let candData = null
-      try {
-        candData = await fetchAuthorCandidatesV1(name, null)
-      } catch (e) {
-        console.warn('V1 candidates endpoint fallback:', e)
-        candData = await getAuthorCandidates(name, null)
-      }
-
-      if (candData.retrieval) {
-        setRetrieval(candData.retrieval)
-      }
-
-      const cands = candData.candidates || []
-      if (cands.length > 1) {
-        setCandidates(cands)
-        setLoading(false)
-      } else if (cands.length === 1) {
-        const topCand = cands[0]
-        try {
-          const res = await createAuthorResolution({
-            author_name: name,
-            candidate_ids: [topCand.candidate_id],
-            selected_candidate_id: topCand.candidate_id,
-          })
-          await fetchPapers(name, topCand.candidate_id, topCand.source, res.resolution_id)
-        } catch {
-          await fetchPapers(name, topCand.candidate_id, topCand.source)
-        }
-      } else {
-        await fetchPapers(name, null, null)
-      }
+      const candData = await fetchAuthorCandidatesV1(name, null)
+      setRetrieval(candData.retrieval || null)
+      // Always leave the identity decision visible to the reviewer. A single
+      // source profile is still a candidate, not an implicit selection.
+      setCandidates(candData.candidates || [])
     } catch (err) {
       setError(err.message || 'Unknown error')
+    } finally {
       setLoading(false)
     }
   }
 
   async function handleCandidateSelect(candidate) {
-    const candidateIds = candidates ? candidates.map(c => c.candidate_id || c.source_author_id) : []
-    setCandidates(null)
-    setLoading(true)
+    const candidateIds = candidates ? candidates.map(c => c.candidate_id || c.source_author_id).filter(Boolean) : []
+    const candidateId = candidate.candidate_id || candidate.source_author_id
+    setSavingResolution(true)
     setError(null)
     setLoadingMessage(`Persisting selection and retrieving works for ${candidate.display_name}...`)
     try {
-      let resolutionId = null
+      const res = await createAuthorResolution({
+        author_name: searched,
+        candidate_ids: candidateIds,
+        selected_candidate_id: candidateId,
+        reason: 'User manual selection from candidate review UI',
+      })
+      setCandidates(null)
+      setLoading(true)
       try {
-        const res = await createAuthorResolution({
-          author_name: searched,
-          candidate_ids: candidateIds,
-          selected_candidate_id: candidate.candidate_id,
-          reason: 'User manual selection from candidate review UI',
-        })
-        resolutionId = res.resolution_id
-      } catch (e) {
-        console.warn('Could not persist manual resolution:', e)
+        await fetchPapers(searched, candidateId, candidate.source, res.resolution_id)
+      } catch (err) {
+        setError(`Decision was saved, but publications could not be loaded: ${err.message || 'Unknown error'}`)
+      } finally {
+        setLoading(false)
       }
-      await fetchPapers(searched, candidate.candidate_id, candidate.source, resolutionId)
     } catch (err) {
-      setError(err.message || 'Unknown error')
-      setLoading(false)
+      setError(`Selection was not saved: ${err.message || 'Unknown error'}`)
+    } finally {
+      setSavingResolution(false)
     }
   }
 
   async function handleMarkUnresolved() {
-    const candidateIds = candidates ? candidates.map(c => c.candidate_id || c.source_author_id) : []
-    setCandidates(null)
-    setLoading(true)
+    const candidateIds = candidates ? candidates.map(c => c.candidate_id || c.source_author_id).filter(Boolean) : []
+    setSavingResolution(true)
+    setError(null)
     setLoadingMessage('Recording unresolved identity decision...')
     try {
       await createAuthorResolution({
@@ -234,24 +214,28 @@ export default function App() {
         mark_unresolved: true,
         reason: 'Reviewer marked identity as unresolved',
       })
+      setCandidates(null)
       setUnresolvedMessage(`Identity for "${searched}" marked unresolved. No multi-source retrieval was initiated.`)
       setResult(null)
     } catch (err) {
-      setError(err.message || 'Failed to record unresolved decision')
+      setError(`Unresolved decision was not saved: ${err.message || 'Unknown error'}`)
     } finally {
-      setLoading(false)
+      setSavingResolution(false)
     }
   }
 
   async function fetchPapers(name, candidateId, source, resolutionId = null) {
-    const data = await searchAuthor(name, candidateId, source, null, true, resolutionId)
-    if (data.identity_context?.status === 'unresolved' || data.message?.includes('unresolved')) {
-      setUnresolvedMessage(data.message || 'Identity is unresolved; multi-source retrieval was aborted.')
-      setResult(null)
-    } else {
-      setResult(data)
+    try {
+      const data = await searchAuthor(name, candidateId, source, null, true, resolutionId)
+      if (data.identity_context?.status === 'unresolved' || data.message?.includes('unresolved')) {
+        setUnresolvedMessage(data.message || 'Identity is unresolved; multi-source retrieval was aborted.')
+        setResult(null)
+      } else {
+        setResult(data)
+      }
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   const papers = result?.papers || []
@@ -288,12 +272,13 @@ export default function App() {
         )}
 
         {/* Candidate Selector (Author Mode) */}
-        {!loading && candidates && (
+        {!loading && candidates !== null && (
           <CandidateSelector 
             candidates={candidates} 
             retrieval={retrieval}
             onSelect={handleCandidateSelect}
             onMarkUnresolved={handleMarkUnresolved}
+            saving={savingResolution}
           />
         )}
 

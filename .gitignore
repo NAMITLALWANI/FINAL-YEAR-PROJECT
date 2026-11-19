@@ -16,6 +16,7 @@ backend/vector_index/
 frontend/node_modules/
 frontend/dist/# Backups and virtual environments
 backend/venv/
+backend/.venv/
 backups/
 backend/*.db.backup*
 backend/chroma_db/

@@ -1,3 +1,5 @@
+> **Historical plan — superseded.** This document contains earlier hour estimates and benchmark/demo proposals that conflict with the current approved research decisions and verified repository state. Use [docs/PROJECT_EXECUTION_ROADMAP.md](../../PROJECT_EXECUTION_ROADMAP.md) as the sole current project tracker. This file is retained only as historical audit material.
+
 # HAMMER Accelerated Completion Plan & Execution Roadmap
 
 **Audit Phase:** Phase 3 — Complete System Evaluation  

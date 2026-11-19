@@ -357,15 +357,15 @@ def _search(
             if key not in {"doi", "year", "canonical_id", "source", "source_providers"}:
                 continue
             if key == "doi" and isinstance(value, str):
-                clauses.append({key: {"": value.strip()}})
+                clauses.append({key: {"$eq": value.strip()}})
             elif key == "year" and isinstance(value, int):
-                clauses.append({key: {"": value}})
+                clauses.append({key: {"$eq": value}})
             elif key == "canonical_id" and isinstance(value, str):
-                clauses.append({key: {"": value.strip()}})
+                clauses.append({key: {"$eq": value.strip()}})
             elif key == "source" and isinstance(value, str):
-                clauses.append({"primary_source": {"": value.strip().casefold()}})
+                clauses.append({"primary_source": {"$eq": value.strip().casefold()}})
         if clauses:
-            where = clauses[0] if len(clauses) == 1 else {"": clauses}
+            where = clauses[0] if len(clauses) == 1 else {"$and": clauses}
     # Query more raw candidates so that after deduplication and score filtering we satisfy top_k
     n_query = min(max(top_k * 4, 10), 50)
     result = collection.query(query_texts=[query[:2000]], n_results=n_query, where=where, include=["metadatas", "distances"])

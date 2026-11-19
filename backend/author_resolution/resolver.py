@@ -29,6 +29,7 @@ import json
 from typing import Any
 
 from sqlalchemy import select
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from config import (
@@ -37,7 +38,12 @@ from config import (
     AUTHOR_RESOLVER_VERSION, AUTHOR_SCORING_VERSION, AUTHOR_THRESHOLD_VERSION,
 )
 from database import Author, AuthorExternalId, AuthorCandidate, AuthorResolution, AuthorResolutionEvidence
-from author_resolution.candidates import AuthorCandidateInput, OpenAlexCandidate, OpenAlexCandidateService
+from author_resolution.candidates import (
+    AuthorCandidateInput,
+    OpenAlexCandidate,
+    OpenAlexCandidateService,
+    normalize_name,
+)
 from author_resolution.evidence import Evidence, extract_evidence
 from author_resolution.scoring import CandidateScore, score_evidence
 
@@ -60,7 +66,10 @@ class RankedCandidate:
 
 
 def rank_candidates(candidates: list[OpenAlexCandidate], context: dict[str, Any] | None = None) -> list[RankedCandidate]:
-    ranked = [RankedCandidate(candidate, extract_evidence(candidate, context), score_evidence(extract_evidence(candidate, context))) for candidate in candidates]
+    ranked: list[RankedCandidate] = []
+    for candidate in candidates:
+        evidence = extract_evidence(candidate, context)
+        ranked.append(RankedCandidate(candidate, evidence, score_evidence(evidence)))
     # deterministic display ordering only; it is not an identity assertion.
     return sorted(ranked, key=lambda item: (item.score.score is not None, item.score.score or -1.0, item.candidate.source_author_id), reverse=True)
 
@@ -93,8 +102,12 @@ class AuthorResolutionService:
         )
         if result.status == "failed":
             return [], [], result.error_code or "candidate_source_failed"
-        rows = await self.candidate_service.persist_candidates(result, db)
-        await db.commit()
+        try:
+            rows = await self.candidate_service.persist_candidates(result, db)
+            await db.commit()
+        except SQLAlchemyError:
+            await db.rollback()
+            raise
         return rows, rank_candidates(result.candidates, request_context), result.status
 
     async def create_resolution(
@@ -111,14 +124,25 @@ class AuthorResolutionService:
         request_context = dict(context or {})
         if institution_hint:
             request_context.setdefault("institution_hints", [institution_hint])
+        normalized_query = normalize_name(author_name)
 
+        if mark_unresolved and selected_candidate_id:
+            raise ValueError("An unresolved decision cannot also select a candidate.")
+
+        requested_ids: set[str] | None = None
         if candidate_ids is not None:
+            requested_ids = set(candidate_ids)
             if candidate_ids:
                 stmt = select(AuthorCandidate).where(AuthorCandidate.id.in_(candidate_ids))
                 res = await db.execute(stmt)
                 rows = list(res.scalars().all())
             else:
                 rows = []
+            if (
+                len(rows) != len(requested_ids)
+                or any(row.query_normalized != normalized_query for row in rows)
+            ):
+                raise ValueError("One or more candidates do not belong to this author query.")
             row_by_source_id = {row.source_author_id: row for row in rows}
             candidates_list = []
             for row in rows:
@@ -150,98 +174,104 @@ class AuthorResolutionService:
             status, decision_reason = UNRESOLVED, reason or "Reviewer marked this query unresolved."
             top, second, margin, dominance = None, None, None, None
         elif selected_candidate_id:
+            if requested_ids is not None and selected_candidate_id not in requested_ids:
+                raise ValueError("The selected candidate must be included in the supplied candidate set.")
             selected_row = await db.get(AuthorCandidate, selected_candidate_id)
-            if selected_row is None or selected_row.query_normalized != author_name.strip().casefold():
+            if selected_row is None or selected_row.query_normalized != normalized_query:
                 raise ValueError("Selected candidate does not belong to this author query.")
             status, decision_reason = MANUAL_SELECTED, reason or "Reviewer manually selected this candidate."
         elif status == AUTO_RESOLVED and ranked:
             selected_row = row_by_source_id.get(ranked[0].candidate.source_author_id)
 
-        resolution = AuthorResolution(
-            query_original=author_name,
-            query_normalized=author_name.strip().casefold(),
-            institution_hint=institution_hint,
-            status=status,
-            selected_candidate=selected_row,
-            top_score=top,
-            second_score=second,
-            score_margin=margin,
-            dominance_ratio=dominance,
-            confidence_level="engineering_heuristic" if status == AUTO_RESOLVED else None,
-            decision_reason=decision_reason,
-            resolver_version=AUTHOR_RESOLVER_VERSION,
-            scoring_version=AUTHOR_SCORING_VERSION,
-            threshold_version=AUTHOR_THRESHOLD_VERSION,
-            resolved_at=datetime.now(timezone.utc).replace(tzinfo=None) if selected_row else None,
-        )
-
-        if selected_row:
-            ext_stmt = select(AuthorExternalId).where(
-                AuthorExternalId.source == selected_row.source,
-                AuthorExternalId.external_id == selected_row.source_author_id,
+        try:
+            resolution = AuthorResolution(
+                query_original=author_name,
+                query_normalized=normalized_query,
+                institution_hint=institution_hint,
+                status=status,
+                selected_candidate=selected_row,
+                top_score=top,
+                second_score=second,
+                score_margin=margin,
+                dominance_ratio=dominance,
+                confidence_level="engineering_heuristic" if status == AUTO_RESOLVED else None,
+                decision_reason=decision_reason,
+                resolver_version=AUTHOR_RESOLVER_VERSION,
+                scoring_version=AUTHOR_SCORING_VERSION,
+                threshold_version=AUTHOR_THRESHOLD_VERSION,
+                resolved_at=datetime.now(timezone.utc).replace(tzinfo=None) if selected_row else None,
             )
-            existing_ext = (await db.execute(ext_stmt)).scalar_one_or_none()
-            if existing_ext:
-                author = await db.get(Author, existing_ext.author_id)
-            else:
-                author = Author(
-                    display_name=selected_row.display_name,
-                    normalized_name=selected_row.normalized_name,
-                    resolution_state="resolved",
+            db.add(resolution)
+
+            if selected_row:
+                ext_stmt = select(AuthorExternalId).where(
+                    AuthorExternalId.source == selected_row.source,
+                    AuthorExternalId.external_id == selected_row.source_author_id,
                 )
-                db.add(author)
-                await db.flush()
-                db.add(AuthorExternalId(
-                    author_id=author.id,
-                    source=selected_row.source,
-                    external_id=selected_row.source_author_id,
-                    provenance_json='{"identity_strength":"source_identified","note":"Source profile selected by resolution; not cross-source proof."}'
-                ))
-                await db.flush()
-            resolution.author = author
-
-        db.add(resolution)
-        await db.flush()
-
-        if ranked:
-            for item in ranked:
-                candidate_row = row_by_source_id.get(item.candidate.source_author_id)
-                if not candidate_row:
-                    continue
-                for evidence in item.evidence:
-                    values = evidence.as_db_values()
-                    db.add(AuthorResolutionEvidence(
-                        resolution=resolution,
-                        candidate=candidate_row,
-                        weight=None,
-                        weighted_contribution=item.score.contributions.get(evidence.signal_name),
-                        **values,
+                existing_ext = (await db.execute(ext_stmt)).scalar_one_or_none()
+                if existing_ext:
+                    author = await db.get(Author, existing_ext.author_id)
+                else:
+                    author = Author(
+                        display_name=selected_row.display_name,
+                        normalized_name=selected_row.normalized_name,
+                        resolution_state="resolved",
+                    )
+                    db.add(author)
+                    await db.flush()
+                    db.add(AuthorExternalId(
+                        author_id=author.id,
+                        source=selected_row.source,
+                        external_id=selected_row.source_author_id,
+                        provenance_json='{"identity_strength":"source_identified","note":"Source profile selected by resolution; not cross-source proof."}'
                     ))
-        elif selected_row and selected_row.raw_payload_json:
-            try:
-                p_data = json.loads(selected_row.raw_payload_json)
-                r_cand = p_data.get("payload", p_data) if isinstance(p_data, dict) else p_data
-                cand = OpenAlexCandidate.from_openalex(
-                    r_cand,
-                    AuthorCandidateInput(author_name),
-                    selected_row.retrieved_at,
-                )
-                ev_list = extract_evidence(cand, request_context)
-                scored = score_evidence(ev_list)
-                for evidence in ev_list:
-                    values = evidence.as_db_values()
-                    db.add(AuthorResolutionEvidence(
-                        resolution=resolution,
-                        candidate=selected_row,
-                        weight=None,
-                        weighted_contribution=scored.contributions.get(evidence.signal_name),
-                        **values,
-                    ))
-            except Exception:
-                pass
+                    await db.flush()
+                resolution.author = author
 
-        await db.commit()
-        await db.refresh(resolution)
+            await db.flush()
+
+            if ranked:
+                for item in ranked:
+                    candidate_row = row_by_source_id.get(item.candidate.source_author_id)
+                    if not candidate_row:
+                        continue
+                    for evidence in item.evidence:
+                        values = evidence.as_db_values()
+                        db.add(AuthorResolutionEvidence(
+                            resolution=resolution,
+                            candidate=candidate_row,
+                            weight=None,
+                            weighted_contribution=item.score.contributions.get(evidence.signal_name),
+                            **values,
+                        ))
+            elif selected_row and selected_row.raw_payload_json:
+                try:
+                    p_data = json.loads(selected_row.raw_payload_json)
+                    r_cand = p_data.get("payload", p_data) if isinstance(p_data, dict) else p_data
+                    cand = OpenAlexCandidate.from_openalex(
+                        r_cand,
+                        AuthorCandidateInput(author_name),
+                        selected_row.retrieved_at,
+                    )
+                    ev_list = extract_evidence(cand, request_context)
+                    scored = score_evidence(ev_list)
+                    for evidence in ev_list:
+                        values = evidence.as_db_values()
+                        db.add(AuthorResolutionEvidence(
+                            resolution=resolution,
+                            candidate=selected_row,
+                            weight=None,
+                            weighted_contribution=scored.contributions.get(evidence.signal_name),
+                            **values,
+                        ))
+                except Exception:
+                    pass
+
+            await db.commit()
+            await db.refresh(resolution)
+        except SQLAlchemyError:
+            await db.rollback()
+            raise
         return resolution
 
     async def get_resolution(self, resolution_id: str, db: AsyncSession) -> AuthorResolution | None:

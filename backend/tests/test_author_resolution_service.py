@@ -1,8 +1,11 @@
 import asyncio
 import httpx
+import pytest
+from sqlalchemy import func, select
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from database import Base, AuthorExternalId, AuthorResolutionEvidence
+from database import Author, Base, AuthorExternalId, AuthorResolution, AuthorResolutionEvidence
 from services.author_candidates import OpenAlexCandidateService
 from services.author_resolution import AuthorResolutionService, MANUAL_SELECTED, UNRESOLVED
 
@@ -58,6 +61,40 @@ def test_explicit_empty_candidate_list_does_not_repeat_source_request():
             )
             assert result.status == UNRESOLVED
             assert result.decision_reason == "No candidates were returned."
+        await engine.dispose()
+
+    run(scenario())
+
+
+def test_resolution_write_failure_rolls_back_new_identity_rows(monkeypatch):
+    async def scenario():
+        def handler(request):
+            return httpx.Response(200, json={"results": [
+                {"id": "https://openalex.org/A1", "display_name": "Ada Example", "works_count": 1, "cited_by_count": 1, "last_known_institutions": []},
+            ]})
+
+        engine = create_async_engine("sqlite+aiosqlite:///:memory:")
+        async with engine.begin() as connection:
+            await connection.run_sync(Base.metadata.create_all)
+        sessions = async_sessionmaker(engine, expire_on_commit=False)
+        service = AuthorResolutionService(OpenAlexCandidateService(transport=httpx.MockTransport(handler)))
+
+        async with sessions() as db:
+            rows, _, _ = await service.generate_and_rank("Ada Example", None, None, db)
+
+            async def failing_commit():
+                raise SQLAlchemyError("simulated persistence failure")
+
+            monkeypatch.setattr(db, "commit", failing_commit)
+            with pytest.raises(SQLAlchemyError, match="simulated persistence failure"):
+                await service.create_resolution(
+                    "Ada Example", None, None, db, selected_candidate_id=rows[0].id,
+                )
+
+            assert await db.scalar(select(func.count()).select_from(AuthorResolution)) == 0
+            assert await db.scalar(select(func.count()).select_from(Author)) == 0
+            assert await db.scalar(select(func.count()).select_from(AuthorExternalId)) == 0
+
         await engine.dispose()
 
     run(scenario())
