@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+collecting ... collected 10 items
+
+tests/test_paper_tables.py::test_final_tables_are_refused_while_parameters_are_unspecified_and_draft_is_marked PASSED [ 10%]
+tests/test_paper_tables.py::test_all_tables_render_and_are_well_formed_latex PASSED [ 20%]
+tests/test_paper_tables.py::test_numbers_in_the_tables_equal_the_report PASSED [ 30%]
+tests/test_paper_tables.py::test_census_strata_and_withheld_intervals_are_labelled_not_invented PASSED [ 40%]
+tests/test_paper_tables.py::test_incomplete_verification_gives_a_placeholder_and_never_a_verified_rate PASSED [ 50%]
+tests/test_paper_tables.py::test_verified_and_benchmark_tables_are_separate_and_labelled PASSED [ 60%]
+tests/test_paper_tables.py::test_agreement_table_shows_counts_and_undefined_kappa PASSED [ 70%]
+tests/test_paper_tables.py::test_escaping_and_determinism PASSED         [ 80%]
+tests/test_paper_tables.py::test_script_writes_new_files_only_and_refuses_unspecified_parameters PASSED [ 90%]
+tests/test_paper_tables.py::test_a_computed_pooled_interval_is_printed_exactly_as_in_the_report PASSED [100%]
+
+============================== 10 passed in 1.35s ==============================

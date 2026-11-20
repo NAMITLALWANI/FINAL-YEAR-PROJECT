@@ -1,0 +1,26 @@
+% Rows summarise the cited records. S2AND, WhoIsWho, CONNA, HUMO and r-HUMO were checked against abstract and readable text on 20 Nov 2026 (REFERENCE_VERIFICATION.md);
+% the other rows rest on abstract-level or bibliographic-record readings. Cells saying "not compared" mean the cited work reports no measure that can be set beside HAMMER's.
+\begin{table*}[t]
+\caption{Representative prior work and its relation to \hammer{}. Task form, evidence and evaluation are as described by the cited sources.}
+\label{tab:literature}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{0.15\textwidth}p{0.21\textwidth}p{0.19\textwidth}p{0.16\textwidth}p{0.19\textwidth}@{}}
+\toprule
+\textbf{Work} & \textbf{Task form} & \textbf{Evidence or ground truth} & \textbf{Evaluation family} & \textbf{Relation to \hammer{}} \\
+\midrule
+Fellegi and Sunter~\cite{fellegi1969recordlinkage} & Record-pair linkage with link, non-link and possible-link decisions & Probabilistic model over field agreement & Decision error rates & Foundation for the work-level layer; \hammer{}'s score is not a fitted probabilistic model \\
+Rodrigues et al.~\cite{rodrigues2024andreview} & Review; grouping versus assignment families & Literature (2003--2022) & Not applicable & Taxonomy used to place \hammer{} \\
+S2AND~\cite{subramanian2021s2and} & Clustering of author mentions across eight harmonised datasets & Existing dataset labels & Cluster-level F1 & Not compared: no candidate retrieval or abstention \\
+WhoIsWho~\cite{chen2023whoiswho} & Benchmark with a real-time assignment task, more than one million papers & Curated benchmark labels & F1, AUC and MAP, by task & Closest task form; \hammer{} resolves a query to a provider profile, not a paper to a person \\
+CONNA~\cite{chen2020conna} & Match a paper to the best existing person, then assign or create a new person & Two datasets; deployed on AMiner & F1 & Precedent for a decision stage after ranking \\
+AMiner~\cite{zhang2018aminerhitl} & Clustering, maintenance and human annotators in the loop & Deployed system data & Not compared & Precedent for human review in the loop \\
+AggAND~\cite{zhang2021aggand}; PubMed Computed Authors~\cite{tian2024pubmedcomputedauthors} & Disambiguation of PubMed author names with additional databases or multiple signals & PubMed-based datasets & Pairwise accuracy, F1 & Multi-source evidence has prior art; biomedical scope \\
+Choi et al.~\cite{choi2024heterogeneoussites} & Scheme chosen according to metadata available from several academic sites & Non-public data & Not compared & Metadata-conditioned evidence has prior art \\
+LAGOS-AND~\cite{zhang2023lagosand,zhang2022lagosandv2} & Gold-standard blocks of author records & ORCID and DOI linkage & Dataset, not a method & Benchmark candidate; labels are provisional (Section~\ref{sec:design}) \\
+HUMO~\cite{chen2018humo}; r-HUMO~\cite{hou2020rhumo} & Machine--human workload split for entity resolution with quality targets & Entity-resolution datasets & Precision and recall targets against human cost & Quality-controlled review exists; \hammer{} offers no such guarantee \\
+Selective classification~\cite{chow1970reject,elyaniv2010foundations,geifman2019selectivenet} & Predictors that may abstain & General classification & Risk--coverage & Supplies the evaluation vocabulary used for RQ2b \\
+\bottomrule
+\end{tabular}
+\end{table*}

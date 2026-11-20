@@ -1,0 +1,15 @@
+{
+ "cases": 70,
+ "dataset_version": "lagos-and-v2.0-exploratory-F3",
+ "doi_register_sha256": "768e34bf7d28cc8ec5fac67447ec375a0365a47018559de3927b8b3c801d00d8",
+ "file_sha256": {
+  "doi_register.csv": "768e34bf7d28cc8ec5fac67447ec375a0365a47018559de3927b8b3c801d00d8",
+  "gold_identity_register.csv": "7c4ac0c371858d405128e8d226b2b7463e4a2ba53af940a20976ff752d9101da",
+  "seeds.csv": "6bbf5477a8d53187f61475d35134fb265a82f279ffa3618823b8fa66d5ef3447"
+ },
+ "frozen_at": "2026-11-20T12:22:49Z",
+ "manifest_sha256": "4635045c614e7c1d5ccdcc86a8ffe9f9e1daeb9869a0c5c0e0c63764665f1adf",
+ "role": "main",
+ "seed": 3351144659,
+ "seeds_sha256": "6bbf5477a8d53187f61475d35134fb265a82f279ffa3618823b8fa66d5ef3447"
+}

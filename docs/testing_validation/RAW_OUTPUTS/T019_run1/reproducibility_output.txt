@@ -1,0 +1,1 @@
+{'identical': True, 'files': ['evidence_snapshot.jsonl', 'predictions.csv', 'retrieval.csv', 'run_manifest.json'], 'differing': [], 'run_id': 'reproducibility-check', 'bytes_compared': 937204}

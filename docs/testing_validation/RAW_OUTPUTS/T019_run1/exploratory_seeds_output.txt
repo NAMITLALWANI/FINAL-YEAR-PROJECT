@@ -1,0 +1,8 @@
+{
+ "cases": 70,
+ "file_sha256": {
+  "seeds.csv": "6bbf5477a8d53187f61475d35134fb265a82f279ffa3618823b8fa66d5ef3447",
+  "doi_register.csv": "768e34bf7d28cc8ec5fac67447ec375a0365a47018559de3927b8b3c801d00d8",
+  "gold_identity_register.csv": "7c4ac0c371858d405128e8d226b2b7463e4a2ba53af940a20976ff752d9101da"
+ }
+}

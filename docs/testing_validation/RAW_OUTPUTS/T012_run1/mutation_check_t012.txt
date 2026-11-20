@@ -1,0 +1,9 @@
+module sha256 before: f70e821622d6e87c44a45f0b33a243ff4d8457d8efee811d7ce70a432861a0ed
+V1 designated citation is the largest hash -> 1 failed, 9 passed in 0.52s
+V2 ORCID leaked into the seeds file -> 4 failed, 6 passed in 0.59s
+V3 non-designated DOIs registered as both -> 1 failed, 9 passed in 0.49s
+V4 complete-block check removed -> 1 failed, 9 passed in 0.49s
+V5 identity-map block mismatch ignored -> 1 failed, 9 passed in 0.47s
+V6 manifest hash not bound in the freeze file -> 1 failed, 9 passed in 0.48s
+V7 affiliation-less citations allowed to be designated first -> 1 failed, 9 passed in 0.49s
+module sha256 after restore: f70e821622d6e87c44a45f0b33a243ff4d8457d8efee811d7ce70a432861a0ed

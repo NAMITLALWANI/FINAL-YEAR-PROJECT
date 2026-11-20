@@ -1,0 +1,14 @@
+module sha256 before: 356d96bc5eb6085cd268f03cb56dfe79a1ff1c340a6a2ab0e8c362f5b6f9e618
+S1 candidate allow-list also copies the ORCID field -> 6 failed, 19 passed in 0.54s
+S2 designated paper not forced into the Stage A packet -> 1 failed, 24 passed in 0.69s
+S3 candidates keep provider order -> 1 failed, 24 passed in 0.71s
+S4 Stage A cap K ignored -> 1 failed, 24 passed in 0.68s
+S5 scan ignores forbidden keys -> 6 failed, 19 passed in 0.71s
+S6 scan ignores ORCID-shaped strings -> 3 failed, 22 passed in 0.68s
+S7 hand-edit check always passes -> 2 failed, 23 passed in 0.68s
+S8 crosswalk written into the reviewer directory -> 1 failed, 24 passed in 0.68s
+S9 works cap ignored -> 1 failed, 24 passed in 0.67s
+S10 opaque id built from the provider id -> 4 failed, 21 passed in 0.44s
+S11 release gate bypassed -> 11 failed, 14 passed in 0.75s
+S12 gold value scan disabled -> 1 failed, 24 passed in 0.60s
+module sha256 after restore: 356d96bc5eb6085cd268f03cb56dfe79a1ff1c340a6a2ab0e8c362f5b6f9e618

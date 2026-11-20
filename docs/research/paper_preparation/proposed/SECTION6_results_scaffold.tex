@@ -1,0 +1,31 @@
+% PROPOSED replacement for sections/06_results.tex. NOT APPLIED. No result is stated. Every table is generated from a frozen C7 report by
+% paper/HAMMER_IEEE_PAPER/tools/make_result_tables.py into tables_generated/; until those files exist the section compiles with visible placeholders.
+\section{Results}
+\label{sec:results}
+\textit{[No result is reported in this draft. Each subsection below is written only from the generated tables of a frozen evaluation; no smoke-test number is a finding.]}
+
+\subsection{Case Accounting}
+\label{sec:res-accounting}
+\IfFileExists{tables_generated/res_accounting.tex}{\input{tables_generated/res_accounting.tex}}{\tbd{case-accounting table pending the frozen evaluation}}
+
+\subsection{Candidate Retrieval}
+\label{sec:res-retrieval}
+\IfFileExists{tables_generated/res_retrieval.tex}{\input{tables_generated/res_retrieval.tex}}{\tbd{retrieval table pending}}
+
+\subsection{Selective Resolution}
+\label{sec:res-selective}
+\IfFileExists{tables_generated/res_selective.tex}{\input{tables_generated/res_selective.tex}}{\tbd{outcome-category table pending}}
+
+\subsection{Verified Automatic Precision}
+\label{sec:res-verified}
+\IfFileExists{tables_generated/res_verified.tex}{\input{tables_generated/res_verified.tex}}{\tbd{verified-precision table pending}}
+
+\subsection{Audit of Benchmark Labels and Verified Retrieval}
+\label{sec:res-audit}
+\IfFileExists{tables_generated/res_audit.tex}{\input{tables_generated/res_audit.tex}}{\tbd{audit table pending}}
+\IfFileExists{tables_generated/res_verified_retrieval.tex}{\input{tables_generated/res_verified_retrieval.tex}}{\tbd{verified-retrieval table pending}}
+
+\subsection{Reviewer Agreement and Parameters}
+\label{sec:res-agreement}
+\IfFileExists{tables_generated/res_agreement.tex}{\input{tables_generated/res_agreement.tex}}{\tbd{agreement table pending}}
+\IfFileExists{tables_generated/res_parameters.tex}{\input{tables_generated/res_parameters.tex}}{\tbd{parameter table pending}}

@@ -1,0 +1,12 @@
+module sha256 before: 776e02e8e7d040a325f533f0868cbe19a539de76a485fbd46612e14f27c41d8c
+P1 pure unresolved group treated as consistent again -> 2 failed, 99 passed in 1.77s
+P2 unresolved group purity treated as consistent -> 2 failed, 99 passed in 1.78s
+P3 uncertain case with an impure group pulled into the definite denominator -> 14 failed, 87 passed in 2.08s
+P4 impure groups outside the definite denominator not reported -> 2 failed, 99 passed in 1.77s
+P5 impure-group rate denominator includes unresolved purity -> 1 failed, 100 passed in 1.77s
+P6 conditional denominator includes cannot-tell-only cases -> 3 failed, 98 passed in 1.79s
+P7 judgment categories swapped -> 1 failed, 100 passed in 1.78s
+P8 overall retrieval adjusted by verified label -> 1 failed, 100 passed in 1.87s
+P9 cannot_tell accepted again as a purity state -> 2 failed, 99 passed in 1.78s
+P10 uncertainty bracket loses indeterminate cases -> 2 failed, 99 passed in 1.78s
+module sha256 after restore: 776e02e8e7d040a325f533f0868cbe19a539de76a485fbd46612e14f27c41d8c

@@ -1,0 +1,159 @@
+{
+ "effective_config": {
+  "AUTHOR_AUTO_DOMINANCE_THRESHOLD": 1.35,
+  "AUTHOR_AUTO_MARGIN_THRESHOLD": 0.15,
+  "AUTHOR_AUTO_SCORE_THRESHOLD": 0.75,
+  "AUTHOR_ENRICHMENT_MAX_PAGES": 2,
+  "AUTHOR_ENRICHMENT_WORKS_PER_PAGE": 100,
+  "AUTHOR_MANUAL_SCORE_THRESHOLD": 0.45,
+  "AUTHOR_MIN_AVAILABLE_SIGNALS_FOR_AUTO": 2,
+  "AUTHOR_RESOLVER_VERSION": "v1",
+  "AUTHOR_SCORE_WEIGHTS": {
+   "coauthor_overlap": 0.1,
+   "institution_similarity": 0.25,
+   "name_similarity": 0.35,
+   "publication_overlap": 0.2,
+   "temporal_compatibility": 0.1
+  },
+  "AUTHOR_SCORING_VERSION": "v1",
+  "AUTHOR_THRESHOLD_VERSION": "v1",
+  "ENABLE_AUTHOR_ENRICHMENT": true
+ },
+ "effective_config_sha256": "df95682d898a64ea794ee9ee44d2199826327be21b89dcba88cb19fce1866b93",
+ "environment_overrides_present": [],
+ "freeze_id": "HAMMER-EVAL-F1",
+ "frozen_file_sha256": {
+  "backend/author_resolution/candidates.py": "9f0d89aef902c95c587bb4217c53a39d290f2090e98319752c66b003f5719af2",
+  "backend/author_resolution/context.py": "a4957d5d7fb66240d898ca20c15664e32da4260dddb1fcb70e7d892fba4f695b",
+  "backend/author_resolution/enrichment.py": "c462dc03c00150ad59ca719b038cc75c87e53b54de646ad1c3cfe0093eb68d30",
+  "backend/author_resolution/enrichment_types.py": "e9371d3e4664506923d981e194f486b3b3f4a62709d6203e1f55e25baeea1cf9",
+  "backend/author_resolution/evidence.py": "3c86429f25f83cd66751b7040efcc60a0b77cb03090740cae1d9978db43f617d",
+  "backend/author_resolution/policy.py": "3ecb44da51768b1078e992dca4e72e8c79db7f717e9fd06bd573a850e7351ccc",
+  "backend/author_resolution/resolver.py": "7c4be010ba2b32db9054843f5014c0507f6f3a2e1d520856246ae44107587ce5",
+  "backend/author_resolution/schemas.py": "5a6a78bc2beae14d84cd776457d41c10d6beed7a3b559fc48fd85138f2f0e4ab",
+  "backend/author_resolution/scoring.py": "33174b7c9cc45b45101b7acccbc54511ae19cfb25ea0657bd55e8296aeca48d4",
+  "backend/config.py": "0475fea23734af4d58300363e42f2eb954a4d265dbd306ee9004ccb88e19621e",
+  "backend/hammer_pilot/capture.py": "281500015db936fed32ab574a15c7cd064993a73d3291724d77169f900ffe1ca",
+  "backend/hammer_pilot/common.py": "6428f2d1b53be4e5ca5ccd16fb88033b13ab7d5c40a689045e310bc95dbbdab4",
+  "backend/hammer_pilot/context_rules.py": "0e68726807b0584940510c322df6f1db32cc19140b12d153326f1d7d86f09a74",
+  "backend/hammer_pilot/freeze.py": "423902cb1ff923cea5eb468931e96f5c86d8d627ecf9c6e68f79588c5b8caeff",
+  "backend/hammer_pilot/pipeline.py": "a1adc6fe83d7cada00728183c9919182f19f735e2e417d4cc86e80a194f66542",
+  "backend/hammer_pilot/replay.py": "5e048a30b58fb48075e17c9c65afd46da2101efc0f7589b5e5dad94d519e7b69",
+  "backend/hammer_pilot/seeds_from_manifest.py": "f70e821622d6e87c44a45f0b33a243ff4d8457d8efee811d7ce70a432861a0ed",
+  "backend/hammer_pilot/selector_c1c.py": "b7ef4758f4ae28b0c0627363f607c2365a9a41a37542884bd5347c609c975a00",
+  "backend/scripts/capture_hammer_pilot.py": "3dc8fc510f1066e08bb2b571fc6f04d27f5a0333a858805ded3f915c4137d62d",
+  "backend/scripts/replay_hammer_pilot.py": "256aba0fe29817e5896f1f76220851dddd4d13cd51f1f45218767a65c49f8422"
+ },
+ "git_branch": "main",
+ "git_head": "6d31cbe2a5bfbe38d9e5fd1ff2e67f5dccf62280",
+ "git_status_porcelain_sha256": "f4ac9e20c3ba01cb3d1c633778f5336e79d4ccd008941c71939ee9b626ed7e63",
+ "manifest_sha256": "14e635a6444f9ccac127a4cab0f0812fa6e6b40009174649e75b79fd4829bb9e",
+ "parameters": {
+  "dataset": {
+   "archive_sha256": "a0ac028b8955fcb4c6797b9fe1f5602fef43b45424f4044d0108c4f7d4bb6840",
+   "name": "LAGOS-AND",
+   "version": "2.0 block-trimmed",
+   "zenodo_doi": "10.5281/zenodo.7313353"
+  },
+  "frame": {
+   "exclude": [
+    "23 smoke blocks",
+    "all pilot blocks (complete blocks)"
+   ],
+   "split": "test"
+  },
+  "inference": {
+   "bootstrap_min_stratum_cases": 20,
+   "diagnostics": {
+    "clustered_blocks_warn": 20,
+    "sampling_fraction_warn": 0.1,
+    "sparse_automatic_warn": 30,
+    "sparse_errors_warn": 5
+   },
+   "negligible_stratum_weight": 0.005
+  },
+  "main_sample": {
+   "beta": 0.05,
+   "floors": {
+    "L": 0,
+    "M": 0,
+    "S": 0,
+    "XL": 9
+   },
+   "gamma": 0.1,
+   "m_prime": null,
+   "m_target_automatic": null,
+   "n_max": 2500,
+   "note": "m and m' depend on reviewer capacity (personnel deferred) and are NOT chosen; N is therefore reported conditionally",
+   "prior_primary": "jeffreys",
+   "prior_sensitivity": "uniform"
+  },
+  "model_parameters": {
+   "min_signals": 2,
+   "source": "code defaults in backend/config.py (not tuned on LAGOS)",
+   "tau_auto": 0.75,
+   "tau_dominance": 1.35,
+   "tau_manual": 0.45,
+   "tau_margin": 0.15,
+   "weights": [
+    0.35,
+    0.25,
+    0.2,
+    0.1,
+    0.1
+   ]
+  },
+  "pilot": {
+   "label_free": true,
+   "note": "XL has 9 test blocks; none is spent on the pilot, XL is a census in the main sample",
+   "per_stratum": {
+    "L": 50,
+    "M": 100,
+    "S": 100,
+    "XL": 0
+   },
+   "total": 250
+  },
+  "primary": {
+   "condition": "C1",
+   "descriptive_arm": "R0",
+   "policy": "selective_policy_v2",
+   "primary_estimand": "E1",
+   "retrieval_arm": "R2",
+   "secondary_estimand": "E2"
+  },
+  "provider": {
+   "cost_ceiling_usd": 10,
+   "planned_requests_per_case": 1.05,
+   "request_ceiling_factor": 1.5,
+   "secondary_cases": "captured only if budget remains",
+   "stop_at_cost_fraction": 0.8,
+   "stop_on": [
+    "HTTP 401",
+    "HTTP 403",
+    "HTTP 429",
+    "3 consecutive 5xx or timeouts",
+    "hash mismatch",
+    "budget exhaustion"
+   ],
+   "works_requests_per_reviewed_case": 7
+  },
+  "review": {
+   "audit_size": null,
+   "group_paper_cap_K": 10,
+   "max_candidates_per_case": 10,
+   "personnel": "deferred",
+   "works_per_candidate": 25
+  },
+  "seeds": "derived from the freeze id by the documented rule; see the freeze manifest",
+  "status": "ADOPTED under the 20 November 2026 autonomous-execution instruction; every value is the recommendation of PARAMETER_RATIFICATION_SHEET.md. Nothing has been captured yet, so the research director may still change any value before the pilot capture by writing a new freeze id."
+ },
+ "parameters_sha256": "0d7373634611e9c596451e63df0a9bba0a5d83ee2c8d54870c6e8074dba939a3",
+ "seed_rule": "int(sha256('HAMMER|<role>|<freeze id>')[:8], 16)",
+ "seeds": {
+  "audit": 1759772701,
+  "main": 689205628,
+  "pilot": 2524950977
+ },
+ "working_tree_dirty": true
+}

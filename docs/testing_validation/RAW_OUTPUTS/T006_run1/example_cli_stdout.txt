@@ -1,0 +1,3 @@
+primary_jeffreys: found, N = 34, P = 0.7818
+sensitivity_uniform_prior: found, N = 31, P = 0.7731
+sensitivity_lower_bound: not_found_within_N_max (the probability condition does not hold at N_max)

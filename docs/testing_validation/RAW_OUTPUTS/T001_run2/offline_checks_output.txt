@@ -1,0 +1,48 @@
+predictions rows 450 retrieval rows 100 cases 50
+
+[1] outcome by condition/policy
+   ('C0', 'forced_top1', 'auto') 50
+   ('C0', 'legacy_gates_plus_p3', 'manual') 50
+   ('C0', 'selective_policy_v2', 'manual') 50
+   ('C1', 'forced_top1', 'auto') 50
+   ('C1', 'legacy_gates_plus_p3', 'auto') 4
+   ('C1', 'legacy_gates_plus_p3', 'manual') 46
+   ('C1', 'selective_policy_v2', 'auto') 4
+   ('C1', 'selective_policy_v2', 'manual') 46
+   ('C1x', 'forced_top1', 'auto') 50
+   ('C1x', 'legacy_gates_plus_p3', 'auto') 26
+   ('C1x', 'legacy_gates_plus_p3', 'manual') 24
+   ('C1x', 'selective_policy_v2', 'auto') 7
+   ('C1x', 'selective_policy_v2', 'manual') 43
+
+[2] pool_status / error_code by arm (retrieval.csv)
+   ('R0', 'empty', '', '') 2
+   ('R0', 'ok', '', '') 48
+   ('R2', 'ok', '', '') 48
+   ('R2', 'ok', '', 'ok') 2
+
+[3] pool_status in predictions vs outcome (selective_policy_v2, C1)
+   ('ok', 'auto') 4
+   ('ok', 'manual') 46
+
+[4] distinct outcome values: ['auto', 'manual'] pool_status values: ['ok']
+
+[5] selective_policy_v2 auto rows: 11 violations: none
+    auto_blockers values seen: [('["no_identity_corroboration"]', 51), ('["incomparable_evidence_sets"]', 44), ('[]', 24), ('["no_identity_corroboration","incomparable_evidence_sets"]', 20), ('["no_identity_corroboration","observed_zero_signal","incomparable_evidence_sets"]', 7), ('["observed_zero_signal"]', 2), ('["observed_zero_signal","incomparable_evidence_sets"]', 1), ('["no_identity_corroboration","observed_zero_signal"]', 1)]
+    forced_top1 by condition/outcome: [(('C0', 'auto'), 50), (('C1', 'auto'), 50), (('C1x', 'auto'), 50)]
+    C0 selective auto: 0
+
+[6] leak scan (counts only; gold register has 50 distinct values)
+   smoke_v1/replay/predictions.csv                gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/replay/retrieval.csv                  gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/replay/evidence_snapshot.jsonl        gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/replay/run_manifest.json              gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/seeds.csv                             gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/doi_register.csv                      gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/seed_freeze.json                      gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/diagnostics/orcid_diagnostics.csv     gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/diagnostics/orcid_diagnostics_summary.json gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/captures/cases/*.json (50 files)      gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   smoke_v1/captures/bodies (raw provider bodies) gold-ORCID hits= 307  any-ORCID-pattern hits= 863  (provider payload; expected)
+   seed_v1/seeds.csv                              gold-ORCID hits=   0  any-ORCID-pattern hits=   0
+   seed_v1/doi_purpose_register.csv               gold-ORCID hits=   0  any-ORCID-pattern hits=   0

@@ -1,0 +1,1 @@
+{'predictions': 450, 'retrieval_rows': 100, 'snapshots': 150}

@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+collecting ... collected 5 items
+
+tests/test_metrics_c7_smoke.py::test_label_free_counts_match_the_replay_predictions_exactly PASSED [ 20%]
+tests/test_metrics_c7_smoke.py::test_retrieval_metrics_match_the_independent_orcid_diagnostics PASSED [ 40%]
+tests/test_metrics_c7_smoke.py::test_benchmark_selective_numbers_match_the_existing_metrics_module PASSED [ 60%]
+tests/test_metrics_c7_smoke.py::test_one_primary_case_per_block_rule_on_the_real_block_structure PASSED [ 80%]
+tests/test_metrics_c7_smoke.py::test_report_is_deterministic_and_contains_no_benchmark_orcid PASSED [100%]
+
+============================== 5 passed in 0.82s ===============================

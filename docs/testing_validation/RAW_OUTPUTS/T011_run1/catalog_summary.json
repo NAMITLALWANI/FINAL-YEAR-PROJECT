@@ -1,0 +1,113 @@
+{
+ "all_equal": true,
+ "cross_check_against_recorded_totals": {
+  "block_split_distribution": {
+   "computed": {
+    "0": 20081,
+    "1": 40253,
+    "2": 19960
+   },
+   "equal": true,
+   "recorded": {
+    "0": 20081,
+    "1": 40253,
+    "2": 19960
+   }
+  },
+  "blocks_total": {
+   "computed": 80294,
+   "equal": true,
+   "recorded": 80294
+  },
+  "eligible_blocks_total": {
+   "computed": 70351,
+   "equal": true,
+   "recorded": 70351
+  },
+  "eligible_by_band": {
+   "computed": {
+    "L": 4423,
+    "M": 33698,
+    "S": 32188,
+    "XL": 42
+   },
+   "equal": true,
+   "recorded": {
+    "L": 4423,
+    "M": 33698,
+    "S": 32188,
+    "XL": 42
+   }
+  },
+  "exclusion_reasons": {
+   "computed": {
+    "more_groups_than_cap": 2391,
+    "no_group_with_two_unique_dois": 7552
+   },
+   "equal": true,
+   "recorded": {
+    "more_groups_than_cap": 2391,
+    "no_group_with_two_unique_dois": 7552
+   }
+  },
+  "mixed_split_blocks": {
+   "computed": 0,
+   "equal": true,
+   "recorded": 0
+  },
+  "orcid_group_pairs": {
+   "computed": 244564,
+   "equal": true,
+   "recorded": 244564
+  },
+  "rows_total": {
+   "computed": 1476550,
+   "equal": true,
+   "recorded": 1476550
+  },
+  "smoke_blocks_found": {
+   "computed": 23,
+   "equal": true,
+   "recorded": 23
+  }
+ },
+ "eligible_blocks_by_split_and_band_all_splits_before_any_exclusion": {
+  "test": {
+   "L": 1173,
+   "M": 8363,
+   "S": 8039,
+   "XL": 12
+  },
+  "train": {
+   "L": 2124,
+   "M": 16897,
+   "S": 16197,
+   "XL": 17
+  },
+  "val": {
+   "L": 1126,
+   "M": 8438,
+   "S": 7952,
+   "XL": 13
+  }
+ },
+ "smoke_blocks_by_band": {
+  "L": 6,
+  "M": 6,
+  "S": 6,
+  "XL": 5
+ },
+ "status": "informational: not the post-exclusion frame (pilot blocks are removed later); nothing is frozen and no sample was drawn",
+ "test_split_eligible_frame_after_smoke_exclusion": {
+  "L": 1173,
+  "M": 8360,
+  "S": 8038,
+  "XL": 9
+ },
+ "test_split_eligible_frame_before_smoke_exclusion": {
+  "L": 1173,
+  "M": 8363,
+  "S": 8039,
+  "XL": 12
+ }
+}

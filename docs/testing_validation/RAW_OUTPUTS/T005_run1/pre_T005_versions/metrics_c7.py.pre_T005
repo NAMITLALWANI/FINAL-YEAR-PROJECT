@@ -1,0 +1,587 @@
+"""Metrics and denominators of Decision C7 (offline, pure functions; no provider access, no ORCID handling).
+
+The module takes already-built `Case` records and a frame (stratum -> eligible block count) and returns plain dictionaries.
+It leaves `metrics.py` untouched and only reuses its exact-interval helpers.
+
+Label bases, kept apart throughout (Decision A/C6):
+  label_free         defined from HAMMER outputs and provider status only
+  benchmark_derived  provisional ORCID agreement with the benchmark; never independent verification
+  verified           independent review (Stage A/B) and adjudication
+
+Rulings applied (director, 20 November 2026; recorded in the Decision C addendum and test record T004):
+  - the pool for mapping and retrieval is the captured R2 (name-only) pool; R0 is descriptive only and is not an input here;
+  - a ground-truth unresolved case (verified label_state "unresolved") is distinct from a HAMMER abstention (outcome manual, unresolved or no_score);
+  - "no matching candidate" is claimed only when every candidate in the pool has a Stage B judgment and all are "different";
+  - the audit label error is derived from adjudicated records (impure group, false mapping, missed mapping), never supplied as a flag.
+
+Open protocol parameters are never chosen silently: `InferenceSettings` marks each one `provisional` or `unspecified`, and a pooled
+bootstrap interval is withheld unless the minimum stratum size has been specified.
+"""
+from __future__ import annotations
+
+import json
+import math
+import random
+from collections import Counter
+from dataclasses import dataclass
+from typing import Any, Callable, Mapping, Sequence
+
+from .metrics import clopper_pearson, zero_event_upper_bound
+
+OUTCOMES = ("auto", "manual", "unresolved", "empty_pool", "provider_failed", "no_score")
+LABEL_STATES = ("resolved", "unresolved", "uncertain", "unverifiable")
+JUDGMENTS = ("same", "different", "cannot_tell")
+REPORTING_CLASSES = ("verified", "uncertain", "unverifiable", "benchmark_derived")
+AUDIT_SUBSETS = ("automatic", "audit_sample")
+PURITY = ("pure", "impure", "cannot_tell")
+AUDIT_REASONS = ("impure_group", "false_mapping", "missed_mapping")
+ESTIMANDS = ("E1", "E2")
+LABEL_FREE, BENCHMARK, VERIFIED = "label_free", "benchmark_derived", "verified"
+# statuses of one automatic assignment scored against its verified label
+CORRECT, INCORRECT, UNCERTAIN, UNVERIFIABLE, UNVERIFIED = "correct", "incorrect", "uncertain", "unverifiable", "unverified"
+
+
+class C7Error(ValueError):
+    """Invalid input to a C7 computation. Raised instead of silently dropping or guessing."""
+
+
+@dataclass(frozen=True)
+class Case:
+    """One drawn case. `pool_ids` is the ordered R2 (name-only) candidate pool. `mapped_ids` are the benchmark-mapped candidates."""
+    case_id: str
+    block_id: str
+    stratum: str
+    outcome: str
+    pool_ids: tuple[str, ...] = ()
+    mapped_ids: frozenset[str] = frozenset()
+    selected_id: str = ""
+    group_count: int = 1                      # g_i: case-eligible groups in the block (E2 weight factor)
+    is_primary: bool = True                   # secondary cases never enter a primary estimate
+    label_state: str | None = None            # independent review: resolved / unresolved / uncertain / unverifiable
+    selected_judgment: str | None = None      # Stage B judgment of the selected candidate: same / different / cannot_tell
+    pool_judgments: Mapping[str, str] | None = None   # Stage B judgment of every pool candidate
+    group_purity: str | None = None           # Stage A group-purity judgment of the benchmark group: pure / impure / cannot_tell
+    audit_subset: str | None = None           # "automatic" (every automatic assignment) or "audit_sample" (non-automatic audit draw)
+
+    def __post_init__(self) -> None:
+        if not self.case_id or not self.block_id or not self.stratum:
+            raise C7Error("case_id, block_id and stratum are required")
+        if self.outcome not in OUTCOMES:
+            raise C7Error(f"{self.case_id}: outcome {self.outcome!r} is not one of {OUTCOMES}")
+        if self.group_count < 1:
+            raise C7Error(f"{self.case_id}: group_count must be at least 1")
+        if len(set(self.pool_ids)) != len(self.pool_ids):
+            raise C7Error(f"{self.case_id}: duplicate candidate ids in the pool")
+        if self.outcome in ("empty_pool", "provider_failed") and self.pool_ids:
+            raise C7Error(f"{self.case_id}: {self.outcome} cannot have candidates")
+        if self.outcome in ("auto", "manual", "unresolved", "no_score") and not self.pool_ids:
+            raise C7Error(f"{self.case_id}: {self.outcome} requires a non-empty pool")
+        if self.outcome == "auto":
+            if self.selected_id not in self.pool_ids:
+                raise C7Error(f"{self.case_id}: an automatic assignment must select a pool candidate")
+        elif self.selected_id:
+            raise C7Error(f"{self.case_id}: only an automatic outcome may have a selected candidate")
+        if self.label_state is not None and self.label_state not in LABEL_STATES:
+            raise C7Error(f"{self.case_id}: label_state {self.label_state!r} is invalid")
+        if self.group_purity is not None:
+            if self.group_purity not in PURITY:
+                raise C7Error(f"{self.case_id}: group_purity {self.group_purity!r} is invalid")
+            if self.label_state is None:
+                raise C7Error(f"{self.case_id}: a group-purity judgment belongs to a verified case")
+        if self.selected_judgment is not None and self.selected_judgment not in JUDGMENTS:
+            raise C7Error(f"{self.case_id}: selected_judgment {self.selected_judgment!r} is invalid")
+        if self.pool_judgments is not None:
+            for cid, j in self.pool_judgments.items():
+                if cid not in self.pool_ids or j not in JUDGMENTS:
+                    raise C7Error(f"{self.case_id}: invalid pool judgment for {cid!r}")
+            if self.selected_judgment is not None and self.selected_id in self.pool_judgments \
+                    and self.pool_judgments[self.selected_id] != self.selected_judgment:
+                raise C7Error(f"{self.case_id}: selected_judgment disagrees with pool_judgments")
+        if self.audit_subset is not None:
+            if self.audit_subset not in AUDIT_SUBSETS:
+                raise C7Error(f"{self.case_id}: audit_subset {self.audit_subset!r} is invalid")
+            if (self.audit_subset == "automatic") != (self.outcome == "auto"):
+                raise C7Error(f"{self.case_id}: the automatic subset is exactly the automatic outcomes")
+
+    @property
+    def judgment_of_selected(self) -> str | None:
+        if self.selected_judgment is not None:
+            return self.selected_judgment
+        if self.pool_judgments is not None:
+            return self.pool_judgments.get(self.selected_id)
+        return None
+
+
+@dataclass(frozen=True)
+class InferenceSettings:
+    """Numerical rules of Decision C5. Every one is provisional or unspecified, and the output says so."""
+    bootstrap_resamples: int = 10_000                 # C5: 10,000 resamples
+    bootstrap_min_stratum_n: int | None = None        # C-O1: no provisional value; must be specified before freeze
+    negligible_weight: float | None = None            # C-O2: open; if set, dropped strata are reported separately and the estimand relabelled
+    sampling_fraction_flag: float = 0.10              # C-O3: diagnostic trigger, not a boundary (provisional)
+    sparse_automatic_warn: int = 30                   # C-O4: provisional sparse-count warning
+    sparse_error_warn: int = 5                        # C-O5: provisional sparse-count warning
+
+    def describe(self) -> dict[str, Any]:
+        def entry(value: Any, status: str) -> dict[str, Any]:
+            return {"value": value, "status": status}
+        return {"bootstrap_resamples": entry(self.bootstrap_resamples, "protocol"),
+                "bootstrap_min_stratum_n": entry(self.bootstrap_min_stratum_n, "unspecified" if self.bootstrap_min_stratum_n is None else "supplied"),
+                "negligible_weight": entry(self.negligible_weight, "unspecified" if self.negligible_weight is None else "supplied"),
+                "sampling_fraction_flag": entry(self.sampling_fraction_flag, "provisional"),
+                "sparse_automatic_warn": entry(self.sparse_automatic_warn, "provisional"),
+                "sparse_error_warn": entry(self.sparse_error_warn, "provisional")}
+
+
+# --------------------------------------------------------------------------- case-level helpers
+def first_rank(case: Case, ids: frozenset[str] | set[str] | None = None) -> int | None:
+    wanted = case.mapped_ids if ids is None else ids
+    for i, cid in enumerate(case.pool_ids, 1):
+        if cid in wanted:
+            return i
+    return None
+
+
+def score_automatic(case: Case) -> tuple[str, str]:
+    """Score one automatic assignment against its verified label (the C7 table). Returns (status, reason)."""
+    if case.outcome != "auto":
+        raise C7Error(f"{case.case_id}: only automatic assignments are scored")
+    if case.label_state is None:
+        return UNVERIFIED, "not_verified"
+    if case.label_state == "uncertain":
+        return UNCERTAIN, "case_uncertain"
+    if case.label_state == "unverifiable":
+        return UNVERIFIABLE, "case_unverifiable"
+    if case.label_state == "unresolved":
+        return INCORRECT, "unresolved"                      # no unique intended person: any assignment is a false automatic assignment
+    judgment = case.judgment_of_selected                    # label_state == "resolved"
+    if judgment is None:
+        raise C7Error(f"{case.case_id}: a resolved automatic assignment needs a judgment for the selected candidate")
+    if judgment == "same":
+        return CORRECT, "resolved_same"
+    if judgment == "cannot_tell":
+        return UNCERTAIN, "selected_cannot_tell"
+    if case.pool_judgments is not None and set(case.pool_judgments) == set(case.pool_ids) and all(j == "different" for j in case.pool_judgments.values()):
+        return INCORRECT, "resolved_no_matching_candidate"   # every candidate judged, none is the person: stays in the denominator
+    return INCORRECT, "resolved_different"
+
+
+def reporting_class(case: Case) -> str:
+    """Exactly one class per case: verified, uncertain, unverifiable or benchmark_derived."""
+    if case.label_state is None:
+        return "benchmark_derived"
+    if case.label_state in ("uncertain", "unverifiable"):
+        return case.label_state
+    if case.outcome == "auto" and score_automatic(case)[0] == UNCERTAIN:
+        return "uncertain"                                  # reviewers could not tell for the selected candidate (see open ambiguity A-2)
+    return "verified"
+
+
+# --------------------------------------------------------------------------- sample, strata, weights
+def _validate_sample(cases: Sequence[Case], frame: Mapping[str, int]) -> tuple[list[Case], int, dict[str, dict[str, Any]]]:
+    for h, size in frame.items():
+        if not isinstance(size, int) or size < 1:
+            raise C7Error(f"frame size of stratum {h!r} must be a positive integer")
+    ids = [c.case_id for c in cases]
+    if len(set(ids)) != len(ids):
+        raise C7Error("duplicate case_id")
+    primary = [c for c in cases if c.is_primary]
+    blocks = [c.block_id for c in primary]
+    if len(set(blocks)) != len(blocks):
+        raise C7Error("more than one primary case in a block (C1c allows one primary case per block)")
+    info: dict[str, dict[str, Any]] = {}
+    for h, size in frame.items():
+        n_h = sum(1 for c in primary if c.stratum == h)
+        if n_h > size:
+            raise C7Error(f"stratum {h!r}: {n_h} sampled blocks exceed the frame size {size}")
+        info[h] = {"N_h": size, "n_h": n_h, "sampling_fraction": n_h / size, "census": n_h == size}
+    unknown = {c.stratum for c in primary} - set(frame)
+    if unknown:
+        raise C7Error(f"cases in strata missing from the frame: {sorted(unknown)}")
+    return primary, len(cases) - len(primary), info
+
+
+def _included_strata(info: Mapping[str, Mapping[str, Any]], settings: InferenceSettings) -> tuple[list[str], dict[str, str]]:
+    total = sum(i["N_h"] for i in info.values())
+    included, dropped = [], {}
+    for h, i in info.items():
+        if i["n_h"] == 0:
+            dropped[h] = "unsampled"
+        elif settings.negligible_weight is not None and i["N_h"] / total < settings.negligible_weight:
+            dropped[h] = f"negligible_weight (frame weight {i['N_h'] / total:.6f} < {settings.negligible_weight})"
+        else:
+            included.append(h)
+    return included, dropped
+
+
+def case_weight(case: Case, estimand: str, info: Mapping[str, Mapping[str, Any]]) -> float:
+    """E1: N_h / n_h.  E2: (N_h / n_h) * g_i."""
+    if estimand not in ESTIMANDS:
+        raise C7Error(f"estimand must be one of {ESTIMANDS}")
+    i = info[case.stratum]
+    w = i["N_h"] / i["n_h"]
+    return w * case.group_count if estimand == "E2" else w
+
+
+# --------------------------------------------------------------------------- estimation (C5 regimes)
+@dataclass(frozen=True)
+class Quantity:
+    name: str
+    label_basis: str
+    kind: str                                  # "proportion" | "conditional_proportion" | "mean"
+    numerator: Callable[[Case], float]
+    denominator: Callable[[Case], float]
+    sparse_rule: bool = False                  # apply the R3 sparse-count regime (automatic precision)
+
+
+def _rate(num: float, den: float) -> dict[str, Any]:
+    ci = clopper_pearson(int(num), int(den)) if den > 0 else None
+    return {"numerator": int(num), "denominator": int(den), "value": (num / den) if den else None,
+            "ci95_exact": [round(ci[0], 6), round(ci[1], 6)] if ci else None}
+
+
+def _quantile(sorted_values: Sequence[float], q: float) -> float:
+    h = (len(sorted_values) - 1) * q
+    lo, hi = math.floor(h), math.ceil(h)
+    return sorted_values[lo] + (sorted_values[hi] - sorted_values[lo]) * (h - lo)
+
+
+def _bootstrap(q: Quantity, by_stratum: Mapping[str, list[Case]], info: Mapping[str, Mapping[str, Any]], estimand: str,
+               resamples: int, seed_text: str) -> dict[str, Any]:
+    """Stratified percentile bootstrap of the weighted ratio. Census strata are held fixed. Finite-population correction is ignored."""
+    fixed_n = fixed_d = 0.0
+    boot: list[tuple[list[float], list[float]]] = []
+    for h, cs in by_stratum.items():
+        nums = [case_weight(c, estimand, info) * q.numerator(c) for c in cs]
+        dens = [case_weight(c, estimand, info) * q.denominator(c) for c in cs]
+        if info[h]["census"]:
+            fixed_n, fixed_d = fixed_n + sum(nums), fixed_d + sum(dens)
+        else:
+            boot.append((nums, dens))
+    rng = random.Random(seed_text)                 # str seeds are hashed with SHA-512: stable across runs and platforms
+    values, degenerate = [], 0
+    for _ in range(resamples):
+        sn, sd = fixed_n, fixed_d
+        for nums, dens in boot:
+            n = len(nums)
+            for _i in range(n):
+                k = int(rng.random() * n)
+                sn += nums[k]
+                sd += dens[k]
+        if sd > 0:
+            values.append(sn / sd)
+        else:
+            degenerate += 1
+    if not values:
+        return {"interval": None, "status": "withheld: every resample had an empty denominator", "resamples_used": 0, "degenerate_resamples": degenerate}
+    values.sort()
+    return {"interval": [round(_quantile(values, 0.025), 6), round(_quantile(values, 0.975), 6)], "status": "bootstrap",
+            "resamples_requested": resamples, "resamples_used": len(values), "degenerate_resamples": degenerate,
+            "method": "stratified percentile bootstrap, cases resampled within strata, census strata held fixed, finite-population correction ignored"}
+
+
+def _pooled(q: Quantity, primary: Sequence[Case], info: Mapping[str, Mapping[str, Any]], included: Sequence[str], dropped: Mapping[str, str],
+            estimand: str, settings: InferenceSettings, seed: int | None) -> dict[str, Any]:
+    by_stratum = {h: [c for c in primary if c.stratum == h] for h in included}
+    flat = [c for cs in by_stratum.values() for c in cs]
+    wn = sum(case_weight(c, estimand, info) * q.numerator(c) for c in flat)
+    wd = sum(case_weight(c, estimand, info) * q.denominator(c) for c in flat)
+    raw_n, raw_d = sum(q.numerator(c) for c in flat), sum(q.denominator(c) for c in flat)
+    out: dict[str, Any] = {"estimand": estimand, "pooled_over": list(included), "dropped_strata": dict(dropped),
+                           "point": (wn / wd) if wd > 0 else None, "weighted_numerator": wn, "weighted_denominator": wd,
+                           "interval": None, "regime": "R2"}
+    if q.kind != "mean":
+        out["unweighted_counts"] = {"numerator": int(raw_n), "denominator": int(raw_d),
+                                    "ci95_exact": _rate(raw_n, raw_d)["ci95_exact"],
+                                    "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum"}
+    if wd <= 0:
+        out["interval_status"] = "withheld: empty denominator"
+        return out
+    if q.sparse_rule:
+        errors = raw_d - raw_n
+        if raw_d < settings.sparse_automatic_warn or errors < settings.sparse_error_warn:
+            out["regime"] = "R3"
+            out["interval_status"] = "withheld: sparse automatic-precision regime (counts and exact intervals only; no bootstrap)"
+            out["sparse_warning"] = {"automatic_assignments": int(raw_d), "errors": int(errors), "status": "provisional thresholds"}
+            if errors == 0 and raw_d > 0:
+                out["zero_event_one_sided_95_upper_bound"] = round(zero_event_upper_bound(int(raw_d)), 6)
+            return out
+    non_census = [h for h in included if not info[h]["census"]]
+    if not included:
+        out["interval_status"] = "withheld: no sampled stratum"
+    elif not non_census:
+        out["interval_status"] = "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame"
+    elif settings.bootstrap_min_stratum_n is None:
+        out["interval_status"] = "withheld: minimum stratum size for resampling is unspecified (open parameter C-O1)"
+    else:
+        small = [h for h in non_census if info[h]["n_h"] < settings.bootstrap_min_stratum_n]
+        if small:
+            out["interval_status"] = f"withheld: strata too small to resample: {small} (n below {settings.bootstrap_min_stratum_n})"
+        elif seed is None:
+            raise C7Error("a bootstrap seed must be supplied")
+        else:
+            result = _bootstrap(q, by_stratum, info, estimand, settings.bootstrap_resamples, f"{seed}|{q.name}|{estimand}")
+            out["interval"] = result.pop("interval")
+            out["interval_status"] = result.pop("status")
+            out["bootstrap"] = result
+    return out
+
+
+def estimate(q: Quantity, primary: Sequence[Case], info: Mapping[str, Mapping[str, Any]], settings: InferenceSettings,
+             seed: int | None = None, estimands: Sequence[str] = ESTIMANDS) -> dict[str, Any]:
+    included, dropped = _included_strata(info, settings)
+    per: dict[str, Any] = {}
+    for h, i in info.items():
+        cs = [c for c in primary if c.stratum == h]
+        num, den = sum(q.numerator(c) for c in cs), sum(q.denominator(c) for c in cs)
+        if q.kind != "mean":
+            num, den = int(num), int(den)
+        entry: dict[str, Any] = {"N_h": i["N_h"], "n_h": i["n_h"], "sampling_fraction": round(i["sampling_fraction"], 6), "census": i["census"],
+                                 "sampling_fraction_flag": (not i["census"]) and i["sampling_fraction"] > settings.sampling_fraction_flag,
+                                 "numerator": num, "denominator": den, "value": (num / den) if den else None, "interval": None}
+        if i["n_h"] == 0:
+            entry["interval_status"] = "unsampled stratum"
+        elif i["census"]:
+            entry["interval_status"] = "census: no sampling variability with respect to the frame"
+        elif q.kind == "mean":
+            entry["interval_status"] = "no exact interval for a mean (pooled bootstrap only)"
+        elif den == 0:
+            entry["interval_status"] = "empty denominator"
+        else:
+            entry["interval"] = _rate(num, den)["ci95_exact"]
+            entry["interval_status"] = "Clopper-Pearson: a conservative superpopulation approximation, not design-exact"
+        per[h] = entry
+    return {"name": q.name, "label_basis": q.label_basis, "kind": q.kind, "per_stratum": per,
+            "pooled": {e: _pooled(q, primary, info, included, dropped, e, settings, seed) for e in estimands}}
+
+
+# --------------------------------------------------------------------------- quantity definitions (C7 table)
+def _flag(x: bool) -> float:
+    return 1.0 if x else 0.0
+
+
+def label_free_quantities() -> list[Quantity]:
+    """Rates over all N primary cases, one per outcome category."""
+    return [Quantity(f"rate_{o}", LABEL_FREE, "proportion", (lambda c, o=o: _flag(c.outcome == o)), lambda c: 1.0) for o in OUTCOMES]
+
+
+def retrieval_quantities(ks: Sequence[int] = (1, 5, 10)) -> list[Quantity]:
+    """Benchmark-derived retrieval on the R2 pool. End-to-end uses all N; conditional uses the cases with a mapped profile."""
+    mapped = lambda c: first_rank(c) is not None
+    rr = lambda c: (1.0 / first_rank(c)) if first_rank(c) else 0.0
+    qs = [Quantity("pool_mapping_rate", BENCHMARK, "proportion", lambda c: _flag(mapped(c)), lambda c: 1.0)]
+    for k in ks:
+        qs.append(Quantity(f"end_to_end_success_at_{k}", BENCHMARK, "proportion", (lambda c, k=k: _flag(mapped(c) and first_rank(c) <= k)), lambda c: 1.0))
+    qs.append(Quantity("end_to_end_mrr", BENCHMARK, "mean", rr, lambda c: 1.0))
+    for k in ks:
+        qs.append(Quantity(f"conditional_recall_at_{k}", BENCHMARK, "conditional_proportion",
+                           (lambda c, k=k: _flag(mapped(c) and first_rank(c) <= k)), lambda c: _flag(mapped(c))))
+    qs.append(Quantity("conditional_mrr", BENCHMARK, "mean", rr, lambda c: _flag(mapped(c))))
+    return qs
+
+
+def benchmark_selective_quantities() -> list[Quantity]:
+    """Automatic precision and risk against the benchmark label (used for policies and conditions other than the verified primary pair)."""
+    auto = lambda c: c.outcome == "auto"
+    ok = lambda c: auto(c) and c.selected_id in c.mapped_ids
+    return [Quantity("benchmark_automatic_precision", BENCHMARK, "conditional_proportion", lambda c: _flag(ok(c)), lambda c: _flag(auto(c)), True),
+            Quantity("benchmark_selective_risk", BENCHMARK, "conditional_proportion", lambda c: _flag(auto(c) and not ok(c)), lambda c: _flag(auto(c)), True)]
+
+
+def verified_quantities() -> list[Quantity]:
+    """Verified automatic precision and risk on the C7 scoring table, plus the all-wrong and all-right brackets."""
+    st = lambda c: score_automatic(c)[0] if c.outcome == "auto" else None
+    definite = lambda c: st(c) in (CORRECT, INCORRECT)
+    bracketed = lambda c: st(c) in (CORRECT, INCORRECT, UNCERTAIN, UNVERIFIABLE)
+    return [Quantity("verified_automatic_precision", VERIFIED, "conditional_proportion", lambda c: _flag(st(c) == CORRECT), lambda c: _flag(definite(c)), True),
+            Quantity("verified_selective_risk", VERIFIED, "conditional_proportion", lambda c: _flag(st(c) == INCORRECT), lambda c: _flag(definite(c)), True),
+            Quantity("verified_precision_all_wrong", VERIFIED, "conditional_proportion", lambda c: _flag(st(c) == CORRECT), lambda c: _flag(bracketed(c)), True),
+            Quantity("verified_precision_all_right", VERIFIED, "conditional_proportion",
+                     lambda c: _flag(st(c) in (CORRECT, UNCERTAIN, UNVERIFIABLE)), lambda c: _flag(bracketed(c)), True)]
+
+
+# --------------------------------------------------------------------------- accounting, verified retrieval, audit
+def case_accounting(primary: Sequence[Case], n_secondary: int, info: Mapping[str, Mapping[str, Any]]) -> dict[str, Any]:
+    by_class = {k: 0 for k in REPORTING_CLASSES}
+    cross: dict[str, dict[str, int]] = {o: {k: 0 for k in REPORTING_CLASSES} for o in OUTCOMES}
+    by_outcome_stratum = {h: {o: 0 for o in OUTCOMES} for h in info}
+    for c in primary:
+        cls = reporting_class(c)
+        by_class[cls] += 1
+        cross[c.outcome][cls] += 1
+        by_outcome_stratum[c.stratum][c.outcome] += 1
+    n = len(primary)
+    if sum(by_class.values()) != n:
+        raise C7Error("reporting classes do not partition the primary cases")
+    outcome_counts = {o: sum(1 for c in primary if c.outcome == o) for o in OUTCOMES}
+    return {"n_primary": n, "n_secondary_excluded": n_secondary, "outcome_counts": outcome_counts, "outcome_by_stratum": by_outcome_stratum,
+            "reporting_class_counts": by_class, "outcome_by_reporting_class": cross,
+            "strata": {h: {"N_h": i["N_h"], "n_h": i["n_h"], "census": i["census"]} for h, i in info.items()}}
+
+
+def verified_scoring_summary(primary: Sequence[Case]) -> dict[str, Any]:
+    autos = [c for c in primary if c.outcome == "auto"]
+    status, reasons = {k: 0 for k in (CORRECT, INCORRECT, UNCERTAIN, UNVERIFIABLE, UNVERIFIED)}, {}
+    for c in autos:
+        s, r = score_automatic(c)
+        status[s] += 1
+        reasons[r] = reasons.get(r, 0) + 1
+    return {"automatic_assignments": len(autos), "status_counts": status, "reason_counts": dict(sorted(reasons.items())),
+            "verification_complete": status[UNVERIFIED] == 0,
+            "note": "Every automatic assignment of the primary pair must be verified (Decision A); `unverified` counts those that are not yet."}
+
+
+def verified_retrieval(primary: Sequence[Case], subset: str, ks: Sequence[int] = (1, 5, 10)) -> dict[str, Any]:
+    """Retrieval on verified labels for one subset, unweighted and descriptive. Candidates judged `cannot_tell` give lower and upper bounds.
+
+    A ground-truth unresolved case (verified label_state "unresolved": no unique intended person) is excluded and counted. A HAMMER abstention
+    (outcome manual, unresolved or no_score) is NOT a reason to exclude: such a case stays in retrieval evaluation if it is otherwise adjudicable.
+    """
+    if subset not in AUDIT_SUBSETS:
+        raise C7Error(f"subset must be one of {AUDIT_SUBSETS}")
+    members = [c for c in primary if c.audit_subset == subset]
+    counts = {"in_subset": len(members), "unverified": 0, "uncertain_case": 0, "unverifiable_case": 0, "ground_truth_unresolved": 0, "incomplete_stage_b": 0}
+    used: list[tuple[int | None, int | None]] = []          # (rank of first 'same', rank of first 'same' or 'cannot_tell')
+    used_outcomes: Counter = Counter()
+    for c in members:
+        if c.label_state is None:
+            counts["unverified"] += 1
+        elif c.label_state in ("uncertain", "unverifiable"):
+            counts[f"{c.label_state}_case"] += 1
+        elif c.label_state == "unresolved":
+            counts["ground_truth_unresolved"] += 1           # no intended person: retrieval of that person is undefined
+        elif c.pool_ids and (c.pool_judgments is None or set(c.pool_judgments) != set(c.pool_ids)):
+            counts["incomplete_stage_b"] += 1                # a miss cannot be claimed unless every candidate was judged
+        else:
+            j = c.pool_judgments or {}
+            same = next((i for i, x in enumerate(c.pool_ids, 1) if j.get(x) == "same"), None)
+            either = next((i for i, x in enumerate(c.pool_ids, 1) if j.get(x) in ("same", "cannot_tell")), None)
+            used.append((same, either))
+            used_outcomes[c.outcome] += 1
+    n = len(used)
+    counts["hammer_abstentions_included"] = sum(v for o, v in used_outcomes.items() if o in ("manual", "unresolved", "no_score"))
+    mapped = [(a, b) for a, b in used if a]                   # M: cases with a verified-same candidate in the pool
+    counts["indefinite_mapped_cases"] = sum(1 for a, b in used if not a and b)   # only cannot-tell candidates: outside M, but visible
+    nm = len(mapped)
+    out: dict[str, Any] = {"subset": subset, "label_basis": VERIFIED, "pool": "captured R2 (name-only) pool",
+                           "weighting": "none: subset-specific, descriptive, never pooled with another subset or with benchmark-derived retrieval",
+                           "exclusions": "only ground-truth unresolved cases (no unique intended person) and cases not yet verified or not definite; a HAMMER abstention is never an exclusion",
+                           "case_counts": counts, "outcomes_of_cases_used": dict(sorted(used_outcomes.items())), "resolved_cases_used": n,
+                           "mapping_rate": {"lower": _rate(sum(1 for lo, _ in used if lo), n), "upper": _rate(sum(1 for _, up in used if up), n)}}
+    for k in ks:
+        lo = sum(1 for a, _ in used if a and a <= k)
+        up = sum(1 for _, b in used if b and b <= k)
+        out[f"end_to_end_success_at_{k}"] = {"lower": _rate(lo, n), "upper": _rate(up, n), "indefinite_cases": up - lo}
+    out["end_to_end_mrr"] = {"lower": (sum(1 / a for a, _ in used if a) / n) if n else None, "upper": (sum(1 / b for _, b in used if b) / n) if n else None, "denominator": n}
+    for k in ks:
+        out[f"conditional_recall_at_{k}"] = {"lower": _rate(sum(1 for a, _ in mapped if a <= k), nm), "upper": _rate(sum(1 for _, b in mapped if b <= k), nm), "denominator": nm}
+    out["conditional_mrr"] = {"lower": (sum(1 / a for a, _ in mapped) / nm) if nm else None, "upper": (sum(1 / b for _, b in mapped) / nm) if nm else None, "denominator": nm}
+    return out
+
+
+def audit_reasons(case: Case) -> list[str]:
+    """Reasons for which the adjudicated record contradicts the benchmark label, derived from the record (never supplied as a flag)."""
+    reasons = []
+    if case.group_purity == "impure":
+        reasons.append("impure_group")                       # the benchmark asserts one person; the group holds more than one
+    j = case.pool_judgments or {}
+    if any(j.get(i) == "different" for i in case.pool_ids if i in case.mapped_ids):
+        reasons.append("false_mapping")                      # a benchmark-mapped candidate is judged a different person
+    if any(j.get(i) == "same" for i in case.pool_ids if i not in case.mapped_ids):
+        reasons.append("missed_mapping")                     # an unmapped candidate is judged the same person
+    return reasons
+
+
+def audit_status(case: Case) -> tuple[str, list[str], str | None]:
+    """(status, reasons, indeterminate_reason). Status: contradicted, consistent, indeterminate or unverified.
+
+    An impure group is automatically a contradiction. A ground-truth unresolved case with a pure group is NOT automatically a contradiction.
+    A cannot-tell judgment is indeterminate, never an error."""
+    if case.label_state is None:
+        return "unverified", [], None
+    reasons = audit_reasons(case)
+    if reasons:
+        return "contradicted", reasons, None
+    if case.label_state in ("uncertain", "unverifiable"):
+        return "indeterminate", [], f"label_{case.label_state}"
+    if case.group_purity is None:
+        raise C7Error(f"{case.case_id}: an audited case with a definite label needs a Stage A group-purity judgment")
+    if case.group_purity == "cannot_tell":
+        return "indeterminate", [], "purity_cannot_tell"
+    j = case.pool_judgments or {}
+    if any(j.get(i) == "cannot_tell" for i in case.pool_ids if i in case.mapped_ids):
+        return "indeterminate", [], "mapped_candidate_cannot_tell"
+    if case.label_state == "resolved" and case.pool_ids and set(j) != set(case.pool_ids):
+        return "indeterminate", [], "incomplete_stage_b"      # consistency cannot be established without every candidate judged
+    return "consistent", [], None
+
+
+def audit_label_error(primary: Sequence[Case]) -> dict[str, Any]:
+    """Audit label-error rate over the audited non-automatic sample, derived from adjudicated records. Each affected case counts once in the numerator."""
+    audited = [c for c in primary if c.audit_subset == "audit_sample"]
+    rows = [(c, *audit_status(c)) for c in audited]
+    n = Counter(status for _, status, _, _ in rows)
+    reason_counts = Counter(r for _, status, reasons, _ in rows if status == "contradicted" for r in reasons)
+    why = Counter(w for _, status, _, w in rows if status == "indeterminate")
+    errors, consistent, indeterminate = n["contradicted"], n["consistent"], n["indeterminate"]
+    total = errors + consistent + indeterminate
+    return {"label_basis": VERIFIED, "population": "the sampled non-automatic frame of the primary pair only; not a correction factor, and not transferable",
+            "audited": len(audited), "contradicted": errors, "consistent": consistent, "indeterminate": indeterminate, "unverified": n["unverified"],
+            "definite": errors + consistent, "label_errors": errors, "error_rate": _rate(errors, errors + consistent),
+            "reason_counts": {r: reason_counts[r] for r in AUDIT_REASONS},
+            "reason_counts_note": "a case may have more than one reason, so reason counts can sum to more than label_errors; each case counts once in the numerator",
+            "cases_with_more_than_one_reason": sum(1 for _, status, reasons, _ in rows if status == "contradicted" and len(reasons) > 1),
+            "indeterminate_reasons": dict(sorted(why.items())),
+            "unresolved_not_contradicted": sum(1 for c, status, _, _ in rows if status == "consistent" and c.label_state == "unresolved"),
+            "bracket": {"all_right": {"errors": errors, "denominator": total, "value": (errors / total) if total else None},
+                        "all_wrong": {"errors": errors + indeterminate, "denominator": total, "value": ((errors + indeterminate) / total) if total else None}}}
+
+
+# --------------------------------------------------------------------------- top-level report
+def evaluate_primary(cases: Sequence[Case], frame: Mapping[str, int], settings: InferenceSettings | None = None, seed: int | None = None,
+                     ks: Sequence[int] = (1, 5, 10)) -> dict[str, Any]:
+    """Compute every C7 section for the primary sample. `frame` maps stratum -> eligible block count (post-exclusion N_h)."""
+    settings = settings or InferenceSettings()
+    primary, n_secondary, info = _validate_sample(cases, frame)
+    if not primary:
+        raise C7Error("no primary cases")
+    run = lambda qs: {q.name: estimate(q, primary, info, settings, seed) for q in qs}
+    return {
+        "scope": {"pool": "captured R2 (name-only) candidate pool; R0 is descriptive only and is not an input to any C7 metric",
+                  "label_bases": {LABEL_FREE: "HAMMER outputs and provider status only", BENCHMARK: "provisional ORCID agreement; not independent verification",
+                                  VERIFIED: "independent review and adjudication"},
+                  "estimands": {"E1": "block level, weight N_h/n_h (primary)", "E2": "person level, weight (N_h/n_h)*g_i (secondary)"},
+                  "notes": ["Verified and benchmark-derived results are never combined into one figure.",
+                            "The audit error rate is not a correction factor and is not transferable to automatic assignments, other policies or overall retrieval."]},
+        "parameters": settings.describe(),
+        "bootstrap_seed": seed,
+        "case_accounting": case_accounting(primary, n_secondary, info),
+        "label_free": run(label_free_quantities()),
+        "retrieval_benchmark_derived": run(retrieval_quantities(ks)),
+        "selective_benchmark_derived": run(benchmark_selective_quantities()),
+        "selective_verified": {"scoring": verified_scoring_summary(primary), "estimates": run(verified_quantities())},
+        "verified_retrieval": {s: verified_retrieval(primary, s, ks) for s in AUDIT_SUBSETS},
+        "audit_label_error": audit_label_error(primary),
+    }
+
+
+def to_json(report: Mapping[str, Any]) -> str:
+    return json.dumps(report, sort_keys=True, indent=1, ensure_ascii=False) + "\n"
+
+
+# --------------------------------------------------------------------------- builder for replay output (no ORCID handling)
+def cases_from_replay(predictions: Sequence[Mapping[str, str]], retrieval: Sequence[Mapping[str, str]], *, condition: str, policy: str,
+                      block_by_case: Mapping[str, str], stratum_by_case: Mapping[str, str], mapped_by_case: Mapping[str, set[str]],
+                      group_by_case: Mapping[str, int] | None = None) -> list[Case]:
+    """Build Cases from replay `predictions.csv` and `retrieval.csv` rows. The caller supplies benchmark mapping; this function never sees an ORCID."""
+    pools = {r["case_id"]: tuple(json.loads(r["ordered_candidate_ids"])) for r in retrieval if r["arm"] == "R2"}
+    rows = [r for r in predictions if r["condition"] == condition and r["policy"] == policy]
+    if len(rows) != len({r["case_id"] for r in rows}):
+        raise C7Error("more than one prediction row per case for this condition and policy")
+    cases = []
+    for r in rows:
+        cid = r["case_id"]
+        cases.append(Case(case_id=cid, block_id=block_by_case[cid], stratum=stratum_by_case[cid], outcome=r["outcome"], pool_ids=pools[cid],
+                          mapped_ids=frozenset(mapped_by_case.get(cid, ())), selected_id=r["selected_author_id"] if r["outcome"] == "auto" else "",
+                          group_count=(group_by_case or {}).get(cid, 1)))
+    return cases

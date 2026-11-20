@@ -1,0 +1,3 @@
+{"frame": {"S": 40, "M": 12, "L": 40, "XL": 60}, "floors": {"S": 0, "M": 0, "L": 1, "XL": 0},
+ "pilot": {"S": {"automatic": 2, "cases": 13}, "M": {"automatic": 4, "cases": 4}, "L": {"automatic": 4, "cases": 14}, "XL": {"automatic": 0, "cases": 13}},
+ "m_prime": 6, "beta": 0.30, "gamma": 0.10, "n_max": 80}

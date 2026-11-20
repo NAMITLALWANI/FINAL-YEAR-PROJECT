@@ -1,0 +1,87 @@
+% HAMMER -- IEEE conference-format manuscript (working draft, Stage 1)
+%
+% Class: IEEEtran in conference mode, A4 paper, two columns (Overleaf's TeX Live ships IEEEtran).
+% Bibliography: BibTeX, IEEEtran.bst, numbered citations.
+%
+% No venue has been chosen. No conference name, dates, copyright block, ISBN or
+% IEEE-branded footer is inserted on purpose (see paper README).
+\documentclass[conference,a4paper]{IEEEtran}
+
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{url}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
+
+% Shared notation (used from Stage 2 onward)
+\newcommand{\hammer}{\textsc{HAMMER}}
+
+\begin{document}
+
+\title{Hybrid Academic Metadata Aggregator and\\
+Evidence-Guided Author Entity Resolution System}
+
+% Author names, department, institution and e-mail addresses are taken from the title-block
+% image supplied by the project team. Supervisor / guide: not supplied, deliberately omitted.
+% TODO: confirm the author order and e-mail addresses with all four authors before submission.
+\author{
+\IEEEauthorblockN{Namit Lalwani}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+namit.l@somaiya.edu}
+\and
+\IEEEauthorblockN{Akshad Kedia}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+akshad.kedia@somaiya.edu}
+\and
+\IEEEauthorblockN{Nicholas Coutinho}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+nicholas.s@somaiya.edu}
+\and
+\IEEEauthorblockN{Sunil Shelke}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+sunil.shelke@somaiya.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+% TODO (Stage 4): write the abstract last, after the independent label audit and the main
+% evaluation. No result may be stated here before the results exist.
+\textit{[Abstract to be written after the main evaluation is complete.]}
+\end{abstract}
+
+\begin{IEEEkeywords}
+author name disambiguation, entity resolution, scholarly metadata, candidate retrieval,
+selective prediction, provenance
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_system_architecture}
+\input{sections/04_methodology}
+\input{sections/05_experimental_design}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_threats_limitations}
+\input{sections/09_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,19 @@
+........................................................................ [ 13%]
+........................................................................ [ 27%]
+........................................................................ [ 41%]
+........................................................................ [ 54%]
+........................................................................ [ 68%]
+........................................................................ [ 82%]
+........................................................................ [ 95%]
+......................                                                   [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/starlette/testclient.py:37
+  /Users/nileshlalwani/Documents/COLLEGE WORK/YEAR LONG PROJECT/SYSTEM/FINAL-YEAR-PROJECT/backend/.venv/lib/python3.12/site-packages/starlette/testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_database_foundation.py::test_author_resolution_relationships_and_provenance_persist
+  /Users/nileshlalwani/Documents/COLLEGE WORK/YEAR LONG PROJECT/SYSTEM/FINAL-YEAR-PROJECT/backend/tests/test_database_foundation.py:47: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    merged_at=datetime.utcnow(),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+526 passed, 2 warnings in 31.25s

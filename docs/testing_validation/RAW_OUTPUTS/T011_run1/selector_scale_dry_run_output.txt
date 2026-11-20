@@ -1,0 +1,7 @@
+eligible_frame seconds 0.05 {'S': 8039, 'M': 8363, 'L': 1173, 'XL': 12}
+two pilot draws seconds 0.37 identical manifests (also with a shuffled catalogue): True
+main allocation {'S': 137, 'M': 143, 'L': 20, 'XL': 0} cases 300 secondary 267
+disjointness {'smoke': 0, 'pilot': 130, 'main': 300, 'disjoint': True}
+post-exclusion frame after pilot {'S': 7989, 'M': 8313, 'L': 1143, 'XL': 12}
+manifests verify: True True | ORCID in a manifest: False
+with an XL floor above its size 12: XL allocation 12 (census)

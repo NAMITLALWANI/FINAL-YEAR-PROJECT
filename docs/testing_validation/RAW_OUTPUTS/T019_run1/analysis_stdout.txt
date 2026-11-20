@@ -1,0 +1,66 @@
+{
+ "smoke": {
+  "all_cases": {
+   "automatic_coverage": {
+    "x": 4,
+    "n": 50,
+    "rate": 0.08,
+    "ci95": [
+     0.0222,
+     0.1923
+    ]
+   },
+   "benchmark_precision": {
+    "x": 3,
+    "n": 4,
+    "rate": 0.75,
+    "ci95": [
+     0.1941,
+     0.9937
+    ]
+   },
+   "zero_error_upper95": null
+  },
+  "one_case_per_block": {
+   "automatic_coverage": {
+    "x": 2,
+    "n": 23,
+    "rate": 0.087,
+    "ci95": [
+     0.0107,
+     0.2804
+    ]
+   },
+   "benchmark_precision": {
+    "x": 2,
+    "n": 2,
+    "rate": 1.0,
+    "ci95": [
+     0.1581,
+     1.0
+    ]
+   },
+   "zero_error_upper95": 0.7763932022500211
+  }
+ },
+ "exploratory": {
+  "all_cases": {
+   "automatic_coverage": {
+    "x": 0,
+    "n": 18,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.1853
+    ]
+   },
+   "benchmark_precision": {
+    "x": 0,
+    "n": 0,
+    "rate": null,
+    "ci95": null
+   },
+   "zero_error_upper95": null
+  }
+ }
+}

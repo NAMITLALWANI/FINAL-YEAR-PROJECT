@@ -1,0 +1,2 @@
+main capture: index entries 92 hash problems 0 statuses {200: 92}
+preserved failed attempt: entries 40 statuses {401: 40}

@@ -1,0 +1,4 @@
+Freeze HAMMER-EVAL-F2 was superseded by HAMMER-EVAL-F3 before any provider request was made.
+Reason (T019): the first real capture attempt on F2 inputs was refused locally by `capture.verify_seed_freeze` because `seeds_from_manifest.py` wrote a seed_freeze.json without the
+fields the capture step verifies (`frozen_at`, `seeds_sha256`, `doi_register_sha256`). The writer was fixed (with a regression test) and the frozen file set therefore changed.
+No request was made under F2. Kept for the record; do not use.

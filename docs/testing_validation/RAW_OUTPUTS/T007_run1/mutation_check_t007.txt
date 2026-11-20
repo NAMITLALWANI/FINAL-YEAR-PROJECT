@@ -1,0 +1,14 @@
+module sha256 before: b7ef4758f4ae28b0c0627363f607c2365a9a41a37542884bd5347c609c975a00
+R1 seed ignored in the ordering key -> 2 failed, 28 passed in 0.99s
+R2 primary case is the largest hash instead of the smallest -> 1 failed, 29 passed in 1.01s
+R3 smoke exclusion ignored in the pilot frame -> 1 failed, 29 passed in 1.01s
+R4 pilot blocks not removed from the post-exclusion frame -> 1 failed, 29 passed in 0.99s
+R5 ORCID written into the manifest case record -> 2 failed, 28 passed in 0.61s
+R6 person inclusion probability ignores the group count -> 1 failed, 29 passed in 1.00s
+R7 main sample ignores the pilot exclusion -> 1 failed, 29 passed in 0.99s
+R8 pilot and main share the ordering role -> 1 failed, 29 passed in 1.00s
+R9 audit order uses the case id instead of the hash -> 2 failed, 28 passed in 1.00s
+R10 audit allocation not proportional (equal split) -> 1 failed, 29 passed in 1.00s
+R11 manifest hash not recomputed on verification -> 1 failed, 29 passed in 0.99s
+R12 audit merging rule ignored -> 1 failed, 29 passed in 0.99s
+module sha256 after restore: b7ef4758f4ae28b0c0627363f607c2365a9a41a37542884bd5347c609c975a00

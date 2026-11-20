@@ -1,0 +1,2 @@
+a3f1cac7c5678f01661a92212f58480ae3b0634115d880dbc59e2953ded45667  /private/tmp/claude-501/-Users-nileshlalwani-Documents-COLLEGE-WORK-YEAR-LONG-PROJECT-SYSTEM-FINAL-YEAR-PROJECT/36fb72f2-d091-460f-852e-013c2f78d161/scratchpad/tectonic_install/t.tar.gz
+Tectonic 0.17.0

@@ -1,0 +1,11 @@
+{
+ "cases": 70,
+ "file_sha256": {
+  "doi_register.csv": "91f4dc512817e42ea04174e8321e890ec567a0ccebad7cb26a9c4cf39bd972c0",
+  "gold_identity_register.csv": "8a21a18172528c174b0a5468e15c13582c6e76b5abb94477b08d2f2e609648e8",
+  "seeds.csv": "a2164270c96daf4a205bfa0a5ac4d0c4067df74b9230e1eb657179a4e7c60648"
+ },
+ "manifest_sha256": "781359d4d26a6c2b3ef82eaf55ba93476546e1e4812a6dd2fc8325fa47fa3c76",
+ "role": "main",
+ "seed": 211427201
+}

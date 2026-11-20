@@ -1,0 +1,2695 @@
+{
+ "audit_label_error": {
+  "audited": 0,
+  "bracket": {
+   "all_right": {
+    "denominator": 0,
+    "errors": 0,
+    "value": null
+   },
+   "all_wrong": {
+    "denominator": 0,
+    "errors": 0,
+    "value": null
+   }
+  },
+  "cases_with_more_than_one_reason": 0,
+  "consistent": 0,
+  "contradicted": 0,
+  "definite": 0,
+  "error_rate": {
+   "ci95_exact": null,
+   "denominator": 0,
+   "numerator": 0,
+   "value": null
+  },
+  "indeterminate": 0,
+  "indeterminate_reasons": {},
+  "label_basis": "verified",
+  "label_errors": 0,
+  "population": "the sampled non-automatic frame of the primary pair only; not a correction factor, and not transferable",
+  "reason_counts": {
+   "false_mapping": 0,
+   "impure_group": 0,
+   "missed_mapping": 0
+  },
+  "reason_counts_note": "a case may have more than one reason, so reason counts can sum to more than label_errors; each case counts once in the numerator",
+  "unresolved_not_contradicted": 0,
+  "unverified": 0
+ },
+ "bootstrap_seed": 1,
+ "case_accounting": {
+  "n_primary": 50,
+  "n_secondary_excluded": 0,
+  "outcome_by_reporting_class": {
+   "auto": {
+    "benchmark_derived": 4,
+    "uncertain": 0,
+    "unverifiable": 0,
+    "verified": 0
+   },
+   "empty_pool": {
+    "benchmark_derived": 0,
+    "uncertain": 0,
+    "unverifiable": 0,
+    "verified": 0
+   },
+   "manual": {
+    "benchmark_derived": 46,
+    "uncertain": 0,
+    "unverifiable": 0,
+    "verified": 0
+   },
+   "no_score": {
+    "benchmark_derived": 0,
+    "uncertain": 0,
+    "unverifiable": 0,
+    "verified": 0
+   },
+   "provider_failed": {
+    "benchmark_derived": 0,
+    "uncertain": 0,
+    "unverifiable": 0,
+    "verified": 0
+   },
+   "unresolved": {
+    "benchmark_derived": 0,
+    "uncertain": 0,
+    "unverifiable": 0,
+    "verified": 0
+   }
+  },
+  "outcome_by_stratum": {
+   "L": {
+    "auto": 1,
+    "empty_pool": 0,
+    "manual": 16,
+    "no_score": 0,
+    "provider_failed": 0,
+    "unresolved": 0
+   },
+   "M": {
+    "auto": 2,
+    "empty_pool": 0,
+    "manual": 10,
+    "no_score": 0,
+    "provider_failed": 0,
+    "unresolved": 0
+   },
+   "S": {
+    "auto": 0,
+    "empty_pool": 0,
+    "manual": 10,
+    "no_score": 0,
+    "provider_failed": 0,
+    "unresolved": 0
+   },
+   "XL": {
+    "auto": 1,
+    "empty_pool": 0,
+    "manual": 10,
+    "no_score": 0,
+    "provider_failed": 0,
+    "unresolved": 0
+   }
+  },
+  "outcome_counts": {
+   "auto": 4,
+   "empty_pool": 0,
+   "manual": 46,
+   "no_score": 0,
+   "provider_failed": 0,
+   "unresolved": 0
+  },
+  "reporting_class_counts": {
+   "benchmark_derived": 50,
+   "uncertain": 0,
+   "unverifiable": 0,
+   "verified": 0
+  },
+  "strata": {
+   "L": {
+    "N_h": 17,
+    "census": true,
+    "n_h": 17
+   },
+   "M": {
+    "N_h": 12,
+    "census": true,
+    "n_h": 12
+   },
+   "S": {
+    "N_h": 10,
+    "census": true,
+    "n_h": 10
+   },
+   "XL": {
+    "N_h": 11,
+    "census": true,
+    "n_h": 11
+   }
+  }
+ },
+ "label_free": {
+  "rate_auto": {
+   "kind": "proportion",
+   "label_basis": "label_free",
+   "name": "rate_auto",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 1,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.058823529411764705
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 2,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.16666666666666666
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 1,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.09090909090909091
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.08,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.022228,
+       0.192343
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 4
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 4.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.08,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.022228,
+       0.192343
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 4
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 4.0
+    }
+   }
+  },
+  "rate_empty_pool": {
+   "kind": "proportion",
+   "label_basis": "label_free",
+   "name": "rate_empty_pool",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    }
+   }
+  },
+  "rate_manual": {
+   "kind": "proportion",
+   "label_basis": "label_free",
+   "name": "rate_manual",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 16,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.9411764705882353
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.8333333333333334
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.9090909090909091
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.92,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.807657,
+       0.977772
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 46
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 46.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.92,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.807657,
+       0.977772
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 46
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 46.0
+    }
+   }
+  },
+  "rate_no_score": {
+   "kind": "proportion",
+   "label_basis": "label_free",
+   "name": "rate_no_score",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    }
+   }
+  },
+  "rate_provider_failed": {
+   "kind": "proportion",
+   "label_basis": "label_free",
+   "name": "rate_provider_failed",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    }
+   }
+  },
+  "rate_unresolved": {
+   "kind": "proportion",
+   "label_basis": "label_free",
+   "name": "rate_unresolved",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.0,
+       0.071122
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 0
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 0.0
+    }
+   }
+  }
+ },
+ "parameters": {
+  "bootstrap_min_stratum_n": {
+   "status": "unspecified",
+   "value": null
+  },
+  "bootstrap_resamples": {
+   "status": "protocol",
+   "value": 10000
+  },
+  "negligible_weight": {
+   "status": "unspecified",
+   "value": null
+  },
+  "sampling_fraction_flag": {
+   "status": "provisional",
+   "value": 0.1
+  },
+  "sparse_automatic_warn": {
+   "status": "provisional",
+   "value": 30
+  },
+  "sparse_error_warn": {
+   "status": "provisional",
+   "value": 5
+  }
+ },
+ "retrieval_benchmark_derived": {
+  "conditional_mrr": {
+   "kind": "mean",
+   "label_basis": "benchmark_derived",
+   "name": "conditional_mrr",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 11.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 7.035714285714286,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6396103896103896
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 9.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 6.194444444444445,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6882716049382717
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 6.583333333333333,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6583333333333333
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 8.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 7.2,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.9
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.7108813700918963,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 27.013492063492063
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.7108813700918963,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 27.013492063492063
+    }
+   }
+  },
+  "conditional_recall_at_1": {
+   "kind": "conditional_proportion",
+   "label_basis": "benchmark_derived",
+   "name": "conditional_recall_at_1",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 6,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.5454545454545454
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 9,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 5,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.5555555555555556
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 4,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.4
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 8,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 7,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.875
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.5789473684210527,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.408214,
+       0.736902
+      ],
+      "denominator": 38,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 22
+     },
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 22.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.5789473684210527,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.408214,
+       0.736902
+      ],
+      "denominator": 38,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 22
+     },
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 22.0
+    }
+   }
+  },
+  "conditional_recall_at_10": {
+   "kind": "conditional_proportion",
+   "label_basis": "benchmark_derived",
+   "name": "conditional_recall_at_10",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 11,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 9,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 9,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 8,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 1.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.907487,
+       1.0
+      ],
+      "denominator": 38,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 38
+     },
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 38.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 1.0,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.907487,
+       1.0
+      ],
+      "denominator": 38,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 38
+     },
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 38.0
+    }
+   }
+  },
+  "conditional_recall_at_5": {
+   "kind": "conditional_proportion",
+   "label_basis": "benchmark_derived",
+   "name": "conditional_recall_at_5",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.7272727272727273
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 9,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.8888888888888888
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 8,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.8947368421052632,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.751951,
+       0.970565
+      ],
+      "denominator": 38,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 34
+     },
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 34.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.8947368421052632,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.751951,
+       0.970565
+      ],
+      "denominator": 38,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 34
+     },
+     "weighted_denominator": 38.0,
+     "weighted_numerator": 34.0
+    }
+   }
+  },
+  "end_to_end_mrr": {
+   "kind": "mean",
+   "label_basis": "benchmark_derived",
+   "name": "end_to_end_mrr",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 7.035714285714286,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.41386554621848737
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 6.194444444444445,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.5162037037037037
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 6.583333333333333,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6583333333333333
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11.0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 7.2,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6545454545454545
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.5402698412698412,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 27.013492063492063
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.5402698412698412,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 27.013492063492063
+    }
+   }
+  },
+  "end_to_end_success_at_1": {
+   "kind": "proportion",
+   "label_basis": "benchmark_derived",
+   "name": "end_to_end_success_at_1",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 6,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.35294117647058826
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 5,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.4166666666666667
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 4,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.4
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 7,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6363636363636364
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.44,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.299907,
+       0.587456
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 22
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 22.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.44,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.299907,
+       0.587456
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 22
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 22.0
+    }
+   }
+  },
+  "end_to_end_success_at_10": {
+   "kind": "proportion",
+   "label_basis": "benchmark_derived",
+   "name": "end_to_end_success_at_10",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 11,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6470588235294118
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 9,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.75
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.7272727272727273
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.76,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.618309,
+       0.86939
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 38
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 38.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.76,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.618309,
+       0.86939
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 38
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 38.0
+    }
+   }
+  },
+  "end_to_end_success_at_5": {
+   "kind": "proportion",
+   "label_basis": "benchmark_derived",
+   "name": "end_to_end_success_at_5",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.47058823529411764
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6666666666666666
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.7272727272727273
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.68,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.533006,
+       0.804796
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 34
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 34.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.68,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.533006,
+       0.804796
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 34
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 34.0
+    }
+   }
+  },
+  "pool_mapping_rate": {
+   "kind": "proportion",
+   "label_basis": "benchmark_derived",
+   "name": "pool_mapping_rate",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 17,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 11,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.6470588235294118
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 12,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 9,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.75
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 10,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 10,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 11,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 8,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.7272727272727273
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.76,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.618309,
+       0.86939
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 38
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 38.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "none: every pooled stratum is a census, so there is no sampling variability with respect to the frame",
+     "point": 0.76,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R2",
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.618309,
+       0.86939
+      ],
+      "denominator": 50,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 38
+     },
+     "weighted_denominator": 50.0,
+     "weighted_numerator": 38.0
+    }
+   }
+  }
+ },
+ "scope": {
+  "estimands": {
+   "E1": "block level, weight N_h/n_h (primary)",
+   "E2": "person level, weight (N_h/n_h)*g_i (secondary)"
+  },
+  "label_bases": {
+   "benchmark_derived": "provisional ORCID agreement; not independent verification",
+   "label_free": "HAMMER outputs and provider status only",
+   "verified": "independent review and adjudication"
+  },
+  "notes": [
+   "Verified and benchmark-derived results are never combined into one figure.",
+   "The audit error rate is not a correction factor and is not transferable to automatic assignments, other policies or overall retrieval."
+  ],
+  "pool": "captured R2 (name-only) candidate pool; R0 is descriptive only and is not an input to any C7 metric"
+ },
+ "selective_benchmark_derived": {
+  "benchmark_automatic_precision": {
+   "kind": "conditional_proportion",
+   "label_basis": "benchmark_derived",
+   "name": "benchmark_automatic_precision",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 1,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 2,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 2,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": null
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 1,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 1,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "withheld: sparse automatic-precision regime (counts and exact intervals only; no bootstrap)",
+     "point": 0.75,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R3",
+     "sparse_warning": {
+      "automatic_assignments": 4,
+      "errors": 1,
+      "status": "provisional thresholds"
+     },
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.19412,
+       0.993691
+      ],
+      "denominator": 4,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 3
+     },
+     "weighted_denominator": 4.0,
+     "weighted_numerator": 3.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "withheld: sparse automatic-precision regime (counts and exact intervals only; no bootstrap)",
+     "point": 0.75,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R3",
+     "sparse_warning": {
+      "automatic_assignments": 4,
+      "errors": 1,
+      "status": "provisional thresholds"
+     },
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.19412,
+       0.993691
+      ],
+      "denominator": 4,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 3
+     },
+     "weighted_denominator": 4.0,
+     "weighted_numerator": 3.0
+    }
+   }
+  },
+  "benchmark_selective_risk": {
+   "kind": "conditional_proportion",
+   "label_basis": "benchmark_derived",
+   "name": "benchmark_selective_risk",
+   "per_stratum": {
+    "L": {
+     "N_h": 17,
+     "census": true,
+     "denominator": 1,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 17,
+     "numerator": 1,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 1.0
+    },
+    "M": {
+     "N_h": 12,
+     "census": true,
+     "denominator": 2,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 12,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    },
+    "S": {
+     "N_h": 10,
+     "census": true,
+     "denominator": 0,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 10,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": null
+    },
+    "XL": {
+     "N_h": 11,
+     "census": true,
+     "denominator": 1,
+     "interval": null,
+     "interval_status": "census: no sampling variability with respect to the frame",
+     "n_h": 11,
+     "numerator": 0,
+     "sampling_fraction": 1.0,
+     "sampling_fraction_flag": false,
+     "value": 0.0
+    }
+   },
+   "pooled": {
+    "E1": {
+     "dropped_strata": {},
+     "estimand": "E1",
+     "interval": null,
+     "interval_status": "withheld: sparse automatic-precision regime (counts and exact intervals only; no bootstrap)",
+     "point": 0.25,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R3",
+     "sparse_warning": {
+      "automatic_assignments": 4,
+      "errors": 3,
+      "status": "provisional thresholds"
+     },
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.006309,
+       0.80588
+      ],
+      "denominator": 4,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 1
+     },
+     "weighted_denominator": 4.0,
+     "weighted_numerator": 1.0
+    },
+    "E2": {
+     "dropped_strata": {},
+     "estimand": "E2",
+     "interval": null,
+     "interval_status": "withheld: sparse automatic-precision regime (counts and exact intervals only; no bootstrap)",
+     "point": 0.25,
+     "pooled_over": [
+      "XL",
+      "L",
+      "S",
+      "M"
+     ],
+     "regime": "R3",
+     "sparse_warning": {
+      "automatic_assignments": 4,
+      "errors": 3,
+      "status": "provisional thresholds"
+     },
+     "unweighted_counts": {
+      "ci95_exact": [
+       0.006309,
+       0.80588
+      ],
+      "denominator": 4,
+      "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+      "numerator": 1
+     },
+     "weighted_denominator": 4.0,
+     "weighted_numerator": 1.0
+    }
+   }
+  }
+ },
+ "selective_verified": {
+  "estimates": {
+   "verified_automatic_precision": {
+    "kind": "conditional_proportion",
+    "label_basis": "verified",
+    "name": "verified_automatic_precision",
+    "per_stratum": {
+     "L": {
+      "N_h": 17,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 17,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "M": {
+      "N_h": 12,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 12,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "S": {
+      "N_h": 10,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 10,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "XL": {
+      "N_h": 11,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 11,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     }
+    },
+    "pooled": {
+     "E1": {
+      "dropped_strata": {},
+      "estimand": "E1",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     },
+     "E2": {
+      "dropped_strata": {},
+      "estimand": "E2",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     }
+    }
+   },
+   "verified_precision_all_right": {
+    "kind": "conditional_proportion",
+    "label_basis": "verified",
+    "name": "verified_precision_all_right",
+    "per_stratum": {
+     "L": {
+      "N_h": 17,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 17,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "M": {
+      "N_h": 12,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 12,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "S": {
+      "N_h": 10,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 10,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "XL": {
+      "N_h": 11,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 11,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     }
+    },
+    "pooled": {
+     "E1": {
+      "dropped_strata": {},
+      "estimand": "E1",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     },
+     "E2": {
+      "dropped_strata": {},
+      "estimand": "E2",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     }
+    }
+   },
+   "verified_precision_all_wrong": {
+    "kind": "conditional_proportion",
+    "label_basis": "verified",
+    "name": "verified_precision_all_wrong",
+    "per_stratum": {
+     "L": {
+      "N_h": 17,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 17,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "M": {
+      "N_h": 12,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 12,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "S": {
+      "N_h": 10,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 10,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "XL": {
+      "N_h": 11,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 11,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     }
+    },
+    "pooled": {
+     "E1": {
+      "dropped_strata": {},
+      "estimand": "E1",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     },
+     "E2": {
+      "dropped_strata": {},
+      "estimand": "E2",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     }
+    }
+   },
+   "verified_selective_risk": {
+    "kind": "conditional_proportion",
+    "label_basis": "verified",
+    "name": "verified_selective_risk",
+    "per_stratum": {
+     "L": {
+      "N_h": 17,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 17,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "M": {
+      "N_h": 12,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 12,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "S": {
+      "N_h": 10,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 10,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     },
+     "XL": {
+      "N_h": 11,
+      "census": true,
+      "denominator": 0,
+      "interval": null,
+      "interval_status": "census: no sampling variability with respect to the frame",
+      "n_h": 11,
+      "numerator": 0,
+      "sampling_fraction": 1.0,
+      "sampling_fraction_flag": false,
+      "value": null
+     }
+    },
+    "pooled": {
+     "E1": {
+      "dropped_strata": {},
+      "estimand": "E1",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     },
+     "E2": {
+      "dropped_strata": {},
+      "estimand": "E2",
+      "interval": null,
+      "interval_status": "withheld: empty denominator",
+      "point": null,
+      "pooled_over": [
+       "XL",
+       "L",
+       "S",
+       "M"
+      ],
+      "regime": "R2",
+      "unweighted_counts": {
+       "ci95_exact": null,
+       "denominator": 0,
+       "note": "unweighted and descriptive: not frame-representative when inclusion probabilities differ by stratum",
+       "numerator": 0
+      },
+      "weighted_denominator": 0.0,
+      "weighted_numerator": 0.0
+     }
+    }
+   }
+  },
+  "scoring": {
+   "automatic_assignments": 4,
+   "note": "Every automatic assignment of the primary pair must be verified (Decision A); `unverified` counts those that are not yet.",
+   "reason_counts": {
+    "not_verified": 4
+   },
+   "status_counts": {
+    "correct": 0,
+    "incorrect": 0,
+    "uncertain": 0,
+    "unverifiable": 0,
+    "unverified": 4
+   },
+   "verification_complete": false
+  }
+ },
+ "verified_retrieval": {
+  "audit_sample": {
+   "case_counts": {
+    "ground_truth_unresolved": 0,
+    "hammer_abstentions_included": 0,
+    "in_subset": 0,
+    "incomplete_stage_b": 0,
+    "indefinite_mapped_cases": 0,
+    "uncertain_case": 0,
+    "unverifiable_case": 0,
+    "unverified": 0
+   },
+   "conditional_mrr": {
+    "denominator": 0,
+    "lower": null,
+    "upper": null
+   },
+   "conditional_recall_at_1": {
+    "denominator": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "conditional_recall_at_10": {
+    "denominator": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "conditional_recall_at_5": {
+    "denominator": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "end_to_end_mrr": {
+    "denominator": 0,
+    "lower": null,
+    "upper": null
+   },
+   "end_to_end_success_at_1": {
+    "indefinite_cases": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "end_to_end_success_at_10": {
+    "indefinite_cases": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "end_to_end_success_at_5": {
+    "indefinite_cases": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "exclusions": "only ground-truth unresolved cases (no unique intended person) and cases not yet verified or not definite; a HAMMER abstention is never an exclusion",
+   "label_basis": "verified",
+   "mapping_rate": {
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "outcomes_of_cases_used": {},
+   "pool": "captured R2 (name-only) pool",
+   "resolved_cases_used": 0,
+   "subset": "audit_sample",
+   "weighting": "none: subset-specific, descriptive, never pooled with another subset or with benchmark-derived retrieval"
+  },
+  "automatic": {
+   "case_counts": {
+    "ground_truth_unresolved": 0,
+    "hammer_abstentions_included": 0,
+    "in_subset": 0,
+    "incomplete_stage_b": 0,
+    "indefinite_mapped_cases": 0,
+    "uncertain_case": 0,
+    "unverifiable_case": 0,
+    "unverified": 0
+   },
+   "conditional_mrr": {
+    "denominator": 0,
+    "lower": null,
+    "upper": null
+   },
+   "conditional_recall_at_1": {
+    "denominator": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "conditional_recall_at_10": {
+    "denominator": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "conditional_recall_at_5": {
+    "denominator": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "end_to_end_mrr": {
+    "denominator": 0,
+    "lower": null,
+    "upper": null
+   },
+   "end_to_end_success_at_1": {
+    "indefinite_cases": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "end_to_end_success_at_10": {
+    "indefinite_cases": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "end_to_end_success_at_5": {
+    "indefinite_cases": 0,
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "exclusions": "only ground-truth unresolved cases (no unique intended person) and cases not yet verified or not definite; a HAMMER abstention is never an exclusion",
+   "label_basis": "verified",
+   "mapping_rate": {
+    "lower": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    },
+    "upper": {
+     "ci95_exact": null,
+     "denominator": 0,
+     "numerator": 0,
+     "value": null
+    }
+   },
+   "outcomes_of_cases_used": {},
+   "pool": "captured R2 (name-only) pool",
+   "resolved_cases_used": 0,
+   "subset": "automatic",
+   "weighting": "none: subset-specific, descriptive, never pooled with another subset or with benchmark-derived retrieval"
+  }
+ }
+}

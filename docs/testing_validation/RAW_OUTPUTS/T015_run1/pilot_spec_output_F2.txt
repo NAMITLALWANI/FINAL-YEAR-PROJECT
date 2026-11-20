@@ -1,0 +1,1 @@
+smoke blocks found: 23 | pilot seed: 1211704781 | per_stratum: {'L': 50, 'M': 100, 'S': 100, 'XL': 0}

@@ -1,0 +1,4362 @@
+{
+ "cases": [
+  {
+   "block_id": "muhammad, ahmed",
+   "case_eligible_groups": 1,
+   "case_id": "P-49e9af1f9342",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "soohyun, kim",
+   "case_eligible_groups": 1,
+   "case_id": "P-b2b697f05909",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "rebecca, howell",
+   "case_eligible_groups": 2,
+   "case_id": "P-7fdc18eb72a3",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "daniel, gillis",
+   "case_eligible_groups": 1,
+   "case_id": "P-f0ec1b1d0ede",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "catherine, han",
+   "case_eligible_groups": 1,
+   "case_id": "P-153e3c77efbd",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "xiaodi, zhu",
+   "case_eligible_groups": 1,
+   "case_id": "P-953799f5ea23",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "weidong, cao",
+   "case_eligible_groups": 1,
+   "case_id": "P-b0236ce6cc6e",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "manh hung, nguyen",
+   "case_eligible_groups": 2,
+   "case_id": "P-0d5742d74f1a",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "johannes, enslin",
+   "case_eligible_groups": 2,
+   "case_id": "P-a871f6870325",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "mengqi, huang",
+   "case_eligible_groups": 1,
+   "case_id": "P-e9a8629ad97e",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "victor, lima",
+   "case_eligible_groups": 2,
+   "case_id": "P-a1be3b922ed9",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "elliot, lee",
+   "case_eligible_groups": 1,
+   "case_id": "P-01ef6591a6f7",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "giovanni, ferrari",
+   "case_eligible_groups": 2,
+   "case_id": "P-24f6476b6bd9",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "wenfei, wei",
+   "case_eligible_groups": 1,
+   "case_id": "P-f941e3d921a7",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jahangir, alam",
+   "case_eligible_groups": 1,
+   "case_id": "P-a2da11143215",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "rodrigo, marques",
+   "case_eligible_groups": 2,
+   "case_id": "P-3e0e1913086e",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "peng, deng",
+   "case_eligible_groups": 1,
+   "case_id": "P-a3b8b2ff48b7",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "ferenc, horv\u00e1th",
+   "case_eligible_groups": 1,
+   "case_id": "P-309082d705af",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "paul, morrow",
+   "case_eligible_groups": 1,
+   "case_id": "P-ea6692826dbf",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yaping, wang",
+   "case_eligible_groups": 1,
+   "case_id": "P-94790ecb8525",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "martin, dosed\u011bl",
+   "case_eligible_groups": 1,
+   "case_id": "P-538600afabfe",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "saumya, singh",
+   "case_eligible_groups": 2,
+   "case_id": "P-d251ce8a331d",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "lei, yan",
+   "case_eligible_groups": 1,
+   "case_id": "P-be18ae200a11",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "lin, meng",
+   "case_eligible_groups": 1,
+   "case_id": "P-ea69ac5f9aa8",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "arthur, ferreira",
+   "case_eligible_groups": 3,
+   "case_id": "P-94c7a691e9ad",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/12057",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "neha, yadav",
+   "case_eligible_groups": 1,
+   "case_id": "P-3a6da44769a9",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "varun, pandey",
+   "case_eligible_groups": 1,
+   "case_id": "P-e6225bbd8be5",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "kanishka, sharma",
+   "case_eligible_groups": 1,
+   "case_id": "P-0d2a15790080",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "moinul, hossain",
+   "case_eligible_groups": 2,
+   "case_id": "P-62103430b099",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "mohammad, hojjati",
+   "case_eligible_groups": 1,
+   "case_id": "P-ec4268b45255",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "shaoshuai, li",
+   "case_eligible_groups": 1,
+   "case_id": "P-61b623fa31df",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "graham, baker",
+   "case_eligible_groups": 2,
+   "case_id": "P-bcd5582b0371",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jungyoon, kim",
+   "case_eligible_groups": 2,
+   "case_id": "P-36341b7aa23f",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "gemma, kelly",
+   "case_eligible_groups": 1,
+   "case_id": "P-986a6a629dbe",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "pritesh, jain",
+   "case_eligible_groups": 2,
+   "case_id": "P-474935d2ff60",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yaroslav, lavrinenko",
+   "case_eligible_groups": 2,
+   "case_id": "P-173eefda9b64",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "joao, almeida",
+   "case_eligible_groups": 2,
+   "case_id": "P-b806e2075293",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "ivan, gruzdev",
+   "case_eligible_groups": 2,
+   "case_id": "P-890f4efebf98",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jiri, rames",
+   "case_eligible_groups": 2,
+   "case_id": "P-731637934439",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "alexandra, palmer",
+   "case_eligible_groups": 1,
+   "case_id": "P-7dcc0bc86b22",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "sridharan, k",
+   "case_eligible_groups": 3,
+   "case_id": "P-82c64406db16",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/12057",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "felix, maurer",
+   "case_eligible_groups": 1,
+   "case_id": "P-b0deaf3a0dd6",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "andrew, harding",
+   "case_eligible_groups": 2,
+   "case_id": "P-b2d4294a3ba3",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jonathan, hobson",
+   "case_eligible_groups": 1,
+   "case_id": "P-c67568b5a044",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "naoki, ogawa",
+   "case_eligible_groups": 1,
+   "case_id": "P-056bfa7ebf5d",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "guang, wang",
+   "case_eligible_groups": 1,
+   "case_id": "P-66e23ea5a3c2",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jingjing, luo",
+   "case_eligible_groups": 2,
+   "case_id": "P-8baa418ca21d",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "suguru, sato",
+   "case_eligible_groups": 1,
+   "case_id": "P-ee246c5afd2b",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "tamer, taha",
+   "case_eligible_groups": 1,
+   "case_id": "P-1a05c2948d6c",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yanbin, li",
+   "case_eligible_groups": 2,
+   "case_id": "P-f0efdb9033c6",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "francesco, colombo",
+   "case_eligible_groups": 1,
+   "case_id": "P-4613754a86f2",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "liyan, song",
+   "case_eligible_groups": 1,
+   "case_id": "P-dd4eedfc8f5e",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "m\u00e1rcia, guimar\u00e3es",
+   "case_eligible_groups": 1,
+   "case_id": "P-228d07b05be2",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "ra\u00fal, s\u00e1nchez garc\u00eda",
+   "case_eligible_groups": 1,
+   "case_id": "P-fa5505d51eda",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "maochun, wang",
+   "case_eligible_groups": 1,
+   "case_id": "P-0f043829e1c7",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "mariana, gomes",
+   "case_eligible_groups": 1,
+   "case_id": "P-9f335cbcbcf7",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jacek, wo\u017aniak",
+   "case_eligible_groups": 1,
+   "case_id": "P-2949f5f1f42c",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "diogo, de souza",
+   "case_eligible_groups": 1,
+   "case_id": "P-a6711f51519f",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jingyi, feng",
+   "case_eligible_groups": 1,
+   "case_id": "P-2e4b56e71c45",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yipeng, li",
+   "case_eligible_groups": 2,
+   "case_id": "P-5a0486307082",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "nicolas, gr\u00e9goire",
+   "case_eligible_groups": 1,
+   "case_id": "P-e86f0be14702",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "haochen, sun",
+   "case_eligible_groups": 2,
+   "case_id": "P-fceea219184f",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jenny, smith",
+   "case_eligible_groups": 1,
+   "case_id": "P-054f97f6f1e1",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "matteo, martini",
+   "case_eligible_groups": 1,
+   "case_id": "P-de0df647935c",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "won, sohn",
+   "case_eligible_groups": 1,
+   "case_id": "P-d86a125ce0ab",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jaeho, choi",
+   "case_eligible_groups": 1,
+   "case_id": "P-85160b2988a6",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "catherine, heil",
+   "case_eligible_groups": 1,
+   "case_id": "P-fbb6bff3fff4",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "piyush, mathur",
+   "case_eligible_groups": 1,
+   "case_id": "P-d329b433077d",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yuanyuan, xu",
+   "case_eligible_groups": 1,
+   "case_id": "P-0a680ec3f94d",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "jeroen, janssen",
+   "case_eligible_groups": 2,
+   "case_id": "P-fd7c5a946cee",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "balamurugan, p",
+   "case_eligible_groups": 1,
+   "case_id": "P-8394cd700694",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yihao, wang",
+   "case_eligible_groups": 1,
+   "case_id": "P-689810a86f17",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "karen, neves",
+   "case_eligible_groups": 2,
+   "case_id": "P-87a3d43fcd38",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "andr\u00e9, mateus",
+   "case_eligible_groups": 2,
+   "case_id": "P-31fe7f0130a4",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yuting, bai",
+   "case_eligible_groups": 1,
+   "case_id": "P-d14ce7c53b5b",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "nobuhiro, tanaka",
+   "case_eligible_groups": 2,
+   "case_id": "P-d746daec4458",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "timothy, erickson",
+   "case_eligible_groups": 2,
+   "case_id": "P-7f2fb49b5878",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "seungyoon, lee",
+   "case_eligible_groups": 1,
+   "case_id": "P-4577bce88aad",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "han, zheng",
+   "case_eligible_groups": 1,
+   "case_id": "P-3b775a59a645",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "da, liu",
+   "case_eligible_groups": 2,
+   "case_id": "P-0bb1935045c5",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "hu, zhao",
+   "case_eligible_groups": 2,
+   "case_id": "P-24316500a352",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "micha\u0142, kowal",
+   "case_eligible_groups": 2,
+   "case_id": "P-555946b071a9",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "pei, yang",
+   "case_eligible_groups": 2,
+   "case_id": "P-5e67679336ee",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "yoshiko, takahashi",
+   "case_eligible_groups": 1,
+   "case_id": "P-1238afab16d8",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "chen, tan",
+   "case_eligible_groups": 1,
+   "case_id": "P-75072c9768cd",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "kosuke, ueda",
+   "case_eligible_groups": 1,
+   "case_id": "P-0c33cbd443b6",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "kimberley, smith",
+   "case_eligible_groups": 1,
+   "case_id": "P-4004615e8047",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "alberto, soto",
+   "case_eligible_groups": 2,
+   "case_id": "P-2e5521e4b64c",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "omkar, singh",
+   "case_eligible_groups": 2,
+   "case_id": "P-baa43ee9bd2f",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "raman, singh",
+   "case_eligible_groups": 3,
+   "case_id": "P-80f987eaf3f4",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/12057",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "ali, arshad",
+   "case_eligible_groups": 1,
+   "case_id": "P-611a8e2b305e",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "seung min, lee",
+   "case_eligible_groups": 1,
+   "case_id": "P-d07574a99534",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "angela, marotta",
+   "case_eligible_groups": 1,
+   "case_id": "P-65d11fbab6a6",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "minghui, ou",
+   "case_eligible_groups": 1,
+   "case_id": "P-248935f84f37",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "nyha, hameed",
+   "case_eligible_groups": 2,
+   "case_id": "P-b3b1683af8d3",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "robert, kowalski",
+   "case_eligible_groups": 1,
+   "case_id": "P-8d2951eb5a41",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "chenyang, xu",
+   "case_eligible_groups": 2,
+   "case_id": "P-3847405900b0",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "tom, hughes",
+   "case_eligible_groups": 2,
+   "case_id": "P-a518dd76601d",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "25/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "alexey, grigoryev",
+   "case_eligible_groups": 1,
+   "case_id": "P-d1522bfa1ee5",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "shaojie, wang",
+   "case_eligible_groups": 1,
+   "case_id": "P-955db3871ae7",
+   "inclusion_probability_block": "50/4019",
+   "inclusion_probability_person": "50/4019",
+   "is_primary": true,
+   "stratum": "S"
+  },
+  {
+   "block_id": "ewan, smith",
+   "case_eligible_groups": 1,
+   "case_id": "P-ff22c1dd56a0",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "mohammed, siddiqui",
+   "case_eligible_groups": 2,
+   "case_id": "P-fbc0422e09d9",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "matthew, brook",
+   "case_eligible_groups": 3,
+   "case_id": "P-58dd093d31f2",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "wenlong, tian",
+   "case_eligible_groups": 2,
+   "case_id": "P-fdf20eb82564",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "amir, khan",
+   "case_eligible_groups": 2,
+   "case_id": "P-29141ca39d25",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "brian, mak",
+   "case_eligible_groups": 2,
+   "case_id": "P-e14035856e37",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "olivier, vincent",
+   "case_eligible_groups": 1,
+   "case_id": "P-6644ddc91db7",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "weimin, sun",
+   "case_eligible_groups": 2,
+   "case_id": "P-30e52b15af3f",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "anish, shrestha",
+   "case_eligible_groups": 2,
+   "case_id": "P-ba753a14515e",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "krzysztof, kubiak",
+   "case_eligible_groups": 3,
+   "case_id": "P-f227f7fc7de3",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "tingting, zhu",
+   "case_eligible_groups": 6,
+   "case_id": "P-5e8d9ff91b01",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/2508",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "marcelo, ferreira",
+   "case_eligible_groups": 2,
+   "case_id": "P-05274182c87c",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "mark, hamilton",
+   "case_eligible_groups": 1,
+   "case_id": "P-c71cf347decb",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "li, wei",
+   "case_eligible_groups": 3,
+   "case_id": "P-7b84b6f519e4",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "xiaoshuang, feng",
+   "case_eligible_groups": 1,
+   "case_id": "P-6881b79ce68a",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "mingyi, chen",
+   "case_eligible_groups": 1,
+   "case_id": "P-9be3a3c4142e",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "min, jin",
+   "case_eligible_groups": 1,
+   "case_id": "P-05105be15681",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "miftahul, huda",
+   "case_eligible_groups": 3,
+   "case_id": "P-2d21f4a6e491",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "jos\u00e9, dantas",
+   "case_eligible_groups": 3,
+   "case_id": "P-4645281d8984",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "robert, roach",
+   "case_eligible_groups": 2,
+   "case_id": "P-464ffe8c9056",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "ahmed, shawky",
+   "case_eligible_groups": 2,
+   "case_id": "P-4a02203e8ffa",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "emma, jones",
+   "case_eligible_groups": 2,
+   "case_id": "P-6621c1435397",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "aleksey, zhukov",
+   "case_eligible_groups": 2,
+   "case_id": "P-814c1d8cd1e1",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "hui, he",
+   "case_eligible_groups": 3,
+   "case_id": "P-fe9d0d30d278",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "marco, testa",
+   "case_eligible_groups": 2,
+   "case_id": "P-3cc710e2fb2a",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "charles, thomas",
+   "case_eligible_groups": 4,
+   "case_id": "P-46a3d33db29e",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1672",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "xu, tang",
+   "case_eligible_groups": 4,
+   "case_id": "P-c701c712107c",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1672",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "agnieszka, witkowska",
+   "case_eligible_groups": 1,
+   "case_id": "P-ed1c433ab097",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "gabriela, hr\u010dkov\u00e1",
+   "case_eligible_groups": 1,
+   "case_id": "P-1b08db52f423",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "philip, cunningham",
+   "case_eligible_groups": 2,
+   "case_id": "P-b3ede2bfc9bf",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "sarah, robertson",
+   "case_eligible_groups": 2,
+   "case_id": "P-73cf4e77a43a",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "tom, barry",
+   "case_eligible_groups": 2,
+   "case_id": "P-794f46de8676",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "tomasz, leski",
+   "case_eligible_groups": 2,
+   "case_id": "P-65598f7700d9",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "kenji, sugimoto",
+   "case_eligible_groups": 2,
+   "case_id": "P-2dc055973867",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "michelle, phillips",
+   "case_eligible_groups": 2,
+   "case_id": "P-5635de78885f",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "james, burford",
+   "case_eligible_groups": 2,
+   "case_id": "P-a9bc4103d53a",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "gustavo, almeida",
+   "case_eligible_groups": 3,
+   "case_id": "P-5306586cf523",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "xianglong, zeng",
+   "case_eligible_groups": 2,
+   "case_id": "P-96e792bf36b5",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "pablo, martinez",
+   "case_eligible_groups": 3,
+   "case_id": "P-9037101e279c",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "minyi, li",
+   "case_eligible_groups": 2,
+   "case_id": "P-f77d862d952d",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "rakesh, sengupta",
+   "case_eligible_groups": 1,
+   "case_id": "P-1c885e87c036",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "krishna, govender",
+   "case_eligible_groups": 2,
+   "case_id": "P-138d50737e72",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "zia, ul haq",
+   "case_eligible_groups": 2,
+   "case_id": "P-ff921432077b",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "sarah, stewart",
+   "case_eligible_groups": 2,
+   "case_id": "P-723fe53d187f",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "shaoqing, zhang",
+   "case_eligible_groups": 2,
+   "case_id": "P-45c97f8d225a",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "sikandar, khan",
+   "case_eligible_groups": 3,
+   "case_id": "P-48a649d6c3f0",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "hang, su",
+   "case_eligible_groups": 5,
+   "case_id": "P-9b6321d721a5",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "1/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "xiaolong, han",
+   "case_eligible_groups": 2,
+   "case_id": "P-d6b213a9c6f3",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "elizabeth, reed",
+   "case_eligible_groups": 3,
+   "case_id": "P-d84aedeace29",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "siqi, wang",
+   "case_eligible_groups": 1,
+   "case_id": "P-d57dbb138d54",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "daniel, chung",
+   "case_eligible_groups": 3,
+   "case_id": "P-d62c17aee4f0",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "federico, bianchi",
+   "case_eligible_groups": 3,
+   "case_id": "P-a8802434d1b4",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "rachel, pepper",
+   "case_eligible_groups": 2,
+   "case_id": "P-f99218781bf1",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "pedro, mu\u00f1oz",
+   "case_eligible_groups": 2,
+   "case_id": "P-a75e015e9aa3",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "udai bhan, singh",
+   "case_eligible_groups": 1,
+   "case_id": "P-a5c47c018367",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "ning, ye",
+   "case_eligible_groups": 4,
+   "case_id": "P-c1945cd19bc9",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1672",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "yong, yuan",
+   "case_eligible_groups": 3,
+   "case_id": "P-86238fa4ec04",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "andrew, davie",
+   "case_eligible_groups": 1,
+   "case_id": "P-1af318d76472",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "mohamed, gomaa",
+   "case_eligible_groups": 2,
+   "case_id": "P-791edfd34ea7",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "aleksey, alekseev",
+   "case_eligible_groups": 1,
+   "case_id": "P-6b17a9a36d23",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "tom, van dijk",
+   "case_eligible_groups": 2,
+   "case_id": "P-140bbdbd46bd",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "roel, willems",
+   "case_eligible_groups": 1,
+   "case_id": "P-1afdfe62f984",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "min-seok, kim",
+   "case_eligible_groups": 2,
+   "case_id": "P-9f1574b71039",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "minwei, zhang",
+   "case_eligible_groups": 2,
+   "case_id": "P-673699418d1b",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "jeffrey, atkinson",
+   "case_eligible_groups": 1,
+   "case_id": "P-08b1c4bd5643",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "mark, mitchell",
+   "case_eligible_groups": 2,
+   "case_id": "P-75f9755dd5bb",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "serkan, yildirim",
+   "case_eligible_groups": 2,
+   "case_id": "P-bbfc919ab0de",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "kyosuke, takahashi",
+   "case_eligible_groups": 1,
+   "case_id": "P-d61072482d6b",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "nicole, phillips",
+   "case_eligible_groups": 1,
+   "case_id": "P-a830490e9e2b",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "shuang, xu",
+   "case_eligible_groups": 2,
+   "case_id": "P-4b370bd765da",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "abdullah, alshehri",
+   "case_eligible_groups": 2,
+   "case_id": "P-5f30956abe0f",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "paolo, milani",
+   "case_eligible_groups": 2,
+   "case_id": "P-622486edeb3b",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "alka, gupta",
+   "case_eligible_groups": 3,
+   "case_id": "P-e7e636659b02",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "himanshu, singh",
+   "case_eligible_groups": 4,
+   "case_id": "P-4adfe4cf18f3",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1672",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "wenjun, tang",
+   "case_eligible_groups": 2,
+   "case_id": "P-0025bd4033e2",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "john, green",
+   "case_eligible_groups": 3,
+   "case_id": "P-3b3c5d1c76b5",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "ivan, bolis",
+   "case_eligible_groups": 1,
+   "case_id": "P-751c6ebebccd",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "ignacio, villanueva",
+   "case_eligible_groups": 2,
+   "case_id": "P-522fa7f76728",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "dongwoo, lee",
+   "case_eligible_groups": 2,
+   "case_id": "P-1f9844e00182",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "emre, aslan",
+   "case_eligible_groups": 2,
+   "case_id": "P-ae9bcd4376ee",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "douglas, reed",
+   "case_eligible_groups": 1,
+   "case_id": "P-f2736dceb913",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "daniel, bailey",
+   "case_eligible_groups": 2,
+   "case_id": "P-02a79b9e10eb",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "huajian, liu",
+   "case_eligible_groups": 2,
+   "case_id": "P-9216d1472542",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "adil, shah",
+   "case_eligible_groups": 2,
+   "case_id": "P-ea625c284006",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "elena, castro",
+   "case_eligible_groups": 2,
+   "case_id": "P-a36182ab9210",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "patricia, rodrigues",
+   "case_eligible_groups": 1,
+   "case_id": "P-6954d7f5269b",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "rodrigo, barros",
+   "case_eligible_groups": 1,
+   "case_id": "P-fe5cb34a7851",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "alireza, habibi",
+   "case_eligible_groups": 2,
+   "case_id": "P-1fd4ef6358e4",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "mohammad, kazemi",
+   "case_eligible_groups": 2,
+   "case_id": "P-b5b44f0f267d",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "wenqiang, zhang",
+   "case_eligible_groups": 2,
+   "case_id": "P-dba3a0375962",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "ye, sun",
+   "case_eligible_groups": 4,
+   "case_id": "P-0a415ee5925d",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1672",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "dehbi, abdelkader",
+   "case_eligible_groups": 2,
+   "case_id": "P-b6176a06cf37",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "matthew, springer",
+   "case_eligible_groups": 1,
+   "case_id": "P-bd982c722be9",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "jiping, yang",
+   "case_eligible_groups": 2,
+   "case_id": "P-6a3ccd165352",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "igor, zakharov",
+   "case_eligible_groups": 1,
+   "case_id": "P-cb9c0c3950eb",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "biswanath, dutta",
+   "case_eligible_groups": 2,
+   "case_id": "P-1fea4bed2a7f",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/836",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "christine, grant",
+   "case_eligible_groups": 3,
+   "case_id": "P-2611d39ccf81",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1254",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "hailong, wang",
+   "case_eligible_groups": 4,
+   "case_id": "P-d09922ba2082",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/1672",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "tetsuya, kimura",
+   "case_eligible_groups": 1,
+   "case_id": "P-c2303f844c05",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "kazuki, nakamura",
+   "case_eligible_groups": 1,
+   "case_id": "P-5f8485295fc0",
+   "inclusion_probability_block": "5/418",
+   "inclusion_probability_person": "5/418",
+   "is_primary": true,
+   "stratum": "M"
+  },
+  {
+   "block_id": "xiaofeng, wu",
+   "case_eligible_groups": 2,
+   "case_id": "P-856e278892a3",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "john, burke",
+   "case_eligible_groups": 2,
+   "case_id": "P-6f60c9f07254",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "mark, lemmon",
+   "case_eligible_groups": 2,
+   "case_id": "P-967bacaba4a6",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "prashant, deshmukh",
+   "case_eligible_groups": 4,
+   "case_id": "P-c40ac6fd300f",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "tim, fletcher",
+   "case_eligible_groups": 2,
+   "case_id": "P-6467b269a222",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "zhenyu, zhou",
+   "case_eligible_groups": 3,
+   "case_id": "P-5a3b7c8c5920",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "chris, jones",
+   "case_eligible_groups": 3,
+   "case_id": "P-2ce001bb26e1",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, roberts",
+   "case_eligible_groups": 7,
+   "case_id": "P-26ac83f1423a",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/8211",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "jasper, smits",
+   "case_eligible_groups": 2,
+   "case_id": "P-2cf16a2f2a93",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "catherine, mcgowan",
+   "case_eligible_groups": 2,
+   "case_id": "P-9dece20cc731",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "anthony, davis",
+   "case_eligible_groups": 4,
+   "case_id": "P-2376206d4bc8",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "robert, shanks",
+   "case_eligible_groups": 2,
+   "case_id": "P-74f79d176d7a",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "kenji, tsuda",
+   "case_eligible_groups": 2,
+   "case_id": "P-606f0cbf9222",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "guojun, lu",
+   "case_eligible_groups": 2,
+   "case_id": "P-bb40c94c5e24",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "jos\u00e9, lima",
+   "case_eligible_groups": 3,
+   "case_id": "P-cfef11409c62",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "francesco, orsini",
+   "case_eligible_groups": 3,
+   "case_id": "P-58e5ab952a0d",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "kenichi, watanabe",
+   "case_eligible_groups": 2,
+   "case_id": "P-efc40defdcf2",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "fabio, de matteis",
+   "case_eligible_groups": 1,
+   "case_id": "P-6984ea81693f",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "paul, dawson",
+   "case_eligible_groups": 4,
+   "case_id": "P-cd79a3dc7ba0",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "benjamin, lev",
+   "case_eligible_groups": 2,
+   "case_id": "P-4cf5a4839530",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanjay, patel",
+   "case_eligible_groups": 5,
+   "case_id": "P-b7bbdbc81c9a",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "10/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "philip, chan",
+   "case_eligible_groups": 4,
+   "case_id": "P-3ba615a6b630",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "richard, allen",
+   "case_eligible_groups": 5,
+   "case_id": "P-346701b84723",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "10/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "satoshi, ono",
+   "case_eligible_groups": 3,
+   "case_id": "P-a306368f8508",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrzej, chmielewski",
+   "case_eligible_groups": 3,
+   "case_id": "P-5b62995aa352",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "alex, wong",
+   "case_eligible_groups": 5,
+   "case_id": "P-3771f97336ec",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "10/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "daniel, mitchell",
+   "case_eligible_groups": 4,
+   "case_id": "P-08022115f6a9",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "francesc, torres",
+   "case_eligible_groups": 2,
+   "case_id": "P-fa25ec652362",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "alison, murray",
+   "case_eligible_groups": 2,
+   "case_id": "P-48d668f6efa4",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "masahiro, sakai",
+   "case_eligible_groups": 2,
+   "case_id": "P-a9b148f264f7",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "moncef, krarti",
+   "case_eligible_groups": 2,
+   "case_id": "P-02a54f17bb04",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrew, hall",
+   "case_eligible_groups": 7,
+   "case_id": "P-66cf2cd51c62",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/8211",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "min, kim",
+   "case_eligible_groups": 5,
+   "case_id": "P-b79c8c153263",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "10/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_eligible_groups": 8,
+   "case_id": "P-f86ade44a0b5",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/4692",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "christopher, rose",
+   "case_eligible_groups": 3,
+   "case_id": "P-dfd0fcf85a79",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "marco, brambilla",
+   "case_eligible_groups": 2,
+   "case_id": "P-b7acfee43ef5",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, walsh",
+   "case_eligible_groups": 5,
+   "case_id": "P-70751f3d424a",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "10/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "evan, thomas",
+   "case_eligible_groups": 4,
+   "case_id": "P-ef72f60da6d2",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "rajinikanth, v",
+   "case_eligible_groups": 2,
+   "case_id": "P-e1e4d05a7a8a",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "sergey, ushakov",
+   "case_eligible_groups": 2,
+   "case_id": "P-5b4b6a0413e8",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "kevin, wang",
+   "case_eligible_groups": 2,
+   "case_id": "P-496d93fd1094",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "john, fox",
+   "case_eligible_groups": 2,
+   "case_id": "P-4edeb7793bd4",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanghee, kim",
+   "case_eligible_groups": 3,
+   "case_id": "P-cc869cc3e79e",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "zhiye, zhao",
+   "case_eligible_groups": 1,
+   "case_id": "P-628cc0c833c6",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "david, howard",
+   "case_eligible_groups": 4,
+   "case_id": "P-c944da0bacc3",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "seungwon, lee",
+   "case_eligible_groups": 3,
+   "case_id": "P-614ab8e76913",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "anil, gupta",
+   "case_eligible_groups": 3,
+   "case_id": "P-8b4b206c59a9",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "50/3519",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "wenhao, li",
+   "case_eligible_groups": 4,
+   "case_id": "P-acaab3b4e82f",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "25/2346",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "william, young",
+   "case_eligible_groups": 5,
+   "case_id": "P-f1962d26bdbf",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "10/1173",
+   "is_primary": true,
+   "stratum": "L"
+  },
+  {
+   "block_id": "carlos, ramos",
+   "case_eligible_groups": 5,
+   "case_id": "P-dc7bcf79dc63",
+   "inclusion_probability_block": "50/1173",
+   "inclusion_probability_person": "10/1173",
+   "is_primary": true,
+   "stratum": "L"
+  }
+ ],
+ "dataset_version": "lagos-and-v2.0-pilot-F3",
+ "excluded_block_counts": {
+  "smoke": 23
+ },
+ "frame_post_exclusion": {
+  "L": 1173,
+  "M": 8360,
+  "S": 8038,
+  "XL": 9
+ },
+ "manifest_sha256": "6d73932206716f405423afeef74b51aa559686a870ba619295aa2a35a2915fa9",
+ "pilot_blocks": [
+  "abdullah, alshehri",
+  "adil, shah",
+  "agnieszka, witkowska",
+  "ahmed, shawky",
+  "alberto, soto",
+  "aleksey, alekseev",
+  "aleksey, zhukov",
+  "alex, wong",
+  "alexandra, palmer",
+  "alexey, grigoryev",
+  "ali, arshad",
+  "alireza, habibi",
+  "alison, murray",
+  "alka, gupta",
+  "amir, khan",
+  "andrew, davie",
+  "andrew, hall",
+  "andrew, harding",
+  "andrzej, chmielewski",
+  "andr\u00e9, mateus",
+  "angela, marotta",
+  "anil, gupta",
+  "anish, shrestha",
+  "anthony, davis",
+  "arthur, ferreira",
+  "balamurugan, p",
+  "benjamin, lev",
+  "biswanath, dutta",
+  "brian, mak",
+  "carlos, ramos",
+  "catherine, han",
+  "catherine, heil",
+  "catherine, mcgowan",
+  "charles, thomas",
+  "chen, tan",
+  "chenyang, xu",
+  "chris, jones",
+  "christine, grant",
+  "christopher, rose",
+  "da, liu",
+  "daniel, bailey",
+  "daniel, chung",
+  "daniel, gillis",
+  "daniel, mitchell",
+  "david, howard",
+  "dehbi, abdelkader",
+  "diogo, de souza",
+  "dongwoo, lee",
+  "douglas, reed",
+  "elena, castro",
+  "elizabeth, reed",
+  "elliot, lee",
+  "emma, jones",
+  "emre, aslan",
+  "evan, thomas",
+  "ewan, smith",
+  "fabio, de matteis",
+  "federico, bianchi",
+  "felix, maurer",
+  "ferenc, horv\u00e1th",
+  "francesc, torres",
+  "francesco, colombo",
+  "francesco, orsini",
+  "gabriela, hr\u010dkov\u00e1",
+  "gemma, kelly",
+  "giovanni, ferrari",
+  "graham, baker",
+  "guang, wang",
+  "guojun, lu",
+  "gustavo, almeida",
+  "hailong, wang",
+  "han, zheng",
+  "hang, su",
+  "haochen, sun",
+  "himanshu, singh",
+  "hu, zhao",
+  "huajian, liu",
+  "hui, he",
+  "ignacio, villanueva",
+  "igor, zakharov",
+  "ivan, bolis",
+  "ivan, gruzdev",
+  "jacek, wo\u017aniak",
+  "jaeho, choi",
+  "jahangir, alam",
+  "james, burford",
+  "jasper, smits",
+  "jeffrey, atkinson",
+  "jenny, smith",
+  "jeroen, janssen",
+  "jingjing, luo",
+  "jingyi, feng",
+  "jiping, yang",
+  "jiri, rames",
+  "joao, almeida",
+  "johannes, enslin",
+  "john, burke",
+  "john, fox",
+  "john, green",
+  "jonathan, hobson",
+  "jos\u00e9, dantas",
+  "jos\u00e9, lima",
+  "jungyoon, kim",
+  "kanishka, sharma",
+  "karen, neves",
+  "kazuki, nakamura",
+  "kenichi, watanabe",
+  "kenji, sugimoto",
+  "kenji, tsuda",
+  "kevin, wang",
+  "kimberley, smith",
+  "kosuke, ueda",
+  "krishna, govender",
+  "krzysztof, kubiak",
+  "kyosuke, takahashi",
+  "lei, yan",
+  "li, wei",
+  "lin, meng",
+  "liyan, song",
+  "manh hung, nguyen",
+  "maochun, wang",
+  "marcelo, ferreira",
+  "marco, brambilla",
+  "marco, testa",
+  "mariana, gomes",
+  "mark, hamilton",
+  "mark, lemmon",
+  "mark, mitchell",
+  "martin, dosed\u011bl",
+  "masahiro, sakai",
+  "matteo, martini",
+  "matthew, brook",
+  "matthew, springer",
+  "mengqi, huang",
+  "micha\u0142, kowal",
+  "michelle, phillips",
+  "miftahul, huda",
+  "min, jin",
+  "min, kim",
+  "min-seok, kim",
+  "minghui, ou",
+  "mingyi, chen",
+  "minwei, zhang",
+  "minyi, li",
+  "mohamed, gomaa",
+  "mohammad, hojjati",
+  "mohammad, kazemi",
+  "mohammed, siddiqui",
+  "moinul, hossain",
+  "moncef, krarti",
+  "muhammad, ahmed",
+  "m\u00e1rcia, guimar\u00e3es",
+  "naoki, ogawa",
+  "neha, yadav",
+  "nicolas, gr\u00e9goire",
+  "nicole, phillips",
+  "ning, ye",
+  "nobuhiro, tanaka",
+  "nyha, hameed",
+  "olivier, vincent",
+  "omkar, singh",
+  "pablo, martinez",
+  "paolo, milani",
+  "patricia, rodrigues",
+  "paul, dawson",
+  "paul, morrow",
+  "pedro, mu\u00f1oz",
+  "pei, yang",
+  "peng, deng",
+  "philip, chan",
+  "philip, cunningham",
+  "piyush, mathur",
+  "prashant, deshmukh",
+  "pritesh, jain",
+  "rachel, pepper",
+  "rajinikanth, v",
+  "rakesh, sengupta",
+  "raman, singh",
+  "ra\u00fal, s\u00e1nchez garc\u00eda",
+  "rebecca, howell",
+  "ricardo, sousa",
+  "richard, allen",
+  "robert, kowalski",
+  "robert, roach",
+  "robert, shanks",
+  "rodrigo, barros",
+  "rodrigo, marques",
+  "roel, willems",
+  "sanghee, kim",
+  "sanjay, patel",
+  "sarah, robertson",
+  "sarah, stewart",
+  "satoshi, ono",
+  "saumya, singh",
+  "sergey, ushakov",
+  "serkan, yildirim",
+  "seung min, lee",
+  "seungwon, lee",
+  "seungyoon, lee",
+  "shaojie, wang",
+  "shaoqing, zhang",
+  "shaoshuai, li",
+  "shuang, xu",
+  "sikandar, khan",
+  "siqi, wang",
+  "soohyun, kim",
+  "sridharan, k",
+  "stephen, roberts",
+  "stephen, walsh",
+  "suguru, sato",
+  "tamer, taha",
+  "tetsuya, kimura",
+  "tim, fletcher",
+  "timothy, erickson",
+  "tingting, zhu",
+  "tom, barry",
+  "tom, hughes",
+  "tom, van dijk",
+  "tomasz, leski",
+  "udai bhan, singh",
+  "varun, pandey",
+  "victor, lima",
+  "weidong, cao",
+  "weimin, sun",
+  "wenfei, wei",
+  "wenhao, li",
+  "wenjun, tang",
+  "wenlong, tian",
+  "wenqiang, zhang",
+  "william, young",
+  "won, sohn",
+  "xianglong, zeng",
+  "xiaodi, zhu",
+  "xiaofeng, wu",
+  "xiaolong, han",
+  "xiaoshuang, feng",
+  "xu, tang",
+  "yanbin, li",
+  "yaping, wang",
+  "yaroslav, lavrinenko",
+  "ye, sun",
+  "yihao, wang",
+  "yipeng, li",
+  "yong, yuan",
+  "yoshiko, takahashi",
+  "yuanyuan, xu",
+  "yuting, bai",
+  "zhenyu, zhou",
+  "zhiye, zhao",
+  "zia, ul haq"
+ ],
+ "post_exclusion_frame_after_pilot": {
+  "L": 1123,
+  "M": 8260,
+  "S": 7938,
+  "XL": 9
+ },
+ "role": "pilot",
+ "sampled_blocks": {
+  "L": 50,
+  "M": 100,
+  "S": 100,
+  "XL": 0
+ },
+ "secondary_cases": [
+  {
+   "block_id": "rebecca, howell",
+   "case_id": "P-b080db57b7e1",
+   "is_primary": false,
+   "primary_case_id": "P-7fdc18eb72a3",
+   "stratum": "S"
+  },
+  {
+   "block_id": "manh hung, nguyen",
+   "case_id": "P-2b5c27a61bf3",
+   "is_primary": false,
+   "primary_case_id": "P-0d5742d74f1a",
+   "stratum": "S"
+  },
+  {
+   "block_id": "johannes, enslin",
+   "case_id": "P-30280bfa49b8",
+   "is_primary": false,
+   "primary_case_id": "P-a871f6870325",
+   "stratum": "S"
+  },
+  {
+   "block_id": "victor, lima",
+   "case_id": "P-da3ddc0b21ce",
+   "is_primary": false,
+   "primary_case_id": "P-a1be3b922ed9",
+   "stratum": "S"
+  },
+  {
+   "block_id": "giovanni, ferrari",
+   "case_id": "P-25b5b1042524",
+   "is_primary": false,
+   "primary_case_id": "P-24f6476b6bd9",
+   "stratum": "S"
+  },
+  {
+   "block_id": "rodrigo, marques",
+   "case_id": "P-4601c68d4d90",
+   "is_primary": false,
+   "primary_case_id": "P-3e0e1913086e",
+   "stratum": "S"
+  },
+  {
+   "block_id": "saumya, singh",
+   "case_id": "P-b1fc32980bec",
+   "is_primary": false,
+   "primary_case_id": "P-d251ce8a331d",
+   "stratum": "S"
+  },
+  {
+   "block_id": "arthur, ferreira",
+   "case_id": "P-346b8afc9bee",
+   "is_primary": false,
+   "primary_case_id": "P-94c7a691e9ad",
+   "stratum": "S"
+  },
+  {
+   "block_id": "arthur, ferreira",
+   "case_id": "P-befff497343e",
+   "is_primary": false,
+   "primary_case_id": "P-94c7a691e9ad",
+   "stratum": "S"
+  },
+  {
+   "block_id": "moinul, hossain",
+   "case_id": "P-0df749815889",
+   "is_primary": false,
+   "primary_case_id": "P-62103430b099",
+   "stratum": "S"
+  },
+  {
+   "block_id": "graham, baker",
+   "case_id": "P-919a70924965",
+   "is_primary": false,
+   "primary_case_id": "P-bcd5582b0371",
+   "stratum": "S"
+  },
+  {
+   "block_id": "jungyoon, kim",
+   "case_id": "P-8f584f692556",
+   "is_primary": false,
+   "primary_case_id": "P-36341b7aa23f",
+   "stratum": "S"
+  },
+  {
+   "block_id": "pritesh, jain",
+   "case_id": "P-eae6cc8c6fc6",
+   "is_primary": false,
+   "primary_case_id": "P-474935d2ff60",
+   "stratum": "S"
+  },
+  {
+   "block_id": "yaroslav, lavrinenko",
+   "case_id": "P-57f3cd7841d9",
+   "is_primary": false,
+   "primary_case_id": "P-173eefda9b64",
+   "stratum": "S"
+  },
+  {
+   "block_id": "joao, almeida",
+   "case_id": "P-465812160ab5",
+   "is_primary": false,
+   "primary_case_id": "P-b806e2075293",
+   "stratum": "S"
+  },
+  {
+   "block_id": "ivan, gruzdev",
+   "case_id": "P-08b8d30a2b50",
+   "is_primary": false,
+   "primary_case_id": "P-890f4efebf98",
+   "stratum": "S"
+  },
+  {
+   "block_id": "jiri, rames",
+   "case_id": "P-34fe9f8c926d",
+   "is_primary": false,
+   "primary_case_id": "P-731637934439",
+   "stratum": "S"
+  },
+  {
+   "block_id": "sridharan, k",
+   "case_id": "P-5f6c66891327",
+   "is_primary": false,
+   "primary_case_id": "P-82c64406db16",
+   "stratum": "S"
+  },
+  {
+   "block_id": "sridharan, k",
+   "case_id": "P-a92e619f320c",
+   "is_primary": false,
+   "primary_case_id": "P-82c64406db16",
+   "stratum": "S"
+  },
+  {
+   "block_id": "andrew, harding",
+   "case_id": "P-d532d72934c8",
+   "is_primary": false,
+   "primary_case_id": "P-b2d4294a3ba3",
+   "stratum": "S"
+  },
+  {
+   "block_id": "jingjing, luo",
+   "case_id": "P-d2cfaa0b9121",
+   "is_primary": false,
+   "primary_case_id": "P-8baa418ca21d",
+   "stratum": "S"
+  },
+  {
+   "block_id": "yanbin, li",
+   "case_id": "P-345d703a2064",
+   "is_primary": false,
+   "primary_case_id": "P-f0efdb9033c6",
+   "stratum": "S"
+  },
+  {
+   "block_id": "yipeng, li",
+   "case_id": "P-c621e1820a00",
+   "is_primary": false,
+   "primary_case_id": "P-5a0486307082",
+   "stratum": "S"
+  },
+  {
+   "block_id": "haochen, sun",
+   "case_id": "P-d92be1898143",
+   "is_primary": false,
+   "primary_case_id": "P-fceea219184f",
+   "stratum": "S"
+  },
+  {
+   "block_id": "jeroen, janssen",
+   "case_id": "P-417501d8f0a1",
+   "is_primary": false,
+   "primary_case_id": "P-fd7c5a946cee",
+   "stratum": "S"
+  },
+  {
+   "block_id": "karen, neves",
+   "case_id": "P-bee851d3485b",
+   "is_primary": false,
+   "primary_case_id": "P-87a3d43fcd38",
+   "stratum": "S"
+  },
+  {
+   "block_id": "andr\u00e9, mateus",
+   "case_id": "P-ad159164552c",
+   "is_primary": false,
+   "primary_case_id": "P-31fe7f0130a4",
+   "stratum": "S"
+  },
+  {
+   "block_id": "nobuhiro, tanaka",
+   "case_id": "P-556b6eb0fbc8",
+   "is_primary": false,
+   "primary_case_id": "P-d746daec4458",
+   "stratum": "S"
+  },
+  {
+   "block_id": "timothy, erickson",
+   "case_id": "P-2999addacc97",
+   "is_primary": false,
+   "primary_case_id": "P-7f2fb49b5878",
+   "stratum": "S"
+  },
+  {
+   "block_id": "da, liu",
+   "case_id": "P-885e95135d53",
+   "is_primary": false,
+   "primary_case_id": "P-0bb1935045c5",
+   "stratum": "S"
+  },
+  {
+   "block_id": "hu, zhao",
+   "case_id": "P-b03c2ef5fbf8",
+   "is_primary": false,
+   "primary_case_id": "P-24316500a352",
+   "stratum": "S"
+  },
+  {
+   "block_id": "micha\u0142, kowal",
+   "case_id": "P-d21cd6db9be3",
+   "is_primary": false,
+   "primary_case_id": "P-555946b071a9",
+   "stratum": "S"
+  },
+  {
+   "block_id": "pei, yang",
+   "case_id": "P-ba32293546e4",
+   "is_primary": false,
+   "primary_case_id": "P-5e67679336ee",
+   "stratum": "S"
+  },
+  {
+   "block_id": "alberto, soto",
+   "case_id": "P-12b8c181590d",
+   "is_primary": false,
+   "primary_case_id": "P-2e5521e4b64c",
+   "stratum": "S"
+  },
+  {
+   "block_id": "omkar, singh",
+   "case_id": "P-b1d518f5b9e8",
+   "is_primary": false,
+   "primary_case_id": "P-baa43ee9bd2f",
+   "stratum": "S"
+  },
+  {
+   "block_id": "raman, singh",
+   "case_id": "P-0b538564dd59",
+   "is_primary": false,
+   "primary_case_id": "P-80f987eaf3f4",
+   "stratum": "S"
+  },
+  {
+   "block_id": "raman, singh",
+   "case_id": "P-db74f4fe25cc",
+   "is_primary": false,
+   "primary_case_id": "P-80f987eaf3f4",
+   "stratum": "S"
+  },
+  {
+   "block_id": "nyha, hameed",
+   "case_id": "P-6ed043bb56a2",
+   "is_primary": false,
+   "primary_case_id": "P-b3b1683af8d3",
+   "stratum": "S"
+  },
+  {
+   "block_id": "chenyang, xu",
+   "case_id": "P-dd5ce6d77462",
+   "is_primary": false,
+   "primary_case_id": "P-3847405900b0",
+   "stratum": "S"
+  },
+  {
+   "block_id": "tom, hughes",
+   "case_id": "P-fb94251b1775",
+   "is_primary": false,
+   "primary_case_id": "P-a518dd76601d",
+   "stratum": "S"
+  },
+  {
+   "block_id": "mohammed, siddiqui",
+   "case_id": "P-a2d7a0d185b5",
+   "is_primary": false,
+   "primary_case_id": "P-fbc0422e09d9",
+   "stratum": "M"
+  },
+  {
+   "block_id": "matthew, brook",
+   "case_id": "P-894fafc64165",
+   "is_primary": false,
+   "primary_case_id": "P-58dd093d31f2",
+   "stratum": "M"
+  },
+  {
+   "block_id": "matthew, brook",
+   "case_id": "P-6bb0254ddafd",
+   "is_primary": false,
+   "primary_case_id": "P-58dd093d31f2",
+   "stratum": "M"
+  },
+  {
+   "block_id": "wenlong, tian",
+   "case_id": "P-26f7fccf4078",
+   "is_primary": false,
+   "primary_case_id": "P-fdf20eb82564",
+   "stratum": "M"
+  },
+  {
+   "block_id": "amir, khan",
+   "case_id": "P-5f17bb9c2016",
+   "is_primary": false,
+   "primary_case_id": "P-29141ca39d25",
+   "stratum": "M"
+  },
+  {
+   "block_id": "brian, mak",
+   "case_id": "P-d62af3a3a1f5",
+   "is_primary": false,
+   "primary_case_id": "P-e14035856e37",
+   "stratum": "M"
+  },
+  {
+   "block_id": "weimin, sun",
+   "case_id": "P-11b7122d5d8e",
+   "is_primary": false,
+   "primary_case_id": "P-30e52b15af3f",
+   "stratum": "M"
+  },
+  {
+   "block_id": "anish, shrestha",
+   "case_id": "P-b32a02f0cf4a",
+   "is_primary": false,
+   "primary_case_id": "P-ba753a14515e",
+   "stratum": "M"
+  },
+  {
+   "block_id": "krzysztof, kubiak",
+   "case_id": "P-e17f31ef5015",
+   "is_primary": false,
+   "primary_case_id": "P-f227f7fc7de3",
+   "stratum": "M"
+  },
+  {
+   "block_id": "krzysztof, kubiak",
+   "case_id": "P-df855538b611",
+   "is_primary": false,
+   "primary_case_id": "P-f227f7fc7de3",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tingting, zhu",
+   "case_id": "P-de0c597529c7",
+   "is_primary": false,
+   "primary_case_id": "P-5e8d9ff91b01",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tingting, zhu",
+   "case_id": "P-8896f040335f",
+   "is_primary": false,
+   "primary_case_id": "P-5e8d9ff91b01",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tingting, zhu",
+   "case_id": "P-d6605bf70106",
+   "is_primary": false,
+   "primary_case_id": "P-5e8d9ff91b01",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tingting, zhu",
+   "case_id": "P-d0beaa945cec",
+   "is_primary": false,
+   "primary_case_id": "P-5e8d9ff91b01",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tingting, zhu",
+   "case_id": "P-1599b4f9e880",
+   "is_primary": false,
+   "primary_case_id": "P-5e8d9ff91b01",
+   "stratum": "M"
+  },
+  {
+   "block_id": "marcelo, ferreira",
+   "case_id": "P-f3e044233c0c",
+   "is_primary": false,
+   "primary_case_id": "P-05274182c87c",
+   "stratum": "M"
+  },
+  {
+   "block_id": "li, wei",
+   "case_id": "P-acc016c0d4af",
+   "is_primary": false,
+   "primary_case_id": "P-7b84b6f519e4",
+   "stratum": "M"
+  },
+  {
+   "block_id": "li, wei",
+   "case_id": "P-cc81c32b8555",
+   "is_primary": false,
+   "primary_case_id": "P-7b84b6f519e4",
+   "stratum": "M"
+  },
+  {
+   "block_id": "miftahul, huda",
+   "case_id": "P-3893845b90cb",
+   "is_primary": false,
+   "primary_case_id": "P-2d21f4a6e491",
+   "stratum": "M"
+  },
+  {
+   "block_id": "miftahul, huda",
+   "case_id": "P-0a4fcb670e71",
+   "is_primary": false,
+   "primary_case_id": "P-2d21f4a6e491",
+   "stratum": "M"
+  },
+  {
+   "block_id": "jos\u00e9, dantas",
+   "case_id": "P-2ab637d10f67",
+   "is_primary": false,
+   "primary_case_id": "P-4645281d8984",
+   "stratum": "M"
+  },
+  {
+   "block_id": "jos\u00e9, dantas",
+   "case_id": "P-085c8a503691",
+   "is_primary": false,
+   "primary_case_id": "P-4645281d8984",
+   "stratum": "M"
+  },
+  {
+   "block_id": "robert, roach",
+   "case_id": "P-785eaacff6f8",
+   "is_primary": false,
+   "primary_case_id": "P-464ffe8c9056",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ahmed, shawky",
+   "case_id": "P-47de1956c744",
+   "is_primary": false,
+   "primary_case_id": "P-4a02203e8ffa",
+   "stratum": "M"
+  },
+  {
+   "block_id": "emma, jones",
+   "case_id": "P-24ce2fbb05d2",
+   "is_primary": false,
+   "primary_case_id": "P-6621c1435397",
+   "stratum": "M"
+  },
+  {
+   "block_id": "aleksey, zhukov",
+   "case_id": "P-209b19fcb2bf",
+   "is_primary": false,
+   "primary_case_id": "P-814c1d8cd1e1",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hui, he",
+   "case_id": "P-5ed47858e072",
+   "is_primary": false,
+   "primary_case_id": "P-fe9d0d30d278",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hui, he",
+   "case_id": "P-7c772cf883ab",
+   "is_primary": false,
+   "primary_case_id": "P-fe9d0d30d278",
+   "stratum": "M"
+  },
+  {
+   "block_id": "marco, testa",
+   "case_id": "P-d1fd42e00e4e",
+   "is_primary": false,
+   "primary_case_id": "P-3cc710e2fb2a",
+   "stratum": "M"
+  },
+  {
+   "block_id": "charles, thomas",
+   "case_id": "P-d4cd9c1cae23",
+   "is_primary": false,
+   "primary_case_id": "P-46a3d33db29e",
+   "stratum": "M"
+  },
+  {
+   "block_id": "charles, thomas",
+   "case_id": "P-6e33325eed41",
+   "is_primary": false,
+   "primary_case_id": "P-46a3d33db29e",
+   "stratum": "M"
+  },
+  {
+   "block_id": "charles, thomas",
+   "case_id": "P-673a6b090ae5",
+   "is_primary": false,
+   "primary_case_id": "P-46a3d33db29e",
+   "stratum": "M"
+  },
+  {
+   "block_id": "xu, tang",
+   "case_id": "P-7ee10e5a0178",
+   "is_primary": false,
+   "primary_case_id": "P-c701c712107c",
+   "stratum": "M"
+  },
+  {
+   "block_id": "xu, tang",
+   "case_id": "P-af6213946353",
+   "is_primary": false,
+   "primary_case_id": "P-c701c712107c",
+   "stratum": "M"
+  },
+  {
+   "block_id": "xu, tang",
+   "case_id": "P-8a9b4af87c49",
+   "is_primary": false,
+   "primary_case_id": "P-c701c712107c",
+   "stratum": "M"
+  },
+  {
+   "block_id": "philip, cunningham",
+   "case_id": "P-7e5a938b313d",
+   "is_primary": false,
+   "primary_case_id": "P-b3ede2bfc9bf",
+   "stratum": "M"
+  },
+  {
+   "block_id": "sarah, robertson",
+   "case_id": "P-124d46286106",
+   "is_primary": false,
+   "primary_case_id": "P-73cf4e77a43a",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tom, barry",
+   "case_id": "P-8b1bbc47b4be",
+   "is_primary": false,
+   "primary_case_id": "P-794f46de8676",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tomasz, leski",
+   "case_id": "P-a7eecf894beb",
+   "is_primary": false,
+   "primary_case_id": "P-65598f7700d9",
+   "stratum": "M"
+  },
+  {
+   "block_id": "kenji, sugimoto",
+   "case_id": "P-9394ce92a829",
+   "is_primary": false,
+   "primary_case_id": "P-2dc055973867",
+   "stratum": "M"
+  },
+  {
+   "block_id": "michelle, phillips",
+   "case_id": "P-486a2bb9ab13",
+   "is_primary": false,
+   "primary_case_id": "P-5635de78885f",
+   "stratum": "M"
+  },
+  {
+   "block_id": "james, burford",
+   "case_id": "P-989746ccecbd",
+   "is_primary": false,
+   "primary_case_id": "P-a9bc4103d53a",
+   "stratum": "M"
+  },
+  {
+   "block_id": "gustavo, almeida",
+   "case_id": "P-a0210a01e88d",
+   "is_primary": false,
+   "primary_case_id": "P-5306586cf523",
+   "stratum": "M"
+  },
+  {
+   "block_id": "gustavo, almeida",
+   "case_id": "P-1efdb9b1277c",
+   "is_primary": false,
+   "primary_case_id": "P-5306586cf523",
+   "stratum": "M"
+  },
+  {
+   "block_id": "xianglong, zeng",
+   "case_id": "P-06dc12533659",
+   "is_primary": false,
+   "primary_case_id": "P-96e792bf36b5",
+   "stratum": "M"
+  },
+  {
+   "block_id": "pablo, martinez",
+   "case_id": "P-1455e2d4aceb",
+   "is_primary": false,
+   "primary_case_id": "P-9037101e279c",
+   "stratum": "M"
+  },
+  {
+   "block_id": "pablo, martinez",
+   "case_id": "P-f438a0bd2df1",
+   "is_primary": false,
+   "primary_case_id": "P-9037101e279c",
+   "stratum": "M"
+  },
+  {
+   "block_id": "minyi, li",
+   "case_id": "P-b0a5cb781b00",
+   "is_primary": false,
+   "primary_case_id": "P-f77d862d952d",
+   "stratum": "M"
+  },
+  {
+   "block_id": "krishna, govender",
+   "case_id": "P-9f588bb102fa",
+   "is_primary": false,
+   "primary_case_id": "P-138d50737e72",
+   "stratum": "M"
+  },
+  {
+   "block_id": "zia, ul haq",
+   "case_id": "P-6e36bfd2ad95",
+   "is_primary": false,
+   "primary_case_id": "P-ff921432077b",
+   "stratum": "M"
+  },
+  {
+   "block_id": "sarah, stewart",
+   "case_id": "P-1d7a4a18e479",
+   "is_primary": false,
+   "primary_case_id": "P-723fe53d187f",
+   "stratum": "M"
+  },
+  {
+   "block_id": "shaoqing, zhang",
+   "case_id": "P-ae980bfaaa7f",
+   "is_primary": false,
+   "primary_case_id": "P-45c97f8d225a",
+   "stratum": "M"
+  },
+  {
+   "block_id": "sikandar, khan",
+   "case_id": "P-8f224ce17f19",
+   "is_primary": false,
+   "primary_case_id": "P-48a649d6c3f0",
+   "stratum": "M"
+  },
+  {
+   "block_id": "sikandar, khan",
+   "case_id": "P-9cab9a7ac1ee",
+   "is_primary": false,
+   "primary_case_id": "P-48a649d6c3f0",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hang, su",
+   "case_id": "P-917dc02f15f3",
+   "is_primary": false,
+   "primary_case_id": "P-9b6321d721a5",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hang, su",
+   "case_id": "P-3788022fae9c",
+   "is_primary": false,
+   "primary_case_id": "P-9b6321d721a5",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hang, su",
+   "case_id": "P-05a42aaaa321",
+   "is_primary": false,
+   "primary_case_id": "P-9b6321d721a5",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hang, su",
+   "case_id": "P-1efb8dbceec3",
+   "is_primary": false,
+   "primary_case_id": "P-9b6321d721a5",
+   "stratum": "M"
+  },
+  {
+   "block_id": "xiaolong, han",
+   "case_id": "P-d976728a5744",
+   "is_primary": false,
+   "primary_case_id": "P-d6b213a9c6f3",
+   "stratum": "M"
+  },
+  {
+   "block_id": "elizabeth, reed",
+   "case_id": "P-320729fb8277",
+   "is_primary": false,
+   "primary_case_id": "P-d84aedeace29",
+   "stratum": "M"
+  },
+  {
+   "block_id": "elizabeth, reed",
+   "case_id": "P-885650cb8bfe",
+   "is_primary": false,
+   "primary_case_id": "P-d84aedeace29",
+   "stratum": "M"
+  },
+  {
+   "block_id": "daniel, chung",
+   "case_id": "P-3f3bf18fd609",
+   "is_primary": false,
+   "primary_case_id": "P-d62c17aee4f0",
+   "stratum": "M"
+  },
+  {
+   "block_id": "daniel, chung",
+   "case_id": "P-a52e39b9d57a",
+   "is_primary": false,
+   "primary_case_id": "P-d62c17aee4f0",
+   "stratum": "M"
+  },
+  {
+   "block_id": "federico, bianchi",
+   "case_id": "P-31b9d51df375",
+   "is_primary": false,
+   "primary_case_id": "P-a8802434d1b4",
+   "stratum": "M"
+  },
+  {
+   "block_id": "federico, bianchi",
+   "case_id": "P-0813e236b848",
+   "is_primary": false,
+   "primary_case_id": "P-a8802434d1b4",
+   "stratum": "M"
+  },
+  {
+   "block_id": "rachel, pepper",
+   "case_id": "P-65a635920f7e",
+   "is_primary": false,
+   "primary_case_id": "P-f99218781bf1",
+   "stratum": "M"
+  },
+  {
+   "block_id": "pedro, mu\u00f1oz",
+   "case_id": "P-c81bf131e640",
+   "is_primary": false,
+   "primary_case_id": "P-a75e015e9aa3",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ning, ye",
+   "case_id": "P-bae159383941",
+   "is_primary": false,
+   "primary_case_id": "P-c1945cd19bc9",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ning, ye",
+   "case_id": "P-05bcef73112c",
+   "is_primary": false,
+   "primary_case_id": "P-c1945cd19bc9",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ning, ye",
+   "case_id": "P-7c20303c198d",
+   "is_primary": false,
+   "primary_case_id": "P-c1945cd19bc9",
+   "stratum": "M"
+  },
+  {
+   "block_id": "yong, yuan",
+   "case_id": "P-87bfab79daad",
+   "is_primary": false,
+   "primary_case_id": "P-86238fa4ec04",
+   "stratum": "M"
+  },
+  {
+   "block_id": "yong, yuan",
+   "case_id": "P-4aa39ce7b31b",
+   "is_primary": false,
+   "primary_case_id": "P-86238fa4ec04",
+   "stratum": "M"
+  },
+  {
+   "block_id": "mohamed, gomaa",
+   "case_id": "P-09d344357e51",
+   "is_primary": false,
+   "primary_case_id": "P-791edfd34ea7",
+   "stratum": "M"
+  },
+  {
+   "block_id": "tom, van dijk",
+   "case_id": "P-27a2ed05d237",
+   "is_primary": false,
+   "primary_case_id": "P-140bbdbd46bd",
+   "stratum": "M"
+  },
+  {
+   "block_id": "min-seok, kim",
+   "case_id": "P-2d14dd36c3e5",
+   "is_primary": false,
+   "primary_case_id": "P-9f1574b71039",
+   "stratum": "M"
+  },
+  {
+   "block_id": "minwei, zhang",
+   "case_id": "P-b8cb26a6ec1f",
+   "is_primary": false,
+   "primary_case_id": "P-673699418d1b",
+   "stratum": "M"
+  },
+  {
+   "block_id": "mark, mitchell",
+   "case_id": "P-88292f3e151a",
+   "is_primary": false,
+   "primary_case_id": "P-75f9755dd5bb",
+   "stratum": "M"
+  },
+  {
+   "block_id": "serkan, yildirim",
+   "case_id": "P-eb559da4ca28",
+   "is_primary": false,
+   "primary_case_id": "P-bbfc919ab0de",
+   "stratum": "M"
+  },
+  {
+   "block_id": "shuang, xu",
+   "case_id": "P-b19bff61e6b4",
+   "is_primary": false,
+   "primary_case_id": "P-4b370bd765da",
+   "stratum": "M"
+  },
+  {
+   "block_id": "abdullah, alshehri",
+   "case_id": "P-3fe643a6b632",
+   "is_primary": false,
+   "primary_case_id": "P-5f30956abe0f",
+   "stratum": "M"
+  },
+  {
+   "block_id": "paolo, milani",
+   "case_id": "P-99e714a1e5f6",
+   "is_primary": false,
+   "primary_case_id": "P-622486edeb3b",
+   "stratum": "M"
+  },
+  {
+   "block_id": "alka, gupta",
+   "case_id": "P-033f8001bd93",
+   "is_primary": false,
+   "primary_case_id": "P-e7e636659b02",
+   "stratum": "M"
+  },
+  {
+   "block_id": "alka, gupta",
+   "case_id": "P-b6c9ed3fe064",
+   "is_primary": false,
+   "primary_case_id": "P-e7e636659b02",
+   "stratum": "M"
+  },
+  {
+   "block_id": "himanshu, singh",
+   "case_id": "P-1617078cab44",
+   "is_primary": false,
+   "primary_case_id": "P-4adfe4cf18f3",
+   "stratum": "M"
+  },
+  {
+   "block_id": "himanshu, singh",
+   "case_id": "P-58625fc47b9b",
+   "is_primary": false,
+   "primary_case_id": "P-4adfe4cf18f3",
+   "stratum": "M"
+  },
+  {
+   "block_id": "himanshu, singh",
+   "case_id": "P-50673bc36896",
+   "is_primary": false,
+   "primary_case_id": "P-4adfe4cf18f3",
+   "stratum": "M"
+  },
+  {
+   "block_id": "wenjun, tang",
+   "case_id": "P-98a615c30505",
+   "is_primary": false,
+   "primary_case_id": "P-0025bd4033e2",
+   "stratum": "M"
+  },
+  {
+   "block_id": "john, green",
+   "case_id": "P-2c093683ff5c",
+   "is_primary": false,
+   "primary_case_id": "P-3b3c5d1c76b5",
+   "stratum": "M"
+  },
+  {
+   "block_id": "john, green",
+   "case_id": "P-395afbb0f49d",
+   "is_primary": false,
+   "primary_case_id": "P-3b3c5d1c76b5",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ignacio, villanueva",
+   "case_id": "P-c86dd34ed6ce",
+   "is_primary": false,
+   "primary_case_id": "P-522fa7f76728",
+   "stratum": "M"
+  },
+  {
+   "block_id": "dongwoo, lee",
+   "case_id": "P-a5a4f3b87dc1",
+   "is_primary": false,
+   "primary_case_id": "P-1f9844e00182",
+   "stratum": "M"
+  },
+  {
+   "block_id": "emre, aslan",
+   "case_id": "P-4d2ad0b1e990",
+   "is_primary": false,
+   "primary_case_id": "P-ae9bcd4376ee",
+   "stratum": "M"
+  },
+  {
+   "block_id": "daniel, bailey",
+   "case_id": "P-02afc847c83a",
+   "is_primary": false,
+   "primary_case_id": "P-02a79b9e10eb",
+   "stratum": "M"
+  },
+  {
+   "block_id": "huajian, liu",
+   "case_id": "P-8331e4f6faf0",
+   "is_primary": false,
+   "primary_case_id": "P-9216d1472542",
+   "stratum": "M"
+  },
+  {
+   "block_id": "adil, shah",
+   "case_id": "P-7736e41a19e4",
+   "is_primary": false,
+   "primary_case_id": "P-ea625c284006",
+   "stratum": "M"
+  },
+  {
+   "block_id": "elena, castro",
+   "case_id": "P-70eb8d48be71",
+   "is_primary": false,
+   "primary_case_id": "P-a36182ab9210",
+   "stratum": "M"
+  },
+  {
+   "block_id": "alireza, habibi",
+   "case_id": "P-f9385a6c393c",
+   "is_primary": false,
+   "primary_case_id": "P-1fd4ef6358e4",
+   "stratum": "M"
+  },
+  {
+   "block_id": "mohammad, kazemi",
+   "case_id": "P-8887f3974d0b",
+   "is_primary": false,
+   "primary_case_id": "P-b5b44f0f267d",
+   "stratum": "M"
+  },
+  {
+   "block_id": "wenqiang, zhang",
+   "case_id": "P-9a6d646a40ed",
+   "is_primary": false,
+   "primary_case_id": "P-dba3a0375962",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ye, sun",
+   "case_id": "P-eeb648880bbd",
+   "is_primary": false,
+   "primary_case_id": "P-0a415ee5925d",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ye, sun",
+   "case_id": "P-fc4fceee1da0",
+   "is_primary": false,
+   "primary_case_id": "P-0a415ee5925d",
+   "stratum": "M"
+  },
+  {
+   "block_id": "ye, sun",
+   "case_id": "P-98784dbd1d62",
+   "is_primary": false,
+   "primary_case_id": "P-0a415ee5925d",
+   "stratum": "M"
+  },
+  {
+   "block_id": "dehbi, abdelkader",
+   "case_id": "P-9dafdf56bf5f",
+   "is_primary": false,
+   "primary_case_id": "P-b6176a06cf37",
+   "stratum": "M"
+  },
+  {
+   "block_id": "jiping, yang",
+   "case_id": "P-59584d3aebb3",
+   "is_primary": false,
+   "primary_case_id": "P-6a3ccd165352",
+   "stratum": "M"
+  },
+  {
+   "block_id": "biswanath, dutta",
+   "case_id": "P-6e17b77c8fd3",
+   "is_primary": false,
+   "primary_case_id": "P-1fea4bed2a7f",
+   "stratum": "M"
+  },
+  {
+   "block_id": "christine, grant",
+   "case_id": "P-cdfb886d0938",
+   "is_primary": false,
+   "primary_case_id": "P-2611d39ccf81",
+   "stratum": "M"
+  },
+  {
+   "block_id": "christine, grant",
+   "case_id": "P-a4f56fcf7b87",
+   "is_primary": false,
+   "primary_case_id": "P-2611d39ccf81",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hailong, wang",
+   "case_id": "P-f5c6ff3f8e6c",
+   "is_primary": false,
+   "primary_case_id": "P-d09922ba2082",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hailong, wang",
+   "case_id": "P-2eb005632aad",
+   "is_primary": false,
+   "primary_case_id": "P-d09922ba2082",
+   "stratum": "M"
+  },
+  {
+   "block_id": "hailong, wang",
+   "case_id": "P-9cb9fd6ff113",
+   "is_primary": false,
+   "primary_case_id": "P-d09922ba2082",
+   "stratum": "M"
+  },
+  {
+   "block_id": "xiaofeng, wu",
+   "case_id": "P-34a548c645e6",
+   "is_primary": false,
+   "primary_case_id": "P-856e278892a3",
+   "stratum": "L"
+  },
+  {
+   "block_id": "john, burke",
+   "case_id": "P-b8012848dd30",
+   "is_primary": false,
+   "primary_case_id": "P-6f60c9f07254",
+   "stratum": "L"
+  },
+  {
+   "block_id": "mark, lemmon",
+   "case_id": "P-790cd8f5a8fb",
+   "is_primary": false,
+   "primary_case_id": "P-967bacaba4a6",
+   "stratum": "L"
+  },
+  {
+   "block_id": "prashant, deshmukh",
+   "case_id": "P-2b1d170d828f",
+   "is_primary": false,
+   "primary_case_id": "P-c40ac6fd300f",
+   "stratum": "L"
+  },
+  {
+   "block_id": "prashant, deshmukh",
+   "case_id": "P-6ec863bd3d15",
+   "is_primary": false,
+   "primary_case_id": "P-c40ac6fd300f",
+   "stratum": "L"
+  },
+  {
+   "block_id": "prashant, deshmukh",
+   "case_id": "P-94031a869c1a",
+   "is_primary": false,
+   "primary_case_id": "P-c40ac6fd300f",
+   "stratum": "L"
+  },
+  {
+   "block_id": "tim, fletcher",
+   "case_id": "P-ee299b05420c",
+   "is_primary": false,
+   "primary_case_id": "P-6467b269a222",
+   "stratum": "L"
+  },
+  {
+   "block_id": "zhenyu, zhou",
+   "case_id": "P-79ff093e614e",
+   "is_primary": false,
+   "primary_case_id": "P-5a3b7c8c5920",
+   "stratum": "L"
+  },
+  {
+   "block_id": "zhenyu, zhou",
+   "case_id": "P-08337b3838c2",
+   "is_primary": false,
+   "primary_case_id": "P-5a3b7c8c5920",
+   "stratum": "L"
+  },
+  {
+   "block_id": "chris, jones",
+   "case_id": "P-224c7854c19c",
+   "is_primary": false,
+   "primary_case_id": "P-2ce001bb26e1",
+   "stratum": "L"
+  },
+  {
+   "block_id": "chris, jones",
+   "case_id": "P-d16925805205",
+   "is_primary": false,
+   "primary_case_id": "P-2ce001bb26e1",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, roberts",
+   "case_id": "P-7b3d98102d8c",
+   "is_primary": false,
+   "primary_case_id": "P-26ac83f1423a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, roberts",
+   "case_id": "P-b41fb39e3a5a",
+   "is_primary": false,
+   "primary_case_id": "P-26ac83f1423a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, roberts",
+   "case_id": "P-09b75f9b5974",
+   "is_primary": false,
+   "primary_case_id": "P-26ac83f1423a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, roberts",
+   "case_id": "P-b9c97e5e5774",
+   "is_primary": false,
+   "primary_case_id": "P-26ac83f1423a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, roberts",
+   "case_id": "P-fda863f5203e",
+   "is_primary": false,
+   "primary_case_id": "P-26ac83f1423a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, roberts",
+   "case_id": "P-dc6875e4a237",
+   "is_primary": false,
+   "primary_case_id": "P-26ac83f1423a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "jasper, smits",
+   "case_id": "P-7ee21f9d6211",
+   "is_primary": false,
+   "primary_case_id": "P-2cf16a2f2a93",
+   "stratum": "L"
+  },
+  {
+   "block_id": "catherine, mcgowan",
+   "case_id": "P-33a4c3f794e9",
+   "is_primary": false,
+   "primary_case_id": "P-9dece20cc731",
+   "stratum": "L"
+  },
+  {
+   "block_id": "anthony, davis",
+   "case_id": "P-15d0af4e3c76",
+   "is_primary": false,
+   "primary_case_id": "P-2376206d4bc8",
+   "stratum": "L"
+  },
+  {
+   "block_id": "anthony, davis",
+   "case_id": "P-f0a28ac1f4fa",
+   "is_primary": false,
+   "primary_case_id": "P-2376206d4bc8",
+   "stratum": "L"
+  },
+  {
+   "block_id": "anthony, davis",
+   "case_id": "P-cee28dd6d624",
+   "is_primary": false,
+   "primary_case_id": "P-2376206d4bc8",
+   "stratum": "L"
+  },
+  {
+   "block_id": "robert, shanks",
+   "case_id": "P-08f0530e9a68",
+   "is_primary": false,
+   "primary_case_id": "P-74f79d176d7a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "kenji, tsuda",
+   "case_id": "P-207ead06b786",
+   "is_primary": false,
+   "primary_case_id": "P-606f0cbf9222",
+   "stratum": "L"
+  },
+  {
+   "block_id": "guojun, lu",
+   "case_id": "P-9b328e5debe6",
+   "is_primary": false,
+   "primary_case_id": "P-bb40c94c5e24",
+   "stratum": "L"
+  },
+  {
+   "block_id": "jos\u00e9, lima",
+   "case_id": "P-2ad87cfb447a",
+   "is_primary": false,
+   "primary_case_id": "P-cfef11409c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "jos\u00e9, lima",
+   "case_id": "P-dcb7c493d731",
+   "is_primary": false,
+   "primary_case_id": "P-cfef11409c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "francesco, orsini",
+   "case_id": "P-c6973f1c7c9c",
+   "is_primary": false,
+   "primary_case_id": "P-58e5ab952a0d",
+   "stratum": "L"
+  },
+  {
+   "block_id": "francesco, orsini",
+   "case_id": "P-0e448bb3cb5b",
+   "is_primary": false,
+   "primary_case_id": "P-58e5ab952a0d",
+   "stratum": "L"
+  },
+  {
+   "block_id": "kenichi, watanabe",
+   "case_id": "P-5c95e26e95e3",
+   "is_primary": false,
+   "primary_case_id": "P-efc40defdcf2",
+   "stratum": "L"
+  },
+  {
+   "block_id": "paul, dawson",
+   "case_id": "P-2c79f1c874a2",
+   "is_primary": false,
+   "primary_case_id": "P-cd79a3dc7ba0",
+   "stratum": "L"
+  },
+  {
+   "block_id": "paul, dawson",
+   "case_id": "P-8c2769d7fdae",
+   "is_primary": false,
+   "primary_case_id": "P-cd79a3dc7ba0",
+   "stratum": "L"
+  },
+  {
+   "block_id": "paul, dawson",
+   "case_id": "P-8488409db60f",
+   "is_primary": false,
+   "primary_case_id": "P-cd79a3dc7ba0",
+   "stratum": "L"
+  },
+  {
+   "block_id": "benjamin, lev",
+   "case_id": "P-a78a312b6e2c",
+   "is_primary": false,
+   "primary_case_id": "P-4cf5a4839530",
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanjay, patel",
+   "case_id": "P-63bd08cd9790",
+   "is_primary": false,
+   "primary_case_id": "P-b7bbdbc81c9a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanjay, patel",
+   "case_id": "P-843f555a2b6a",
+   "is_primary": false,
+   "primary_case_id": "P-b7bbdbc81c9a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanjay, patel",
+   "case_id": "P-c009ce743cbc",
+   "is_primary": false,
+   "primary_case_id": "P-b7bbdbc81c9a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanjay, patel",
+   "case_id": "P-cffec07a1006",
+   "is_primary": false,
+   "primary_case_id": "P-b7bbdbc81c9a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "philip, chan",
+   "case_id": "P-b88dce0344db",
+   "is_primary": false,
+   "primary_case_id": "P-3ba615a6b630",
+   "stratum": "L"
+  },
+  {
+   "block_id": "philip, chan",
+   "case_id": "P-be561da24630",
+   "is_primary": false,
+   "primary_case_id": "P-3ba615a6b630",
+   "stratum": "L"
+  },
+  {
+   "block_id": "philip, chan",
+   "case_id": "P-251d5d55bcbc",
+   "is_primary": false,
+   "primary_case_id": "P-3ba615a6b630",
+   "stratum": "L"
+  },
+  {
+   "block_id": "richard, allen",
+   "case_id": "P-04224c63c2b2",
+   "is_primary": false,
+   "primary_case_id": "P-346701b84723",
+   "stratum": "L"
+  },
+  {
+   "block_id": "richard, allen",
+   "case_id": "P-2552bcef23c9",
+   "is_primary": false,
+   "primary_case_id": "P-346701b84723",
+   "stratum": "L"
+  },
+  {
+   "block_id": "richard, allen",
+   "case_id": "P-7b297fc8859a",
+   "is_primary": false,
+   "primary_case_id": "P-346701b84723",
+   "stratum": "L"
+  },
+  {
+   "block_id": "richard, allen",
+   "case_id": "P-64b9758794da",
+   "is_primary": false,
+   "primary_case_id": "P-346701b84723",
+   "stratum": "L"
+  },
+  {
+   "block_id": "satoshi, ono",
+   "case_id": "P-756f1dc5e1f4",
+   "is_primary": false,
+   "primary_case_id": "P-a306368f8508",
+   "stratum": "L"
+  },
+  {
+   "block_id": "satoshi, ono",
+   "case_id": "P-0bf6167675e7",
+   "is_primary": false,
+   "primary_case_id": "P-a306368f8508",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrzej, chmielewski",
+   "case_id": "P-8649fad5bfb8",
+   "is_primary": false,
+   "primary_case_id": "P-5b62995aa352",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrzej, chmielewski",
+   "case_id": "P-9488cab0b555",
+   "is_primary": false,
+   "primary_case_id": "P-5b62995aa352",
+   "stratum": "L"
+  },
+  {
+   "block_id": "alex, wong",
+   "case_id": "P-af777bbf77f7",
+   "is_primary": false,
+   "primary_case_id": "P-3771f97336ec",
+   "stratum": "L"
+  },
+  {
+   "block_id": "alex, wong",
+   "case_id": "P-5d4d2121ce1d",
+   "is_primary": false,
+   "primary_case_id": "P-3771f97336ec",
+   "stratum": "L"
+  },
+  {
+   "block_id": "alex, wong",
+   "case_id": "P-60e52d4a943e",
+   "is_primary": false,
+   "primary_case_id": "P-3771f97336ec",
+   "stratum": "L"
+  },
+  {
+   "block_id": "alex, wong",
+   "case_id": "P-9c5473ce972f",
+   "is_primary": false,
+   "primary_case_id": "P-3771f97336ec",
+   "stratum": "L"
+  },
+  {
+   "block_id": "daniel, mitchell",
+   "case_id": "P-3eec0666060f",
+   "is_primary": false,
+   "primary_case_id": "P-08022115f6a9",
+   "stratum": "L"
+  },
+  {
+   "block_id": "daniel, mitchell",
+   "case_id": "P-36684491babf",
+   "is_primary": false,
+   "primary_case_id": "P-08022115f6a9",
+   "stratum": "L"
+  },
+  {
+   "block_id": "daniel, mitchell",
+   "case_id": "P-d36373c72db7",
+   "is_primary": false,
+   "primary_case_id": "P-08022115f6a9",
+   "stratum": "L"
+  },
+  {
+   "block_id": "francesc, torres",
+   "case_id": "P-b088d677b32d",
+   "is_primary": false,
+   "primary_case_id": "P-fa25ec652362",
+   "stratum": "L"
+  },
+  {
+   "block_id": "alison, murray",
+   "case_id": "P-172c9a5107b2",
+   "is_primary": false,
+   "primary_case_id": "P-48d668f6efa4",
+   "stratum": "L"
+  },
+  {
+   "block_id": "masahiro, sakai",
+   "case_id": "P-393ffa8b79a9",
+   "is_primary": false,
+   "primary_case_id": "P-a9b148f264f7",
+   "stratum": "L"
+  },
+  {
+   "block_id": "moncef, krarti",
+   "case_id": "P-6aa3440a16f8",
+   "is_primary": false,
+   "primary_case_id": "P-02a54f17bb04",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrew, hall",
+   "case_id": "P-cdafcc984e13",
+   "is_primary": false,
+   "primary_case_id": "P-66cf2cd51c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrew, hall",
+   "case_id": "P-048b5573e28d",
+   "is_primary": false,
+   "primary_case_id": "P-66cf2cd51c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrew, hall",
+   "case_id": "P-fd36c8a65cfe",
+   "is_primary": false,
+   "primary_case_id": "P-66cf2cd51c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrew, hall",
+   "case_id": "P-b80ca417f21e",
+   "is_primary": false,
+   "primary_case_id": "P-66cf2cd51c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrew, hall",
+   "case_id": "P-933d382e86e4",
+   "is_primary": false,
+   "primary_case_id": "P-66cf2cd51c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "andrew, hall",
+   "case_id": "P-04f8a91130dc",
+   "is_primary": false,
+   "primary_case_id": "P-66cf2cd51c62",
+   "stratum": "L"
+  },
+  {
+   "block_id": "min, kim",
+   "case_id": "P-7e5fac3d686e",
+   "is_primary": false,
+   "primary_case_id": "P-b79c8c153263",
+   "stratum": "L"
+  },
+  {
+   "block_id": "min, kim",
+   "case_id": "P-d81b3fb84184",
+   "is_primary": false,
+   "primary_case_id": "P-b79c8c153263",
+   "stratum": "L"
+  },
+  {
+   "block_id": "min, kim",
+   "case_id": "P-0950aeaff29f",
+   "is_primary": false,
+   "primary_case_id": "P-b79c8c153263",
+   "stratum": "L"
+  },
+  {
+   "block_id": "min, kim",
+   "case_id": "P-6133d69c11b9",
+   "is_primary": false,
+   "primary_case_id": "P-b79c8c153263",
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_id": "P-b9e31cb32681",
+   "is_primary": false,
+   "primary_case_id": "P-f86ade44a0b5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_id": "P-12d67f21c1bd",
+   "is_primary": false,
+   "primary_case_id": "P-f86ade44a0b5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_id": "P-cf0a8086fd56",
+   "is_primary": false,
+   "primary_case_id": "P-f86ade44a0b5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_id": "P-ac805b9560c1",
+   "is_primary": false,
+   "primary_case_id": "P-f86ade44a0b5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_id": "P-215fde70296d",
+   "is_primary": false,
+   "primary_case_id": "P-f86ade44a0b5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_id": "P-f5225c5bed8c",
+   "is_primary": false,
+   "primary_case_id": "P-f86ade44a0b5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "ricardo, sousa",
+   "case_id": "P-b91171ab61e2",
+   "is_primary": false,
+   "primary_case_id": "P-f86ade44a0b5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "christopher, rose",
+   "case_id": "P-2637361d6482",
+   "is_primary": false,
+   "primary_case_id": "P-dfd0fcf85a79",
+   "stratum": "L"
+  },
+  {
+   "block_id": "christopher, rose",
+   "case_id": "P-2ede5edb6209",
+   "is_primary": false,
+   "primary_case_id": "P-dfd0fcf85a79",
+   "stratum": "L"
+  },
+  {
+   "block_id": "marco, brambilla",
+   "case_id": "P-36afd49deb5e",
+   "is_primary": false,
+   "primary_case_id": "P-b7acfee43ef5",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, walsh",
+   "case_id": "P-16446c394811",
+   "is_primary": false,
+   "primary_case_id": "P-70751f3d424a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, walsh",
+   "case_id": "P-ffd35fbe8fda",
+   "is_primary": false,
+   "primary_case_id": "P-70751f3d424a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, walsh",
+   "case_id": "P-2eef39d5e89f",
+   "is_primary": false,
+   "primary_case_id": "P-70751f3d424a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "stephen, walsh",
+   "case_id": "P-cf50410528ea",
+   "is_primary": false,
+   "primary_case_id": "P-70751f3d424a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "evan, thomas",
+   "case_id": "P-d9547a0d1f10",
+   "is_primary": false,
+   "primary_case_id": "P-ef72f60da6d2",
+   "stratum": "L"
+  },
+  {
+   "block_id": "evan, thomas",
+   "case_id": "P-018338b07381",
+   "is_primary": false,
+   "primary_case_id": "P-ef72f60da6d2",
+   "stratum": "L"
+  },
+  {
+   "block_id": "evan, thomas",
+   "case_id": "P-5ba09c19431b",
+   "is_primary": false,
+   "primary_case_id": "P-ef72f60da6d2",
+   "stratum": "L"
+  },
+  {
+   "block_id": "rajinikanth, v",
+   "case_id": "P-2cc0de0355dc",
+   "is_primary": false,
+   "primary_case_id": "P-e1e4d05a7a8a",
+   "stratum": "L"
+  },
+  {
+   "block_id": "sergey, ushakov",
+   "case_id": "P-68c5a9048d46",
+   "is_primary": false,
+   "primary_case_id": "P-5b4b6a0413e8",
+   "stratum": "L"
+  },
+  {
+   "block_id": "kevin, wang",
+   "case_id": "P-73a8c614750c",
+   "is_primary": false,
+   "primary_case_id": "P-496d93fd1094",
+   "stratum": "L"
+  },
+  {
+   "block_id": "john, fox",
+   "case_id": "P-79bca9db4bb8",
+   "is_primary": false,
+   "primary_case_id": "P-4edeb7793bd4",
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanghee, kim",
+   "case_id": "P-15e4a19770ab",
+   "is_primary": false,
+   "primary_case_id": "P-cc869cc3e79e",
+   "stratum": "L"
+  },
+  {
+   "block_id": "sanghee, kim",
+   "case_id": "P-627413212aa9",
+   "is_primary": false,
+   "primary_case_id": "P-cc869cc3e79e",
+   "stratum": "L"
+  },
+  {
+   "block_id": "david, howard",
+   "case_id": "P-00fe3efb39a6",
+   "is_primary": false,
+   "primary_case_id": "P-c944da0bacc3",
+   "stratum": "L"
+  },
+  {
+   "block_id": "david, howard",
+   "case_id": "P-3a20b6e64206",
+   "is_primary": false,
+   "primary_case_id": "P-c944da0bacc3",
+   "stratum": "L"
+  },
+  {
+   "block_id": "david, howard",
+   "case_id": "P-7d3caddef048",
+   "is_primary": false,
+   "primary_case_id": "P-c944da0bacc3",
+   "stratum": "L"
+  },
+  {
+   "block_id": "seungwon, lee",
+   "case_id": "P-14eddc2cc241",
+   "is_primary": false,
+   "primary_case_id": "P-614ab8e76913",
+   "stratum": "L"
+  },
+  {
+   "block_id": "seungwon, lee",
+   "case_id": "P-28d1d6e9b55a",
+   "is_primary": false,
+   "primary_case_id": "P-614ab8e76913",
+   "stratum": "L"
+  },
+  {
+   "block_id": "anil, gupta",
+   "case_id": "P-0383edb05128",
+   "is_primary": false,
+   "primary_case_id": "P-8b4b206c59a9",
+   "stratum": "L"
+  },
+  {
+   "block_id": "anil, gupta",
+   "case_id": "P-b1a3ee73744a",
+   "is_primary": false,
+   "primary_case_id": "P-8b4b206c59a9",
+   "stratum": "L"
+  },
+  {
+   "block_id": "wenhao, li",
+   "case_id": "P-3af42012fc00",
+   "is_primary": false,
+   "primary_case_id": "P-acaab3b4e82f",
+   "stratum": "L"
+  },
+  {
+   "block_id": "wenhao, li",
+   "case_id": "P-bfc3401b9a84",
+   "is_primary": false,
+   "primary_case_id": "P-acaab3b4e82f",
+   "stratum": "L"
+  },
+  {
+   "block_id": "wenhao, li",
+   "case_id": "P-c18939c54abb",
+   "is_primary": false,
+   "primary_case_id": "P-acaab3b4e82f",
+   "stratum": "L"
+  },
+  {
+   "block_id": "william, young",
+   "case_id": "P-58e87a8dc042",
+   "is_primary": false,
+   "primary_case_id": "P-f1962d26bdbf",
+   "stratum": "L"
+  },
+  {
+   "block_id": "william, young",
+   "case_id": "P-906a3af3b1b8",
+   "is_primary": false,
+   "primary_case_id": "P-f1962d26bdbf",
+   "stratum": "L"
+  },
+  {
+   "block_id": "william, young",
+   "case_id": "P-d9063f519153",
+   "is_primary": false,
+   "primary_case_id": "P-f1962d26bdbf",
+   "stratum": "L"
+  },
+  {
+   "block_id": "william, young",
+   "case_id": "P-e7c610f6ae94",
+   "is_primary": false,
+   "primary_case_id": "P-f1962d26bdbf",
+   "stratum": "L"
+  },
+  {
+   "block_id": "carlos, ramos",
+   "case_id": "P-a4da6141a9bc",
+   "is_primary": false,
+   "primary_case_id": "P-dc7bcf79dc63",
+   "stratum": "L"
+  },
+  {
+   "block_id": "carlos, ramos",
+   "case_id": "P-5a7478d8576c",
+   "is_primary": false,
+   "primary_case_id": "P-dc7bcf79dc63",
+   "stratum": "L"
+  },
+  {
+   "block_id": "carlos, ramos",
+   "case_id": "P-6252aac30830",
+   "is_primary": false,
+   "primary_case_id": "P-dc7bcf79dc63",
+   "stratum": "L"
+  },
+  {
+   "block_id": "carlos, ramos",
+   "case_id": "P-bedb7dedee7a",
+   "is_primary": false,
+   "primary_case_id": "P-dc7bcf79dc63",
+   "stratum": "L"
+  }
+ ],
+ "seed": 2434702750,
+ "selector_source_sha256": "b7ef4758f4ae28b0c0627363f607c2365a9a41a37542884bd5347c609c975a00",
+ "split": "test"
+}

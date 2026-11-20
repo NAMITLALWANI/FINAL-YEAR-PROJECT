@@ -1,0 +1,56 @@
+{
+ "estimators": {
+  "E1_bias_in_se": 2.0005125576048544,
+  "E1_mean_estimate": 0.2617125279642058,
+  "E2_bias_in_se": 2.249885878831829,
+  "E2_mean_estimate": 0.30697908841472865,
+  "bootstrap_intervals": 600,
+  "cp_coverage_by_stratum": {
+   "L": 0.9616666666666667,
+   "M": 0.9716666666666667,
+   "S": 0.97,
+   "XL": null
+  },
+  "negative_control_E1_weights_for_E2_truth_bias_in_se": -20.348722448198515,
+  "pooled_bootstrap_E1_coverage": 0.935,
+  "reps": 600,
+  "truth": {
+   "E1": 0.257785234899329,
+   "E2": 0.3016599885518031
+  }
+ },
+ "sizing_prior_matched": {
+  "gamma": 0.1,
+  "generator": "jeffreys",
+  "lower_bound_found": 292,
+  "lower_bound_not_found": 8,
+  "lower_bound_success_frequency": 1.0,
+  "m_prime": 8,
+  "median_N_predictive": 19.0,
+  "plug_in_rule_used": 300,
+  "plug_in_success_frequency": 0.6766666666666666,
+  "predictive_found": 296,
+  "predictive_not_found": 4,
+  "predictive_success_frequency": 0.8986486486486487,
+  "predictive_success_se": 0.017541384938948593,
+  "reps": 300,
+  "target_probability": 0.9
+ },
+ "sizing_realistic_mismatch": {
+  "gamma": 0.1,
+  "generator": "beta_3_20",
+  "lower_bound_found": 251,
+  "lower_bound_not_found": 49,
+  "lower_bound_success_frequency": 1.0,
+  "m_prime": 8,
+  "median_N_predictive": 104.0,
+  "plug_in_rule_used": 299,
+  "plug_in_success_frequency": 0.5484949832775919,
+  "predictive_found": 298,
+  "predictive_not_found": 2,
+  "predictive_success_frequency": 0.8959731543624161,
+  "predictive_success_se": 0.017685285756702817,
+  "reps": 300,
+  "target_probability": 0.9
+ }
+}

@@ -1,0 +1,4 @@
+6d31cbe2a5bfbe38d9e5fd1ff2e67f5dccf62280
+      27
+Python 3.12.5
+pytest 8.4.2

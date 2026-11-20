@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+collecting ... collected 12 items
+
+tests/test_rehearsal_end_to_end.py::test_rehearsal_structure_and_manifests PASSED [  8%]
+tests/test_rehearsal_end_to_end.py::test_reviewer_facing_files_are_leak_free_and_the_crosswalk_is_elsewhere PASSED [ 16%]
+tests/test_rehearsal_end_to_end.py::test_the_reviewer_queue_does_not_reveal_which_cases_were_automatic PASSED [ 25%]
+tests/test_rehearsal_end_to_end.py::test_noisy_reviewers_disagree_but_adjudication_recovers_the_hidden_truth PASSED [ 33%]
+tests/test_rehearsal_end_to_end.py::test_verified_precision_matches_an_independent_computation_from_the_hidden_truth PASSED [ 41%]
+tests/test_rehearsal_end_to_end.py::test_a_wrong_crosswalk_would_be_caught_by_the_independent_comparison PASSED [ 50%]
+tests/test_rehearsal_end_to_end.py::test_audit_error_rate_matches_an_independent_computation_from_the_hidden_truth PASSED [ 58%]
+tests/test_rehearsal_end_to_end.py::test_overall_retrieval_is_identical_with_and_without_any_verification PASSED [ 66%]
+tests/test_rehearsal_end_to_end.py::test_the_rehearsal_is_reproducible_end_to_end PASSED [ 75%]
+tests/test_rehearsal_end_to_end.py::test_estimators_are_unbiased_for_their_own_estimand_and_the_weights_matter PASSED [ 83%]
+tests/test_rehearsal_end_to_end.py::test_predictive_sizing_reaches_the_target_when_the_prior_matches_and_the_plug_in_rule_does_not PASSED [ 91%]
+tests/test_rehearsal_end_to_end.py::test_simulation_parameters_are_test_values_and_the_script_requires_every_argument PASSED [100%]
+
+============================= 12 passed in 14.08s ==============================

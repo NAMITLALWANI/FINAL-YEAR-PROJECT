@@ -1,0 +1,2 @@
+WARN  label never referenced: sec:task
+RESULT: PASS (static checks only; not a compile)

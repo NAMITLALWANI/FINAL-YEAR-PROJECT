@@ -1,0 +1,1 @@
+freeze HAMMER-EVAL-F2: wrote ../research_data/lagos_and_v2/eval_F2/freeze_F2.json; manifest sha256 245759abbacf5802594f9edb841a1a6281cf734da2fb6ce16a9b677b37884898; seeds {'pilot': 1211704781, 'main': 211427201, 'audit': 3070674674, 'packets': 2926222443}

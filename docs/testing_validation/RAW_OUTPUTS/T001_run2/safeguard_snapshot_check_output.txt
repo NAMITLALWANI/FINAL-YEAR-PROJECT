@@ -1,0 +1,14 @@
+snapshot keys 150
+evidence status values: {'observed': 2166, 'unavailable_query_input_absent': 2180, 'unavailable_candidate_data_absent': 88, 'unavailable_inconclusive': 156}
+   ('coauthor_overlap', 'unavailable', 'unavailable_query_input_absent') 918
+   ('institution_similarity', 'available', 'observed') 486
+   ('institution_similarity', 'unavailable', 'unavailable_candidate_data_absent') 88
+   ('institution_similarity', 'unavailable', 'unavailable_query_input_absent') 344
+   ('name_similarity', 'available', 'observed') 918
+   ('publication_overlap', 'available', 'observed') 306
+   ('publication_overlap', 'unavailable', 'unavailable_query_input_absent') 612
+   ('temporal_compatibility', 'available', 'observed') 456
+   ('temporal_compatibility', 'unavailable', 'unavailable_inconclusive') 156
+   ('temporal_compatibility', 'unavailable', 'unavailable_query_input_absent') 306
+auto rows checked: 11 safeguard violations: none
+auto rows by (condition,pool_size): Counter({('C1', '1'): 4, ('C1x', '1'): 3, ('C1x', '10'): 3, ('C1x', '2'): 1})

@@ -1,0 +1,10 @@
+module sha256 before: fbf02d3e8fbaa995b3b9102b2efd2d040567dbd2f31715c2a64ba9952996b7de
+W1 unspecified parameters no longer block final tables -> 2 failed, 8 passed in 1.26s
+W2 verified table shows rates even when verification is incomplete -> 1 failed, 9 passed in 1.25s
+W3 underscores not escaped -> 1 failed, 9 passed in 1.22s
+W4 pooled interval always shown as withheld -> 1 failed, 9 passed in 1.27s
+W5 draft marker removed -> 1 failed, 9 passed in 1.23s
+W6 audit table drops the not-a-correction-factor statement -> 1 failed, 9 passed in 1.24s
+W7 benchmark retrieval caption loses its not-verified label -> 1 failed, 9 passed in 1.23s
+W8 accounting total column wrong -> 1 failed, 9 passed in 1.25s
+module sha256 after restore: fbf02d3e8fbaa995b3b9102b2efd2d040567dbd2f31715c2a64ba9952996b7de

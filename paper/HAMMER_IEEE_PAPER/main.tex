@@ -1,0 +1,87 @@
+% HAMMER -- IEEE conference-format manuscript (working draft, Stage 1)
+%
+% Class: IEEEtran in conference mode, A4 paper, two columns (Overleaf's TeX Live ships IEEEtran).
+% Bibliography: BibTeX, IEEEtran.bst, numbered citations.
+%
+% No venue has been chosen. No conference name, dates, copyright block, ISBN or
+% IEEE-branded footer is inserted on purpose (see paper README).
+\documentclass[conference,a4paper]{IEEEtran}
+
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{url}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
+
+% Shared notation (used from Stage 2 onward)
+\newcommand{\hammer}{\textsc{HAMMER}}
+% Visible placeholder for a value that is fixed at the evaluation freeze (never a result).
+\newcommand{\tbd}[1]{\textcolor{red}{[#1]}}
+
+\begin{document}
+
+\title{Hybrid Academic Metadata Aggregator and\\
+Evidence-Guided Author Entity Resolution System}
+
+% Author names, department, institution and e-mail addresses are taken from the title-block
+% image supplied by the project team. Supervisor / guide: not supplied, deliberately omitted.
+% TODO: confirm the author order and e-mail addresses with all four authors before submission.
+\author{
+\IEEEauthorblockN{Namit Lalwani}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+namit.l@somaiya.edu}
+\and
+\IEEEauthorblockN{Akshad Kedia}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+akshad.kedia@somaiya.edu}
+\and
+\IEEEauthorblockN{Nicholas Coutinho}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+nicholas.s@somaiya.edu}
+\and
+\IEEEauthorblockN{Sunil Shelke}
+\IEEEauthorblockA{\textit{Dept.\ of Information Technology}\\
+\textit{KJ Somaiya School of Engineering}\\
+\textit{Somaiya Vidyavihar University}\\
+sunil.shelke@somaiya.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+Scholarly metadata is scattered across providers, and an aggregator must decide both whether two records describe the same work and whether a name denotes a particular person. We describe \hammer{}, an implemented aggregator that keeps the two decisions separate. For authors it retrieves candidate profiles from OpenAlex, extracts up to five evidence signals, combines them in a heuristic score that is not a probability, and applies conservative gates that end in automatic assignment, manual review or an unresolved result. We contribute no new algorithm. We contribute an evaluation design that separates provisional benchmark labels from independently verified labels, keeps every outcome in the denominators and plans the sample size from a label-free pilot, together with offline tooling validated by 591 tests, mutation checks and simulation. The independent verification this design requires has not been performed, so we report no verified accuracy. We report instead exploratory, benchmark-derived observations from 68 real queries of the LAGOS-AND benchmark (a 50-case smoke sample and 18 randomly selected cases). The profile carrying the benchmark ORCID was in the retrieved pool for 76\% and 72\% of the queries but was the provider's first candidate for only 44\% and 39\%. With name, institution and year supplied, 4 of 50 and 0 of 18 queries were assigned automatically: scores were high (median 0.88) but rarely separated from similarly named competitors. HAMMER's own top-one choice agreed with the benchmark label no more often than the provider's order (34\% and 33\% against 44\% and 39\%). These samples are small, clustered and benchmark-labelled, so they indicate where the approach is limited and do not estimate its accuracy.
+\end{abstract}
+
+\begin{IEEEkeywords}
+author name disambiguation, entity resolution, scholarly metadata, candidate retrieval,
+selective prediction, provenance
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_system_architecture}
+\input{sections/04_methodology}
+\input{sections/05_experimental_design}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_threats_limitations}
+\input{sections/09_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

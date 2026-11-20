@@ -1,0 +1,1 @@
+pilot: wrote manifest.json, identity_map.json to ../../LAGOS_SOURCE/protected/pilot_F1

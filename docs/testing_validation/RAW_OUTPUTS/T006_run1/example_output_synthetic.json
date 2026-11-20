@@ -1,0 +1,226 @@
+{
+ "assumptions": [
+  "independent strata",
+  "the pilot is representative of its stratum in the main frame",
+  "coverage is stable under frozen code",
+  "the beta-binomial treats strata as infinite populations (expected conservative in the lower tail; to be checked)",
+  "the same guarded search rule is applied to the lower-bound check (C9 states the guard in step 5 only)"
+ ],
+ "inputs": {
+  "N_max": 80,
+  "beta": 0.3,
+  "floors": {
+   "L": 1,
+   "M": 0,
+   "S": 0,
+   "XL": 0
+  },
+  "frame_post_exclusion": {
+   "L": 40,
+   "M": 12,
+   "S": 40,
+   "XL": 60
+  },
+  "gamma": 0.1,
+  "m": null,
+  "m_prime": 6,
+  "parameter_status": "supplied by the caller; none is a default or a frozen value",
+  "pilot": {
+   "L": {
+    "automatic": 4,
+    "cases": 14
+   },
+   "M": {
+    "automatic": 4,
+    "cases": 4
+   },
+   "S": {
+    "automatic": 2,
+    "cases": 13
+   },
+   "XL": {
+    "automatic": 0,
+    "cases": 13
+   }
+  }
+ },
+ "primary_jeffreys": {
+  "N": 34,
+  "allocation_at_N": {
+   "L": 9,
+   "M": 3,
+   "S": 9,
+   "XL": 13
+  },
+  "borderline": false,
+  "failing_N_after_first_meeting": [
+   33
+  ],
+  "failing_N_after_first_meeting_count": 1,
+  "first_N_meeting_condition": 31,
+  "infeasible_N": [],
+  "infeasible_N_count": 0,
+  "max_probability_in_range": {
+   "N": 80,
+   "probability": 0.9984433887012164
+  },
+  "method": "stratified beta-binomial predictive, exact convolution",
+  "non_monotone": true,
+  "posterior": {
+   "L": {
+    "alpha": 4.5,
+    "automatic": 4,
+    "beta": 10.5,
+    "no_pilot_data": false,
+    "pilot_cases": 14
+   },
+   "M": {
+    "alpha": 4.5,
+    "automatic": 4,
+    "beta": 0.5,
+    "no_pilot_data": false,
+    "pilot_cases": 4
+   },
+   "S": {
+    "alpha": 2.5,
+    "automatic": 2,
+    "beta": 11.5,
+    "no_pilot_data": false,
+    "pilot_cases": 13
+   },
+   "XL": {
+    "alpha": 0.5,
+    "automatic": 0,
+    "beta": 13.5,
+    "no_pilot_data": false,
+    "pilot_cases": 13
+   }
+  },
+  "prior": "jeffreys",
+  "prior_parameters": [
+   0.5,
+   0.5
+  ],
+  "probability_at_N": 0.781755785186025,
+  "probability_at_N_max": 0.9984433887012164,
+  "range": [
+   6,
+   80
+  ],
+  "status": "found",
+  "target": 0.7
+ },
+ "sensitivity_lower_bound": {
+  "N": null,
+  "failing_N_after_first_meeting": [],
+  "failing_N_after_first_meeting_count": 0,
+  "first_N_meeting_condition": null,
+  "gamma": 0.1,
+  "infeasible_N": [],
+  "infeasible_N_count": 0,
+  "lower_limits": {
+   "L": {
+    "lower": 0.08388931830712759,
+    "no_pilot_data": false,
+    "tail": 0.025
+   },
+   "M": {
+    "lower": 0.3976353643835252,
+    "no_pilot_data": false,
+    "tail": 0.025
+   },
+   "S": {
+    "lower": 0.01920667198252851,
+    "no_pilot_data": false,
+    "tail": 0.025
+   },
+   "XL": {
+    "lower": 0.0,
+    "no_pilot_data": false,
+    "tail": 0.025
+   }
+  },
+  "max_probability_in_range": {
+   "N": 79,
+   "probability": 0.2905609451792169
+  },
+  "method": "binomial at exact one-sided lower confidence limits, Bonferroni over the strata of the frame",
+  "non_monotone": false,
+  "probability_at_N": null,
+  "probability_at_N_max": 0.2905609451792169,
+  "range": [
+   6,
+   80
+  ],
+  "reason": "the probability condition does not hold at N_max",
+  "status": "not_found_within_N_max",
+  "strata_in_bonferroni": 4,
+  "tail_per_stratum": 0.025,
+  "target": 0.7
+ },
+ "sensitivity_uniform_prior": {
+  "N": 31,
+  "allocation_at_N": {
+   "L": 8,
+   "M": 3,
+   "S": 8,
+   "XL": 12
+  },
+  "borderline": false,
+  "failing_N_after_first_meeting": [],
+  "failing_N_after_first_meeting_count": 0,
+  "first_N_meeting_condition": 31,
+  "infeasible_N": [],
+  "infeasible_N_count": 0,
+  "max_probability_in_range": {
+   "N": 80,
+   "probability": 0.9988501545725268
+  },
+  "method": "stratified beta-binomial predictive, exact convolution",
+  "non_monotone": false,
+  "posterior": {
+   "L": {
+    "alpha": 5.0,
+    "automatic": 4,
+    "beta": 11.0,
+    "no_pilot_data": false,
+    "pilot_cases": 14
+   },
+   "M": {
+    "alpha": 5.0,
+    "automatic": 4,
+    "beta": 1.0,
+    "no_pilot_data": false,
+    "pilot_cases": 4
+   },
+   "S": {
+    "alpha": 3.0,
+    "automatic": 2,
+    "beta": 12.0,
+    "no_pilot_data": false,
+    "pilot_cases": 13
+   },
+   "XL": {
+    "alpha": 1.0,
+    "automatic": 0,
+    "beta": 14.0,
+    "no_pilot_data": false,
+    "pilot_cases": 13
+   }
+  },
+  "prior": "uniform",
+  "prior_parameters": [
+   1.0,
+   1.0
+  ],
+  "probability_at_N": 0.773093969875345,
+  "probability_at_N_max": 0.9988501545725268,
+  "range": [
+   6,
+   80
+  ],
+  "status": "found",
+  "target": 0.7
+ },
+ "status_of_this_output": "planning calculation conditional on the supplied inputs; it selects and freezes nothing (Decision C9 step 7 is a separate act)"
+}

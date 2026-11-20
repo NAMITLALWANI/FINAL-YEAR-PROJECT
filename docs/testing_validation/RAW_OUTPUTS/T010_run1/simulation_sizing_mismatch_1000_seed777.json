@@ -1,0 +1,17 @@
+{
+ "gamma": 0.1,
+ "generator": "beta_3_20",
+ "lower_bound_found": 860,
+ "lower_bound_not_found": 140,
+ "lower_bound_success_frequency": 0.9976744186046511,
+ "m_prime": 8,
+ "median_N_predictive": 100.0,
+ "plug_in_rule_used": 999,
+ "plug_in_success_frequency": 0.5655655655655656,
+ "predictive_found": 998,
+ "predictive_not_found": 2,
+ "predictive_success_frequency": 0.8807615230460922,
+ "predictive_success_se": 0.010258222302975047,
+ "reps": 1000,
+ "target_probability": 0.9
+}

@@ -1,0 +1,1 @@
+freeze HAMMER-EVAL-F3: wrote ../research_data/lagos_and_v2/eval_F3/freeze_F3.json; manifest sha256 935dcef2ff139e612df72f267cff586c6e3005e273604a6948f5851813a8d7ee; seeds {'pilot': 2434702750, 'main': 3351144659, 'audit': 1596584940, 'packets': 2409149418}

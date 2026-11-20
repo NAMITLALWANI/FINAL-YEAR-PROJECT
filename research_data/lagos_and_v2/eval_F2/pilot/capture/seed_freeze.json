@@ -1,0 +1,11 @@
+{
+ "cases": 250,
+ "file_sha256": {
+  "doi_register.csv": "83badfea933613f0785787aa99af7e268ad4762d68303c34c59baea9d82dea84",
+  "gold_identity_register.csv": "7f53c1d28f43d1d216785f6d8696ef9abe32d3bc0f98a7e335f973f7b6fb15b9",
+  "seeds.csv": "3f89667cd730528d0433555ec20f1e6fdf70eca393ac7029ac03575085a78cf6"
+ },
+ "manifest_sha256": "f3dce94560cd0cba50d9b3f37ec61645339c04e1ac7b5be31adac1abf84a8df7",
+ "role": "pilot",
+ "seed": 1211704781
+}

@@ -1,0 +1,30 @@
+============================= test session starts ==============================
+collecting ... collected 25 items
+
+tests/test_dossier.py::test_stage_a_includes_the_designated_paper_caps_at_k_and_is_deterministic PASSED [  4%]
+tests/test_dossier.py::test_stage_a_copies_only_allow_listed_fields_and_never_the_benchmark_identity PASSED [  8%]
+tests/test_dossier.py::test_stage_a_input_validation PASSED              [ 12%]
+tests/test_dossier.py::test_candidate_allow_list_drops_every_identifier_orcid_rank_and_unknown_field PASSED [ 16%]
+tests/test_dossier.py::test_stage_b_order_is_independent_of_provider_order_and_rank_and_depends_on_seed PASSED [ 20%]
+tests/test_dossier.py::test_opaque_ids_and_crosswalk_map_back_without_appearing_in_the_packet PASSED [ 24%]
+tests/test_dossier.py::test_works_are_capped_allow_listed_and_ordered_independent_of_provider_order PASSED [ 28%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-orcid_pattern] PASSED [ 32%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-orcid_url] PASSED [ 36%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-openalex_url] PASSED [ 40%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-openalex_id] PASSED [ 44%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-forbidden_key0] PASSED [ 48%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-forbidden_key1] PASSED [ 52%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-forbidden_key2] PASSED [ 56%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-forbidden_key3] PASSED [ 60%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-forbidden_key4] PASSED [ 64%]
+tests/test_dossier.py::test_leak_scan_positive_controls[<lambda>-forbidden_key5] PASSED [ 68%]
+tests/test_dossier.py::test_leak_scan_negative_control_gold_values_and_report_contents PASSED [ 72%]
+tests/test_dossier.py::test_release_gate_and_hand_edit_detection PASSED  [ 76%]
+tests/test_dossier.py::test_an_adversarial_display_name_is_caught_by_the_scan_even_though_the_field_is_allow_listed PASSED [ 80%]
+tests/test_dossier.py::test_a_deny_list_would_leak_but_the_allow_list_does_not PASSED [ 84%]
+tests/test_dossier.py::test_automatic_and_audited_cases_have_the_same_packet_form_and_a_flag_independent_queue PASSED [ 88%]
+tests/test_dossier.py::test_release_layout_separates_the_crosswalk_and_refuses_unsafe_use PASSED [ 92%]
+tests/test_dossier.py::test_allow_list_removes_every_gold_orcid_from_real_smoke_payloads_in_memory PASSED [ 96%]
+tests/test_dossier.py::test_the_module_has_no_network_dependency_and_no_orcid_field_access PASSED [100%]
+
+============================== 25 passed in 0.76s ==============================

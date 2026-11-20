@@ -1,0 +1,4 @@
+Q9 re-run, targeted (the full-suite run of this mutant did not terminate cleanly: with the guard removed, the n_max=100,001 case in test_invalid_planning_parameters_are_rejected searches a 100,000-block frame and exhausts resources)
+module sha256 before: b9a2abc1a28b289193b383a289f0ad4247e04720c7a13833d7a3d694eb547ba6
+targeted test under mutant Q9 -> =========================== short test summary info ============================ FAILED tests/test_sizing_c9.py::test_floors_that_make_the_plan_infeasible_within_N_max_are_reported_not_hidden 1 failed in 0.28s 
+module sha256 after restore: b9a2abc1a28b289193b383a289f0ad4247e04720c7a13833d7a3d694eb547ba6

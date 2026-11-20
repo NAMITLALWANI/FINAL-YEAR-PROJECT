@@ -1,0 +1,17 @@
+module sha256 before: b9a2abc1a28b289193b383a289f0ad4247e04720c7a13833d7a3d694eb547ba6
+Q1 search guard removed (smallest N that first meets the condition) -> 6 failed, 80 passed in 3.93s
+Q2 uniform sensitivity prior replaced by Jeffreys -> 3 failed, 83 passed in 4.11s
+Q3 Bonferroni correction removed -> 1 failed, 85 passed in 4.06s
+Q4 stratum without pilot data given a non-zero lower limit -> 3 failed, 83 passed in 4.12s
+Q5 floors no longer capped at the frame size (no census) -> 1 failed, 85 passed in 4.10s
+Q6 largest-remainder leftover dropped -> 8 failed, 78 passed in 3.59s
+Q7 tail probability off by one -> 20 failed, 66 passed in 4.07s
+Q8 convolution skips the last stratum -> 18 failed, 68 passed in 4.34s
+Q9 N_max may exceed the frame -> .....................
+Q10 an infeasible N counted as satisfying the condition -> 1 failed, 85 passed in 9.03s
+Q11 primary search uses beta instead of 1 - beta -> 5 failed, 81 passed in 5.95s
+Q12 log-gamma difference restored for the pmf start (precision regression) -> 3 failed, 83 passed in 6.47s
+Q13 posterior ignores the prior in alpha -> 11 failed, 75 passed in 5.67s
+Q14 floor binding ignored -> 3 failed, 83 passed in 7.42s
+Q15 infeasible floors not rejected -> 1 failed, 85 passed in 6.40s
+module sha256 after restore: b9a2abc1a28b289193b383a289f0ad4247e04720c7a13833d7a3d694eb547ba6

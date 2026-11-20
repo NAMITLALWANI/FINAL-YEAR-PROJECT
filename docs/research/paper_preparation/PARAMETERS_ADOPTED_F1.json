@@ -1,0 +1,14 @@
+{
+  "status": "ADOPTED under the 20 November 2026 autonomous-execution instruction; every value is the recommendation of PARAMETER_RATIFICATION_SHEET.md. Nothing has been captured yet, so the research director may still change any value before the pilot capture by writing a new freeze id.",
+  "dataset": {"name": "LAGOS-AND", "version": "2.0 block-trimmed", "zenodo_doi": "10.5281/zenodo.7313353", "archive_sha256": "a0ac028b8955fcb4c6797b9fe1f5602fef43b45424f4044d0108c4f7d4bb6840"},
+  "primary": {"condition": "C1", "policy": "selective_policy_v2", "retrieval_arm": "R2", "descriptive_arm": "R0", "primary_estimand": "E1", "secondary_estimand": "E2"},
+  "frame": {"split": "test", "exclude": ["23 smoke blocks", "all pilot blocks (complete blocks)"]},
+  "model_parameters": {"source": "code defaults in backend/config.py (not tuned on LAGOS)", "weights": [0.35, 0.25, 0.20, 0.10, 0.10], "tau_auto": 0.75, "tau_margin": 0.15, "tau_dominance": 1.35, "tau_manual": 0.45, "min_signals": 2},
+  "pilot": {"per_stratum": {"S": 100, "M": 100, "L": 50, "XL": 0}, "total": 250, "label_free": true, "note": "XL has 9 test blocks; none is spent on the pilot, XL is a census in the main sample"},
+  "main_sample": {"floors": {"S": 0, "M": 0, "L": 0, "XL": 9}, "n_max": 2500, "beta": 0.05, "gamma": 0.10, "prior_primary": "jeffreys", "prior_sensitivity": "uniform", "m_target_automatic": null, "m_prime": null, "note": "m and m' depend on reviewer capacity (personnel deferred) and are NOT chosen; N is therefore reported conditionally"},
+  "inference": {"bootstrap_min_stratum_cases": 20, "negligible_stratum_weight": 0.005, "diagnostics": {"sampling_fraction_warn": 0.10, "sparse_automatic_warn": 30, "sparse_errors_warn": 5, "clustered_blocks_warn": 20}},
+  "review": {"group_paper_cap_K": 10, "works_per_candidate": 25, "max_candidates_per_case": 10, "audit_size": null, "personnel": "deferred"},
+  "provider": {"request_ceiling_factor": 1.5, "planned_requests_per_case": 1.05, "works_requests_per_reviewed_case": 7, "cost_ceiling_usd": 10, "stop_at_cost_fraction": 0.8,
+              "stop_on": ["HTTP 401", "HTTP 403", "HTTP 429", "3 consecutive 5xx or timeouts", "hash mismatch", "budget exhaustion"], "secondary_cases": "captured only if budget remains"},
+  "seeds": "derived from the freeze id by the documented rule; see the freeze manifest"
+}

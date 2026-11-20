@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+collecting ... collected 14 items
+
+tests/test_seeds_from_manifest.py::test_inputs_follow_the_existing_toolkit_layout_and_use_manifest_case_ids PASSED [  7%]
+tests/test_seeds_from_manifest.py::test_designated_citation_belongs_to_the_group_and_doi_purposes_follow_the_rules PASSED [ 14%]
+tests/test_seeds_from_manifest.py::test_no_orcid_in_seeds_or_doi_register_but_the_protected_register_has_it PASSED [ 21%]
+tests/test_seeds_from_manifest.py::test_contexts_derive_with_the_existing_rules_and_c1x_holds_the_designated_doi_only PASSED [ 28%]
+tests/test_seeds_from_manifest.py::test_building_is_deterministic PASSED [ 35%]
+tests/test_seeds_from_manifest.py::test_inconsistent_inputs_are_refused PASSED [ 42%]
+tests/test_seeds_from_manifest.py::test_write_separates_the_protected_register_binds_the_manifest_hash_and_never_overwrites PASSED [ 50%]
+tests/test_seeds_from_manifest.py::test_the_archive_pass_returns_only_the_selected_blocks PASSED [ 57%]
+tests/test_seeds_from_manifest.py::test_the_designated_citation_is_the_smallest_hash_among_citations_with_an_affiliation PASSED [ 64%]
+tests/test_seeds_from_manifest.py::test_affiliation_less_citations_are_never_designated_when_an_affiliated_one_exists PASSED [ 71%]
+tests/test_run_helpers.py::test_pilot_counts_use_only_the_primary_pair_and_the_seeded_strata PASSED [ 78%]
+tests/test_run_helpers.py::test_missing_predictions_and_duplicate_rows_are_refused PASSED [ 85%]
+tests/test_run_helpers.py::test_audit_frame_lists_only_primary_cases_with_their_outcome PASSED [ 92%]
+tests/test_run_helpers.py::test_command_line_glue_chains_selection_seeds_counts_and_audit_frame PASSED [100%]
+
+============================== 14 passed in 0.86s ==============================

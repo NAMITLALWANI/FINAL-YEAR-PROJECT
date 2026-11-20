@@ -1,0 +1,8 @@
+module sha256 before: 0d3c2afad99d03fc069b8a230e52ad26f1fa4e66f3d5e8a4a4ebdbb4f05872ed
+M1 unresolved dropped from denominator -> 3 failed, 46 passed in 1.30s
+M2 no-matching-candidate dropped from denominator -> 3 failed, 46 passed in 1.28s
+M3 E1 weight wrongly includes g -> 1 failed, 48 passed in 1.26s
+M4 label-free denominator excludes failures -> 1 failed, 48 passed in 1.26s
+M5 unmapped counted outside end-to-end denominator -> 1 failed, 48 passed in 1.09s
+M6 bootstrap runs on zero errors -> 2 failed, 47 passed in 1.24s
+module sha256 after restore: 0d3c2afad99d03fc069b8a230e52ad26f1fa4e66f3d5e8a4a4ebdbb4f05872ed

@@ -1,0 +1,3 @@
+Freeze HAMMER-EVAL-F3 was superseded by HAMMER-EVAL-F4 (T019). The F3 exploratory capture was attempted: 70 requests were sent, and EVERY response was recorded as a DecodingError
+because the stop-condition guard re-wrapped an already decoded body with the wire response's content-encoding header. No usable data came from it; the failed attempt is preserved
+in exploratory/capture/captures/ as a negative result (like captures_attempt1_failed_401 in the smoke data) and must not be analysed. The guard was fixed with a regression test.

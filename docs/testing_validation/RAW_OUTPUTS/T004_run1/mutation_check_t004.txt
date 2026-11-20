@@ -1,0 +1,13 @@
+module sha256 before: 08e15501a3b1c7dcb3a2592b97b05924b61b7b153affb9bad8074740791ed465
+N1 impure group no longer a contradiction -> 5 failed, 80 passed in 1.52s
+N2 pure unresolved group counted as a contradiction -> 1 failed, 84 passed in 1.49s
+N3 numerator counts reasons, not cases -> 1 failed, 84 passed in 1.51s
+N4 cannot-tell on a mapped candidate counted as an error -> 2 failed, 83 passed in 1.50s
+N5 HAMMER abstentions removed from verified retrieval -> 5 failed, 80 passed in 1.49s
+N6 ground-truth unresolved no longer excluded -> 4 failed, 81 passed in 1.52s
+N7 no-matching-candidate claimed without every candidate judged -> 3 failed, 82 passed in 2.12s
+N8 cannot-verify automatic case reported as Verified -> 2 failed, 83 passed in 1.53s
+N9 replay builder takes the R0 pool -> 2 failed, 83 passed in 1.60s
+N10 audit consistency claimed without every candidate judged -> 1 failed, 84 passed in 1.54s
+N11 verified miss claimed without every candidate judged -> 2 failed, 83 passed in 2.11s
+module sha256 after restore: 08e15501a3b1c7dcb3a2592b97b05924b61b7b153affb9bad8074740791ed465

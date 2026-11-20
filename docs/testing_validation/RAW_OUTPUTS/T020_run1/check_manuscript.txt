@@ -1,0 +1,19 @@
+figures: 3 labelled (3 included); tables: 16 labelled
+files checked: 15; bib entries: 40; distinct citations: 40; labels: 54
+WARN  optional \input file not generated yet: tables_generated/res_accounting.tex
+WARN  optional \input file not generated yet: tables_generated/res_verified.tex
+WARN  optional \input file not generated yet: tables_generated/res_audit.tex
+WARN  optional \input file not generated yet: tables_generated/res_agreement.tex
+WARN  label never referenced: eq:score
+WARN  label never referenced: sec:discussion
+WARN  label never referenced: sec:inference
+WARN  label never referenced: sec:introduction
+WARN  label never referenced: sec:metrics
+WARN  label never referenced: sec:res-gates
+WARN  label never referenced: sec:res-outcomes
+WARN  label never referenced: sec:res-retrieval
+WARN  label never referenced: sec:res-selective
+WARN  label never referenced: sec:retrieval
+WARN  label never referenced: sec:sampling
+WARN  label never referenced: sec:task
+RESULT: PASS (static checks only; not a compile)

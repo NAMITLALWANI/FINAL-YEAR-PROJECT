@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+collecting ... collected 16 items
+
+tests/test_metrics_c7_t005.py::test_group_purity_states_are_pure_impure_and_unresolved_only PASSED [  6%]
+tests/test_metrics_c7_t005.py::test_a_pure_group_with_an_unresolved_case_label_is_indeterminate_not_consistent PASSED [ 12%]
+tests/test_metrics_c7_t005.py::test_an_unresolved_group_purity_is_its_own_state_and_is_indeterminate PASSED [ 18%]
+tests/test_metrics_c7_t005.py::test_stage_b_contradictions_still_count_when_purity_or_label_is_unresolved PASSED [ 25%]
+tests/test_metrics_c7_t005.py::test_an_uncertain_case_with_a_confirmed_impure_group_stays_outside_the_definite_denominator[uncertain] PASSED [ 31%]
+tests/test_metrics_c7_t005.py::test_an_uncertain_case_with_a_confirmed_impure_group_stays_outside_the_definite_denominator[unverifiable] PASSED [ 37%]
+tests/test_metrics_c7_t005.py::test_a_confirmed_impure_group_in_a_definite_case_is_a_benchmark_contradiction PASSED [ 43%]
+tests/test_metrics_c7_t005.py::test_case_level_candidate_evidence_does_not_pull_an_uncertain_case_into_the_denominator PASSED [ 50%]
+tests/test_metrics_c7_t005.py::test_impure_group_rate_uses_determinate_purity_only_and_reports_the_rest PASSED [ 56%]
+tests/test_metrics_c7_t005.py::test_group_validity_counts_cases_without_a_purity_record PASSED [ 62%]
+tests/test_metrics_c7_t005.py::test_overall_retrieval_keeps_all_N_and_is_identical_with_or_without_verification PASSED [ 68%]
+tests/test_metrics_c7_t005.py::test_verified_retrieval_uses_only_definite_cases_and_reports_excluded_categories_separately PASSED [ 75%]
+tests/test_metrics_c7_t005.py::test_the_report_states_that_overall_retrieval_is_never_adjusted PASSED [ 81%]
+tests/test_metrics_c7_t005.py::test_conditional_verified_retrieval_denominator_is_the_verified_same_cases_only PASSED [ 87%]
+tests/test_metrics_c7_t005.py::test_conditional_bounds_use_cannot_tell_candidates_and_every_other_category_is_outside_the_denominator PASSED [ 93%]
+tests/test_metrics_c7_t005.py::test_the_conditional_definition_is_unchanged_for_cases_without_cannot_tell PASSED [100%]
+
+============================== 16 passed in 0.29s ==============================

@@ -1,0 +1,13 @@
+module sha256 before: 45cedaedcdf35f029177d2aff2d6a28fd5d9e7dc57ed15be3bd554d649a6b005
+U1 two-distinct-reviewers requirement removed -> 1 failed, 30 passed in 0.25s
+U2 adjudicator independence removed -> 1 failed, 30 passed in 0.16s
+U3 Stage B completeness removed -> 1 failed, 30 passed in 0.22s
+U4 chance agreement ignored in kappa -> 2 failed, 29 passed in 0.13s
+U5 builder-as-reviewer check removed -> 1 failed, 30 passed in 0.18s
+U6 crosswalk not applied in the C7 conversion -> 2 failed, 29 passed in 0.12s
+U7 purity disagreement ignored -> 1 failed, 30 passed in 0.10s
+U8 affordable cases ignores candidate time -> 1 failed, 30 passed in 0.10s
+U9 ORCID encounters in Stage B ignored -> 1 failed, 30 passed in 0.11s
+U10 resolved adjudication may skip candidates -> 1 failed, 30 passed in 0.25s
+U11 degenerate kappa reported as perfect -> 1 failed, 30 passed in 0.23s
+module sha256 after restore: 45cedaedcdf35f029177d2aff2d6a28fd5d9e7dc57ed15be3bd554d649a6b005
