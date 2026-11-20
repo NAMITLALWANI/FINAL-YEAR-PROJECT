@@ -4,6 +4,10 @@ HAMMER is an evidence-guided, human-in-the-loop software architecture for multi-
 
 ---
 
+> **New here? Start with [PROJECT_MAP.md](PROJECT_MAP.md)**: where everything is and how to follow the code from one file to the next.
+
+---
+
 ## 1. Architecture Overview
 
 HAMMER organizes scholarly metadata processing into distinct, modular functional subsystems:
