@@ -101,7 +101,12 @@ export default function MergeDetails({ paper }) {
                     <div className="log-metrics">
                       <div className="metric"><span>Title:</span> {log.title_sim.toFixed(2)}</div>
                       <div className="metric"><span>Author:</span> {log.author_sim.toFixed(2)}</div>
-                      <div className="metric"><span>Year:</span> {log.year_match ? '✓' : '✗'}</div>
+                      <div className="metric">
+                        <span>Year:</span>{' '}
+                        <span className={`metric-tag ${log.year_match ? 'tag-match' : 'tag-mismatch'}`}>
+                          {log.year_match ? 'Match' : 'Mismatch'}
+                        </span>
+                      </div>
                     </div>
                     <div className="log-decision">
                       Action: <span className="decision-tag">{log.decision}</span>

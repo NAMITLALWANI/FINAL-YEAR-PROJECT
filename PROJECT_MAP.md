@@ -61,7 +61,7 @@ Then `POST /author-resolutions` saves the outcome (`resolver.py: create_resoluti
 ```bash
 cd backend && python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
 ./.venv/bin/uvicorn main:app --reload --port 8000      # API docs at http://localhost:8000/docs
-cd ../frontend && npm install && npm run dev            # http://localhost:5173
+cd ../frontend && npm install && npm run dev            # http://localhost:3000
 cd ../backend && ./.venv/bin/python -m pytest tests -q  # 591 tests
 ```
 

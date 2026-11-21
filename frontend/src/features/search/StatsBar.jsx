@@ -39,7 +39,12 @@ export default function StatsBar({ data }) {
           <>
             <div className="stat-divider" />
             <div className="stat-item">
-              <span className="cache-hit">⚡ cached</span>
+              <span className="cache-hit">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginRight: '4px', verticalAlign: '-1px' }}>
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+                cached
+              </span>
             </div>
           </>
         )}

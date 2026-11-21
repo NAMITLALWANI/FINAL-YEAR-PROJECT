@@ -24,7 +24,11 @@ export default function PaperCard({ paper }) {
     >
       <div className="paper-header">
         <h3 className="paper-title">{paper.title}</h3>
-        <span className={`expand-icon ${expanded ? 'open' : ''}`}>▼</span>
+        <span className={`expand-icon ${expanded ? 'open' : ''}`} aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
       </div>
 
       <div className="paper-meta">

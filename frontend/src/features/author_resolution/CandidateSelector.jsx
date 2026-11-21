@@ -15,7 +15,14 @@ export default function CandidateSelector({
   return (
     <div className="candidate-selector animate-in" aria-busy={saving}>
       <div className="selector-header">
-        <div className="selector-icon">👥</div>
+        <div className="selector-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
         <div className="selector-title-group">
           <h3 className="selector-title">
             {hasCandidates ? 'Candidate Review Required' : 'No Candidate Profiles Found'}

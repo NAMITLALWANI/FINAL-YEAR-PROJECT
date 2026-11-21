@@ -37,7 +37,12 @@ function SkeletonCard() {
 function EmptyState({ query, mode = 'author' }) {
   return (
     <div className="state-box">
-      <div className="state-icon">🔍</div>
+      <div className="state-icon" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      </div>
       <p className="state-title">No literature found for "{query}"</p>
       <p className="state-desc">
         {mode === 'author'
@@ -51,7 +56,13 @@ function EmptyState({ query, mode = 'author' }) {
 function ErrorState({ message }) {
   return (
     <div className="state-box">
-      <div className="state-icon">⚠️</div>
+      <div className="state-icon" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+          <line x1="12" y1="9" x2="12" y2="13" />
+          <line x1="12" y1="17" x2="12.01" y2="17" />
+        </svg>
+      </div>
       <p className="state-title" style={{ color: 'var(--red)' }}>Search Error</p>
       <p className="state-desc">{message}</p>
     </div>
@@ -61,7 +72,20 @@ function ErrorState({ message }) {
 function WelcomeState({ mode = 'author' }) {
   return (
     <div className="state-box">
-      <div className="state-icon">{mode === 'author' ? '🏛️' : '🧠'}</div>
+      <div className="state-icon" aria-hidden="true">
+        {mode === 'author' ? (
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+        ) : (
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+          </svg>
+        )}
+      </div>
       <p className="state-title">
         {mode === 'author' ? 'HAMMER Author Intelligence' : 'HAMMER Semantic Literature & RAG'}
       </p>
@@ -275,6 +299,7 @@ export default function App() {
       <header className="header">
         <div className="header-brand">
           <span className="header-logo">HAMMER</span>
+          <span className="header-fullform">Hybrid Academic Metadata Matching and Evidence-based Resolution</span>
         </div>
         <span className="header-subtitle">Institutional Research Discovery</span>
       </header>
@@ -297,7 +322,13 @@ export default function App() {
         {/* Unresolved message banner */}
         {!loading && unresolvedMessage && (
           <div className="state-box" style={{ background: '#f8fafc', border: '1px solid #cbd5e1', marginTop: '1.5rem' }}>
-            <div className="state-icon">ℹ️</div>
+            <div className="state-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
             <p className="state-title">Identity Unresolved</p>
             <p className="state-desc">{unresolvedMessage}</p>
           </div>
@@ -324,7 +355,20 @@ export default function App() {
         {/* Semantic Mode: Grounded Explanation Banner */}
         {searchMode === 'semantic' && semanticResults?.explanation && !loading && (
           <div className="semantic-explanation-banner">
-            <h4>💡 Grounded Literature Synthesis</h4>
+            <h4>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginRight: '6px', verticalAlign: '-2px' }}>
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+              Grounded Literature Synthesis
+            </h4>
             <p>{semanticResults.explanation.summary}</p>
           </div>
         )}
